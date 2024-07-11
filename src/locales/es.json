@@ -1,0 +1,370 @@
+{
+  "LOGIN": {
+    "TITLE": "Bienvenido a Mi Colegio Montessori Admin",
+    "SIGNIN": "Iniciar sesión",
+    "FORGOT_PASSWORD": "¿Olvidó su clave?",
+    "LOGIN_ERROR": "Usuario o password incorrectos",
+    "FORM": {
+      "PROFILE": "Perfil",
+      "USERNAME": "Usuario",
+      "PASSWORD": "Password"
+    },
+    "ERRORS": {
+      "PROFILE": "Seleccione un perfil",
+      "USERNAME": "Ingrese usuario",
+      "PASSWORD": "Ingrese password"
+    }
+  },
+  "MENUITEMS": {
+    "MAIN": {
+      "TEXT": "Principal"
+    },
+    "DASHBOARD": {
+      "TEXT": "Tablero",
+      "LIST": {
+        "DASHBOARD1": "Tablero 1",
+        "DASHBOARD2": "Tablero 2",
+        "TEACHER-DASHBOARD": "Panel del profesor",
+        "STUDENT-DASHBOARD": "Tablero del estudiante"
+      }
+    },
+    "TEACHERS": {
+      "TEXT": "Guías",
+      "LIST": {
+        "ALL-TEACHERS": "Todas las guías",
+        "ADD-TEACHER": "Agregar guía",
+        "EDIT-TEACHER": "Editar guía",
+        "ABOUT-TEACHER": "Sobre la guía"
+      }
+    },
+    "STUDENTS": {
+      "TEXT": "Alumnos",
+      "LIST": {
+        "ALL-STUDENTS": "Todos los alumnos",
+        "ADD-STUDENT": "Agregar estudiante",
+        "EDIT-STUDENT": "Editar alumno",
+        "ABOUT-STUDENT": "Sobre la estudiante",
+        "STUDENT-ATTENDANCE": "Student Attendance"
+      }
+    },
+    "GUARDIANS": {
+      "TEXT": "Apoderados",
+      "LIST": {
+        "ALL-GUARDIANS": "Todos los apoderados",
+        "ADD-GUARDIAN": "Agregar apoderado"
+      }
+    },
+    "USERS": {
+      "TEXT": "Usuarios",
+      "LIST": {
+        "ALL-USERS": "Todos",
+        "ADD-STUDENT": "Agregar usuario"
+      }
+    },
+    "COURSES": {
+      "TEXT": "Cursos",
+      "LIST": {
+        "ALL-COURSES": "Todos los cursos",
+        "ADD-COURSE": "Agregar curso",
+        "EDIT-COURSE": "Editar curso",
+        "ABOUT-COURSE": "Acerca del curso"
+      }
+    },
+    "LIBRARY": {
+      "TEXT": "Biblioteca",
+      "LIST": {
+        "ALL-LIBRARY": "Toda la biblioteca",
+        "ADD-LIBRARY": "Agregar biblioteca",
+        "EDIT-LIBRARY": "Editar biblioteca"
+      }
+    },
+    "DEPARTMENTS": {
+      "TEXT": "Departamentos",
+      "LIST": {
+        "ALL-DEPARTMENT": "Todos los departamentos",
+        "ADD-DEPARTMENT": "Agregar departamento",
+        "EDIT-DEPARTMENT": "Editar departamento"
+      }
+    },
+    "GRADES": {
+      "TEXT": "Niveles",
+      "LIST": {
+        "ALL-GRADE": "Todos los niveles",
+        "ADD-GRADE": "Agregar nivel",
+        "EDIT-GRADE": "Editar nivel"
+      }
+    },
+    "SUBJECTS": {
+      "TEXT": "Asignaturas",
+      "LIST": {
+        "ALL-SUBJECTS": "Todas las asignaturas",
+        "ADD-SUBJECT": "Agregar"
+      }
+    },
+    "STAFF": {
+      "TEXT": "Personal",
+      "LIST": {
+        "ALL-STAFF": "Todo el personal",
+        "ADD-STAFF": "Agregar personal",
+        "EDIT-STAFF": "Editar personal",
+        "ABOUT-STAFF": "Sobre el personal"
+      }
+    },
+    "EVENT": {
+      "TEXT": "Calendario",
+      "LIST": {
+        "ALL-EVENT": "Todas las actividades",
+        "ADD-EVENT": "Agregar actividad",
+        "EDIT-EVENT": "Editar actividad",
+        "CALENDAR": "Calendario"
+      }
+    },
+    "FEES": {
+      "TEXT": "Tarifa",
+      "LIST": {
+        "ALL-FEES": "Todas las tarifas",
+        "ADD-FEES": "Agregar tarifas",
+        "EDIT-FEES": "Editar tarifas",
+        "FEE-RECEIPT": "Recibo de tarifa"
+      }
+    },
+    "ATTENDANCE": {
+      "TEXT": "Asistencia",
+      "LIST": {
+        "STAFF": "Staff Attendance",
+        "DETAILS": "Attendance Details",
+        "SHEET": "Hoja de asistencia"
+      }
+    },
+    "TEACHER": {
+      "TEXT": "Guía",
+      "LIST": {
+        "DASHBOARD": "Dashboard",
+        "LECTURES": "Conferencias",
+        "LEAVE-REQUEST": "Dejar petición",
+        "EXAM-SCHEDULE": "Horario de exámenes",
+        "SETTINGS": "Configuraciones",
+        "TIME-TABLE": "Horario"
+      },
+      "PLANNINGS": {
+        "TEXT": "Planificaciones",
+        "LIST": {
+          "ALL-PLANNINGS": "Todas",
+          "ADD-PLANNING": "Agregar planificación",
+          "PLANNINGS-CALENDAR": "Calendario"
+        }
+      },
+      "HOMEWORKS": {
+        "TEXT": "Tareas",
+        "LIST": {
+          "ALL-HOMEWORKS": "Todas",
+          "ADD-HOMEWORK": "Agregar tarea"
+        }
+      }
+    },
+    "STUDENT": {
+      "TEXT": "Alumno",
+      "LIST": {
+        "DASHBOARD": "Dashboard",
+        "HOMEWORK": "Tareas",
+        "LEAVE-REQUEST": "Dejar petición",
+        "TIME-TABLE": "Horario",
+        "SETTINGS": "Configuraciones"
+      }
+    },
+    "GUARDIAN": {
+      "TEXT": "Apoderado",
+      "LIST": {
+        "DASHBOARD": "Dashboard",
+        "HOMEWORK": "Tareas",
+        "LEAVE-REQUEST": "Dejar petición",
+        "TIME-TABLE": "Horario",
+        "SETTINGS": "Configuraciones"
+      }
+    },
+    "APPS": {
+      "TEXT": "Aplicaciones"
+    },
+    "CALENDAR": {
+      "TEXT": "Calendario"
+    },
+    "TASK": {
+      "TEXT": "Tarea"
+    },
+    "CONTACTS": {
+      "TEXT": "Contactos"
+    }
+  },
+  "ADMINMODULE": {
+    "GENERAL": {
+      "SEARCH": "Search",
+      "ADD": "Add",
+      "REFRESH": "Refresh"
+    },
+    "TEACHER": {
+      "ALL": {
+        "BREADCRUMBS": "Guías|Guía|Guías",
+        "TITLE": "Teachers"
+      },
+      "ADD": {
+        "BREADCRUMBS": "Agregar Guía|Guía|Agregar",
+        "TITLE": "Nuevo/a Guía"
+      }
+    },
+    "STUDENT": {
+      "ALL": {
+        "BREADCRUMBS": "Alumnos|Alumno|Alumnos",
+        "TITLE": "Alumnos"
+      },
+      "ADD": {
+        "BREADCRUMBS": "Agregar alumno|Alumno|Agregar",
+        "TITLE": "Nuevo/a alumno/a"
+      }
+    },
+    "GUARDIAN": {
+      "ALL": {
+        "BREADCRUMBS": "Apoderados|Apoderado|Apoderados",
+        "TITLE": "Apoderados"
+      },
+      "ADD": {
+        "BREADCRUMBS": "Agregar apoderado|Apoderado|Agregar",
+        "TITLE": "Nuevo/a apoderado/a"
+      }
+    },
+    "USER": {
+      "ALL": {
+        "BREADCRUMBS": "Usuarios|Usuario|Usuarios",
+        "TITLE": "Usuarios"
+      },
+      "ADD": {
+        "BREADCRUMBS": "Agregar usuario|Usuario|Agregar",
+        "TITLE": "Nuevo usuario"
+      }
+    },
+    "GRADE": {
+      "ALL": {
+        "BREADCRUMBS": "Niveles|Nivel|Niveles",
+        "TITLE": "Niveles"
+      },
+      "ADD": {
+        "BREADCRUMBS": "Agregar nivel|Nivel|Agregar",
+        "TITLE": "Agregar nivel"
+      }
+    },
+    "EVENTS": {
+      "ALL": {
+        "BREADCRUMBS": "Eventos|Evento|Eventos",
+        "TITLE": "Eventos"
+      },
+      "ADD": {
+        "BREADCRUMBS": "Agregar evento|Evento|Agregar",
+        "TITLE": "Nuevo evento"
+      },
+      "CALENDAR": {
+        "BREADCRUMBS": "Calendario|Eventos|Todos",
+        "TITLE": "Eventos"
+      }
+    },
+    "SUBJECT": {
+      "ALL": {
+        "BREADCRUMBS": "Asignaturas|Asignatura|Asignaturas",
+        "TITLE": "Asignaturas"
+      },
+      "ADD": {
+        "BREADCRUMBS": "Agregar asignatura|Asignatura|Agregar",
+        "TITLE": "Nueva asignatura"
+      }
+    },
+    "FIELDNAMES": {
+      "NAME": "Nombre",
+      "USERNAME": "Username",
+      "LASTNAME": "Apellidos",
+      "UUIDRUT": "Rut",
+      "PHONE": "Teléfono",
+      "EMAIL": "Email",
+      "PERSONALPHONE": "Teléfono personal",
+      "PERSONALEMAIL": "Email personal",
+      "STATE": "Estado",
+      "ACTIONS": "Acciones",
+      "GRADE": "Nivel",
+      "CAPACITY": "Capacidad",
+      "BIRTHDATE": "Fecha de nacimiento",
+      "ADDRESS": "Dirección",
+      "EDUCATION": "Educación",
+      "GUARDIAN": "Apoderado",
+      "ADMISSIONDATE": "Fecha de admisión",
+      "ALLERGIES": "Alergías",
+      "BLOODGROUP": "Grupo sanguíneo",
+      "GRADENAME": "Nombre",
+      "TEACHERLIST": "Guías",
+      "DESCRIPTION": "Descripción",
+      "STUDENTGUARDIANRELATION": "Relación",
+      "TEACHERNAME": "Guía",
+      "SUBJECTNAME": "Asignatura",
+      "TITLE": "Título",
+      "STARTDATE": "Fecha inicio",
+      "ENDDATE": "Fecha fin",
+      "TYPE": "Tipo",
+      "SAVEBUTTON": "Guardar",
+      "CANCELBUTTON": "Cancelar",
+      "DELETEBUTTON": "Eliminar"
+    },
+    "STATES": {
+      "ACTIVE": "Activo",
+      "INACTIVE": "Inactivo"
+    }
+  },
+  "TEACHERMODULE": {
+    "PLANNING": {
+      "ALL": {
+        "BREADCRUMBS": "Planificaciones|Planificaciones|Todas",
+        "TITLE": "Planificaciones"
+      },
+      "ADD": {
+        "BREADCRUMBS": "Planificaciones|Planificaciones|Agregar",
+        "TITLE": "Agregar planificación"
+      },
+      "CALENDAR": {
+        "BREADCRUMBS": "Planificaciones|Calendario|Planificaciones"
+      }
+    },
+    "HOMEWORK": {
+      "ALL": {
+        "BREADCRUMBS": "Tareas|Tareas|Todas",
+        "TITLE": "Tareas"
+      },
+      "ADD": {
+        "BREADCRUMBS": "Tareas|Tareas|Agregar",
+        "TITLE": "Agregar tarea"
+      }
+    },
+    "FIELDNAMES": {
+      "SUBJECTNAME": "Asignatura",
+      "PLANNING": "Planificación",
+      "TITLE": "Título",
+      "DESCRIPTION": "Descripción",
+      "EXPECTEDLEARNING": "Aprendizaje esperado",
+      "CONTENT": "Contenido",
+      "ACTIVITIES": "Actividades",
+      "RESOURCES": "Recursos",
+      "EVALUATIONPLAN": "Plan de evaluación",
+      "COLOR": "Color",
+      "DURATION": "Duración estimada",
+      "STARTDATE": "Fecha de inicio",
+      "UPDATEDAT": "Fecha actualización",
+      "ENDDATE": "Fecha de término",
+      "STATE": "Estado",
+      "TYPE": "Tipo",
+      "GRADENAME": "Nivel",
+      "HOMEWORKTITLE": "Título",
+      "ACTIONS": "Acciones",
+      "SAVEBUTTON": "Guardar",
+      "CANCELBUTTON": "Cancelar",
+      "DELETEBUTTON": "Eliminar"
+    },
+    "STATES": {
+      "ACTIVE": "Activo",
+      "INACTIVE": "Inactivo"
+    }
+  }
+}
