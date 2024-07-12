@@ -1,17 +1,21 @@
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-// import { useSignin } from '../hooks/useSignin';
-import { RadioGroup } from '@radix-ui/react-radio-group';
-// import { Radio } from 'lucide-react';
-import { Alert } from '../components/ui/alert';
-import { Button } from '../components/ui/button';
-import { Input } from '../components/ui/input';
-import '../styles/auth.scss'
+// import { RadioGroup } from '@radix-ui/react-radio-group';
+import { Alert } from '../../../components/ui/alert';
+import { Button } from '../../../components/ui/button';
+import { Input } from '../../../components/ui/input';
+import '../../../styles/auth.scss';
+import { useAuth } from '../hooks/useAuth';
 
 const Signin = () => {
   const { t } = useTranslation();
   const { register, handleSubmit, formState: { errors } } = useForm();
-//   const { onSubmit, loading, error } = useSignin();
+  const { login, loading, error } = useAuth();
+
+  const onSubmit = async (data: any) => {
+    const { username, password,  } = data;
+    await login(username, password, 1);
+  };
 
   return (
     <div className="auth-container">
@@ -24,15 +28,14 @@ const Signin = () => {
             <div className="auth-wrapper">
               <h2 className="welcome-msg">{t('LOGIN.TITLE')}</h2>
               <h2 className="login-title">{t('LOGIN.SIGNIN')}</h2>
-              {/* <form onSubmit={handleSubmit(onSubmit)}> */}
-              <form onSubmit={() => {}}>
+              <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="row">
                   <div className="col-12 mb-4">
                     <p className="text-muted">{t('LOGIN.FORM.PROFILE')}</p>
-                    <RadioGroup aria-label="Select a profile" {...register('profileId', { required: true })}>
-                     
+                    {/* <RadioGroup aria-label="Select a profile" {...register('profileId', { required: true })}>
+                      // Add Radio buttons here
                     </RadioGroup>
-                    {errors.profileId && <Alert variant="destructive">{t('LOGIN.ERRORS.PROFILE')}</Alert>}
+                    {errors.profileId && <Alert variant="destructive">{t('LOGIN.ERRORS.PROFILE')}</Alert>} */}
                   </div>
                   <div className="col-12 mb-2">
                     <Input
@@ -56,12 +59,12 @@ const Signin = () => {
                   <div className="form-check"></div>
                   <a className="txt1" href="/authentication/forgot-password">{t('LOGIN.FORGOT_PASSWORD')}</a>
                 </div>
-                {/* {error && <Alert variant="destructive" className="mt-3 mb-0">{error}</Alert>} */}
+                {error && <Alert variant="destructive" className="mt-3 mb-0">{error}</Alert>}
                 <div className="container-auth-form-btn">
                   <div style={{ textAlign: 'center' }}>
-                    {/* <Button type="submit" disabled={loading}>
+                    <Button type="submit" disabled={loading}>
                       {loading ? 'Loading...' : 'Login'}
-                    </Button> */}
+                    </Button>
                   </div>
                 </div>
               </form>

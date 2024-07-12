@@ -1,34 +1,35 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { AuthInfoDTO } from '../../../models/User';
+import axios from '../../../library/axios';
 // import { AuthService } from '@core';
 
-export const useSignin = () => {
+export const useAuth = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const navigate = useNavigate();
     const { t } = useTranslation();
 
-    const onSubmit = async (data: any) => {
-        setLoading(true);
-        setError('');
-
+    const login = async (username: string, password: string, profileId: number): Promise<AuthInfoDTO | null> => {
+        const { data } = await axios.post<AuthInfoDTO>('api/auth/tkn', { username, password, profileId })
+        console.log(data)
+        const { user } = data
+        if (!user) return user
         try {
-            //   const user = await AuthService.login(data.username, data.password, data.profileId);
-            const user = { role: 'Admin' };
-            const role = user.role;
+            const role = user.profileId;
 
             switch (role) {
-                case 'Admin':
-                    navigate('/admin/events/all-events');
+                case 1: //'Admin':
+                    navigate('/admin/users/all-users');
                     break;
-                case 'Teacher':
+                case 2: //'Teacher':
                     navigate('/teacher/weekly-schedule');
                     break;
-                case 'Student':
+                case 3: //'Student':
                     navigate('/student/weekly-schedule');
                     break;
-                case 'Guardian':
+                case 4: //'Guardian':
                     navigate('/guardian/weekly-schedule');
                     break;
                 default:
@@ -38,11 +39,12 @@ export const useSignin = () => {
             setError(t('LOGIN.LOGIN_ERROR'));
         } finally {
             setLoading(false);
+            return data
         }
-    };
+    }
 
     return {
-        onSubmit,
+        login,
         loading,
         error,
     };
