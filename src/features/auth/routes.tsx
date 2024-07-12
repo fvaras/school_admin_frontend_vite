@@ -1,11 +1,11 @@
-import { Route, Routes } from "react-router-dom";
-import MainLayout from "../../layouts/MainLayout";
-import LoginPage from "./pages/LoginPage";
+import { Route, Routes } from "react-router-dom"
+import LoginPage from "./pages/LoginPage"
+import LeftImageLayout from "../../layouts/LeftImageLayout"
 
 const AuthRoutes = () => {
     return (
         <Routes>
-            <Route path="/" element={<MainLayout />}>
+            <Route path="/" element={<LeftImageLayout />}>
                 <Route path="/" element={<LoginPage />} />
                 <Route path="signin" element={<LoginPage />} />
             </Route>

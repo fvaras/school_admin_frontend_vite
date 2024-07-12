@@ -1,5 +1,7 @@
+import AddUserPage from "./AddUserPage";
 import AllUsersPage from "./AllUsersPage";
 
-export default {
-    AllUsersPage
+export {
+    AllUsersPage,
+    AddUserPage
 }
