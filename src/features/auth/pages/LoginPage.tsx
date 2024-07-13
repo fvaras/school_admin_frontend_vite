@@ -6,16 +6,51 @@ import { Button } from '../../../components/ui/button';
 import { Input } from '../../../components/ui/input';
 import '../../../styles/auth.scss';
 import { useAuth } from '../hooks/useAuth';
+import { useAppDispatch, useAppSelector } from '../../../store/hooks';
+import { useNavigate } from 'react-router-dom';
+import { logIn } from '../../../store/slices/authSlice';
+import { useEffect, useState } from 'react';
+import { UserInfoDTO } from '../../../models/User';
 
 const Signin = () => {
+  const [isSubmitted, setIsSubmitted] = useState<boolean>(false)
   const { t } = useTranslation();
   const { register, handleSubmit, formState: { errors } } = useForm();
-  const { login, loading, error } = useAuth();
+  const { loading, error, user } = useAppSelector(store => store.auth)
+
+  const dispatch = useAppDispatch();
+
+  const navigate = useNavigate();
 
   const onSubmit = async (data: any) => {
-    const { username, password,  } = data;
-    await login(username, password, 1);
+    const { username, password, } = data;
+    await dispatch(logIn(username, password, 1));
+    setIsSubmitted(true)
   };
+
+  useEffect(() => {
+    if (user && isSubmitted)
+      handleLoggedUser(user)
+  }, [user, isSubmitted])
+
+  const handleLoggedUser = (user: UserInfoDTO) => {
+    switch (user.profileId) {
+      case 1: //'Admin':
+        navigate('/admin/users/all-users');
+        break;
+      case 2: //'Teacher':
+        navigate('/teacher/weekly-schedule');
+        break;
+      case 3: //'Student':
+        navigate('/student/weekly-schedule');
+        break;
+      case 4: //'Guardian':
+        navigate('/guardian/weekly-schedule');
+        break;
+      default:
+        navigate('/authentication/signin');
+    }
+  }
 
   return (
     <div className="auth-container">
