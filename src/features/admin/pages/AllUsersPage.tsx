@@ -1,8 +1,13 @@
 import React from 'react'
+import { DataTableDemo } from '../view/DataTableDemo'
 
 const AllUsersPage = () => {
     return (
-        <div>AllUsersPage</div>
+        <>
+            <div>AllUsersPage v2</div>
+Demo:
+            <DataTableDemo></DataTableDemo>
+        </>
     )
 }
 
