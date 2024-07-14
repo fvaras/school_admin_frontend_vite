@@ -95,6 +95,17 @@ export function DataTable<T>({ data, columns }: DataTableProps<T>) {
     },
   })
 
+  const handleSorting = (columnId: string) => {
+    setSorting((prevSorting) => {
+      const currentSort = prevSorting.find(sort => sort.id === columnId)
+      if (currentSort) {
+        const newDirection = currentSort.desc ? false : !currentSort.desc
+        return [{ id: columnId, desc: newDirection }]
+      }
+      return [{ id: columnId, desc: false }]
+    })
+  }
+
   return (
     <div className="w-full">
       <div className="flex items-center py-4">
@@ -138,7 +149,7 @@ export function DataTable<T>({ data, columns }: DataTableProps<T>) {
                     <TableHead key={header.id}>
                       {header.isPlaceholder ? null : (
                         <div
-                          onClick={header.column.getToggleSortingHandler()}
+                          onClick={() => handleSorting(header.column.id)}
                           className="flex items-center cursor-pointer"
                         >
                           {flexRender(header.column.columnDef.header, header.getContext())}
