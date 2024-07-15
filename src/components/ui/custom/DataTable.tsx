@@ -18,14 +18,14 @@ import {
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table"
-import { Button } from "../../../components/ui/button"
+import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuTrigger,
-} from "../../../components/ui/dropdown-menu"
-import { Input } from "../../../components/ui/input"
+} from "@/components/ui/dropdown-menu"
+import { Input } from "@/components/ui/input"
 import {
   Table,
   TableBody,
@@ -33,9 +33,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "../../../components/ui/table"
-import { SelectionColumnHeader, SelectionColumnCell } from "./SelectionColumn"
-import { ActionsColumn } from "./ActionsColumn"
+} from "@/components/ui/table"
 
 interface ColumnMeta {
   format?: string;

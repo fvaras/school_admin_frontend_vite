@@ -1,4 +1,3 @@
-import React from 'react'
 import { DataTableDemo } from '../view/DataTableDemo'
 
 const AllUsersPage = () => {

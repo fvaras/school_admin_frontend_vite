@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from "react"
+import { Suspense, lazy } from "react"
 import { Route, Routes } from "react-router-dom"
 
 const AuthRoutes = lazy(() => import("./features/auth/routes"));

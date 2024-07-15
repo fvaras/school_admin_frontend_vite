@@ -1,11 +1,10 @@
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 // import { RadioGroup } from '@radix-ui/react-radio-group';
-import { Alert } from '../../../components/ui/alert';
-import { Button } from '../../../components/ui/button';
-import { Input } from '../../../components/ui/input';
+import { Alert } from '@/components/ui/alert';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import '../../../styles/auth.scss';
-import { useAuth } from '../hooks/useAuth';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import { useNavigate } from 'react-router-dom';
 import { logIn } from '../../../store/slices/authSlice';
