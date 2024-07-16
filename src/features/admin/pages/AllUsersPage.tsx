@@ -1,10 +1,10 @@
-import { DataTableDemo } from '../view/DataTableDemo'
+import DataTableDemo from '../view/DataTableDemo'
 
 const AllUsersPage = () => {
     return (
         <>
             <div>AllUsersPage v2</div>
-Demo:
+            Demo:
             <DataTableDemo></DataTableDemo>
         </>
     )
