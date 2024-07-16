@@ -1,5 +1,12 @@
-import { Payment, columns } from "@/components/ui/custom/table/columns"
-import { DataTable } from "@/components/ui/custom/table/data-table"
+import { DataTable, DataTableHeaderSelection, DataTableRowActions, DataTableRowSelection } from "@/components/ui/custom/table"
+import { ColumnDef } from "@tanstack/react-table"
+
+export type Payment = {
+  id: string
+  amount: number
+  status: "pending" | "processing" | "success" | "failed"
+  email: string
+}
 
 function getData(): Payment[] {
   // Fetch data from your API here.
@@ -85,6 +92,46 @@ function getData(): Payment[] {
   ]
   
 }
+
+export const columns: ColumnDef<Payment>[] = [
+  {
+      id: "select",
+      header: ({ table }) => <DataTableHeaderSelection table={table} />,
+      cell: ({ row }) => <DataTableRowSelection row={row} />,
+      enableSorting: false,
+      enableHiding: false,
+  },
+  {
+      accessorKey: "status",
+      header: "Status",
+      enableSorting: true,
+  },
+  {
+      accessorKey: "email",
+      header: "Email"
+  },
+  {
+      accessorKey: "amount",
+      // header: "Amount 1$"
+      header: () => <div className="text-right">Amount</div>,
+      cell: ({ row }) => {
+          return <div className="text-right font-medium">$ {row.getValue("amount")}</div>
+      }
+  },
+  {
+      id: "actions",
+      cell: ({ row }) => <DataTableRowActions
+          title="Actions"
+          data={row.original}
+          items={[
+              { title: 'Copy payment ID', onClick: (data) => navigator.clipboard.writeText(data.id) },
+              { title: '' },
+              { title: 'View customer', onClick: (data) => console.log('View customer', data) },
+              { title: 'View payment details', onClick: (data) => console.log('View payment details', data) }
+          ]}
+      />
+  },
+]
 
 const DataTableDemo = () => {
   const data = getData()

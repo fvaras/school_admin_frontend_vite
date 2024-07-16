@@ -14,14 +14,7 @@ import {
     useReactTable,
 } from "@tanstack/react-table"
 
-import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import {
-    DropdownMenu,
-    DropdownMenuCheckboxItem,
-    DropdownMenuContent,
-    DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
 
 import {
     Table,
@@ -31,6 +24,9 @@ import {
     TableHeader,
     TableRow,
 } from "../../table"
+import { DataTablePagination } from "./DataTablePagination"
+import { DataTableViewOptions } from "./DataTableViewOptions"
+import { ChevronDownIcon, ChevronUpIcon, CaretSortIcon } from "@radix-ui/react-icons"
 
 interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[]
@@ -65,6 +61,17 @@ export function DataTable<TData, TValue>({
         },
     })
 
+    const handleSorting = (columnId: string) => {
+        setSorting((prevSorting) => {
+            const currentSort = prevSorting.find(sort => sort.id === columnId)
+            if (currentSort) {
+                const newDirection = currentSort.desc ? false : !currentSort.desc
+                return [{ id: columnId, desc: newDirection }]
+            }
+            return [{ id: columnId, desc: false }]
+        })
+    }
+
     return (
         <div>
             <div className="flex items-center py-4">
@@ -76,7 +83,7 @@ export function DataTable<TData, TValue>({
                     }
                     className="max-w-sm"
                 />
-                <DropdownMenu>
+                {/* <DropdownMenu>
                     <DropdownMenuTrigger asChild>
                         <Button variant="outline" className="ml-auto">
                             Columns
@@ -103,7 +110,8 @@ export function DataTable<TData, TValue>({
                                 )
                             })}
                     </DropdownMenuContent>
-                </DropdownMenu>
+                </DropdownMenu> */}
+                <DataTableViewOptions table={table} />
             </div>
             <div className="rounded-md border">
                 <Table>
@@ -112,13 +120,34 @@ export function DataTable<TData, TValue>({
                             <TableRow key={headerGroup.id}>
                                 {headerGroup.headers.map((header) => {
                                     return (
+                                        // <TableHead key={header.id}>
+                                        //     {header.isPlaceholder
+                                        //         ? null
+                                        //         : flexRender(
+                                        //             header.column.columnDef.header,
+                                        //             header.getContext()
+                                        //         )}
+                                        // </TableHead>
                                         <TableHead key={header.id}>
-                                            {header.isPlaceholder
-                                                ? null
-                                                : flexRender(
-                                                    header.column.columnDef.header,
-                                                    header.getContext()
-                                                )}
+                                            {header.isPlaceholder ? null : (
+                                                <div
+                                                    onClick={() => handleSorting(header.column.id)}
+                                                    className="flex items-center cursor-pointer"
+                                                >
+                                                    {flexRender(header.column.columnDef.header, header.getContext())}
+                                                    {header.column.getCanSort() && (
+                                                        header.column.getIsSorted() ? (
+                                                            header.column.getIsSorted() === 'desc' ? (
+                                                                <ChevronDownIcon className="ml-1 h-4 w-4" />
+                                                            ) : (
+                                                                <ChevronUpIcon className="ml-1 h-4 w-4" />
+                                                            )
+                                                        ) : (
+                                                            <CaretSortIcon className="ml-1 h-4 w-4" />
+                                                        )
+                                                    )}
+                                                </div>
+                                            )}
                                         </TableHead>
                                     )
                                 })}
@@ -150,27 +179,7 @@ export function DataTable<TData, TValue>({
                 </Table>
             </div>
             <div className="flex items-center justify-end space-x-2 py-4">
-                <div className="flex-1 text-sm text-muted-foreground">
-                    {table.getFilteredSelectedRowModel().rows.length} of{" "}
-                    {table.getFilteredRowModel().rows.length} row(s) selected.
-                </div>
-
-                <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => table.previousPage()}
-                    disabled={!table.getCanPreviousPage()}
-                >
-                    Previous
-                </Button>
-                <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => table.nextPage()}
-                    disabled={!table.getCanNextPage()}
-                >
-                    Next
-                </Button>
+                <DataTablePagination table={table} />
             </div>
         </div>
     )
