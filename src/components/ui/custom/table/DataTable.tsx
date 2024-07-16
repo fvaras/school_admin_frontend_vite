@@ -31,11 +31,19 @@ import { ChevronDownIcon, ChevronUpIcon, CaretSortIcon } from "@radix-ui/react-i
 interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[]
     data: TData[]
+    enableFilter?: boolean
+    filterBy?: keyof TData | null
+    filterPlaceholder?: string
+    enableViewOptions?: boolean
 }
 
 export function DataTable<TData, TValue>({
     columns,
     data,
+    enableFilter = false,
+    filterBy = null,
+    filterPlaceholder = '',
+    enableViewOptions = false
 }: DataTableProps<TData, TValue>) {
     const [sorting, setSorting] = React.useState<SortingState>([])
     const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
@@ -74,16 +82,19 @@ export function DataTable<TData, TValue>({
 
     return (
         <div>
-            <div className="flex items-center py-4">
-                <Input
-                    placeholder="Filter emails..."
-                    value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
-                    onChange={(event) =>
-                        table.getColumn("email")?.setFilterValue(event.target.value)
-                    }
-                    className="max-w-sm"
-                />
-                {/* <DropdownMenu>
+            {(enableViewOptions || enableFilter) && (
+                <div className="flex items-center py-4">
+                    {enableFilter && (
+                        <Input
+                            placeholder={filterPlaceholder}
+                            value={(table.getColumn(filterBy as string)?.getFilterValue() as string) ?? ""}
+                            onChange={(event) =>
+                                table.getColumn(filterBy as string)?.setFilterValue(event.target.value)
+                            }
+                            className="max-w-sm"
+                        />
+                    )}
+                    {/* <DropdownMenu>
                     <DropdownMenuTrigger asChild>
                         <Button variant="outline" className="ml-auto">
                             Columns
@@ -111,8 +122,11 @@ export function DataTable<TData, TValue>({
                             })}
                     </DropdownMenuContent>
                 </DropdownMenu> */}
-                <DataTableViewOptions table={table} />
-            </div>
+                    {enableViewOptions && (
+                        <DataTableViewOptions table={table} />
+                    )}
+                </div>
+            )}
             <div className="rounded-md border">
                 <Table>
                     <TableHeader>

@@ -90,46 +90,46 @@ function getData(): Payment[] {
       email: "user13@example.com",
     },
   ]
-  
+
 }
 
 export const columns: ColumnDef<Payment>[] = [
   {
-      id: "select",
-      header: ({ table }) => <DataTableHeaderSelection table={table} />,
-      cell: ({ row }) => <DataTableRowSelection row={row} />,
-      enableSorting: false,
-      enableHiding: false,
+    id: "select",
+    header: ({ table }) => <DataTableHeaderSelection table={table} />,
+    cell: ({ row }) => <DataTableRowSelection row={row} />,
+    enableSorting: false,
+    enableHiding: false,
   },
   {
-      accessorKey: "status",
-      header: "Status",
-      enableSorting: true,
+    accessorKey: "status",
+    header: "Status",
+    enableSorting: true,
   },
   {
-      accessorKey: "email",
-      header: "Email"
+    accessorKey: "email",
+    header: "Email"
   },
   {
-      accessorKey: "amount",
-      // header: "Amount 1$"
-      header: () => <div className="text-right">Amount</div>,
-      cell: ({ row }) => {
-          return <div className="text-right font-medium">$ {row.getValue("amount")}</div>
-      }
+    accessorKey: "amount",
+    // header: "Amount 1$"
+    header: () => <div className="text-right">Amount</div>,
+    cell: ({ row }) => {
+      return <div className="text-right font-medium">$ {row.getValue("amount")}</div>
+    }
   },
   {
-      id: "actions",
-      cell: ({ row }) => <DataTableRowActions
-          title="Actions"
-          data={row.original}
-          items={[
-              { title: 'Copy payment ID', onClick: (data) => navigator.clipboard.writeText(data.id) },
-              { title: '' },
-              { title: 'View customer', onClick: (data) => console.log('View customer', data) },
-              { title: 'View payment details', onClick: (data) => console.log('View payment details', data) }
-          ]}
-      />
+    id: "actions",
+    cell: ({ row }) => <DataTableRowActions
+      title="Actions"
+      data={row.original}
+      items={[
+        { title: 'Copy payment ID', onClick: (data) => navigator.clipboard.writeText(data.id) },
+        { title: '' },
+        { title: 'View customer', onClick: (data) => console.log('View customer', data) },
+        { title: 'View payment details', onClick: (data) => console.log('View payment details', data) }
+      ]}
+    />
   },
 ]
 
@@ -138,7 +138,14 @@ const DataTableDemo = () => {
 
   return (
     <div className="container mx-auto py-10">
-      <DataTable columns={columns} data={data} />
+      <DataTable
+        columns={columns}
+        data={data}
+        enableFilter
+        filterBy={'email'}
+        filterPlaceholder="Filter emails..."
+        enableViewOptions
+      />
     </div>
   )
 }
