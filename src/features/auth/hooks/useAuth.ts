@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { AuthInfoDTO } from '../../../models/User';
-import axios from '../../../library/axios';
+import axios from '@/lib/axios';
 
 export const useAuth = () => {
     const [loading, setLoading] = useState(false);

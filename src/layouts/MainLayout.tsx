@@ -16,7 +16,7 @@ const MainLayout = () => {
             <Sidebar />
             <main className="flex-grow p-6 md:ml-64 relative">
                 <button
-                    className="block md:hidden px-4 py-2 mb-4 bg-gray-800 text-white rounded absolute top-4 right-4"
+                    className="block md:hidden px-4 py-2 mb-4 text-white rounded absolute top-4 right-4"
                     // onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                     onClick={handleToogleSidebar}
                 >

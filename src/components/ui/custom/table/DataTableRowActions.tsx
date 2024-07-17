@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button"
 import { MoreHorizontal } from "lucide-react"
 
 interface IItemOption<T> {
-  title: string
+  title: React.ReactNode
   onClick?: (data: T) => void
 }
 

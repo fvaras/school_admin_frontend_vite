@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AuthInfoDTO, UserInfoDTO } from '../../models/User';
-import axios from '../../library/axios';
 import { AppThunk, RootState } from '../store';
 import { AxiosError } from 'axios';
+import axios from '@/lib/axios';
 
 export interface AuthState {
     user: UserInfoDTO | null;

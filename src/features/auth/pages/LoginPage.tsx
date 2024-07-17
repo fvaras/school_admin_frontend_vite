@@ -53,11 +53,11 @@ const Signin = () => {
 
   return (
     <div className="auth-container">
-      <div className="row auth-main">
+      <div className="row">
         <div className="col-sm-6 px-0 d-none d-sm-block">
           <div className="left-img" style={{ backgroundImage: 'url(assets/images/pages/logo 2.webp)' }}></div>
         </div>
-        <div className="col-sm-6 auth-form-section">
+        <div className="col-sm-6">
           <div className="form-section">
             <div className="auth-wrapper">
               <h2 className="welcome-msg">{t('LOGIN.TITLE')}</h2>
@@ -65,7 +65,7 @@ const Signin = () => {
               <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="row">
                   <div className="col-12 mb-4">
-                    <p className="text-muted">{t('LOGIN.FORM.PROFILE')}</p>
+                    <p className="">{t('LOGIN.FORM.PROFILE')}</p>
                     {/* <RadioGroup aria-label="Select a profile" {...register('profileId', { required: true })}>
                       // Add Radio buttons here
                     </RadioGroup>

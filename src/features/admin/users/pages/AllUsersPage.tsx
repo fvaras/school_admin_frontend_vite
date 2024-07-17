@@ -1,11 +1,11 @@
-import DataTableDemo from '../view/DataTableDemo'
+import AllUsersTable from '../views/AllUsersTable'
 
 const AllUsersPage = () => {
     return (
         <>
             <div>AllUsersPage v2</div>
             Demo:
-            <DataTableDemo></DataTableDemo>
+            <AllUsersTable></AllUsersTable>
         </>
     )
 }

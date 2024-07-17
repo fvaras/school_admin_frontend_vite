@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom"
 import MainLayout from "../../layouts/MainLayout"
-import { AddUserPage, AllUsersPage } from "./pages";
+import { AddUserPage, AllUsersPage } from "./users/pages";
 
 const AdminRoutes = () => {
     return (

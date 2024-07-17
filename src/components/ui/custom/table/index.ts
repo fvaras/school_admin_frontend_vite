@@ -10,5 +10,5 @@ export {
     DataTableRowActions,
     DataTableHeaderSelection,
     DataTableRowSelection,
-    // DataTableViewOptions
+    // DataTableViewOptions,
 }
