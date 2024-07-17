@@ -17,6 +17,7 @@ interface IProps {
     content?: React.ReactNode
     cancelActionText?: string
     confirmActionText?: string
+    loading?: boolean
     onConfirm: (data: any) => void
     onCancel?: () => void
     data?: any
@@ -31,6 +32,7 @@ const ConfirmDialog = ({
     confirmActionText = 'Continue',
     onConfirm,
     onCancel = () => { },
+    loading = false,
     data = null
 }: IProps) => {
     return (
@@ -45,7 +47,7 @@ const ConfirmDialog = ({
                 </AlertDialogHeader>
                 <AlertDialogFooter>
                     <AlertDialogCancel onClick={() => onCancel()}>{cancelActionText}</AlertDialogCancel>
-                    <AlertDialogAction onClick={() => onConfirm(data)}>{confirmActionText}</AlertDialogAction>
+                    <AlertDialogAction onClick={() => onConfirm(data)} disabled={loading}>{confirmActionText}</AlertDialogAction>
                 </AlertDialogFooter>
             </AlertDialogContent>
         </AlertDialog>

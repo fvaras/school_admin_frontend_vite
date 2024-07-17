@@ -3,6 +3,9 @@ import { ColumnDef } from "@tanstack/react-table"
 import { useEffect, useState } from "react"
 import { IUser } from "../../models/IUser"
 import { useUsers } from "../../hooks"
+import { useNavigate } from "react-router-dom"
+import { useToast } from "@/components/ui/use-toast"
+import { Badge } from "@/components/ui/badge"
 
 const AllUsersTable = () => {
 
@@ -10,7 +13,11 @@ const AllUsersTable = () => {
   const [showDeleteConfirmDialog, setShowDeleteConfirmDialog] = useState<boolean>(false)
   const [currentData, setCurrentData] = useState<IUser | null>(null)
 
-  const { loading, getAllUsers } = useUsers()
+  const { loading, loadingModification, getAllUsers, deleteUser } = useUsers()
+
+  const navigate = useNavigate()
+
+  const { toast } = useToast()
 
   const columns: ColumnDef<IUser>[] = [
     {
@@ -46,7 +53,11 @@ const AllUsersTable = () => {
     },
     {
       accessorKey: "stateId",
-      header: "State"
+      header: "State",
+      cell: ({ row }) => <>
+        {row.original.stateId === 1 && <Badge variant='outline'>Active</Badge>}
+        {row.original.stateId !== 1 && <Badge variant='destructive'>Inactive</Badge>}
+      </>
     },
     {
       id: "actions",
@@ -54,7 +65,10 @@ const AllUsersTable = () => {
         title="Actions"
         data={row.original}
         items={[
-          { title: 'Edit', onClick: (data) => console.log('View customer', data) },
+          {
+            // title: 'Edit', onClick: (data) => { navigate(`/admin/users/${data.id}`) }
+            title: 'Edit', onClick: (data) => { navigate(`../${data.id}`, { relative: 'path' }) }
+          },
           {
             title: 'Delete', onClick: (data) => {
               setCurrentData(data);
@@ -75,6 +89,16 @@ const AllUsersTable = () => {
     setData(data)
   }
 
+  const handleDelete = async (id: string) => {
+    await deleteUser(id)
+    toast({
+      variant: "destructive",
+      description: "User deleted successfully",
+    })
+    await loadData()
+    setShowDeleteConfirmDialog(false)
+  }
+
   return (
     <div className="container mx-auto py-10">
       <ConfirmDialog
@@ -82,7 +106,8 @@ const AllUsersTable = () => {
         triggerComponent={null}
         title="Are you sure?"
         content="Only users without activity can be deleted; however, you can also change its status."
-        onConfirm={() => { console.log('Go ahead!'); setShowDeleteConfirmDialog(false) }}
+        loading={loadingModification}
+        onConfirm={() => handleDelete(currentData!.id.toString())}
         onCancel={() => setShowDeleteConfirmDialog(false)}
       />
 

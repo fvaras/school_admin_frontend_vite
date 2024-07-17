@@ -1,31 +1,49 @@
+import { Breadcrumbs, Heading } from "@/components/ui/custom"
 import AddEditUserForm from "../views/AddEditUserForm"
+import { useUsers } from "../../hooks"
+import { IUserForCreationDTO } from "../../models/IUser"
+import { useToast } from "@/components/ui/use-toast"
+import { useNavigate } from "react-router-dom"
 
 const AddUserPage = () => {
+    const { createUser, loadingModification } = useUsers()
+
+    const { toast } = useToast()
+
+    const navigate = useNavigate()
+
+    const handleSubmit = async (userForCreation: IUserForCreationDTO) => {
+        const newUser = await createUser(userForCreation)
+        console.log('newUser', newUser)
+        toast({
+            // title: "You submitted the following values:",
+            // description: (
+            //     <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
+            //         <code className="text-white">{JSON.stringify(values, null, 2)}</code>
+            //     </pre>
+            // ),
+            description: "User created successfully",
+        })
+        navigate(`/admin/users/${newUser.id}`)
+    }
+
     return (
         <>
-            <div className="container mx-auto p-4">
+            <Breadcrumbs items={[
+                { text: 'Admin', link: '/admin/dashboard' },
+                { text: 'Users', link: '/admin/users/all-users' },
+                { text: 'New' },
+            ]} />
 
-                <nav className="text-gray-500 mb-4">
-                    <ol className="list-reset flex">
-                        <li><a href="#" className="text-blue-600 hover:text-blue-800">Home</a></li>
-                        <li><span className="mx-2">/</span></li>
-                        <li><a href="#" className="text-blue-600 hover:text-blue-800">Category</a></li>
-                        <li><span className="mx-2">/</span></li>
-                        <li className="text-gray-700">Current Page</li>
-                    </ol>
-                </nav>
+            <Heading variant="title2">New user</Heading>
 
+            {/* <Heading variant="subtitle2">Optional subtitle can go here</Heading> */}
 
-                <header className="mb-4">
-                    <h1 className="text-3xl font-bold text-gray-800">Page Title</h1>
-                    <p className="text-lg text-gray-600 mt-1">Optional subtitle can go here</p>
-                </header>
-
-
-                <main className="">
-                    <AddEditUserForm />
-                </main>
-            </div>
+            <AddEditUserForm
+                mode="ADD"
+                loading={loadingModification}
+                submit={(id, user) => handleSubmit(user as IUserForCreationDTO)}
+            />
         </>
     )
 }

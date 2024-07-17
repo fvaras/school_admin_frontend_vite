@@ -5,15 +5,16 @@ import { FormItem, FormLabel, FormControl, FormDescription, FormMessage } from "
 interface FormInputFieldProps {
     field: any;
     label: string;
+    type?: 'text' | 'password'
     placeholder?: string;
     description?: string;
 }
 
-const FormInputField: React.FC<FormInputFieldProps> = ({ field, label, placeholder, description }) => (
+const FormInputField: React.FC<FormInputFieldProps> = ({ field, label, type = 'text', placeholder, description }) => (
     <FormItem>
         <FormLabel>{label}</FormLabel>
         <FormControl>
-            <Input placeholder={placeholder} {...field} />
+            <Input placeholder={placeholder} type={type} {...field} />
         </FormControl>
         {description &&
             <FormDescription>

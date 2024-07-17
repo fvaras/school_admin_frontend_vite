@@ -1,10 +1,16 @@
+import { Breadcrumbs, Heading } from '@/components/ui/custom'
 import AllUsersTable from '../views/AllUsersTable'
 
 const AllUsersPage = () => {
     return (
         <>
-            <div>AllUsersPage v2</div>
-            Demo:
+            <Breadcrumbs items={[
+                { text: 'Admin', link: '/admin/dashboard' },
+                { text: 'Users' },
+            ]} />
+
+            <Heading variant="title2">Users</Heading>
+
             <AllUsersTable></AllUsersTable>
         </>
     )
