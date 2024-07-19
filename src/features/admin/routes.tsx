@@ -3,6 +3,7 @@ import MainLayout from "../../layouts/MainLayout"
 import { AddUserPage, EditUserPage, AllUsersPage } from "./users/pages";
 import { AllTeachersPage, AddTeacherPage, EditTeacherPage } from "./teachers/pages";
 import { AllStudentsPage, AddStudentPage, EditStudentPage } from "./students/pages";
+import { AllGuardiansPage, AddGuardianPage, EditGuardianPage } from "./guardians/pages";
 
 const AdminRoutes = () => {
     return (
@@ -20,6 +21,10 @@ const AdminRoutes = () => {
                 <Route path="students/all-students" element={<AllStudentsPage />} />
                 <Route path="students/add-student" element={<AddStudentPage />} />
                 <Route path="students/:studentId" element={<EditStudentPage />} />
+
+                <Route path="guardians/all-guardians" element={<AllGuardiansPage />} />
+                <Route path="guardians/add-guardian" element={<AddGuardianPage />} />
+                <Route path="guardians/:guardianId" element={<EditGuardianPage />} />
             </Route>
         </Routes>
     );
