@@ -1,7 +1,9 @@
+import { useStudents } from "./useStudents";
 import { useTeachers } from "./useTeachers";
 import { useUsers } from "./useUsers";
 
 export {
     useUsers,
-    useTeachers
+    useTeachers,
+    useStudents
 }
