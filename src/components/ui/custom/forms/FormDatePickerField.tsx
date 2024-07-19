@@ -12,9 +12,10 @@ interface FormDatePickerFieldProps {
     label: string;
     placeholder?: string;
     description?: string;
+    disabled?: boolean
 }
 
-const FormDatePickerField: React.FC<FormDatePickerFieldProps> = ({ field, label, placeholder, description }) => (
+const FormDatePickerField: React.FC<FormDatePickerFieldProps> = ({ field, label, placeholder, description, disabled = false }) => (
     <FormItem className="flex flex-col">
         <FormLabel>{label}</FormLabel>
         <Popover>
@@ -22,6 +23,7 @@ const FormDatePickerField: React.FC<FormDatePickerFieldProps> = ({ field, label,
                 <FormControl>
                     <Button
                         variant={"outline"}
+                        disabled={disabled}
                         className={cn(
                             "w-[240px] pl-3 text-left font-normal",
                             !field.value && "text-muted-foreground"
@@ -42,7 +44,7 @@ const FormDatePickerField: React.FC<FormDatePickerFieldProps> = ({ field, label,
                     selected={field.value}
                     onSelect={field.onChange}
                     disabled={(date) =>
-                        date > new Date() || date < new Date("1900-01-01")
+                        (date > new Date() || date < new Date("1900-01-01")) || disabled
                     }
                     initialFocus
                 />

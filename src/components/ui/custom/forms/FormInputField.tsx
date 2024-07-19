@@ -8,13 +8,14 @@ interface FormInputFieldProps {
     type?: 'text' | 'password'
     placeholder?: string;
     description?: string;
+    disabled?: boolean
 }
 
-const FormInputField: React.FC<FormInputFieldProps> = ({ field, label, type = 'text', placeholder, description }) => (
+const FormInputField: React.FC<FormInputFieldProps> = ({ field, label, type = 'text', placeholder, description, disabled = false }) => (
     <FormItem>
         <FormLabel>{label}</FormLabel>
         <FormControl>
-            <Input placeholder={placeholder} type={type} {...field} />
+            <Input placeholder={placeholder} type={type} disabled={disabled} {...field} />
         </FormControl>
         {description &&
             <FormDescription>

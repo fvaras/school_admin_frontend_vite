@@ -20,13 +20,13 @@ const AllUsersTable = () => {
   const { toast } = useToast()
 
   const columns: ColumnDef<IUser>[] = [
-    {
-      id: "select",
-      header: ({ table }) => <DataTableHeaderSelection table={table} />,
-      cell: ({ row }) => <DataTableRowSelection row={row} />,
-      enableSorting: false,
-      enableHiding: false,
-    },
+    // {
+    //   id: "select",
+    //   header: ({ table }) => <DataTableHeaderSelection table={table} />,
+    //   cell: ({ row }) => <DataTableRowSelection row={row} />,
+    //   enableSorting: false,
+    //   enableHiding: false,
+    // },
     {
       accessorKey: "userName",
       header: "Username"

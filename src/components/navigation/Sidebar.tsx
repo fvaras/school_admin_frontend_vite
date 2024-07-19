@@ -56,6 +56,25 @@ const Sidebar = () => {
                             </div>
                         )}
                     </div>
+                    <div>
+                        <button
+                            className="block w-full text-left px-4 py-2 hover:bg-gray-700"
+                            onClick={() => handleMenuClick('teachers')}
+                        >
+                            <User className="w-5 h-5 inline-block mr-3" /> Teacher
+                            {openMenu === 'teachers' ? <ChevronDown className="w-5 h-5 inline-block ml-3" /> : <ChevronRight className="w-5 h-5 inline-block ml-3" />}
+                        </button>
+                        {openMenu === 'teachers' && (
+                            <div className="block w-full text-left px-8">
+                                <Link to="/admin/teachers/all-teachers" onClick={handleToogleSidebar} className="block w-full px-4 py-2 hover:bg-gray-700">
+                                    All Teachers
+                                </Link>
+                                <Link to="/admin/teachers/add-teacher" onClick={handleToogleSidebar} className="block w-full px-4 py-2 hover:bg-gray-700">
+                                    Add Teacher
+                                </Link>
+                            </div>
+                        )}
+                    </div>
                     <Link to="/admin/users/all-users" onClick={handleToogleSidebar} className="block w-full text-left px-4 py-2 hover:bg-gray-700">
                         <Settings className="w-5 h-5 inline-block mr-3" /> Settings
                     </Link>

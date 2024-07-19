@@ -16,9 +16,16 @@ export const useUsers = () => {
         return data
     }
 
-    const getUser = async (userId: string): Promise<IUser> => {
+    const getUser = async (userId: string): Promise<IUserDTO> => {
         setLoading(true)
-        const { data } = await axios.get<IUser>(`api/user/${userId}`)
+        const { data } = await axios.get<IUserDTO>(`api/user/${userId}`)
+        setLoading(false)
+        return data
+    }
+
+    const getUserByRut = async (rut: string): Promise<IUserDTO> => {
+        setLoading(true)
+        const { data } = await axios.get<IUserDTO>(`api/user/byRut?rut=${encodeURIComponent(rut)}`)
         setLoading(false)
         return data
     }
@@ -64,6 +71,7 @@ export const useUsers = () => {
         error,
         getAllUsers,
         getUser,
+        getUserByRut,
         createUser,
         updateUser,
         deleteUser

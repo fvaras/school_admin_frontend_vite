@@ -7,13 +7,14 @@ interface FormToogleButtonFieldProps {
     field: any;
     label: string;
     description: string;
+    disabled?: boolean
 }
 
-const FormToogleButtonField: React.FC<FormToogleButtonFieldProps> = ({ field, label, description }) => (
+const FormToogleButtonField: React.FC<FormToogleButtonFieldProps> = ({ field, label, description, disabled = false }) => (
     <>
         <div className="space-y-2">
             <FormLabel>{label}</FormLabel>
-                        <FormItem className="flex flex-row items-center justify-center h-10">{/* rounded-lg border */}
+            <FormItem className="flex flex-row items-center justify-center h-10">{/* rounded-lg border */}
                 <div className="px-2">
                     {description &&
                         <FormDescription>
@@ -23,6 +24,7 @@ const FormToogleButtonField: React.FC<FormToogleButtonFieldProps> = ({ field, la
                 </div>
                 <FormControl>
                     <Switch
+                        disabled={disabled}
                         checked={field.value}
                         onCheckedChange={field.onChange}
                     />

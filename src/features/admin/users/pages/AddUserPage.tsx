@@ -14,7 +14,6 @@ const AddUserPage = () => {
 
     const handleSubmit = async (userForCreation: IUserForCreationDTO) => {
         const newUser = await createUser(userForCreation)
-        console.log('newUser', newUser)
         toast({
             // title: "You submitted the following values:",
             // description: (
