@@ -25,7 +25,7 @@ interface IProps {
     mode: 'ADD' | 'EDIT'
     grade?: IGradeDTO
     loading: boolean
-    submit: (id: number | null, grade: IGradeForCreationDTO | IGradeForUpdateDTO) => void
+    submit: (id: string | null, grade: IGradeForCreationDTO | IGradeForUpdateDTO) => void
 }
 
 const AddEditGradeForm = ({ grade, mode, loading, submit }: IProps) => {

@@ -14,5 +14,5 @@ export interface UserInfoDTO {
     firstName: string;
     lastName: string;
     email: string;
-    profileId: number;
+    profileId: string;
 }

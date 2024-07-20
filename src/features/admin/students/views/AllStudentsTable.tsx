@@ -107,7 +107,7 @@ const AllStudentsTable = () => {
                 title="Are you sure?"
                 content="Only students without activity can be deleted; however, you can also change its status."
                 loading={loadingModification}
-                onConfirm={() => handleDelete(currentData!.id.toString())}
+                onConfirm={() => handleDelete(currentData!.id)}
                 onCancel={() => setShowDeleteConfirmDialog(false)}
             />
 

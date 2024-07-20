@@ -16,14 +16,14 @@ export interface ITeacherForUpdateDTO extends ITeacherBaseDTO {
 }
 
 export interface ITeacherDTO extends ITeacherBaseDTO {
-    id: number;
+    id: string;
     createdAt: string;
     updatedAt: string | null;
     user: IUserDTO;
 }
 
 export interface ITeacherTableRowDTO {
-    id: number;
+    id: string;
     userName: string;
     userId: string;
     rut: string;

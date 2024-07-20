@@ -1,5 +1,5 @@
 export interface IUser {
-    id: number
+    id: string
     createdAt?: Date
     updatedAt?: Date
     userName: string
@@ -36,7 +36,7 @@ export interface IUserForUpdateDTO extends IUserBaseDTO {
 }
 
 export interface IUserDTO extends IUserBaseDTO {
-    id: number;
+    id: string;
     createdAt: string;
     updatedAt: string | null;
 }

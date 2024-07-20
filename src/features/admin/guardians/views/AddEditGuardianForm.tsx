@@ -58,7 +58,7 @@ interface IProps {
     mode: 'ADD' | 'EDIT'
     guardian?: IGuardianDTO
     loading: boolean
-    submit: (id: number | null, guardian: IGuardianForCreationDTO | IGuardianForUpdateDTO) => void
+    submit: (id: string | null, guardian: IGuardianForCreationDTO | IGuardianForUpdateDTO) => void
 }
 
 const AddEditGuardianForm = ({ guardian, mode, loading, submit }: IProps) => {

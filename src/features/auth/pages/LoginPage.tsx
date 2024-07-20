@@ -23,7 +23,7 @@ const Signin = () => {
 
   const onSubmit = async (data: any) => {
     const { username, password, } = data;
-    await dispatch(logIn(username, password, 1));
+    await dispatch(logIn(username, password, 'ccd8f71e-b6a6-4b04-84cf-ee3bcea3999c'));
     setIsSubmitted(true)
   };
 
@@ -34,16 +34,16 @@ const Signin = () => {
 
   const handleLoggedUser = (user: UserInfoDTO) => {
     switch (user.profileId) {
-      case 1: //'Admin':
+      case "ccd8f71e-b6a6-4b04-84cf-ee3bcea3999c": //'Admin':
         navigate('/admin/users/all-users');
         break;
-      case 2: //'Teacher':
+      case "398d52f1-0d94-40f9-8ef2-bc801c714490": //'Teacher':
         navigate('/teacher/weekly-schedule');
         break;
-      case 3: //'Student':
+      case "521c2799-f386-4ea2-ba2f-64a81f86fd9d": //'Student':
         navigate('/student/weekly-schedule');
         break;
-      case 4: //'Guardian':
+      case "9282b9d9-4c59-41c9-859a-58d37551fcae": //'Guardian':
         navigate('/guardian/weekly-schedule');
         break;
       default:

@@ -49,7 +49,7 @@ const authSlice = createSlice({
 
 export const { setLoading, setAuthSuccess, setLogOut, setAuthFailed } = authSlice.actions
 
-export const logIn = (username: string, password: string, profileId: number): AppThunk => async (dispatch) => {
+export const logIn = (username: string, password: string, profileId: string): AppThunk => async (dispatch) => {
     try {
         dispatch(setLoading(true))
         const { data } = await axios.post<AuthInfoDTO>('api/auth/tkn', { username, password, profileId })

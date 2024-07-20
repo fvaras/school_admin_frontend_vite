@@ -20,7 +20,7 @@ export interface IGradeForUpdateDTO extends IGradeForManipulationDTO {
 }
 
 export interface IGradeDTO extends IGradeBaseDTO {
-    id: number;
+    id: string;
     createdAt: string;
     updatedAt: string | null;
 }

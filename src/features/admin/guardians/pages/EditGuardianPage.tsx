@@ -26,8 +26,8 @@ const EditGuardianPage = () => {
         setCurrentGuardian(existingGuardian)
     }
 
-    const handleSubmit = async (id: number, userForUpdate: IGuardianForUpdateDTO) => {
-        await updateGuardian(id.toString(), userForUpdate)
+    const handleSubmit = async (id: string, userForUpdate: IGuardianForUpdateDTO) => {
+        await updateGuardian(id, userForUpdate)
         toast({
             description: "Guardian updated successfully",
         })

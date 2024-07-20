@@ -50,7 +50,7 @@ interface IProps {
     mode: 'ADD' | 'EDIT'
     user?: IUser
     loading: boolean
-    submit: (id: number | null, user: IUserForCreationDTO | IUserForUpdateDTO) => void
+    submit: (id: string | null, user: IUserForCreationDTO | IUserForUpdateDTO) => void
 }
 
 const AddEditUserForm = ({ user, mode, loading, submit }: IProps) => {

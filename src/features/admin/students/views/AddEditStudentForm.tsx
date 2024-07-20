@@ -62,7 +62,7 @@ interface IProps {
     mode: 'ADD' | 'EDIT'
     student?: IStudentDTO
     loading: boolean
-    submit: (id: number | null, student: IStudentForCreationDTO | IStudentForUpdateDTO) => void
+    submit: (id: string | null, student: IStudentForCreationDTO | IStudentForUpdateDTO) => void
 }
 
 const AddEditStudentForm = ({ student, mode, loading, submit }: IProps) => {

@@ -19,14 +19,14 @@ export interface IStudentForUpdateDTO extends IStudentBaseDTO {
 }
 
 export interface IStudentDTO extends IStudentBaseDTO {
-    id: number;
+    id: string;
     createdAt: string;
     updatedAt: string | null;
     user: IUserDTO;
 }
 
 export interface IStudentTableRowDTO {
-    id: number;
+    id: string;
     userName: string;
     userId: string;
     rut: string;

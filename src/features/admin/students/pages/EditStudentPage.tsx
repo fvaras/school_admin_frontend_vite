@@ -26,8 +26,8 @@ const EditStudentPage = () => {
         setCurrentStudent(existingStudent)
     }
 
-    const handleSubmit = async (id: number, userForUpdate: IStudentForUpdateDTO) => {
-        await updateStudent(id.toString(), userForUpdate)
+    const handleSubmit = async (id: string, userForUpdate: IStudentForUpdateDTO) => {
+        await updateStudent(id, userForUpdate)
         toast({
             description: "Student updated successfully",
         })

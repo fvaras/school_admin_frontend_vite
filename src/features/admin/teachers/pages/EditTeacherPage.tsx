@@ -26,8 +26,8 @@ const EditTeacherPage = () => {
         setCurrentTeacher(existingTeacher)
     }
 
-    const handleSubmit = async (id: number, userForUpdate: ITeacherForUpdateDTO) => {
-        await updateTeacher(id.toString(), userForUpdate)
+    const handleSubmit = async (id: string, userForUpdate: ITeacherForUpdateDTO) => {
+        await updateTeacher(id, userForUpdate)
         toast({
             description: "Teacher updated successfully",
         })

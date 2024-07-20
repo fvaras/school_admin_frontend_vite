@@ -26,8 +26,8 @@ const EditUserPage = () => {
         setCurrentUser(user)
     }
 
-    const handleSubmit = async (id: number, userForUpdate: IUserForUpdateDTO) => {
-        await updateUser(id.toString(), userForUpdate)
+    const handleSubmit = async (id: string, userForUpdate: IUserForUpdateDTO) => {
+        await updateUser(id, userForUpdate)
         toast({
             description: "User updated successfully",
         })

@@ -26,8 +26,8 @@ const EditGradePage = () => {
         setCurrentGrade(existingGrade)
     }
 
-    const handleSubmit = async (id: number, userForUpdate: IGradeForUpdateDTO) => {
-        await updateGrade(id.toString(), userForUpdate)
+    const handleSubmit = async (id: string, userForUpdate: IGradeForUpdateDTO) => {
+        await updateGrade(id, userForUpdate)
         toast({
             description: "Grade updated successfully",
         })

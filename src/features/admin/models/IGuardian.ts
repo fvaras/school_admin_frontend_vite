@@ -14,7 +14,7 @@ export interface IGuardianForUpdateDTO extends IGuardianBaseDTO {
 }
 
 export interface IGuardianDTO extends IGuardianBaseDTO {
-    id: number;
+    id: string;
     stateId: number;
     createdAt: string;
     updatedAt: string | null;
@@ -22,7 +22,7 @@ export interface IGuardianDTO extends IGuardianBaseDTO {
 }
 
 export interface IGuardianTableRowDTO {
-    id: number;
+    id: string;
     userName: string;
     userId: string;
     rut: string;
