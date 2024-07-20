@@ -28,28 +28,24 @@ const AllTeachersTable = () => {
         //     enableHiding: false,
         // },
         {
-            accessorKey: "userName",
-            header: "Username"
-        },
-        {
             accessorKey: "firstName",
-            header: "Name"
+            header: "First name"
         },
         {
             accessorKey: "lastName",
-            header: "Last Name"
+            header: "Last name"
         },
         {
             accessorKey: "rut",
             header: "UUID"
         },
         {
-            accessorKey: "phone",
-            header: "Phone"
+            accessorKey: "contactPhone",
+            header: "Corporative phone"
         },
         {
-            accessorKey: "email",
-            header: "Email"
+            accessorKey: "contactEmail",
+            header: "Corporative email"
         },
         {
             accessorKey: "stateId",

@@ -15,14 +15,15 @@ const FormInputField: React.FC<FormInputFieldProps> = ({ field, label, type = 't
     <FormItem>
         <FormLabel>{label}</FormLabel>
         <FormControl>
-            <Input
+            <Input placeholder={placeholder} type={type} disabled={disabled} {...field} />
+            {/* <Input
                 placeholder={placeholder}
                 type={type}
                 disabled={disabled}
                 {...field}
                 value={type === 'number' ? field.value || '' : field.value}
                 onChange={(e) => field.onChange(type === 'number' ? parseInt(e.target.value, 10) || '' : e.target.value)}
-            />
+            /> */}
         </FormControl>
         {description &&
             <FormDescription>
