@@ -42,7 +42,7 @@ const Sidebar = () => {
                             className="block w-full text-left px-4 py-2 hover:bg-gray-700"
                             onClick={() => handleMenuClick('user')}
                         >
-                            <User className="w-5 h-5 inline-block mr-3" /> User
+                            <User className="w-5 h-5 inline-block mr-3" /> Users
                             {openMenu === 'user' ? <ChevronDown className="w-5 h-5 inline-block ml-3" /> : <ChevronRight className="w-5 h-5 inline-block ml-3" />}
                         </button>
                         {openMenu === 'user' && (
@@ -61,7 +61,7 @@ const Sidebar = () => {
                             className="block w-full text-left px-4 py-2 hover:bg-gray-700"
                             onClick={() => handleMenuClick('teachers')}
                         >
-                            <User className="w-5 h-5 inline-block mr-3" /> Teacher
+                            <User className="w-5 h-5 inline-block mr-3" /> Teachers
                             {openMenu === 'teachers' ? <ChevronDown className="w-5 h-5 inline-block ml-3" /> : <ChevronRight className="w-5 h-5 inline-block ml-3" />}
                         </button>
                         {openMenu === 'teachers' && (
@@ -80,7 +80,7 @@ const Sidebar = () => {
                             className="block w-full text-left px-4 py-2 hover:bg-gray-700"
                             onClick={() => handleMenuClick('students')}
                         >
-                            <User className="w-5 h-5 inline-block mr-3" /> Student
+                            <User className="w-5 h-5 inline-block mr-3" /> Students
                             {openMenu === 'students' ? <ChevronDown className="w-5 h-5 inline-block ml-3" /> : <ChevronRight className="w-5 h-5 inline-block ml-3" />}
                         </button>
                         {openMenu === 'students' && (
@@ -99,7 +99,7 @@ const Sidebar = () => {
                             className="block w-full text-left px-4 py-2 hover:bg-gray-700"
                             onClick={() => handleMenuClick('guardians')}
                         >
-                            <User className="w-5 h-5 inline-block mr-3" /> Guardian
+                            <User className="w-5 h-5 inline-block mr-3" /> Guardians
                             {openMenu === 'guardians' ? <ChevronDown className="w-5 h-5 inline-block ml-3" /> : <ChevronRight className="w-5 h-5 inline-block ml-3" />}
                         </button>
                         {openMenu === 'guardians' && (
@@ -109,6 +109,25 @@ const Sidebar = () => {
                                 </Link>
                                 <Link to="/admin/guardians/add-guardian" onClick={handleToogleSidebar} className="block w-full px-4 py-2 hover:bg-gray-700">
                                     Add Guardian
+                                </Link>
+                            </div>
+                        )}
+                    </div>
+                    <div>
+                        <button
+                            className="block w-full text-left px-4 py-2 hover:bg-gray-700"
+                            onClick={() => handleMenuClick('grades')}
+                        >
+                            <User className="w-5 h-5 inline-block mr-3" /> Grades
+                            {openMenu === 'grades' ? <ChevronDown className="w-5 h-5 inline-block ml-3" /> : <ChevronRight className="w-5 h-5 inline-block ml-3" />}
+                        </button>
+                        {openMenu === 'grades' && (
+                            <div className="block w-full text-left px-8">
+                                <Link to="/admin/grades/all-grades" onClick={handleToogleSidebar} className="block w-full px-4 py-2 hover:bg-gray-700">
+                                    All Grades
+                                </Link>
+                                <Link to="/admin/grades/add-grade" onClick={handleToogleSidebar} className="block w-full px-4 py-2 hover:bg-gray-700">
+                                    Add Grade
                                 </Link>
                             </div>
                         )}

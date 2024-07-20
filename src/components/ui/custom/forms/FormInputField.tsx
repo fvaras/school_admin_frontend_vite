@@ -5,7 +5,7 @@ import { FormItem, FormLabel, FormControl, FormDescription, FormMessage } from "
 interface FormInputFieldProps {
     field: any;
     label: string;
-    type?: 'text' | 'password'
+    type?: 'text' | 'password' | 'number'
     placeholder?: string;
     description?: string;
     disabled?: boolean
@@ -15,7 +15,14 @@ const FormInputField: React.FC<FormInputFieldProps> = ({ field, label, type = 't
     <FormItem>
         <FormLabel>{label}</FormLabel>
         <FormControl>
-            <Input placeholder={placeholder} type={type} disabled={disabled} {...field} />
+            <Input
+                placeholder={placeholder}
+                type={type}
+                disabled={disabled}
+                {...field}
+                value={type === 'number' ? field.value || '' : field.value}
+                onChange={(e) => field.onChange(type === 'number' ? parseInt(e.target.value, 10) || '' : e.target.value)}
+            />
         </FormControl>
         {description &&
             <FormDescription>
