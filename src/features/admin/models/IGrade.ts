@@ -8,7 +8,7 @@ export interface IGradeBaseDTO {
 }
 
 export interface IGradeForManipulationDTO extends IGradeBaseDTO {
-    teachersId: number[];
+    teachersId: string[];
 }
 
 export interface IGradeForCreationDTO extends IGradeForManipulationDTO {

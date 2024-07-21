@@ -1,3 +1,4 @@
+import FormComboboxField from "./FormComboboxField";
 import FormDatePickerField from "./FormDatePickerField";
 import FormInputField from "./FormInputField";
 import FormSelectField from "./FormSelectField";
@@ -9,5 +10,6 @@ export {
     FormDatePickerField,
     FormSelectField,
     FormToogleButtonField,
-    FormTextAreaField
+    FormTextAreaField,
+    FormComboboxField
 }

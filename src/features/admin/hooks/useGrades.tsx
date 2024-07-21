@@ -58,6 +58,13 @@ export const useGrades = () => {
         }
     }
 
+    const getTeachersId = async (id: string): Promise<string[]> => {
+        // setLoading(true)
+        const { data } = await axios.get<string[]>(`api/grade/teachersId/${id}`)
+        // setLoading(false)
+        return data
+    }
+
     return {
         loading,
         loadingModification,
@@ -66,6 +73,7 @@ export const useGrades = () => {
         getGrade,
         createGrade,
         updateGrade,
-        deleteGrade
+        deleteGrade,
+        getTeachersId
     }
 }

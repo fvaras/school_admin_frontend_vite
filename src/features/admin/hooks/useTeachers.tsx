@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ITeacherDTO, ITeacherForCreationDTO, ITeacherForUpdateDTO } from "../models/ITeacher";
 import { axiosAuthInstance as axios } from "@/lib/axios";
+import { LabelValueDTO } from "@/models/TLabelValueDTO";
 
 export const useTeachers = () => {
     const [loading, setLoading] = useState(false);
@@ -20,6 +21,13 @@ export const useTeachers = () => {
         setLoading(true)
         const { data } = await axios.get<ITeacherDTO>(`api/teacher/${userId}`)
         setLoading(false)
+        return data
+    }
+
+    const getTeachersForList = async (): Promise<LabelValueDTO<string>[]> => {
+        // setLoading(true)
+        const { data } = await axios.get<LabelValueDTO<string>[]>('api/teacher/forList')
+        // setLoading(false)
         return data
     }
 
@@ -64,6 +72,7 @@ export const useTeachers = () => {
         error,
         getAllTeachers,
         getTeacher,
+        getTeachersForList,
         createTeacher,
         updateTeacher,
         deleteTeacher
