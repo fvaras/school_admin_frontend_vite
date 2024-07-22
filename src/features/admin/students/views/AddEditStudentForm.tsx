@@ -9,14 +9,15 @@ import {
     Form,
     FormField,
 } from "@/components/ui/form"
-import { FormDatePickerField, FormInputField, FormTextAreaField, FormToogleButtonField } from "@/components/ui/custom/forms"
+import { FormComboboxField, FormDatePickerField, FormInputField, FormToogleButtonField } from "@/components/ui/custom/forms"
 import { ButtonLoading, Heading } from "@/components/ui/custom"
 import { IStudentDTO, IStudentForCreationDTO, IStudentForUpdateDTO } from "../../models/IStudent"
 import { format } from "date-fns"
 import { Separator } from "@/components/ui/separator"
-import { useUsers } from "../../hooks"
+import { useGrades, useGuardians, useUsers } from "../../hooks"
 import { IUserDTO } from "../../models/IUser"
 import { useToast } from "@/components/ui/use-toast"
+import { LabelValueDTO } from "@/models/TLabelValueDTO"
 
 const newRecordformSchema = z.object({
     userName: z.string().min(2, { message: "Username must be at least 2 characters." }),
@@ -28,11 +29,14 @@ const newRecordformSchema = z.object({
     address: z.string().min(3, { message: "Required" }),
     birthDate: z.date({ required_error: "Required", message: "Required" }),
     stateId: z.boolean(),
-    corporative_phone: z.string().min(3, { message: "Required" }),
-    corporative_email: z.string().email({ message: "Invalid email address" }).min(3, { message: "Required" }),
-    education: z.string().min(5, { message: "Required" }),
-    password: z.string().min(4, { message: "Required" }),
-    confirmPassword: z.string().min(4, { message: "Required" }),
+    gradeId: z.string().min(3, { message: "Required" }),
+    guardian1Id: z.string().optional(),
+    guardian2Id: z.string().optional(),
+    joiningDate: z.date({ required_error: "Required", message: "Required" }),
+    allergies: z.string(),
+    bloodGroup: z.string(),
+    password: z.string().optional(),
+    confirmPassword: z.string().optional(),
 }).superRefine(({ confirmPassword, password }, ctx) => {
     if (confirmPassword !== password) {
         ctx.addIssue({
@@ -53,9 +57,12 @@ const existingRecordformSchema = z.object({
     address: z.string().min(3, { message: "Required" }),
     birthDate: z.date({ required_error: "Required", message: "Required" }),
     stateId: z.boolean(),
-    corporative_phone: z.string().min(3, { message: "Required" }),
-    corporative_email: z.string().email({ message: "Invalid email address" }).min(3, { message: "Required" }),
-    education: z.string().min(5, { message: "Required" }),
+    gradeId: z.string().min(3, { message: "Required" }),
+    guardian1Id: z.string().optional(),
+    guardian2Id: z.string().optional(),
+    joiningDate: z.date({ required_error: "Required", message: "Required" }),
+    allergies: z.string(),
+    bloodGroup: z.string(),
 })
 
 interface IProps {
@@ -68,10 +75,14 @@ interface IProps {
 const AddEditStudentForm = ({ student, mode, loading, submit }: IProps) => {
 
     const [user, setUser] = useState<IUserDTO | null>(null)
+    const [gradeList, setGradeList] = useState<LabelValueDTO<string>[] | null>(null)
+    const [guardianList, setGuardianList] = useState<LabelValueDTO<string>[] | null>(null)
 
     const formSchema: any = mode === 'ADD' ? newRecordformSchema : existingRecordformSchema
 
     const { getUserByRut } = useUsers()
+    const { getGradesForList } = useGrades()
+    const { getGuardiansForList } = useGuardians()
 
     const { toast } = useToast()
 
@@ -86,21 +97,32 @@ const AddEditStudentForm = ({ student, mode, loading, submit }: IProps) => {
             phone: mode === 'ADD' ? '' : student?.user.phone,
             address: mode === 'ADD' ? '' : student?.user.address,
             // birthDate: mode === 'ADD' ? undefined : (student?.user?.birthDate ? new Date(student.user.birthDate) : undefined),
-            birthDate: mode === 'ADD' ? undefined : new Date(student?.user.birthDate!),
+            birthDate: mode === 'ADD' ? undefined : (student?.user?.birthDate ? new Date(student.user.birthDate) : undefined),
             password: mode === 'ADD' ? '' : '',
             confirmPassword: mode === 'ADD' ? '' : '',
-            corporative_phone: mode === 'ADD' ? '' : student!.contactPhone,
-            corporative_email: mode === 'ADD' ? '' : student!.contactEmail,
-            education: mode === 'ADD' ? '' : student!.education,
+            gradeId: mode === 'ADD' ? '' : student?.gradeId,
+            guardian1Id: mode === 'ADD' ? undefined : student?.guardian1Id,
+            guardian2Id: mode === 'ADD' ? undefined : student?.guardian2Id,
+            joiningDate: mode === 'ADD' ? undefined : (student?.joiningDate ? new Date(student.joiningDate) : undefined),
+            allergies: mode === 'ADD' ? '' : student?.allergies,
+            bloodGroup: mode === 'ADD' ? '' : student?.bloodGroup,
             stateId: mode === 'ADD' ? true : student!.stateId === 1
         },
     })
 
     useEffect(() => {
+        loadData()
+    }, [student])
+
+    const loadData = async () => {
+        const [_gradeList, _guardiansList] = await Promise.all([getGradesForList(), getGuardiansForList('')])
+        setGradeList(_gradeList)
+        setGuardianList(_guardiansList)
+
         if (mode === 'EDIT' && student) {
             setUser(student.user)
         }
-    }, [mode, student])
+    }
 
     const [rut, setRut] = useState('')
     const [debouncedRut] = useDebounce(rut, 500)
@@ -134,7 +156,7 @@ const AddEditStudentForm = ({ student, mode, loading, submit }: IProps) => {
             form.setValue('email', existingUser.email)
             form.setValue('phone', existingUser.phone)
             form.setValue('address', existingUser.address)
-            form.setValue('birthDate', existingUser.birthDate)
+            form.setValue('birthDate', existingUser.birthDate ? new Date(existingUser.birthDate) : undefined)
             form.setValue('rut', existingUser.rut)
         }
     }
@@ -145,12 +167,31 @@ const AddEditStudentForm = ({ student, mode, loading, submit }: IProps) => {
         }
     }, [debouncedRut])
 
+    const validatePasswordFields = (values: z.infer<typeof formSchema>) => {
+        if (!user && (!values.password || !values.confirmPassword)) {
+            return "Password and confirm password are required";
+        }
+        if (values.password !== values.confirmPassword) {
+            return "Passwords do not match";
+        }
+        return null;
+    }
+
     function onSubmit(values: z.infer<typeof formSchema>) {
+        const passwordError = validatePasswordFields(values);
+        if (passwordError) {
+            form.setError("password", { message: passwordError });
+            form.setError("confirmPassword", { message: passwordError });
+            return;
+        }
         if (mode === 'ADD') {
             const newStudent: IStudentForCreationDTO = {
-                contactEmail: values.corporative_email,
-                contactPhone: values.corporative_phone,
-                education: values.education,
+                gradeId: values.gradeId,
+                guardian1Id: values.guardian1Id ?? null,
+                guardian2Id: values.guardian2Id ?? null,
+                joiningDate: values.joiningDate,
+                allergies: values.allergies,
+                bloodGroup: values.bloodGroup,
                 stateId: values.stateId ? 1 : 2,
                 user: {
                     userName: values.userName,
@@ -169,9 +210,12 @@ const AddEditStudentForm = ({ student, mode, loading, submit }: IProps) => {
             submit(null, newStudent)
         } else {
             const existingStudent: IStudentForUpdateDTO = {
-                contactEmail: values.corporative_email,
-                contactPhone: values.corporative_phone,
-                education: values.education,
+                gradeId: values.gradeId,
+                guardian1Id: values.guardian1Id,
+                guardian2Id: values.guardian2Id,
+                joiningDate: values.joiningDate,
+                allergies: values.allergies,
+                bloodGroup: values.bloodGroup,
                 stateId: values.stateId ? 1 : 2,
             }
             submit(student!.id, existingStudent)
@@ -322,39 +366,83 @@ const AddEditStudentForm = ({ student, mode, loading, submit }: IProps) => {
                 <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 mb-4 -mx-2">
                     <FormField
                         control={form.control}
-                        name="corporative_phone"
+                        name="joiningDate"
+                        render={({ field }) => (
+                            <FormDatePickerField
+                                field={field}
+                                label="Joining Date"
+                                placeholder="Pick a date"
+                            />
+                        )}
+                    />
+
+                    {gradeList &&
+                        <FormField
+                            control={form.control}
+                            name="gradeId"
+                            render={({ field }) => (
+                                <FormComboboxField
+                                    field={field}
+                                    label="Grade"
+                                    placeholder="Current grade"
+                                    options={gradeList}
+                                />
+                            )}
+                        />
+                    }
+
+                    {guardianList &&
+                        <>
+                            <FormField
+                                control={form.control}
+                                name="guardian1Id"
+                                render={({ field }) => (
+                                    <FormComboboxField
+                                        field={field}
+                                        label="First Guardian"
+                                        placeholder="One of the student guardians"
+                                        options={guardianList}
+                                    />
+                                )}
+                            />
+
+                            <FormField
+                                control={form.control}
+                                name="guardian2Id"
+                                render={({ field }) => (
+                                    <FormComboboxField
+                                        field={field}
+                                        label="Second Guardian"
+                                        placeholder="One of the student guardians"
+                                        options={guardianList}
+                                    />
+                                )}
+                            />
+                        </>
+                    }
+
+                    <FormField
+                        control={form.control}
+                        name="allergies"
                         render={({ field }) => (
                             <FormInputField
                                 field={field}
-                                label="Phone"
-                                placeholder="phone"
+                                label="Allergies"
+                                placeholder="Allergies"
                             />
                         )}
                     />
                     <FormField
                         control={form.control}
-                        name="corporative_email"
+                        name="bloodGroup"
                         render={({ field }) => (
                             <FormInputField
                                 field={field}
-                                label="Email"
-                                placeholder="email"
+                                label="Blood Group"
+                                placeholder="Blood group"
                             />
                         )}
                     />
-                    <div className="col-start-1 col-end-3">
-                        <FormField
-                            control={form.control}
-                            name="education"
-                            render={({ field }) => (
-                                <FormTextAreaField
-                                    field={field}
-                                    label="Education Level"
-                                    placeholder="Education Level: This information will be displayed to students and their guardians."
-                                />
-                            )}
-                        />
-                    </div>
                     <FormField
                         control={form.control}
                         name="stateId"

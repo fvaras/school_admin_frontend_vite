@@ -165,10 +165,6 @@ const AddEditGradeForm = ({ grade, mode, loading, submit }: IProps) => {
                                             label="First teacher"
                                             placeholder="One of the grade teachers"
                                             options={teachersList}
-                                            onChange={(text) => {
-                                                console.log('new value1', text);
-                                                console.log('values1', form.getValues())
-                                            }}
                                         />
                                     )}
                                 />
@@ -182,10 +178,6 @@ const AddEditGradeForm = ({ grade, mode, loading, submit }: IProps) => {
                                             label="Second Teacher"
                                             placeholder="One of the grade teachers"
                                             options={teachersList.map(el => ({ value: el.value, label: el.label }))}
-                                            onChange={(text) => {
-                                                console.log('new value1', text);
-                                                console.log('values1', form.getValues())
-                                            }}
                                         />
                                     )}
                                 />

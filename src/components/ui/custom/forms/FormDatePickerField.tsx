@@ -25,7 +25,8 @@ const FormDatePickerField: React.FC<FormDatePickerFieldProps> = ({ field, label,
                         variant={"outline"}
                         disabled={disabled}
                         className={cn(
-                            "w-[240px] pl-3 text-left font-normal",
+                            // "w-[240px] pl-3 text-left font-normal",
+                            "w-full pl-3 text-left font-normal",
                             !field.value && "text-muted-foreground"
                         )}
                     >

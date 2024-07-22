@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { IGradeDTO, IGradeForCreationDTO, IGradeForUpdateDTO } from "../models/IGrade";
 import { axiosAuthInstance as axios } from "@/lib/axios";
+import { LabelValueDTO } from "@/models/TLabelValueDTO";
 
 export const useGrades = () => {
     const [loading, setLoading] = useState(false);
@@ -65,6 +66,13 @@ export const useGrades = () => {
         return data
     }
 
+    const getGradesForList = async (): Promise<LabelValueDTO<string>[]> => {
+        // setLoading(true)
+        const { data } = await axios.get<LabelValueDTO<string>[]>('api/grade/forList')
+        // setLoading(false)
+        return data
+    }
+
     return {
         loading,
         loadingModification,
@@ -74,6 +82,7 @@ export const useGrades = () => {
         createGrade,
         updateGrade,
         deleteGrade,
-        getTeachersId
+        getTeachersId,
+        getGradesForList
     }
 }

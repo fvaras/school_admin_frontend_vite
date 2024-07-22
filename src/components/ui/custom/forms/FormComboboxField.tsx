@@ -29,10 +29,10 @@ interface FormSelectFieldProps {
     placeholder?: string;
     description?: string;
     options: { value: string; label: string }[];
-    onChange: (args: string) => void
+    // onChange: (args: string) => void
 }
 
-const FormComboboxField: React.FC<FormSelectFieldProps> = ({ field, label, placeholder, description, options, onChange }) => (
+const FormComboboxField: React.FC<FormSelectFieldProps> = ({ field, label, placeholder, description, options }) => (
     <FormItem className="flex flex-col">
         <FormLabel>{label}</FormLabel>
         <Popover>
@@ -42,7 +42,8 @@ const FormComboboxField: React.FC<FormSelectFieldProps> = ({ field, label, place
                         variant="outline"
                         role="combobox"
                         className={cn(
-                            "w-[200px] justify-between",
+                            // "w-[200px] justify-between",
+                            "w-full justify-between",
                             !field.value && "text-muted-foreground"
                         )}
                     >

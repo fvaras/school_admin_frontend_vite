@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { IGuardianTableRowDTO, IGuardianDTO, IGuardianForCreationDTO, IGuardianForUpdateDTO } from "../models/IGuardian";
 import { axiosAuthInstance as axios } from "@/lib/axios";
+import { LabelValueDTO } from "@/models/TLabelValueDTO";
 
 export const useGuardians = () => {
     const [loading, setLoading] = useState(false);
@@ -58,6 +59,13 @@ export const useGuardians = () => {
         }
     }
 
+    const getGuardiansForList = async (nameOrRut: string): Promise<LabelValueDTO<string>[]> => {
+        // setLoading(true)
+        const { data } = await axios.get<LabelValueDTO<string>[]>(`api/guardian/forList?text=${encodeURIComponent(nameOrRut)}`)
+        // setLoading(false)
+        return data
+    }
+
     return {
         loading,
         loadingModification,
@@ -66,6 +74,7 @@ export const useGuardians = () => {
         getGuardian,
         createGuardian,
         updateGuardian,
-        deleteGuardian
+        deleteGuardian,
+        getGuardiansForList
     }
 }

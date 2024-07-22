@@ -29,8 +29,8 @@ const newRecordformSchema = z.object({
     birthDate: z.date({ required_error: "Required", message: "Required" }),
     stateId: z.boolean(),
     relation: z.string().min(3, { message: "Required" }),
-    password: z.string().min(4, { message: "Required" }),
-    confirmPassword: z.string().min(4, { message: "Required" }),
+    password: z.string().optional(),
+    confirmPassword: z.string().optional(),
 }).superRefine(({ confirmPassword, password }, ctx) => {
     if (confirmPassword !== password) {
         ctx.addIssue({
@@ -81,12 +81,12 @@ const AddEditGuardianForm = ({ guardian, mode, loading, submit }: IProps) => {
             email: mode === 'ADD' ? '' : guardian?.user.email,
             phone: mode === 'ADD' ? '' : guardian?.user.phone,
             address: mode === 'ADD' ? '' : guardian?.user.address,
-            // birthDate: mode === 'ADD' ? undefined : (guardian?.user?.birthDate ? new Date(guardian.user.birthDate) : undefined),
-            birthDate: mode === 'ADD' ? undefined : new Date(guardian?.user.birthDate!),
+            birthDate: mode === 'ADD' ? undefined : (guardian?.user?.birthDate ? new Date(guardian.user.birthDate) : undefined),
+            // birthDate: mode === 'ADD' ? undefined : new Date(guardian?.user.birthDate!),
             password: mode === 'ADD' ? '' : '',
             confirmPassword: mode === 'ADD' ? '' : '',
-            relation: mode === 'ADD' ? '' : guardian!.relation
-            // stateId: mode === 'ADD' ? true : guardian!.stateId === 1
+            relation: mode === 'ADD' ? '' : guardian!.relation,
+            stateId: mode === 'ADD' ? true : guardian!.stateId === 1
         },
     })
 
@@ -128,7 +128,7 @@ const AddEditGuardianForm = ({ guardian, mode, loading, submit }: IProps) => {
             form.setValue('email', existingUser.email)
             form.setValue('phone', existingUser.phone)
             form.setValue('address', existingUser.address)
-            form.setValue('birthDate', existingUser.birthDate)
+            form.setValue('birthDate', existingUser.birthDate ? new Date(existingUser.birthDate) : undefined)
             form.setValue('rut', existingUser.rut)
         }
     }
@@ -139,7 +139,23 @@ const AddEditGuardianForm = ({ guardian, mode, loading, submit }: IProps) => {
         }
     }, [debouncedRut])
 
+    const validatePasswordFields = (values: z.infer<typeof formSchema>) => {
+        if (!user && (!values.password || !values.confirmPassword)) {
+            return "Password and confirm password are required";
+        }
+        if (values.password !== values.confirmPassword) {
+            return "Passwords do not match";
+        }
+        return null;
+    }
+
     function onSubmit(values: z.infer<typeof formSchema>) {
+        const passwordError = validatePasswordFields(values);
+        if (passwordError) {
+            form.setError("password", { message: passwordError });
+            form.setError("confirmPassword", { message: passwordError });
+            return;
+        }
         if (mode === 'ADD') {
             const newGuardian: IGuardianForCreationDTO = {
                 relation: values.relation,
@@ -312,7 +328,7 @@ const AddEditGuardianForm = ({ guardian, mode, loading, submit }: IProps) => {
                 <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 mb-4 -mx-2">
                     <FormField
                         control={form.control}
-                        name="relationship"
+                        name="relation"
                         render={({ field }) => (
                             <FormInputField
                                 field={field}

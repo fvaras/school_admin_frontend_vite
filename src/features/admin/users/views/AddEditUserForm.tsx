@@ -14,7 +14,7 @@ import { format } from "date-fns"
 
 const newRecordformSchema = z.object({
     userName: z.string().min(2, { message: "Username must be at least 2 characters." }),
-    rut: z.string().min(5, { message: "Required" }),
+    rut: z.string().min(2, { message: "Required" }),
     firstName: z.string().min(2, { message: "Required" }),
     lastName: z.string().min(2, { message: "Required" }),
     email: z.string().email({ message: "Invalid email address" }).min(3, { message: "Required" }),
@@ -36,7 +36,7 @@ const newRecordformSchema = z.object({
 
 const existingRecordformSchema = z.object({
     userName: z.string().min(2, { message: "Username must be at least 2 characters." }),
-    rut: z.string().min(5, { message: "Required" }),
+    rut: z.string().min(2, { message: "Required" }),
     firstName: z.string().min(2, { message: "Required" }),
     lastName: z.string().min(2, { message: "Required" }),
     email: z.string().email({ message: "Invalid email address" }).min(3, { message: "Required" }),
@@ -65,7 +65,7 @@ const AddEditUserForm = ({ user, mode, loading, submit }: IProps) => {
             email: mode === 'ADD' ? '' : user!.email,
             phone: mode === 'ADD' ? '' : user!.phone,
             address: mode === 'ADD' ? '' : user!.address,
-            birthDate: mode === 'ADD' ? undefined : user!.birthDate,
+            birthDate: mode === 'ADD' ? undefined : (user!.birthDate ? new Date(user!.birthDate) : undefined),
             stateId: mode === 'ADD' ? true : user!.stateId === 1,
             password: mode === 'ADD' ? '' : 'abc',
             confirmPassword: mode === 'ADD' ? '' : 'abc',

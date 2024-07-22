@@ -28,28 +28,20 @@ const AllStudentsTable = () => {
         //     enableHiding: false,
         // },
         {
-            accessorKey: "userName",
-            header: "Username"
+            accessorKey: "rut",
+            header: "UUID"
         },
         {
             accessorKey: "firstName",
-            header: "Name"
+            header: "First Name"
         },
         {
             accessorKey: "lastName",
             header: "Last Name"
         },
         {
-            accessorKey: "rut",
-            header: "UUID"
-        },
-        {
-            accessorKey: "phone",
-            header: "Phone"
-        },
-        {
-            accessorKey: "email",
-            header: "Email"
+            accessorKey: "gradeName",
+            header: "Grade"
         },
         {
             accessorKey: "stateId",

@@ -1,7 +1,7 @@
-import { ConfirmDialog, DataTable, DataTableHeaderSelection, DataTableRowActions, DataTableRowSelection } from "@/components/ui/custom"
+import { ConfirmDialog, DataTable, DataTableRowActions } from "@/components/ui/custom"
 import { ColumnDef } from "@tanstack/react-table"
 import { useEffect, useState } from "react"
-import { IGuardianDTO } from "../../models/IGuardian"
+import { IGuardianTableRowDTO } from "../../models/IGuardian"
 import { useGuardians } from "../../hooks"
 import { useNavigate } from "react-router-dom"
 import { useToast } from "@/components/ui/use-toast"
@@ -9,9 +9,9 @@ import { Badge } from "@/components/ui/badge"
 
 const AllGuardiansTable = () => {
 
-    const [data, setData] = useState<IGuardianDTO[]>([])
+    const [data, setData] = useState<IGuardianTableRowDTO[]>([])
     const [showDeleteConfirmDialog, setShowDeleteConfirmDialog] = useState<boolean>(false)
-    const [currentData, setCurrentData] = useState<IGuardianDTO | null>(null)
+    const [currentData, setCurrentData] = useState<IGuardianTableRowDTO | null>(null)
 
     const { loading, loadingModification, getAllGuardians, deleteGuardian } = useGuardians()
 
@@ -19,7 +19,7 @@ const AllGuardiansTable = () => {
 
     const { toast } = useToast()
 
-    const columns: ColumnDef<IGuardianDTO>[] = [
+    const columns: ColumnDef<IGuardianTableRowDTO>[] = [
         // {
         //     id: "select",
         //     header: ({ table }) => <DataTableHeaderSelection table={table} />,
@@ -28,20 +28,16 @@ const AllGuardiansTable = () => {
         //     enableHiding: false,
         // },
         {
-            accessorKey: "userName",
-            header: "Username"
+            accessorKey: "rut",
+            header: "UUID"
         },
         {
             accessorKey: "firstName",
-            header: "Name"
+            header: "First Name"
         },
         {
             accessorKey: "lastName",
             header: "Last Name"
-        },
-        {
-            accessorKey: "rut",
-            header: "UUID"
         },
         {
             accessorKey: "phone",
@@ -115,7 +111,7 @@ const AllGuardiansTable = () => {
                 columns={columns}
                 data={data}
                 enableFilter
-                filterBy={'contactEmail'}
+                filterBy={'userName'}
                 filterPlaceholder="Filter username..."
                 enableViewOptions
             />
