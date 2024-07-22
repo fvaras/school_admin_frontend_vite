@@ -1,6 +1,7 @@
 import { useGrades } from "./useGrades";
 import { useGuardians } from "./useGuardians";
 import { useStudents } from "./useStudents";
+import { useSubjects } from "./useSubjects";
 import { useTeachers } from "./useTeachers";
 import { useUsers } from "./useUsers";
 
@@ -9,5 +10,6 @@ export {
     useTeachers,
     useStudents,
     useGuardians,
-    useGrades
+    useGrades,
+    useSubjects
 }

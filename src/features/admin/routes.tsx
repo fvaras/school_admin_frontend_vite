@@ -5,6 +5,7 @@ import { AllTeachersPage, AddTeacherPage, EditTeacherPage } from "./teachers/pag
 import { AllStudentsPage, AddStudentPage, EditStudentPage } from "./students/pages";
 import { AllGuardiansPage, AddGuardianPage, EditGuardianPage } from "./guardians/pages";
 import { AllGradesPage, AddGradePage, EditGradePage } from "./grades/pages";
+import { AddSubjectPage, AllSubjectsPage, EditSubjectPage } from "./subjects/pages";
 
 const AdminRoutes = () => {
     return (
@@ -30,6 +31,10 @@ const AdminRoutes = () => {
                 <Route path="grades/all-grades" element={<AllGradesPage />} />
                 <Route path="grades/add-grade" element={<AddGradePage />} />
                 <Route path="grades/:gradeId" element={<EditGradePage />} />
+
+                <Route path="subjects/all-subjects" element={<AllSubjectsPage />} />
+                <Route path="subjects/add-subject" element={<AddSubjectPage />} />
+                <Route path="subjects/:subjectId" element={<EditSubjectPage />} />
             </Route>
         </Routes>
     );
