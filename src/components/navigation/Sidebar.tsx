@@ -151,6 +151,25 @@ const Sidebar = () => {
                             </div>
                         )}
                     </div>
+                    <div>
+                        <button
+                            className="block w-full text-left px-4 py-2 hover:bg-gray-700"
+                            onClick={() => handleMenuClick('events')}
+                        >
+                            <User className="w-5 h-5 inline-block mr-3" /> Events
+                            {openMenu === 'events' ? <ChevronDown className="w-5 h-5 inline-block ml-3" /> : <ChevronRight className="w-5 h-5 inline-block ml-3" />}
+                        </button>
+                        {openMenu === 'events' && (
+                            <div className="block w-full text-left px-8">
+                                <Link to="/admin/events/all-events" onClick={handleToogleSidebar} className="block w-full px-4 py-2 hover:bg-gray-700">
+                                    All Events
+                                </Link>
+                                <Link to="/admin/events/add-event" onClick={handleToogleSidebar} className="block w-full px-4 py-2 hover:bg-gray-700">
+                                    Add Event
+                                </Link>
+                            </div>
+                        )}
+                    </div>
                     <Link to="/admin/users/all-users" onClick={handleToogleSidebar} className="block w-full text-left px-4 py-2 hover:bg-gray-700">
                         <Settings className="w-5 h-5 inline-block mr-3" /> Settings
                     </Link>

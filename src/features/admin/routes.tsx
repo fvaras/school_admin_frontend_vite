@@ -6,6 +6,7 @@ import { AllStudentsPage, AddStudentPage, EditStudentPage } from "./students/pag
 import { AllGuardiansPage, AddGuardianPage, EditGuardianPage } from "./guardians/pages";
 import { AllGradesPage, AddGradePage, EditGradePage } from "./grades/pages";
 import { AddSubjectPage, AllSubjectsPage, EditSubjectPage } from "./subjects/pages";
+import { AddEventPage, AllEventsPage, EditEventPage } from "./events/pages";
 
 const AdminRoutes = () => {
     return (
@@ -35,6 +36,10 @@ const AdminRoutes = () => {
                 <Route path="subjects/all-subjects" element={<AllSubjectsPage />} />
                 <Route path="subjects/add-subject" element={<AddSubjectPage />} />
                 <Route path="subjects/:subjectId" element={<EditSubjectPage />} />
+
+                <Route path="events/all-events" element={<AllEventsPage />} />
+                <Route path="events/add-event" element={<AddEventPage />} />
+                <Route path="events/:eventId" element={<EditEventPage />} />
             </Route>
         </Routes>
     );
