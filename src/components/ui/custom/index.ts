@@ -1,3 +1,4 @@
+import BigCalendar from "./bigcalendar/BigCalendar";
 import Breadcrumbs from "./breadcrums/Breadcrumbs";
 import ButtonLoading from "./buttons/ButtonLoading";
 import ConfirmDialog from "./dialogs/ConfirmDialog";
@@ -22,5 +23,7 @@ export {
     ContainerDialog,
     ButtonLoading,
     Heading,
-    Breadcrumbs
+    Breadcrumbs,
+
+    BigCalendar
 }

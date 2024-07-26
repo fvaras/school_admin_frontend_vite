@@ -6,7 +6,7 @@ import { AllStudentsPage, AddStudentPage, EditStudentPage } from "./students/pag
 import { AllGuardiansPage, AddGuardianPage, EditGuardianPage } from "./guardians/pages";
 import { AllGradesPage, AddGradePage, EditGradePage } from "./grades/pages";
 import { AddSubjectPage, AllSubjectsPage, EditSubjectPage } from "./subjects/pages";
-import { AddEventPage, AllEventsPage, EditEventPage } from "./events/pages";
+import { AddEventPage, AllEventsPage, EditEventPage, CalendarPage } from "./events/pages";
 
 const AdminRoutes = () => {
     return (
@@ -40,6 +40,7 @@ const AdminRoutes = () => {
                 <Route path="events/all-events" element={<AllEventsPage />} />
                 <Route path="events/add-event" element={<AddEventPage />} />
                 <Route path="events/:eventId" element={<EditEventPage />} />
+                <Route path="events/calendar" element={<CalendarPage />} />
             </Route>
         </Routes>
     );

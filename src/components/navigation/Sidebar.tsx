@@ -167,6 +167,9 @@ const Sidebar = () => {
                                 <Link to="/admin/events/add-event" onClick={handleToogleSidebar} className="block w-full px-4 py-2 hover:bg-gray-700">
                                     Add Event
                                 </Link>
+                                <Link to="/admin/events/calendar" onClick={handleToogleSidebar} className="block w-full px-4 py-2 hover:bg-gray-700">
+                                    General Calendar
+                                </Link>
                             </div>
                         )}
                     </div>

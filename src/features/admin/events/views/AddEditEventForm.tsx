@@ -40,8 +40,10 @@ const AddEditEventForm = ({ event, mode, loading, submit }: IProps) => {
         resolver: zodResolver(formSchema),
         defaultValues: {
             title: mode === 'ADD' ? '' : event?.title,
-            startDate: mode === 'ADD' ? undefined : (event!.startDate ? new Date(event!.startDate) : undefined),
-            endDate: mode === 'ADD' ? undefined : (event!.endDate ? new Date(event!.endDate) : undefined),
+            startDate: mode === 'ADD' ? (event?.startDate ? new Date(event!.startDate) : undefined) : (event!.startDate ? new Date(event!.startDate) : undefined),
+            endDate: mode === 'ADD' ? (event?.endDate ? new Date(event!.endDate) : undefined) : (event!.endDate ? new Date(event!.endDate) : undefined),
+            // startDate: event!.startDate,
+            // endDate: event!.endDate,
             type: mode === 'ADD' ? undefined : event?.type,
             details: mode === 'ADD' ? '' : event?.details
         },
@@ -60,6 +62,7 @@ const AddEditEventForm = ({ event, mode, loading, submit }: IProps) => {
     }
 
     function onSubmit(values: z.infer<typeof formSchema>) {
+        console.log('mode', mode)
         if (mode === 'ADD') {
             const newEvent: ICalendarEventForCreationDTO = {
                 title: values.title,
