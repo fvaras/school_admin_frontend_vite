@@ -29,10 +29,10 @@ interface FormSelectFieldProps {
     placeholder?: string;
     description?: string;
     options: { value: string | number; label: string }[];
-    // onChange: (args: string) => void
+    onChange?: (value: string | number) => void
 }
 
-const FormComboboxField: React.FC<FormSelectFieldProps> = ({ field, label, placeholder, description, options }) => (
+const FormComboboxField: React.FC<FormSelectFieldProps> = ({ field, label, placeholder, description, options, onChange = null }) => (
     <FormItem className="flex flex-col">
         <FormLabel>{label}</FormLabel>
         <Popover>
@@ -71,7 +71,11 @@ const FormComboboxField: React.FC<FormSelectFieldProps> = ({ field, label, place
                                     //     field.onChange(option.value)
                                     //     onChange(`${field.name} ${option.value} ${arg1}`)
                                     // }}
-                                    onSelect={() => field.onChange(option.value)}
+                                    onSelect={() => {
+                                        field.onChange(option.value)
+                                        if (onChange)
+                                            onChange(option.value)
+                                    }}
                                 >
                                     <Check
                                         className={cn(

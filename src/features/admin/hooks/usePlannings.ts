@@ -1,46 +1,46 @@
 import { useState } from "react";
-import { ISubjectDTO, ISubjectForCreationDTO, ISubjectForUpdateDTO } from "../models/ISubject";
+import { IPlanningTableRowDTO, IPlanningDTO, IPlanningForCreationDTO, IPlanningForUpdateDTO } from "../models/IPlanning";
 import { axiosAuthInstance as axios } from "@/lib/axios";
 import { LabelValueDTO } from "@/models/TLabelValueDTO";
 
-export const useSubjects = () => {
+export const usePlannings = () => {
     const [loading, setLoading] = useState(false);
     const [loadingModification, setLoadingModification] = useState(false);
     const [error, setError] = useState('');
 
     // const { t } = useTranslation();
 
-    const getAllSubjects = async (): Promise<ISubjectDTO[]> => {
+    const getAllPlannings = async (): Promise<IPlanningTableRowDTO[]> => {
         setLoading(true)
-        const { data } = await axios.get<ISubjectDTO[]>('api/subject')
+        const { data } = await axios.get<IPlanningTableRowDTO[]>('api/planning')
         setLoading(false)
         return data
     }
 
-    const getSubject = async (userId: string): Promise<ISubjectDTO> => {
+    const getPlanning = async (userId: string): Promise<IPlanningDTO> => {
         setLoading(true)
-        const { data } = await axios.get<ISubjectDTO>(`api/subject/${userId}`)
+        const { data } = await axios.get<IPlanningDTO>(`api/planning/${userId}`)
         setLoading(false)
         return data
     }
 
-    const createSubject = async (user: ISubjectForCreationDTO): Promise<ISubjectDTO> => {
+    const createPlanning = async (user: IPlanningForCreationDTO): Promise<IPlanningDTO> => {
         try {
             setLoadingModification(true)
-            const { data } = await axios.post<ISubjectDTO>(`api/subject/`, user)
+            const { data } = await axios.post<IPlanningDTO>(`api/planning/`, user)
             return data
         } catch (err) {
-            return {} as ISubjectDTO
+            return {} as IPlanningDTO
         }
         finally {
             setLoadingModification(false)
         }
     }
 
-    const updateSubject = async (id: string, user: ISubjectForUpdateDTO): Promise<void> => {
+    const updatePlanning = async (id: string, user: IPlanningForUpdateDTO): Promise<void> => {
         try {
             setLoadingModification(true)
-            await axios.put<ISubjectForUpdateDTO>(`api/subject/${id}`, user)
+            await axios.put<IPlanningForUpdateDTO>(`api/planning/${id}`, user)
         } catch (err) {
         }
         finally {
@@ -48,10 +48,10 @@ export const useSubjects = () => {
         }
     }
 
-    const deleteSubject = async (id: string): Promise<void> => {
+    const deletePlanning = async (id: string): Promise<void> => {
         try {
             setLoadingModification(true)
-            await axios.delete(`api/subject/${id}`)
+            await axios.delete(`api/planning/${id}`)
         } catch (err) {
         }
         finally {
@@ -61,14 +61,14 @@ export const useSubjects = () => {
 
     const getTeachersId = async (id: string): Promise<string[]> => {
         // setLoading(true)
-        const { data } = await axios.get<string[]>(`api/subject/teachersId/${id}`)
+        const { data } = await axios.get<string[]>(`api/planning/teachersId/${id}`)
         // setLoading(false)
         return data
     }
 
-    const getByGradeAndTeacherForList = async (gradeId: string): Promise<LabelValueDTO<string>[]> => {
+    const getPlanningsForList = async (): Promise<LabelValueDTO<string>[]> => {
         // setLoading(true)
-        const { data } = await axios.get<LabelValueDTO<string>[]>(`api/subject/byGradeAndTeacherForList/${gradeId}`)
+        const { data } = await axios.get<LabelValueDTO<string>[]>('api/planning/forList')
         // setLoading(false)
         return data
     }
@@ -77,12 +77,12 @@ export const useSubjects = () => {
         loading,
         loadingModification,
         error,
-        getAllSubjects,
-        getSubject,
-        createSubject,
-        updateSubject,
-        deleteSubject,
+        getAllPlannings,
+        getPlanning,
+        createPlanning,
+        updatePlanning,
+        deletePlanning,
         getTeachersId,
-        getByGradeAndTeacherForList
+        getPlanningsForList
     }
 }

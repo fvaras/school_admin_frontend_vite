@@ -1,6 +1,7 @@
 import { useEvents } from "./useEvents";
 import { useGrades } from "./useGrades";
 import { useGuardians } from "./useGuardians";
+import { usePlannings } from "./usePlannings";
 import { useStudents } from "./useStudents";
 import { useSubjects } from "./useSubjects";
 import { useTeachers } from "./useTeachers";
@@ -13,5 +14,6 @@ export {
     useGuardians,
     useGrades,
     useSubjects,
-    useEvents
+    useEvents,
+    usePlannings
 }

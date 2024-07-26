@@ -73,6 +73,13 @@ export const useGrades = () => {
         return data
     }
 
+    const getGradesForListByTeacher = async (): Promise<LabelValueDTO<string>[]> => {
+        // setLoading(true)
+        const { data } = await axios.get<LabelValueDTO<string>[]>('api/grade/forListByTeacher')
+        // setLoading(false)
+        return data
+    }
+
     return {
         loading,
         loadingModification,
@@ -83,6 +90,7 @@ export const useGrades = () => {
         updateGrade,
         deleteGrade,
         getTeachersId,
-        getGradesForList
+        getGradesForList,
+        getGradesForListByTeacher
     }
 }
