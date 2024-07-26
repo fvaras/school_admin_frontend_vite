@@ -146,28 +146,34 @@ const AddEditPlanningForm = ({ planning, mode, loading, submit }: IProps) => {
                             />
                         }
 
-                        <FormField
-                            control={form.control}
-                            name="title"
-                            render={({ field }) => (
-                                <FormInputField
-                                    field={field}
-                                    label="Title"
-                                    placeholder="Title"
-                                />
-                            )}
-                        />
-                        <FormField
-                            control={form.control}
-                            name="description"
-                            render={({ field }) => (
-                                <FormInputField
-                                    field={field}
-                                    label="Description"
-                                    placeholder="Description"
-                                />
-                            )}
-                        />
+                        <div className="col-start-1 col-end-3">
+                            <FormField
+                                control={form.control}
+                                name="title"
+                                render={({ field }) => (
+                                    <FormInputField
+                                        field={field}
+                                        label="Title"
+                                        placeholder="Title"
+                                    />
+                                )}
+                            />
+                        </div>
+
+                        <div className="col-start-1 col-end-3">
+                            <FormField
+                                control={form.control}
+                                name="description"
+                                render={({ field }) => (
+                                    <FormTextAreaField
+                                        field={field}
+                                        label="Description"
+                                        placeholder="Description"
+                                    />
+                                )}
+                            />
+                        </div>
+
                         <div className="col-start-1 col-end-3">
                             <FormField
                                 control={form.control}
