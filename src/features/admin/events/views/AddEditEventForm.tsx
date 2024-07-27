@@ -14,11 +14,14 @@ import { useEvents } from "../../hooks"
 import { useEffect, useState } from "react"
 import { LabelValueDTO } from "@/models/TLabelValueDTO"
 import { format } from "date-fns"
+import { combineDateAndTime } from "@/lib/formatters"
 
 const formSchema = z.object({
     title: z.string().min(2, { message: "Required" }),
     startDate: z.date({ required_error: "Required", message: "Required" }),
+    startTime: z.string().min(4, { message: "Required" }),
     endDate: z.date({ required_error: "Required", message: "Required" }),
+    endTime: z.string().min(4, { message: "Required" }),
     type: z.number().min(0, { message: "Required" }),
     details: z.string(),
 })
@@ -36,12 +39,18 @@ const AddEditEventForm = ({ event, mode, loading, submit }: IProps) => {
 
     const { getEventTypes } = useEvents()
 
+    const formatTime = (date?: Date): string | undefined => {
+        return date ? format(date, 'HH:mm') : undefined;
+    };
+
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
             title: mode === 'ADD' ? '' : event?.title,
             startDate: mode === 'ADD' ? (event?.startDate ? new Date(event!.startDate) : undefined) : (event!.startDate ? new Date(event!.startDate) : undefined),
+            startTime: mode === 'ADD' ? (event?.startDate ? formatTime(new Date(event!.startDate)) : undefined) : (event!.startDate ? formatTime(new Date(event!.startDate)) : undefined),
             endDate: mode === 'ADD' ? (event?.endDate ? new Date(event!.endDate) : undefined) : (event!.endDate ? new Date(event!.endDate) : undefined),
+            endTime: mode === 'ADD' ? (event?.endDate ? formatTime(new Date(event!.endDate)) : undefined) : (event!.endDate ? formatTime(new Date(event!.endDate)) : undefined),
             // startDate: event!.startDate,
             // endDate: event!.endDate,
             type: mode === 'ADD' ? undefined : event?.type,
@@ -62,14 +71,15 @@ const AddEditEventForm = ({ event, mode, loading, submit }: IProps) => {
     }
 
     function onSubmit(values: z.infer<typeof formSchema>) {
-        console.log('mode', mode)
+        const startDate = combineDateAndTime(values.startDate, values.startTime)
+        const endDate = combineDateAndTime(values.endDate, values.endTime)
         if (mode === 'ADD') {
             const newEvent: ICalendarEventForCreationDTO = {
                 title: values.title,
-                startDate: values.startDate,
-                endDate: values.endDate,
-                startISODate: format(values.startDate, 'yyyyMMddHHmmss'),
-                endISODate: format(values.endDate, 'yyyyMMddHHmmss'),
+                startDate: startDate!,
+                endDate: endDate!,
+                startISODate: format(startDate!, 'yyyyMMddHHmmss'),
+                endISODate: format(endDate!, 'yyyyMMddHHmmss'),
                 type: values.type,
                 details: values.details,
                 stateId: 1,
@@ -79,10 +89,12 @@ const AddEditEventForm = ({ event, mode, loading, submit }: IProps) => {
         } else {
             const existingEvent: ICalendarEventForUpdateDTO = {
                 title: values.title,
-                startDate: values.startDate,
-                endDate: values.endDate,
-                startISODate: format(values.startDate, 'yyyyMMddHHmmss'),
-                endISODate: format(values.endDate, 'yyyyMMddHHmmss'),
+                startDate: startDate!, //values.startDate,
+                endDate: endDate!, //values.endDate,
+                // startISODate: format(values.startDate, 'yyyyMMddHHmmss'),
+                // endISODate: format(values.endDate, 'yyyyMMddHHmmss'),
+                startISODate: format(startDate!, 'yyyyMMddHHmmss'),
+                endISODate: format(endDate!, 'yyyyMMddHHmmss'),
                 type: values.type,
                 details: values.details,
                 stateId: 1,
@@ -95,7 +107,7 @@ const AddEditEventForm = ({ event, mode, loading, submit }: IProps) => {
     return (
         <>
             {/* <pre>{JSON.stringify(form.getValues(), null, 4)}</pre> */}
-
+            {/* <button onClick={() => { console.log(form.getValues()) }}>values</button> */}
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)}>
                     <Heading variant="subtitle2">User Info</Heading>
@@ -112,7 +124,7 @@ const AddEditEventForm = ({ event, mode, loading, submit }: IProps) => {
                                 />
                             )}
                         />
-                        
+
                         {eventTypesList &&
                             <FormField
                                 control={form.control}
@@ -128,28 +140,58 @@ const AddEditEventForm = ({ event, mode, loading, submit }: IProps) => {
                             />
                         }
 
-                        <FormField
-                            control={form.control}
-                            name="startDate"
-                            render={({ field }) => (
-                                <FormDatePickerField
-                                    field={field}
-                                    label="Start date"
-                                    placeholder="Pick a date"
-                                />
-                            )}
-                        />
-                        <FormField
-                            control={form.control}
-                            name="endDate"
-                            render={({ field }) => (
-                                <FormDatePickerField
-                                    field={field}
-                                    label="End date"
-                                    placeholder="Pick a date"
-                                />
-                            )}
-                        />
+                        <div className="grid grid-cols-2 gap-4">
+                            <FormField
+                                control={form.control}
+                                name="startDate"
+                                render={({ field }) => (
+                                    <FormDatePickerField
+                                        field={field}
+                                        label="Start date"
+                                        placeholder="Pick a date"
+                                    />
+                                )}
+                            />
+                            <FormField
+                                control={form.control}
+                                name="startTime"
+                                render={({ field }) => (
+                                    <FormInputField
+                                        field={field}
+                                        label="Start time"
+                                        placeholder="Pick a time"
+                                        type="time"
+                                    />
+                                )}
+                            />
+                        </div>
+
+                        <div className="grid grid-cols-2 gap-4">
+                            <FormField
+                                control={form.control}
+                                name="endDate"
+                                render={({ field }) => (
+                                    <FormDatePickerField
+                                        field={field}
+                                        label="End date"
+                                        placeholder="Pick a date"
+                                    />
+                                )}
+                            />
+                            <FormField
+                                control={form.control}
+                                name="endTime"
+                                render={({ field }) => (
+                                    <FormInputField
+                                        field={field}
+                                        label="End time"
+                                        placeholder="Pick a time"
+                                        type="time"
+                                    />
+                                )}
+                            />
+                        </div>
+
                         <div className="col-start-1 col-end-3">
                             <FormField
                                 control={form.control}

@@ -5,7 +5,7 @@ import { FormItem, FormLabel, FormControl, FormDescription, FormMessage } from "
 interface FormInputFieldProps {
     field: any;
     label: string;
-    type?: 'text' | 'password' | 'number' | 'color'
+    type?: 'text' | 'password' | 'number' | 'color' | 'time'
     placeholder?: string;
     description?: string;
     disabled?: boolean

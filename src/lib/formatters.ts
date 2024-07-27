@@ -38,3 +38,11 @@ export const formatNumberToString = (num: number): string => {
     const formattedNumber = num.toFixed(0);
     return formattedNumber.replace(/,/g, '');
 }
+
+export const combineDateAndTime = (date?: Date, time?: string): Date | undefined => {
+    if (!date || !time) return undefined;
+    const [hours, minutes] = time.split(':').map(Number);
+    const combinedDate = new Date(date);
+    combinedDate.setHours(hours, minutes);
+    return combinedDate;
+};
