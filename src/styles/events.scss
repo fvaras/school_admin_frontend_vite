@@ -1,0 +1,63 @@
+.custom-events .rbc-event:not([role="button"]) {
+    background: none !important;
+}
+
+.custom-events .rbc-event[role="button"] {
+    // background-color: #FF6347; /* Tomato */
+    // color: #fff; /* White */
+    border: 1px solid rgba(38, 89, 133, 1);
+    background-color: rgba(38, 89, 133, 0.85);
+    color: #fff;
+}
+
+.bg-holidays {
+    background-color: #FF6347;
+    /* Tomato */
+    color: #fff;
+    /* White */
+}
+
+.bg-managment {
+    background-color: #4682B4;
+    /* Steel Blue */
+    color: #fff;
+    /* White */
+}
+
+.bg-meeting {
+    background-color: #32CD32;
+    /* Lime Green */
+    color: #fff;
+    /* White */
+}
+
+.bg-social {
+    background-color: #FFD700;
+    /* Gold */
+    color: #000;
+    /* Black */
+}
+
+.bg-others {
+    background-color: #9370DB;
+    /* Medium Purple */
+    color: #fff;
+    /* White */
+}
+
+.custom_event {
+    padding: 2px 5px;
+    box-sizing: border-box;
+    border: none;
+    box-shadow: none;
+    margin: 0;
+    border-radius: 5px;
+    // color: #fff;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+}
+
+.rbc-agenda-event-cell {
+    text-align: center;
+}

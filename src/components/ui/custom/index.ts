@@ -5,6 +5,11 @@ import ConfirmDialog from "./dialogs/ConfirmDialog";
 import ContainerDialog from "./dialogs/ContainerDialog";
 import ResponsiveDrawerDialog from "./dialogs/ResponsiveDrawerDialog";
 import Heading from "./headings/Heading";
+import CalendarAgendaEvent from "./react-big-calendar-views/CalendarAgendaEvent";
+import CalendarDayEvent from "./react-big-calendar-views/CalendarDayEvent";
+import CalendarMonthEvent from "./react-big-calendar-views/CalendarMonthEvent";
+import CalendarWeekEvent from "./react-big-calendar-views/CalendarWeekEvent";
+import CustomCalendar from "./react-big-calendar-views/CustomCalendar";
 import { DataTable } from "./table/DataTable";
 import { DataTableColumnHeader } from "./table/DataTableColumnHeader";
 import { DataTableRowActions } from "./table/DataTableRowActions";
@@ -25,5 +30,11 @@ export {
     Heading,
     Breadcrumbs,
 
-    BigCalendar
+    CustomCalendar,
+    CalendarMonthEvent,
+    CalendarWeekEvent,
+    CalendarDayEvent,
+    CalendarAgendaEvent,
+
+    BigCalendar,
 }

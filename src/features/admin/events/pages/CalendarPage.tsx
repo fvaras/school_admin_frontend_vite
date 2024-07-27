@@ -1,11 +1,5 @@
-import { Calendar, dateFnsLocalizer, Views } from 'react-big-calendar'
-import format from 'date-fns/format'
-import parse from 'date-fns/parse'
-import startOfWeek from 'date-fns/startOfWeek'
-import getDay from 'date-fns/getDay'
-import enUS from 'date-fns/locale/en-US'
-import { Breadcrumbs, Heading } from '@/components/ui/custom'
-import { useState, useEffect, useCallback, useMemo } from 'react'
+import { Breadcrumbs, CustomCalendar, Heading } from '@/components/ui/custom'
+import { useState, useEffect, useCallback } from 'react'
 import { ICalendarEventDTO, ICalendarEventForCreationDTO, ICalendarEventForUpdateDTO } from '../../models/IEvent'
 import { useEvents } from '../../hooks'
 import {
@@ -17,18 +11,6 @@ import {
 } from "@/components/ui/dialog"
 import AddEditEventForm from '../views/AddEditEventForm'
 import { useToast } from '@/components/ui/use-toast'
-
-const locales = {
-    'en-US': enUS,
-}
-
-const localizer = dateFnsLocalizer({
-    format,
-    parse,
-    startOfWeek,
-    getDay,
-    locales,
-})
 
 const CalendarPage = () => {
     const [events, setEvents] = useState<any[]>([])
@@ -127,14 +109,6 @@ const CalendarPage = () => {
             setIsModalOpen(true)
         }, [])
 
-    const { defaultDate, scrollToTime } = useMemo(
-        () => ({
-            defaultDate: new Date(),
-            scrollToTime: new Date(1970, 1, 1, 6),
-        }),
-        []
-    )
-
     return (
         <>
             <Breadcrumbs items={[
@@ -151,7 +125,8 @@ const CalendarPage = () => {
                 endAccessor="end"
                 style={{ height: 'calc(100vh - 200px)' }}
             /> */}
-            <Calendar
+            {/* <Calendar
+                className='custom-events'
                 defaultDate={defaultDate}
                 defaultView={Views.MONTH}
                 events={events}
@@ -160,6 +135,19 @@ const CalendarPage = () => {
                 onSelectSlot={handleSelectSlot}
                 selectable
                 scrollToTime={scrollToTime}
+                components={{
+                    month: { event: CalendarMonthEvent },
+                    week: { event: CalendarWeekEvent },
+                    day: { event: CalendarDayEvent },
+                    agenda: { event: CalendarAgendaEvent },
+                }}
+            /> */}
+            <CustomCalendar
+                // defaultView={Views.MONTH}
+                events={events}
+                onSelectEvent={handleSelectEvent}
+                onSelectSlot={handleSelectSlot}
+            // selectable
             />
 
             <Dialog open={isModalOpen} onOpenChange={(open: boolean) => setIsModalOpen(open)}>
