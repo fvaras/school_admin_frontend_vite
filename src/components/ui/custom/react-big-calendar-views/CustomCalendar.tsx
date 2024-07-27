@@ -1,4 +1,4 @@
-import { Calendar, dateFnsLocalizer, SlotInfo, Views } from 'react-big-calendar'
+import { Calendar, dateFnsLocalizer, SlotInfo, View, Views, ViewsProps } from 'react-big-calendar'
 import format from 'date-fns/format'
 import parse from 'date-fns/parse'
 import startOfWeek from 'date-fns/startOfWeek'
@@ -25,11 +25,30 @@ const localizer = dateFnsLocalizer({
 interface IProps<TEvent extends object = Event, TResource extends object = object>
     extends React.RefAttributes<Calendar<TEvent, TResource>> {
     events: any[]
+    viewsConfig?: {
+        month?: boolean
+        agenda?: boolean
+        day?: boolean
+        week?: boolean
+        work_week?: boolean
+    }
+    defaultView?: View | undefined;
     onSelectEvent?: ((event: TEvent, e: React.SyntheticEvent<HTMLElement>) => void) | undefined;
     onSelectSlot?: ((slotInfo: SlotInfo) => void) | undefined;
 }
 
-const CustomCalendar = ({ events, onSelectEvent, onSelectSlot }: IProps) => {
+const CustomCalendar = ({
+    events,
+    viewsConfig = {
+        month: true,
+        agenda: true,
+        day: true,
+        week: true,
+        work_week: false,
+    },
+    defaultView = Views.MONTH,
+    onSelectEvent,
+    onSelectSlot }: IProps) => {
     const { defaultDate, scrollToTime } = useMemo(
         () => ({
             defaultDate: new Date(),
@@ -42,7 +61,14 @@ const CustomCalendar = ({ events, onSelectEvent, onSelectSlot }: IProps) => {
         <Calendar
             className='custom-events'
             defaultDate={defaultDate}
-            defaultView={Views.MONTH}
+            defaultView={defaultView}
+            views={{
+                month: viewsConfig.month,
+                week: viewsConfig.week,
+                day: viewsConfig.day,
+                agenda: viewsConfig.agenda,
+                work_week: viewsConfig.work_week,
+            }}
             events={events}
             localizer={localizer}
             onSelectEvent={onSelectEvent}

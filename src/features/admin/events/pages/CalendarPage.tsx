@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/dialog"
 import AddEditEventForm from '../views/AddEditEventForm'
 import { useToast } from '@/components/ui/use-toast'
+import { Views } from 'react-big-calendar'
 
 const CalendarPage = () => {
     const [events, setEvents] = useState<any[]>([])
@@ -117,37 +118,11 @@ const CalendarPage = () => {
             ]} />
 
             <Heading variant="title2">Calendar</Heading>
-
-            {/* <Calendar
-                localizer={localizer}
-                events={events}
-                startAccessor="start"
-                endAccessor="end"
-                style={{ height: 'calc(100vh - 200px)' }}
-            /> */}
-            {/* <Calendar
-                className='custom-events'
-                defaultDate={defaultDate}
-                defaultView={Views.MONTH}
-                events={events}
-                localizer={localizer}
-                onSelectEvent={handleSelectEvent}
-                onSelectSlot={handleSelectSlot}
-                selectable
-                scrollToTime={scrollToTime}
-                components={{
-                    month: { event: CalendarMonthEvent },
-                    week: { event: CalendarWeekEvent },
-                    day: { event: CalendarDayEvent },
-                    agenda: { event: CalendarAgendaEvent },
-                }}
-            /> */}
             <CustomCalendar
-                // defaultView={Views.MONTH}
                 events={events}
                 onSelectEvent={handleSelectEvent}
                 onSelectSlot={handleSelectSlot}
-            // selectable
+                // selectable
             />
 
             <Dialog open={isModalOpen} onOpenChange={(open: boolean) => setIsModalOpen(open)}>
