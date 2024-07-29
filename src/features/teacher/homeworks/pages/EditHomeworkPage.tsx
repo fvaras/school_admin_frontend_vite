@@ -36,8 +36,8 @@ const EditHomeworkPage = () => {
     return (
         <>
             <Breadcrumbs items={[
-                { text: 'Admin', link: '/admin/dashboard' },
-                { text: 'Homeworks', link: '/admin/homeworks/all-homeworks' },
+                { text: 'Admin', link: '/teacher/dashboard' },
+                { text: 'Homeworks', link: '/teacher/homeworks/all-homeworks' },
                 { text: 'Edit' },
             ]} />
 

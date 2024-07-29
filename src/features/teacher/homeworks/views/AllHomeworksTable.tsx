@@ -1,25 +1,25 @@
 import { ConfirmDialog, DataTable, DataTableRowActions } from "@/components/ui/custom"
 import { ColumnDef } from "@tanstack/react-table"
 import { useEffect, useState } from "react"
-import { IPlanningTableRowDTO } from "../../models/IPlanning"
-import { usePlannings } from "../../hooks"
+import { IHomeworkTableRowDTO } from "../../models/IHomework"
+import { useHomeworks } from "../../hooks"
 import { useNavigate } from "react-router-dom"
 import { useToast } from "@/components/ui/use-toast"
 import { Badge } from "@/components/ui/badge"
 
-const AllPlanningsTable = () => {
+const AllHomeworksTable = () => {
 
-    const [data, setData] = useState<IPlanningTableRowDTO[]>([])
+    const [data, setData] = useState<IHomeworkTableRowDTO[]>([])
     const [showDeleteConfirmDialog, setShowDeleteConfirmDialog] = useState<boolean>(false)
-    const [currentData, setCurrentData] = useState<IPlanningTableRowDTO | null>(null)
+    const [currentData, setCurrentData] = useState<IHomeworkTableRowDTO | null>(null)
 
-    const { loading, loadingModification, getAllPlannings, deletePlanning } = usePlannings()
+    const { loading, loadingModification, getAllHomeworks, deleteHomework } = useHomeworks()
 
     const navigate = useNavigate()
 
     const { toast } = useToast()
 
-    const columns: ColumnDef<IPlanningTableRowDTO>[] = [
+    const columns: ColumnDef<IHomeworkTableRowDTO>[] = [
         // {
         //     id: "select",
         //     header: ({ table }) => <DataTableHeaderSelection table={table} />,
@@ -46,7 +46,6 @@ const AllPlanningsTable = () => {
                 data={row.original}
                 items={[
                     {
-                        // title: 'Edit', onClick: (data) => { navigate(`/admin/users/${data.id}`) }
                         title: 'Edit', onClick: (data) => { navigate(`../${data.id}`, { relative: 'path' }) }
                     },
                     {
@@ -65,15 +64,15 @@ const AllPlanningsTable = () => {
     }, [])
 
     const loadData = async () => {
-        const data = await getAllPlannings()
+        const data = await getAllHomeworks()
         setData(data)
     }
 
     const handleDelete = async (id: string) => {
-        await deletePlanning(id)
+        await deleteHomework(id)
         toast({
             variant: "destructive",
-            description: "Planning deleted successfully",
+            description: "Homework deleted successfully",
         })
         await loadData()
         setShowDeleteConfirmDialog(false)
@@ -85,7 +84,7 @@ const AllPlanningsTable = () => {
                 isOpen={showDeleteConfirmDialog}
                 triggerComponent={null}
                 title="Are you sure?"
-                content="Only plannings without activity can be deleted; however, you can also change its status."
+                content="Only homeworks without activity can be deleted; however, you can also change its status."
                 loading={loadingModification}
                 onConfirm={() => handleDelete(currentData!.id)}
                 onCancel={() => setShowDeleteConfirmDialog(false)}
@@ -103,4 +102,4 @@ const AllPlanningsTable = () => {
     )
 }
 
-export default AllPlanningsTable
+export default AllHomeworksTable

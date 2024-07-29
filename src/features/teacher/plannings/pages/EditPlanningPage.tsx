@@ -36,8 +36,8 @@ const EditPlanningPage = () => {
     return (
         <>
             <Breadcrumbs items={[
-                { text: 'Admin', link: '/admin/dashboard' },
-                { text: 'Plannings', link: '/admin/plannings/all-plannings' },
+                { text: 'Admin', link: '/teacher/dashboard' },
+                { text: 'Plannings', link: '/teacher/plannings/all-plannings' },
                 { text: 'Edit' },
             ]} />
 

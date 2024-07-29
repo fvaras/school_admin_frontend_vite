@@ -5,7 +5,7 @@ const AllPlanningsPage = () => {
     return (
         <>
             <Breadcrumbs items={[
-                { text: 'Admin', link: '/admin/dashboard' },
+                { text: 'Admin', link: '/teacher/dashboard' },
                 { text: 'Plannings' },
             ]} />
 

@@ -17,14 +17,14 @@ const AddHomeworkPage = () => {
         toast({
             description: "Homework created successfully",
         })
-        navigate(`/admin/homeworks/${newUser.id}`)
+        navigate(`/teacher/homeworks/${newUser.id}`)
     }
 
     return (
         <>
             <Breadcrumbs items={[
-                { text: 'Admin', link: '/admin/dashboard' },
-                { text: 'Homeworks', link: '/admin/homeworks/all-homeworks' },
+                { text: 'Admin', link: '/teacher/dashboard' },
+                { text: 'Homeworks', link: '/teacher/homeworks/all-homeworks' },
                 { text: 'New' },
             ]} />
 

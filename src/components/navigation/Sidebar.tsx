@@ -176,6 +176,9 @@ const Sidebar = () => {
 
 
                     {/* TEACHER ROUTES */}
+                    <Link to="/teacher/plannings/timetable" onClick={handleToogleSidebar} className="block w-full text-left px-4 py-2 hover:bg-gray-700">
+                        <Home className="w-5 h-5 inline-block mr-3" /> TimeTable
+                    </Link>
                     <div>
                         <button
                             className="block w-full text-left px-4 py-2 hover:bg-gray-700"
@@ -186,10 +189,10 @@ const Sidebar = () => {
                         </button>
                         {openMenu === 'plannings' && (
                             <div className="block w-full text-left px-8">
-                                <Link to="/admin/plannings/all-plannings" onClick={handleToogleSidebar} className="block w-full px-4 py-2 hover:bg-gray-700">
+                                <Link to="/teacher/plannings/all-plannings" onClick={handleToogleSidebar} className="block w-full px-4 py-2 hover:bg-gray-700">
                                     All Plannings
                                 </Link>
-                                <Link to="/admin/plannings/add-planning" onClick={handleToogleSidebar} className="block w-full px-4 py-2 hover:bg-gray-700">
+                                <Link to="/teacher/plannings/add-planning" onClick={handleToogleSidebar} className="block w-full px-4 py-2 hover:bg-gray-700">
                                     Add Planning
                                 </Link>
                             </div>
@@ -205,10 +208,10 @@ const Sidebar = () => {
                         </button>
                         {openMenu === 'homeworks' && (
                             <div className="block w-full text-left px-8">
-                                <Link to="/admin/homeworks/all-homeworks" onClick={handleToogleSidebar} className="block w-full px-4 py-2 hover:bg-gray-700">
+                                <Link to="/teacher/homeworks/all-homeworks" onClick={handleToogleSidebar} className="block w-full px-4 py-2 hover:bg-gray-700">
                                     All Homeworks
                                 </Link>
-                                <Link to="/admin/homeworks/add-homework" onClick={handleToogleSidebar} className="block w-full px-4 py-2 hover:bg-gray-700">
+                                <Link to="/teacher/homeworks/add-homework" onClick={handleToogleSidebar} className="block w-full px-4 py-2 hover:bg-gray-700">
                                     Add Homework
                                 </Link>
                             </div>

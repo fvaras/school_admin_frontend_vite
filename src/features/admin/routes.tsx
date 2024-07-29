@@ -7,8 +7,6 @@ import { AllGuardiansPage, AddGuardianPage, EditGuardianPage } from "./guardians
 import { AllGradesPage, AddGradePage, EditGradePage } from "./grades/pages";
 import { AddSubjectPage, AllSubjectsPage, EditSubjectPage } from "./subjects/pages";
 import { AddEventPage, AllEventsPage, EditEventPage, CalendarPage } from "./events/pages";
-import { AddPlanningPage, AllPlanningsPage, EditPlanningPage } from "./plannings/pages";
-import { AllHomeworksPage, AddHomeworkPage, EditHomeworkPage } from "./homeworks/pages";
 
 const AdminRoutes = () => {
     return (
@@ -43,17 +41,6 @@ const AdminRoutes = () => {
                 <Route path="events/add-event" element={<AddEventPage />} />
                 <Route path="events/:eventId" element={<EditEventPage />} />
                 <Route path="events/calendar" element={<CalendarPage />} />
-
-
-                {/* TEACHER ROUTES */}
-
-                <Route path="plannings/all-plannings" element={<AllPlanningsPage />} />
-                <Route path="plannings/add-planning" element={<AddPlanningPage />} />
-                <Route path="plannings/:planningId" element={<EditPlanningPage />} />
-
-                <Route path="homeworks/all-homeworks" element={<AllHomeworksPage />} />
-                <Route path="homeworks/add-homework" element={<AddHomeworkPage />} />
-                <Route path="homeworks/:homeworkId" element={<EditHomeworkPage />} />
             </Route>
         </Routes>
     );

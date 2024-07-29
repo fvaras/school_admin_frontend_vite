@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom"
 
 const AuthRoutes = lazy(() => import("./features/auth/routes"));
 const AdminRoutes = lazy(() => import("./features/admin/routes"));
+const TeacherRoutes = lazy(() => import("./features/teacher/routes"));
 
 const MainRoutes = () => {
   return (
@@ -21,6 +22,14 @@ const MainRoutes = () => {
           element={
             <Suspense fallback={<div>Loading Admin Routes...</div>}>
               <AdminRoutes />
+            </Suspense>
+          }
+        />
+        <Route
+          path="teacher/*"
+          element={
+            <Suspense fallback={<div>Loading Teacher Routes...</div>}>
+              <TeacherRoutes />
             </Suspense>
           }
         />
