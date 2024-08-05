@@ -1,3 +1,9 @@
+.custom-events.custom-events__no_toolbar {
+    .rbc-toolbar {
+        display: none;
+    }
+}
+
 .custom-events .rbc-event:not([role="button"]) {
     background: none !important;
 }

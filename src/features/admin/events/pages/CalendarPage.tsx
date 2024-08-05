@@ -40,6 +40,8 @@ const CalendarPage = () => {
                 }
             )
         })
+        console.log('events')
+        console.log(JSON.stringify(_events[events.length-1]))
         setEvents(_events)
     }
 
@@ -118,6 +120,7 @@ const CalendarPage = () => {
             ]} />
 
             <Heading variant="title2">Calendar</Heading>
+            
             <CustomCalendar
                 events={events}
                 onSelectEvent={handleSelectEvent}

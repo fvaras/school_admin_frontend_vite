@@ -9,6 +9,7 @@ import CalendarAgendaEvent from './CalendarAgendaEvent'
 import CalendarDayEvent from './CalendarDayEvent'
 import CalendarMonthEvent from './CalendarMonthEvent'
 import CalendarWeekEvent from './CalendarWeekEvent'
+import { cn } from '@/lib/utils'
 
 const locales = {
     'en-US': enUS,
@@ -32,9 +33,11 @@ interface IProps<TEvent extends object = Event, TResource extends object = objec
         week?: boolean
         work_week?: boolean
     }
-    defaultView?: View | undefined;
-    onSelectEvent?: ((event: TEvent, e: React.SyntheticEvent<HTMLElement>) => void) | undefined;
-    onSelectSlot?: ((slotInfo: SlotInfo) => void) | undefined;
+    defaultView?: View | undefined
+    className?: string | null
+    onSelectEvent?: ((event: TEvent, e: React.SyntheticEvent<HTMLElement>) => void) | undefined
+    onSelectSlot?: ((slotInfo: SlotInfo) => void) | undefined
+    [x: string]: any;
 }
 
 const CustomCalendar = ({
@@ -47,8 +50,11 @@ const CustomCalendar = ({
         work_week: false,
     },
     defaultView = Views.MONTH,
+    className = null,
     onSelectEvent,
-    onSelectSlot }: IProps) => {
+    onSelectSlot,
+    ...props
+}: IProps) => {
     const { defaultDate, scrollToTime } = useMemo(
         () => ({
             defaultDate: new Date(),
@@ -59,7 +65,11 @@ const CustomCalendar = ({
 
     return (
         <Calendar
-            className='custom-events'
+            className={cn(
+                "custom-events",
+                className
+            )}
+            // className='custom-events'
             defaultDate={defaultDate}
             defaultView={defaultView}
             views={{
@@ -82,6 +92,7 @@ const CustomCalendar = ({
                 agenda: { event: CalendarAgendaEvent },
                 work_week: { event: CalendarDayEvent },
             }}
+            {...props}
         />
     )
 }
