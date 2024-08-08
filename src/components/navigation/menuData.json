@@ -1,0 +1,163 @@
+[
+    {
+        "id": "home",
+        "name": "Home",
+        "link": "/auth/signin",
+        "icon": "fa-home"
+    },
+    {
+        "id": "users",
+        "name": "Users",
+        "icon": "fa-user",
+        "subItems": [
+            {
+                "name": "All Users",
+                "link": "/admin/users/all-users"
+            },
+            {
+                "name": "Add User",
+                "link": "/admin/users/add-user"
+            }
+        ]
+    },
+    {
+        "id": "teachers",
+        "name": "Teachers",
+        "icon": "fa-chalkboard-teacher",
+        "subItems": [
+            {
+                "name": "All Teachers",
+                "link": "/admin/teachers/all-teachers"
+            },
+            {
+                "name": "Add Teacher",
+                "link": "/admin/teachers/add-teacher"
+            }
+        ]
+    },
+    {
+        "id": "students",
+        "name": "Students",
+        "icon": "fa-user-graduate",
+        "subItems": [
+            {
+                "name": "All Students",
+                "link": "/admin/students/all-students"
+            },
+            {
+                "name": "Add Student",
+                "link": "/admin/students/add-student"
+            }
+        ]
+    },
+    {
+        "id": "guardians",
+        "name": "Guardians",
+        "icon": "fa-users",
+        "subItems": [
+            {
+                "name": "All Guardians",
+                "link": "/admin/guardians/all-guardians"
+            },
+            {
+                "name": "Add Guardian",
+                "link": "/admin/guardians/add-guardian"
+            }
+        ]
+    },
+    {
+        "id": "grades",
+        "name": "Grades",
+        "icon": "fa-clipboard-list",
+        "subItems": [
+            {
+                "name": "All Grades",
+                "link": "/admin/grades/all-grades"
+            },
+            {
+                "name": "Add Grade",
+                "link": "/admin/grades/add-grade"
+            }
+        ]
+    },
+    {
+        "id": "subjects",
+        "name": "Subjects",
+        "icon": "fa-book",
+        "subItems": [
+            {
+                "name": "All Subjects",
+                "link": "/admin/subjects/all-subjects"
+            },
+            {
+                "name": "Add Subject",
+                "link": "/admin/subjects/add-subject"
+            }
+        ]
+    },
+    {
+        "id": "events",
+        "name": "Events",
+        "icon": "fa-calendar-alt",
+        "subItems": [
+            {
+                "name": "All Events",
+                "link": "/admin/events/all-events"
+            },
+            {
+                "name": "Add Event",
+                "link": "/admin/events/add-event"
+            },
+            {
+                "name": "General Calendar",
+                "link": "/admin/events/calendar"
+            }
+        ]
+    },
+
+    
+    {
+        "id": "timetable",
+        "name": "Time Table",
+        "link": "/teacher/plannings/timetable",
+        "icon": "fa-home"
+    },
+    {
+        "id": "plannings",
+        "name": "Plannings",
+        "icon": "fa-calendar-check",
+        "subItems": [
+            {
+                "name": "All Plannings",
+                "link": "/teacher/plannings/all-plannings"
+            },
+            {
+                "name": "Add Planning",
+                "link": "/teacher/plannings/add-planning"
+            }
+        ]
+    },
+    {
+        "id": "homeworks",
+        "name": "Homeworks",
+        "icon": "fa-book-open",
+        "subItems": [
+            {
+                "name": "All Homeworks",
+                "link": "/teacher/homeworks/all-homeworks"
+            },
+            {
+                "name": "Add Homework",
+                "link": "/teacher/homeworks/add-homework"
+            }
+        ]
+    },
+
+    
+    {
+        "id": "logout",
+        "name": "Logout",
+        "link": "/auth/signin",
+        "icon": "fa-sign-out-alt"
+    }
+]
