@@ -1,5 +1,7 @@
 import { Suspense, lazy } from "react"
 import { Route, Routes } from "react-router-dom"
+import PrivateRoute from "./components/navigation/PrivateRoute";
+import { ADMINISTRATOR_PROFILE_ID, TEACHER_PROFILE_ID } from "./constants/profile";
 
 const AuthRoutes = lazy(() => import("./features/auth/routes"));
 const AdminRoutes = lazy(() => import("./features/admin/routes"));
@@ -21,7 +23,9 @@ const MainRoutes = () => {
           path="admin/*"
           element={
             <Suspense fallback={<div>Loading Admin Routes...</div>}>
-              <AdminRoutes />
+              <PrivateRoute allowedProfiles={[ADMINISTRATOR_PROFILE_ID]}>
+                <AdminRoutes />
+              </PrivateRoute>
             </Suspense>
           }
         />
@@ -29,7 +33,10 @@ const MainRoutes = () => {
           path="teacher/*"
           element={
             <Suspense fallback={<div>Loading Teacher Routes...</div>}>
-              <TeacherRoutes />
+              {/* TODO: Delete ADMINISTRATOR_PROFILE_ID */}
+              <PrivateRoute allowedProfiles={[TEACHER_PROFILE_ID, ADMINISTRATOR_PROFILE_ID]}>
+                <TeacherRoutes />
+              </PrivateRoute>
             </Suspense>
           }
         />
