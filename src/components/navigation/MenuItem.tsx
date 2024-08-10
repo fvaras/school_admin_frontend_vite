@@ -21,12 +21,13 @@ const iconMap: Record<string, typeof Icon> = {
 
 interface IProps {
     item: MenuItemType
-    openMenu: any
-    handleToogleSidebar: () => void
-    handleMenuClick: (menu: any) => void
+    openedMenu: string
+    openedMenuItem: string
+    handleMenuClick: (menu: MenuItemType) => void
+    handleMenuItemClick: (id: string) => void
 }
 
-const MenuItem = ({ item, openMenu, handleToogleSidebar, handleMenuClick }: IProps) => {
+const MenuItem = ({ item, openedMenu, openedMenuItem, handleMenuClick, handleMenuItemClick }: IProps) => {
 
     const { id, name, link, icon, subItems } = item
     // const IconComponent = iconMap[menuItem.icon] || User; // Default to User if icon not found
@@ -34,10 +35,13 @@ const MenuItem = ({ item, openMenu, handleToogleSidebar, handleMenuClick }: IPro
 
     if (link)
         return (
-            <Link to="/auth/signin" onClick={handleToogleSidebar} className="block w-full text-left px-4 py-2 hover:bg-gray-700">
-                {/* <Link to={link} onClick={() => { }} className="block w-full text-left px-4 py-2 hover:bg-gray-700"> */}
+            <Link
+                to={link}
+                className="w-full flex items-center p-2 text-gray-500 transition-colors rounded-md dark:text-light hover:bg-indigo-100 dark:hover:bg-indigo-600"
+                onClick={() => handleMenuItemClick(item.id)}>
                 {/* @ts-ignore */}
-                <IconComponent className='w-5 h-5 inline-block mr-3' /> {name}
+                <IconComponent className='w-5 h-5 inline-block mr-3' />
+                <span className="ml-2 text-sm">{name}</span>
             </Link>
         )
 
@@ -45,23 +49,28 @@ const MenuItem = ({ item, openMenu, handleToogleSidebar, handleMenuClick }: IPro
         <>
             <div>
                 <button
-                    className="block w-full text-left px-4 py-2 hover:bg-gray-700"
-                    onClick={() => handleMenuClick(id)}
-                // onClick={() => () => { }}
+                    className={`w-full flex items-center p-2 text-gray-500 transition-colors rounded-md dark:text-light hover:bg-indigo-100 dark:hover:bg-indigo-600 ${openedMenu === id ? 'bg-indigo-100 dark:bg-indigo-600' : ''}`}
+                    onClick={() => handleMenuClick(item)}
                 >
                     {/* @ts-ignore */}
-                    <IconComponent className='w-5 h-5 inline-block mr-3' /> {name}
-                    {/* {openMenu === 'user' ? <ChevronDown className="w-5 h-5 inline-block ml-3" /> : <ChevronRight className="w-5 h-5 inline-block ml-3" />} */}
-                    {openMenu === id ? <ChevronDown className="w-5 h-5 inline-block ml-3" /> : <ChevronRight className="w-5 h-5 inline-block ml-3" />}
+                    <IconComponent className='w-5 h-5 inline-block mr-3' />
+                    <span className="ml-2 text-sm">{name}</span>
+                    <span className="ml-auto">
+                        {openedMenu === id ? <ChevronDown className="w-5 h-5 inline-block ml-3" /> : <ChevronRight className="w-5 h-5 inline-block ml-3" />}
+                    </span>
                 </button>
-                {openMenu === id && (
+                {openedMenu === id && (
                     <div className="block w-full text-left px-8">
                         {subItems?.map((item: SubItem, key) => (
                             <Link
                                 key={key}
                                 to={item.link}
-                                onClick={handleToogleSidebar}
-                                className="block w-full px-4 py-2 hover:bg-gray-700">
+                                onClick={() => handleMenuItemClick(item.id)}
+                                className={`
+                                    block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700
+                                    ${openedMenuItem === item.id ? 'text-gray-700 dark:text-light' : ''}
+                                `}
+                            >
                                 {item.name}
                             </Link>
                         ))}

@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react';
 import { Command } from '../ui/command';
-import { Link, useNavigate } from 'react-router-dom';
-import { ChevronDown, ChevronRight, Home, LogOut, Settings, User } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 import { ModeToggle } from '../mode-toggle';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
@@ -11,8 +9,9 @@ import menuData from './menuData.json'
 import MenuItem from './MenuItem';
 
 const Sidebar = () => {
-  const [openMenu, setOpenMenu] = useState(null);
-  const navigate = useNavigate();
+  const [openedMenu, setOpenedMenu] = useState<string>('');
+  const [openedMenuItem, setOpenedMenuItem] = useState<string>('');
+  // const navigate = useNavigate();
 
   const [menuItems, setMenuItems] = useState<MenuItemType[]>([]);
 
@@ -25,13 +24,14 @@ const Sidebar = () => {
 
   const isOpen = useAppSelector((state) => state.sidebar.isOpen);
 
-  const handleMenuClick = (menu: any) => {
-    setOpenMenu(openMenu === menu ? null : menu);
-  };
-
-  const handleToogleSidebar = () => {
-    dispatch(toggleSidebar())
+  const handleMenuClick = (menu: MenuItemType) => {
+    setOpenedMenu(openedMenu === menu.id ? '' : menu.id);
   }
+
+  const handleMenuItemClick = (id: string) => {
+    setOpenedMenuItem(id)
+    dispatch(toggleSidebar())
+  };
 
   return (
     <div className={`fixed top-0 left-0 z-40 w-64 h-full transition-transform sm:translate-x-0`}>
@@ -50,9 +50,10 @@ const Sidebar = () => {
               <MenuItem
                 key={key}
                 item={item}
-                openMenu={openMenu}
+                openedMenu={openedMenu}
+                openedMenuItem={openedMenuItem}
                 handleMenuClick={handleMenuClick}
-                handleToogleSidebar={handleToogleSidebar}
+                handleMenuItemClick={handleMenuItemClick}
               />
             )
           })}

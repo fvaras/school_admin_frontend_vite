@@ -6,109 +6,124 @@
         "icon": "fa-home"
     },
     {
-        "id": "users",
+        "id": "admin_users",
         "name": "Users",
         "icon": "fa-user",
         "subItems": [
             {
+                "id": "admin_users_all",
                 "name": "All Users",
                 "link": "/admin/users/all-users"
             },
             {
+                "id": "admin_users_add",
                 "name": "Add User",
                 "link": "/admin/users/add-user"
             }
         ]
     },
     {
-        "id": "teachers",
+        "id": "admin_teachers",
         "name": "Teachers",
         "icon": "fa-chalkboard-teacher",
         "subItems": [
             {
+                "id": "admin_teachers_all",
                 "name": "All Teachers",
                 "link": "/admin/teachers/all-teachers"
             },
             {
+                "id": "admin_teachers_add",
                 "name": "Add Teacher",
                 "link": "/admin/teachers/add-teacher"
             }
         ]
     },
     {
-        "id": "students",
+        "id": "admin_students",
         "name": "Students",
         "icon": "fa-user-graduate",
         "subItems": [
             {
+                "id": "admin_students_all",
                 "name": "All Students",
                 "link": "/admin/students/all-students"
             },
             {
+                "id": "admin_students_add",
                 "name": "Add Student",
                 "link": "/admin/students/add-student"
             }
         ]
     },
     {
-        "id": "guardians",
+        "id": "admin_guardians",
         "name": "Guardians",
         "icon": "fa-users",
         "subItems": [
             {
+                "id": "admin_guardians_all",
                 "name": "All Guardians",
                 "link": "/admin/guardians/all-guardians"
             },
             {
+                "id": "admin_guardians_add",
                 "name": "Add Guardian",
                 "link": "/admin/guardians/add-guardian"
             }
         ]
     },
     {
-        "id": "grades",
+        "id": "admin_grades",
         "name": "Grades",
         "icon": "fa-clipboard-list",
         "subItems": [
             {
+                "id": "admin_grades_all",
                 "name": "All Grades",
                 "link": "/admin/grades/all-grades"
             },
             {
+                "id": "admin_grades_add",
                 "name": "Add Grade",
                 "link": "/admin/grades/add-grade"
             }
         ]
     },
     {
-        "id": "subjects",
+        "id": "admin_subjects",
         "name": "Subjects",
         "icon": "fa-book",
         "subItems": [
             {
+                "id": "admin_subjects_all",
                 "name": "All Subjects",
                 "link": "/admin/subjects/all-subjects"
             },
             {
+                "id": "admin_subjects_add",
                 "name": "Add Subject",
                 "link": "/admin/subjects/add-subject"
             }
         ]
     },
     {
-        "id": "events",
+        "id": "admin_events",
         "name": "Events",
         "icon": "fa-calendar-alt",
         "subItems": [
             {
+                "id": "admin_events_all",
                 "name": "All Events",
                 "link": "/admin/events/all-events"
             },
             {
+                "id": "admin_events_add",
                 "name": "Add Event",
                 "link": "/admin/events/add-event"
             },
             {
+                "id": "General Calendar",
                 "name": "General Calendar",
                 "link": "/admin/events/calendar"
             }
@@ -117,36 +132,40 @@
 
     
     {
-        "id": "timetable",
+        "id": "teacher_timetable",
         "name": "Time Table",
         "link": "/teacher/plannings/timetable",
         "icon": "fa-home"
     },
     {
-        "id": "plannings",
+        "id": "teacher_plannings",
         "name": "Plannings",
         "icon": "fa-calendar-check",
         "subItems": [
             {
+                "id": "teacher_plannings_all",
                 "name": "All Plannings",
                 "link": "/teacher/plannings/all-plannings"
             },
             {
+                "id": "teacher_plannings_add",
                 "name": "Add Planning",
                 "link": "/teacher/plannings/add-planning"
             }
         ]
     },
     {
-        "id": "homeworks",
+        "id": "teacher_homeworks",
         "name": "Homeworks",
         "icon": "fa-book-open",
         "subItems": [
             {
+                "id": "teacher_homeworks_all",
                 "name": "All Homeworks",
                 "link": "/teacher/homeworks/all-homeworks"
             },
             {
+                "id": "teacher_homeworks_add",
                 "name": "Add Homework",
                 "link": "/teacher/homeworks/add-homework"
             }
