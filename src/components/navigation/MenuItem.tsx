@@ -1,4 +1,4 @@
-import { Home, User, Settings, LogOut, Icon, ChevronDown, ChevronRight } from 'lucide-react';
+import { Home, User, Settings, LogOut, Icon, ChevronDown, ChevronRight, Calendar, CalendarCheck, CalendarCheck2, CalendarClock, LucideCalendarClock } from 'lucide-react';
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { MenuItemType, SubItem } from './types';
@@ -12,8 +12,8 @@ const iconMap: Record<string, typeof Icon> = {
     'fa-users': User,
     'fa-clipboard-list': User, // Change this to the correct icon if available
     'fa-book': User, // Change this to the correct icon if available
-    'fa-calendar-alt': User, // Change this to the correct icon if available
-    'fa-calendar-check': User, // Change this to the correct icon if available
+    'fa-calendar-alt': CalendarClock, // Change this to the correct icon if available
+    'fa-calendar-check': CalendarCheck, // Change this to the correct icon if available
     'fa-book-open': User, // Change this to the correct icon if available
     'fa-cog': Settings,
     'fa-sign-out-alt': LogOut,

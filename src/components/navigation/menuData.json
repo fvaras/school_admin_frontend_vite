@@ -172,6 +172,44 @@
         ]
     },
 
+    {
+        "id": "student_timetable",
+        "name": "Time Table",
+        "link": "/student/plannings/timetable",
+        "icon": "fa-calendar-check"
+    },
+    {
+        "id": "student_homeworks",
+        "name": "Homeworks",
+        "icon": "fa-book-open",
+        "link": "/student/homeworks/all-homeworks"
+    },
+    {
+        "id": "guardian_plannings",
+        "name": "Plannings",
+        "icon": "fa-book-open",
+        "link": "/student/plannings/all-plannings"
+    },
+
+    {
+        "id": "guardian_timetable",
+        "name": "Time Table",
+        "link": "/guardian/plannings/timetable",
+        "icon": "fa-calendar-alt"
+    },
+    {
+        "id": "guardian_homeworks",
+        "name": "Homeworks",
+        "icon": "fa-book-open",
+        "link": "/guardian/homeworks/all-homeworks"
+    },
+    {
+        "id": "guardian_plannings",
+        "name": "Plannings",
+        "icon": "fa-book-open",
+        "link": "/guardian/plannings/all-plannings"
+    },
+
     
     {
         "id": "logout",

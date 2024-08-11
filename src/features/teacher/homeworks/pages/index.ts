@@ -1,11 +1,9 @@
-import AddHomeworkPage from "./AddHomeworkPage";
-import AllHomeworksPage from "./AllHomeworksPage";
-import EditHomeworkPage from "./EditHomeworkPage";
-import TimeTablePage from "./TimeTablePage";
+import AddHomeworkPage from "./AddHomeworkPage"
+import AllHomeworksPage from "./AllHomeworksPage"
+import EditHomeworkPage from "./EditHomeworkPage"
 
 export {
     AddHomeworkPage,
     EditHomeworkPage,
-    AllHomeworksPage,
-    TimeTablePage
+    AllHomeworksPage
 }

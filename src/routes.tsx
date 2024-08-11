@@ -1,11 +1,13 @@
 import { Suspense, lazy } from "react"
 import { Navigate, Route, Routes } from "react-router-dom"
 import PrivateRoute from "./components/navigation/PrivateRoute";
-import { ADMINISTRATOR_PROFILE_ID, TEACHER_PROFILE_ID } from "./constants/profile";
+import { ADMINISTRATOR_PROFILE_ID, GUARDIAN_PROFILE_ID, STUDENT_PROFILE_ID, TEACHER_PROFILE_ID } from "./constants/profile";
 
 const AuthRoutes = lazy(() => import("./features/auth/routes"));
 const AdminRoutes = lazy(() => import("./features/admin/routes"));
 const TeacherRoutes = lazy(() => import("./features/teacher/routes"));
+const StudentRoutes = lazy(() => import("./features/student/routes"));
+const GuardianRoutes = lazy(() => import("./features/guardian/routes"));
 
 const MainRoutes = () => {
   return (
@@ -36,6 +38,28 @@ const MainRoutes = () => {
             {/* TODO: Delete ADMINISTRATOR_PROFILE_ID */}
             <PrivateRoute allowedProfiles={[TEACHER_PROFILE_ID, ADMINISTRATOR_PROFILE_ID]}>
               <TeacherRoutes />
+            </PrivateRoute>
+          </Suspense>
+        }
+      />
+      <Route
+        path="student/*"
+        element={
+          <Suspense fallback={<div>Loading Student Routes...</div>}>
+            {/* TODO: Delete ADMINISTRATOR_PROFILE_ID */}
+            <PrivateRoute allowedProfiles={[STUDENT_PROFILE_ID, ADMINISTRATOR_PROFILE_ID]}>
+              <StudentRoutes />
+            </PrivateRoute>
+          </Suspense>
+        }
+      />
+      <Route
+        path="guardian/*"
+        element={
+          <Suspense fallback={<div>Loading Student Routes...</div>}>
+            {/* TODO: Delete ADMINISTRATOR_PROFILE_ID */}
+            <PrivateRoute allowedProfiles={[GUARDIAN_PROFILE_ID, ADMINISTRATOR_PROFILE_ID]}>
+              <GuardianRoutes />
             </PrivateRoute>
           </Suspense>
         }
