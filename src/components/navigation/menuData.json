@@ -3,12 +3,18 @@
         "id": "home",
         "name": "Home",
         "link": "/auth/signin",
-        "icon": "fa-home"
+        "icon": "fa-home",
+        "profiles": [
+            "ccd8f71e-b6a6-4b04-84cf-ee3bcea3999c"
+        ]
     },
     {
         "id": "admin_users",
         "name": "Users",
         "icon": "fa-user",
+        "profiles": [
+            "ccd8f71e-b6a6-4b04-84cf-ee3bcea3999c"
+        ],
         "subItems": [
             {
                 "id": "admin_users_all",
@@ -26,6 +32,9 @@
         "id": "admin_teachers",
         "name": "Teachers",
         "icon": "fa-chalkboard-teacher",
+        "profiles": [
+            "ccd8f71e-b6a6-4b04-84cf-ee3bcea3999c"
+        ],
         "subItems": [
             {
                 "id": "admin_teachers_all",
@@ -43,6 +52,9 @@
         "id": "admin_students",
         "name": "Students",
         "icon": "fa-user-graduate",
+        "profiles": [
+            "ccd8f71e-b6a6-4b04-84cf-ee3bcea3999c"
+        ],
         "subItems": [
             {
                 "id": "admin_students_all",
@@ -60,6 +72,9 @@
         "id": "admin_guardians",
         "name": "Guardians",
         "icon": "fa-users",
+        "profiles": [
+            "ccd8f71e-b6a6-4b04-84cf-ee3bcea3999c"
+        ],
         "subItems": [
             {
                 "id": "admin_guardians_all",
@@ -77,6 +92,9 @@
         "id": "admin_grades",
         "name": "Grades",
         "icon": "fa-clipboard-list",
+        "profiles": [
+            "ccd8f71e-b6a6-4b04-84cf-ee3bcea3999c"
+        ],
         "subItems": [
             {
                 "id": "admin_grades_all",
@@ -94,6 +112,9 @@
         "id": "admin_subjects",
         "name": "Subjects",
         "icon": "fa-book",
+        "profiles": [
+            "ccd8f71e-b6a6-4b04-84cf-ee3bcea3999c"
+        ],
         "subItems": [
             {
                 "id": "admin_subjects_all",
@@ -111,6 +132,9 @@
         "id": "admin_events",
         "name": "Events",
         "icon": "fa-calendar-alt",
+        "profiles": [
+            "ccd8f71e-b6a6-4b04-84cf-ee3bcea3999c"
+        ],
         "subItems": [
             {
                 "id": "admin_events_all",
@@ -129,18 +153,22 @@
             }
         ]
     },
-
-    
     {
         "id": "teacher_timetable",
         "name": "Time Table",
         "link": "/teacher/plannings/timetable",
+        "profiles": [
+            "398d52f1-0d94-40f9-8ef2-bc801c714490"
+        ],
         "icon": "fa-home"
     },
     {
         "id": "teacher_plannings",
         "name": "Plannings",
         "icon": "fa-calendar-check",
+        "profiles": [
+            "398d52f1-0d94-40f9-8ef2-bc801c714490"
+        ],
         "subItems": [
             {
                 "id": "teacher_plannings_all",
@@ -158,6 +186,9 @@
         "id": "teacher_homeworks",
         "name": "Homeworks",
         "icon": "fa-book-open",
+        "profiles": [
+            "398d52f1-0d94-40f9-8ef2-bc801c714490"
+        ],
         "subItems": [
             {
                 "id": "teacher_homeworks_all",
@@ -171,50 +202,65 @@
             }
         ]
     },
-
     {
         "id": "student_timetable",
         "name": "Time Table",
         "link": "/student/plannings/timetable",
-        "icon": "fa-calendar-check"
+        "icon": "fa-calendar-check",
+        "profiles": [
+            "521c2799-f386-4ea2-ba2f-64a81f86fd9d"
+        ]
     },
     {
         "id": "student_homeworks",
         "name": "Homeworks",
         "icon": "fa-book-open",
-        "link": "/student/homeworks/all-homeworks"
+        "link": "/student/homeworks/all-homeworks",
+        "profiles": [
+            "521c2799-f386-4ea2-ba2f-64a81f86fd9d"
+        ]
     },
     {
         "id": "guardian_plannings",
         "name": "Plannings",
         "icon": "fa-book-open",
-        "link": "/student/plannings/all-plannings"
+        "link": "/student/plannings/all-plannings",
+        "profiles": [
+            "521c2799-f386-4ea2-ba2f-64a81f86fd9d"
+        ]
     },
-
     {
         "id": "guardian_timetable",
         "name": "Time Table",
         "link": "/guardian/plannings/timetable",
-        "icon": "fa-calendar-alt"
+        "icon": "fa-calendar-alt",
+        "profiles": [
+            "9282b9d9-4c59-41c9-859a-58d37551fcae"
+        ]
     },
     {
         "id": "guardian_homeworks",
         "name": "Homeworks",
         "icon": "fa-book-open",
-        "link": "/guardian/homeworks/all-homeworks"
+        "link": "/guardian/homeworks/all-homeworks",
+        "profiles": [
+            "9282b9d9-4c59-41c9-859a-58d37551fcae"
+        ]
     },
     {
         "id": "guardian_plannings",
         "name": "Plannings",
         "icon": "fa-book-open",
-        "link": "/guardian/plannings/all-plannings"
+        "link": "/guardian/plannings/all-plannings",
+        "profiles": [
+            "9282b9d9-4c59-41c9-859a-58d37551fcae"
+        ]
     },
-
-    
     {
         "id": "logout",
         "name": "Logout",
         "link": "/auth/signin",
-        "icon": "fa-sign-out-alt"
+        "icon": "fa-sign-out-alt",
+        "profiles": []
     }
 ]

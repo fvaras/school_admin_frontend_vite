@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { AuthInfoDTO } from '../../../models/User';
 import axios from '@/lib/axios';
+import { ADMINISTRATOR_PROFILE_ID, GUARDIAN_PROFILE_ID, STUDENT_PROFILE_ID, TEACHER_PROFILE_ID } from '@/constants/profile';
 
 export const useAuth = () => {
     const [loading, setLoading] = useState(false);
@@ -19,16 +20,16 @@ export const useAuth = () => {
             const role = user.profileId;
 
             switch (role) {
-                case "ccd8f71e-b6a6-4b04-84cf-ee3bcea3999c": //'Admin':
+                case ADMINISTRATOR_PROFILE_ID:
                     navigate('/admin/users/all-users');
                     break;
-                case "398d52f1-0d94-40f9-8ef2-bc801c714490": //'Teacher':
+                case TEACHER_PROFILE_ID:
                     navigate('/teacher/weekly-schedule');
                     break;
-                case "521c2799-f386-4ea2-ba2f-64a81f86fd9d": //'Student':
+                case STUDENT_PROFILE_ID:
                     navigate('/student/weekly-schedule');
                     break;
-                case "9282b9d9-4c59-41c9-859a-58d37551fcae": //'Guardian':
+                case GUARDIAN_PROFILE_ID:
                     navigate('/guardian/weekly-schedule');
                     break;
                 default:
@@ -42,9 +43,18 @@ export const useAuth = () => {
         }
     }
 
+    const getProfilesArray = (): { value: string; label: string }[] =>
+        [
+            { value: ADMINISTRATOR_PROFILE_ID, label: "Administrator" },
+            { value: TEACHER_PROFILE_ID, label: "Teacher" },
+            { value: STUDENT_PROFILE_ID, label: "Student" },
+            { value: GUARDIAN_PROFILE_ID, label: "Guardian" },
+        ]
+
     return {
         login,
         loading,
         error,
+        getProfilesArray
     };
 };

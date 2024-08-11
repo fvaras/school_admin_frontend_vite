@@ -1,29 +1,59 @@
-import { useForm } from 'react-hook-form';
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
+import { z } from "zod"
+import {
+  Form,
+  FormField,
+} from "@/components/ui/form"
+import { FormInputField, FormRadioGroupField } from "@/components/ui/custom/forms"
 import { useTranslation } from 'react-i18next';
 // import { RadioGroup } from '@radix-ui/react-radio-group';
 import { Alert } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import '../../../styles/auth.scss';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import { useNavigate } from 'react-router-dom';
 import { logIn } from '../../../store/slices/authSlice';
 import { useEffect, useState } from 'react';
 import { UserInfoDTO } from '../../../models/User';
+import { ADMINISTRATOR_PROFILE_ID, GUARDIAN_PROFILE_ID, STUDENT_PROFILE_ID, TEACHER_PROFILE_ID } from '@/constants/profile';
+import { useAuth } from "../hooks/useAuth"
+
+const formSchema = z.object({
+  profile: z.string().min(2, { message: "Required" }),
+  username: z.string().min(2, { message: "Required" }),
+  password: z.string().min(2, { message: "Required" }),
+})
 
 const Signin = () => {
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false)
+  const [profiles, setProfiles] = useState<{ value: string; label: string }[]>([])
   const { t } = useTranslation();
   const { register, handleSubmit, formState: { errors } } = useForm();
   const { loading, error, user } = useAppSelector(store => store.auth)
+
+  const { getProfilesArray } = useAuth()
 
   const dispatch = useAppDispatch();
 
   const navigate = useNavigate();
 
-  const onSubmit = async (data: any) => {
-    const { username, password, } = data;
-    await dispatch(logIn(username, password, 'ccd8f71e-b6a6-4b04-84cf-ee3bcea3999c'));
+  useEffect(() => {
+    setProfiles(getProfilesArray())
+  }, [])
+
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      profile: '',
+      username: '',
+      password: '',
+    },
+  })
+
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    const { username, password, profile } = values
+    await dispatch(logIn(username, password, profile));
     setIsSubmitted(true)
   };
 
@@ -34,17 +64,17 @@ const Signin = () => {
 
   const handleLoggedUser = (user: UserInfoDTO) => {
     switch (user.profileId) {
-      case "ccd8f71e-b6a6-4b04-84cf-ee3bcea3999c": //'Admin':
+      case ADMINISTRATOR_PROFILE_ID:
         navigate('/admin/users/all-users');
         break;
-      case "398d52f1-0d94-40f9-8ef2-bc801c714490": //'Teacher':
-        navigate('/teacher/weekly-schedule');
+      case TEACHER_PROFILE_ID:
+        navigate('/teacher/plannings/all-plannings');
         break;
-      case "521c2799-f386-4ea2-ba2f-64a81f86fd9d": //'Student':
-        navigate('/student/weekly-schedule');
+      case STUDENT_PROFILE_ID:
+        navigate('/student/homeworks/all-homeworks');
         break;
-      case "9282b9d9-4c59-41c9-859a-58d37551fcae": //'Guardian':
-        navigate('/guardian/weekly-schedule');
+      case GUARDIAN_PROFILE_ID:
+        navigate('/guardian/homeworks/all-homeworks');
         break;
       default:
         navigate('/authentication/signin');
@@ -54,6 +84,9 @@ const Signin = () => {
   return (
     <div className="auth-container">
       <div className="row">
+
+        {/* <JsonDataView data={profiles} /> */}
+
         <div className="col-sm-6 px-0 d-none d-sm-block">
           <div className="left-img" style={{ backgroundImage: 'url(assets/images/pages/logo 2.webp)' }}></div>
         </div>
@@ -62,46 +95,64 @@ const Signin = () => {
             <div className="auth-wrapper">
               <h2 className="welcome-msg">{t('LOGIN.TITLE')}</h2>
               <h2 className="login-title">{t('LOGIN.SIGNIN')}</h2>
-              <form onSubmit={handleSubmit(onSubmit)}>
-                <div className="row">
-                  <div className="col-12 mb-4">
-                    <p className="">{t('LOGIN.FORM.PROFILE')}</p>
-                    {/* <RadioGroup aria-label="Select a profile" {...register('profileId', { required: true })}>
-                      // Add Radio buttons here
-                    </RadioGroup>
-                    {errors.profileId && <Alert variant="destructive">{t('LOGIN.ERRORS.PROFILE')}</Alert>} */}
+              <Form {...form}>
+                <form onSubmit={form.handleSubmit(onSubmit)}>
+                  <div className="row">
+                    <div className="col-12 mb-4">
+                      <FormField
+                        control={form.control}
+                        name="profile"
+                        render={({ field }) => (
+                          <FormRadioGroupField
+                            field={field}
+                            label={t('LOGIN.FORM.PROFILE')}
+                            placeholder=""
+                            options={profiles}
+                          />
+                        )}
+                      />
+                    </div>
+                    <div className="col-12 mb-2">
+                      <FormField
+                        control={form.control}
+                        name="username"
+                        render={({ field }) => (
+                          <FormInputField
+                            field={field}
+                            label={t('LOGIN.FORM.USERNAME')}
+                            placeholder=""
+                          />
+                        )}
+                      />
+                    </div>
+                    <div className="col-12 mb-2">
+                      <FormField
+                        control={form.control}
+                        name="password"
+                        render={({ field }) => (
+                          <FormInputField
+                            field={field}
+                            label={t('LOGIN.FORM.PASSWORD')}
+                            type="password"
+                          />
+                        )}
+                      />
+                    </div>
                   </div>
-                  <div className="col-12 mb-2">
-                    <Input
-                      placeholder={t('LOGIN.FORM.USERNAME')}
-                      {...register('username', { required: true })}
-                    />
-                    {errors.username && <Alert variant="destructive">{t('LOGIN.ERRORS.USERNAME')}</Alert>}
+                  <div className="d-flex justify-content-between align-items-center mb-5">
+                    <div className="form-check"></div>
+                    <a className="txt1" href="/authentication/forgot-password">{t('LOGIN.FORGOT_PASSWORD')}</a>
                   </div>
-                </div>
-                <div className="row">
-                  <div className="col-12 mb-2">
-                    <Input
-                      placeholder={t('LOGIN.FORM.PASSWORD')}
-                      type="password"
-                      {...register('password', { required: true })}
-                    />
-                    {errors.password && <Alert variant="destructive">{t('LOGIN.ERRORS.PASSWORD')}</Alert>}
+                  {error && <Alert variant="destructive" className="mt-3 mb-0">{error}</Alert>}
+                  <div className="container-auth-form-btn">
+                    <div style={{ textAlign: 'center' }}>
+                      <Button type="submit" disabled={loading}>
+                        {loading ? 'Loading...' : 'Login'}
+                      </Button>
+                    </div>
                   </div>
-                </div>
-                <div className="d-flex justify-content-between align-items-center mb-5">
-                  <div className="form-check"></div>
-                  <a className="txt1" href="/authentication/forgot-password">{t('LOGIN.FORGOT_PASSWORD')}</a>
-                </div>
-                {error && <Alert variant="destructive" className="mt-3 mb-0">{error}</Alert>}
-                <div className="container-auth-form-btn">
-                  <div style={{ textAlign: 'center' }}>
-                    <Button type="submit" disabled={loading}>
-                      {loading ? 'Loading...' : 'Login'}
-                    </Button>
-                  </div>
-                </div>
-              </form>
+                </form>
+              </Form>
             </div>
           </div>
         </div>

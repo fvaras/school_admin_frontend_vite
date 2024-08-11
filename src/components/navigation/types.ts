@@ -10,4 +10,5 @@ export interface MenuItemType {
     link?: string;
     icon: string;
     subItems?: SubItem[];
+    profiles: string[]
 }

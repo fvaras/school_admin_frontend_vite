@@ -35,8 +35,7 @@ const MainRoutes = () => {
         path="teacher/*"
         element={
           <Suspense fallback={<div>Loading Teacher Routes...</div>}>
-            {/* TODO: Delete ADMINISTRATOR_PROFILE_ID */}
-            <PrivateRoute allowedProfiles={[TEACHER_PROFILE_ID, ADMINISTRATOR_PROFILE_ID]}>
+            <PrivateRoute allowedProfiles={[TEACHER_PROFILE_ID]}>
               <TeacherRoutes />
             </PrivateRoute>
           </Suspense>
@@ -46,8 +45,7 @@ const MainRoutes = () => {
         path="student/*"
         element={
           <Suspense fallback={<div>Loading Student Routes...</div>}>
-            {/* TODO: Delete ADMINISTRATOR_PROFILE_ID */}
-            <PrivateRoute allowedProfiles={[STUDENT_PROFILE_ID, ADMINISTRATOR_PROFILE_ID]}>
+            <PrivateRoute allowedProfiles={[STUDENT_PROFILE_ID]}>
               <StudentRoutes />
             </PrivateRoute>
           </Suspense>
@@ -57,8 +55,7 @@ const MainRoutes = () => {
         path="guardian/*"
         element={
           <Suspense fallback={<div>Loading Student Routes...</div>}>
-            {/* TODO: Delete ADMINISTRATOR_PROFILE_ID */}
-            <PrivateRoute allowedProfiles={[GUARDIAN_PROFILE_ID, ADMINISTRATOR_PROFILE_ID]}>
+            <PrivateRoute allowedProfiles={[GUARDIAN_PROFILE_ID]}>
               <GuardianRoutes />
             </PrivateRoute>
           </Suspense>

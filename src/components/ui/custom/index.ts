@@ -2,6 +2,7 @@ import BigCalendar from "./bigcalendar/BigCalendar";
 import Breadcrumbs from "./breadcrums/Breadcrumbs";
 import ButtonLoading from "./buttons/ButtonLoading";
 import Combobox from "./combobox/Combobox";
+import JsonDataView from "./debug/JsonDataView";
 import ConfirmDialog from "./dialogs/ConfirmDialog";
 import ContainerDialog from "./dialogs/ContainerDialog";
 import ResponsiveDrawerDialog from "./dialogs/ResponsiveDrawerDialog";
@@ -38,5 +39,7 @@ export {
     CalendarAgendaEvent,
 
     BigCalendar,
-    Combobox
+    Combobox,
+
+    JsonDataView
 }

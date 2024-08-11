@@ -15,9 +15,11 @@ const Sidebar = () => {
 
   const [menuItems, setMenuItems] = useState<MenuItemType[]>([]);
 
+  const { user } = useAppSelector((state) => state.auth)
+
   useEffect(() => {
     // Set the menu items directly from the JSON data
-    setMenuItems(menuData);
+    setMenuItems(menuData.filter(p => p.profiles.includes(user?.profileId!) && p.id.toLowerCase() !== 'logout'));
   }, []);
 
   const dispatch = useAppDispatch()
