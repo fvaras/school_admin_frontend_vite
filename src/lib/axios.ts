@@ -18,12 +18,12 @@ export const axiosAuthInstance = axios.create({
         // 'Access-Control-Allow-Origin': '*',
         'Content-Type': 'application/json',
         "custom": "agh",
-        'Authorization': localStorage.getItem('tkn') as string
+        'Authorization': sessionStorage.getItem('tkn') as string
     },
 });
 
 export const createAuthHeaders = (): { Authorization: string } => {
-    const token = localStorage.getItem('tkn')
+    const token = sessionStorage.getItem('tkn')
     return {
         Authorization: token as string,
     }

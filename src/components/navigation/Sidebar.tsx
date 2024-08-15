@@ -7,6 +7,7 @@ import { toggleSidebar } from '../../store/slices/sidebarSlice';
 import { MenuItemType } from './types'
 import menuData from './menuData.json'
 import MenuItem from './MenuItem';
+import { ADMINISTRATOR_PROFILE_ID, GUARDIAN_PROFILE_ID, STUDENT_PROFILE_ID, TEACHER_PROFILE_ID } from '@/constants/profile';
 
 const Sidebar = () => {
   const [openedMenu, setOpenedMenu] = useState<string>('');
@@ -19,7 +20,7 @@ const Sidebar = () => {
 
   useEffect(() => {
     // Set the menu items directly from the JSON data
-    setMenuItems(menuData.filter(p => p.profiles.includes(user?.profileId!) && p.id.toLowerCase() !== 'logout'));
+    setMenuItems(menuData.filter(p => p.profiles.includes(user?.profileId!) || p.id.toLowerCase() === 'logout'));
   }, []);
 
   const dispatch = useAppDispatch()
@@ -35,15 +36,31 @@ const Sidebar = () => {
     dispatch(toggleSidebar())
   };
 
+  const getProfileNameById = (profileId: string): string => {
+    switch (profileId) {
+      case ADMINISTRATOR_PROFILE_ID: return 'Administrator';
+      case TEACHER_PROFILE_ID: return 'Teacher';
+      case STUDENT_PROFILE_ID: return 'Student';
+      case GUARDIAN_PROFILE_ID: return 'Guardian';
+      default: return '';
+    }
+  }
+
   return (
     <div className={`fixed top-0 left-0 z-40 w-64 h-full transition-transform sm:translate-x-0`}>
       <nav className={`h-full text-white dark:bg-gray-900 flex flex-col ${isOpen ? 'block' : 'hidden'} md:block`}>
         <div className="px-4 py-6 flex items-center justify-between">
           <Avatar>
             <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-            <AvatarFallback>CN</AvatarFallback>
+            <AvatarFallback>{user?.firstName?.substring(0, 1).toUpperCase()} {user?.lastName?.substring(0, 1).toUpperCase()}</AvatarFallback>
           </Avatar>
+          <div className='text-black dark:text-white'>
+            {user?.firstName} {user?.lastName}
+          </div>
           <ModeToggle />
+        </div>
+        <div className='text-black dark:text-white text-sm mb-5'>
+          {getProfileNameById(user?.profileId!)}
         </div>
         <Command className="flex-grow">
 

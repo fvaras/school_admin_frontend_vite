@@ -8,7 +8,7 @@ export const useGrades = () => {
 
     const getGradesForListByTeacher = async (): Promise<LabelValueDTO<string>[]> => {
         // setLoading(true)
-        const { data } = await axios.get<LabelValueDTO<string>[]>('api/grade/forListByTeacher')
+        const { data } = await axios.get<LabelValueDTO<string>[]>('api/teacher/grade/forList')
         // setLoading(false)
         return data
     }
@@ -16,6 +16,6 @@ export const useGrades = () => {
     return {
         loading,
         error,
-        getGradesForListByTeacher
+        getGradesForListByTeacher // TODO: Maybe wil be necessary to remove this function
     }
 }

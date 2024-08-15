@@ -13,11 +13,11 @@ const AddPlanningPage = () => {
     const navigate = useNavigate()
 
     const handleSubmit = async (planningForCreation: IPlanningForCreationDTO) => {
-        const newUser = await createPlanning(planningForCreation)
+        const newPlanningId = await createPlanning(planningForCreation)
         toast({
             description: "Planning created successfully",
         })
-        navigate(`/teacher/plannings/${newUser.id}`)
+        navigate(`/teacher/plannings/${newPlanningId}`)
     }
 
     return (

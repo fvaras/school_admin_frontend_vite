@@ -12,7 +12,7 @@ import { ButtonLoading, Heading } from "@/components/ui/custom"
 import { IPlanningDTO, IPlanningForCreationDTO, IPlanningForUpdateDTO } from "../../models/IPlanning"
 import { useGrades, useSubjects } from "../../hooks"
 import { useEffect, useState } from "react"
-import { LabelValueDTO } from "@/models/TLabelValueDTO"
+import { LabelValueDTO, PKFKPair } from "@/models/TLabelValueDTO"
 
 const formSchema = z.object({
     gradeId: z.string(),
@@ -36,11 +36,9 @@ interface IProps {
 
 const AddEditPlanningForm = ({ planning, mode, loading, submit }: IProps) => {
 
-    const [subjectList, setSubjectsList] = useState<LabelValueDTO<string>[] | null>([])
-    const [gradesList, setGradesList] = useState<LabelValueDTO<string>[] | null>([])
+    const [subjectsGradesList, setSubjectsGradesList] = useState<LabelValueDTO<string>[] | null>([])
 
-    const { getByGradeAndTeacherForList } = useSubjects()
-    const { getGradesForListByTeacher } = useGrades()
+    const { getWithGradeByTeacherForList } = useSubjects()
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -64,13 +62,15 @@ const AddEditPlanningForm = ({ planning, mode, loading, submit }: IProps) => {
     }, [mode])
 
     const loadData = async () => {
-        const _gradeList = await getGradesForListByTeacher()
-        setGradesList(_gradeList)
-    }
-
-    const handleGradeChange = async (gradeId: string) => {
-        const _subjectList = await getByGradeAndTeacherForList(gradeId)
-        setSubjectsList(_subjectList)
+        const _listSubjectsGrades = await getWithGradeByTeacherForList()
+        const _list = _listSubjectsGrades.map<LabelValueDTO<string>>((subjectPKGradeFK: PKFKPair<string, string>) => (
+            {
+                label: `${subjectPKGradeFK.labelValuePK.label} / ${subjectPKGradeFK.labelValueFK.label}`,
+                value: subjectPKGradeFK.labelValuePK.value,
+                data: subjectPKGradeFK
+            }
+        ));
+        setSubjectsGradesList(_list)
     }
 
     function onSubmit(values: z.infer<typeof formSchema>) {
@@ -115,35 +115,21 @@ const AddEditPlanningForm = ({ planning, mode, loading, submit }: IProps) => {
                     <Heading variant="subtitle2">User Info</Heading>
                     <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 mb-4 -mx-2">
 
-                        {gradesList &&
-                            <FormField
-                                control={form.control}
-                                name="gradeId"
-                                render={({ field }) => (
-                                    <FormComboboxField
-                                        field={field}
-                                        label="Grade"
-                                        placeholder="Grade"
-                                        options={gradesList}
-                                        onChange={async (value) => await handleGradeChange(value as string)}
-                                    />
-                                )}
-                            />
-                        }
-
-                        {subjectList &&
-                            <FormField
-                                control={form.control}
-                                name="subjectId"
-                                render={({ field }) => (
-                                    <FormComboboxField
-                                        field={field}
-                                        label="Subject"
-                                        placeholder="Subject"
-                                        options={subjectList}
-                                    />
-                                )}
-                            />
+                        {subjectsGradesList &&
+                            <div className="col-start-1 col-end-3">
+                                <FormField
+                                    control={form.control}
+                                    name="subjectId"
+                                    render={({ field }) => (
+                                        <FormComboboxField
+                                            field={field}
+                                            label="Subject / Grade"
+                                            placeholder="Subject / Grade"
+                                            options={subjectsGradesList}
+                                        />
+                                    )}
+                                />
+                            </div>
                         }
 
                         <div className="col-start-1 col-end-3">

@@ -10,27 +10,27 @@ export const usePlannings = () => {
 
     // const { t } = useTranslation();
 
-    const getAllPlannings = async (): Promise<IPlanningTableRowDTO[]> => {
+    const getAllTeacherPlannings = async (subjectId: string): Promise<IPlanningTableRowDTO[]> => {
         setLoading(true)
-        const { data } = await axios.get<IPlanningTableRowDTO[]>('api/planning')
+        const { data } = await axios.get<IPlanningTableRowDTO[]>(`api/teacher/planning/bySubject/${subjectId}`)
         setLoading(false)
         return data
     }
 
-    const getPlanning = async (userId: string): Promise<IPlanningDTO> => {
+    const getPlanning = async (planningId: string): Promise<IPlanningDTO> => {
         setLoading(true)
-        const { data } = await axios.get<IPlanningDTO>(`api/planning/${userId}`)
+        const { data } = await axios.get<IPlanningDTO>(`api/teacher/planning/${planningId}`)
         setLoading(false)
         return data
     }
 
-    const createPlanning = async (user: IPlanningForCreationDTO): Promise<IPlanningDTO> => {
+    const createPlanning = async (user: IPlanningForCreationDTO): Promise<string> => {
         try {
             setLoadingModification(true)
-            const { data } = await axios.post<IPlanningDTO>(`api/planning/`, user)
+            const { data } = await axios.post<string>(`api/teacher/planning/`, user)
             return data
         } catch (err) {
-            return {} as IPlanningDTO
+            return {} as string
         }
         finally {
             setLoadingModification(false)
@@ -40,7 +40,7 @@ export const usePlannings = () => {
     const updatePlanning = async (id: string, user: IPlanningForUpdateDTO): Promise<void> => {
         try {
             setLoadingModification(true)
-            await axios.put<IPlanningForUpdateDTO>(`api/planning/${id}`, user)
+            await axios.put<IPlanningForUpdateDTO>(`api/teacher/planning/${id}`, user)
         } catch (err) {
         }
         finally {
@@ -51,7 +51,7 @@ export const usePlannings = () => {
     const deletePlanning = async (id: string): Promise<void> => {
         try {
             setLoadingModification(true)
-            await axios.delete(`api/planning/${id}`)
+            await axios.delete(`api/teacher/planning/${id}`)
         } catch (err) {
         }
         finally {
@@ -61,14 +61,14 @@ export const usePlannings = () => {
 
     const getTeachersId = async (id: string): Promise<string[]> => {
         // setLoading(true)
-        const { data } = await axios.get<string[]>(`api/planning/teachersId/${id}`)
+        const { data } = await axios.get<string[]>(`api/teacher/planning/teachersId/${id}`)
         // setLoading(false)
         return data
     }
 
     const getPlanningsForList = async (): Promise<LabelValueDTO<string>[]> => {
         // setLoading(true)
-        const { data } = await axios.get<LabelValueDTO<string>[]>('api/planning/forList')
+        const { data } = await axios.get<LabelValueDTO<string>[]>('api/teacher/planning/forList')
         // setLoading(false)
         return data
     }
@@ -77,7 +77,7 @@ export const usePlannings = () => {
         loading,
         loadingModification,
         error,
-        getAllPlannings,
+        getAllTeacherPlannings,
         getPlanning,
         createPlanning,
         updatePlanning,

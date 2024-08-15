@@ -53,8 +53,8 @@ export const logIn = (username: string, password: string, profileId: string): Ap
     try {
         dispatch(setLoading(true))
         const { data } = await axios.post<AuthInfoDTO>('api/auth/tkn', { username, password, profileId })
-        localStorage.clear()
-        localStorage.setItem('tkn', data.token)
+        sessionStorage.clear()
+        sessionStorage.setItem('tkn', data.token)
         dispatch(setAuthSuccess({ user: data.user, token: data.token }))
     } catch (error) {
         const axiosError = error as AxiosError
@@ -69,7 +69,7 @@ export const logOut = (): AppThunk => async (dispatch) => {
     try {
         dispatch(setLoading(true))
         // await axios.post('/auth/logout', {})
-        localStorage.clear()
+        sessionStorage.clear()
         dispatch(setLogOut())
     } catch (error) {
         dispatch(setAuthFailed(error as string))

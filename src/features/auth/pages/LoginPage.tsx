@@ -18,6 +18,7 @@ import { useEffect, useState } from 'react';
 import { UserInfoDTO } from '../../../models/User';
 import { ADMINISTRATOR_PROFILE_ID, GUARDIAN_PROFILE_ID, STUDENT_PROFILE_ID, TEACHER_PROFILE_ID } from '@/constants/profile';
 import { useAuth } from "../hooks/useAuth"
+import { IRadioGroupOption } from "@/components/ui/custom/forms/FormRadioGroupField"
 
 const formSchema = z.object({
   profile: z.string().min(2, { message: "Required" }),
@@ -62,6 +63,10 @@ const Signin = () => {
       handleLoggedUser(user)
   }, [user, isSubmitted])
 
+  useEffect(() => {
+    console.log('profile change', form.getValues("profile"))
+  }, [form.getValues("profile")])
+
   const handleLoggedUser = (user: UserInfoDTO) => {
     switch (user.profileId) {
       case ADMINISTRATOR_PROFILE_ID:
@@ -78,6 +83,30 @@ const Signin = () => {
         break;
       default:
         navigate('/authentication/signin');
+    }
+  }
+
+  const handleProfileChange = (option: IRadioGroupOption) => {
+    if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
+      switch (option.value) {
+        case ADMINISTRATOR_PROFILE_ID:
+          form.setValue('username', 'admin')
+          form.setValue('password', 'admin')
+          break;
+        case TEACHER_PROFILE_ID:
+          form.setValue('username', 'jpteacher')
+          form.setValue('password', 'jpteacher')
+          break;
+        case STUDENT_PROFILE_ID:
+          form.setValue('username', 'lupita')
+          form.setValue('password', 'lupita')
+          break;
+        case GUARDIAN_PROFILE_ID:
+          form.setValue('username', 'mdancer')
+          form.setValue('password', 'mdancer')
+          break;
+        default:
+      }
     }
   }
 
@@ -106,8 +135,8 @@ const Signin = () => {
                           <FormRadioGroupField
                             field={field}
                             label={t('LOGIN.FORM.PROFILE')}
-                            placeholder=""
                             options={profiles}
+                            onOptionClick={handleProfileChange}
                           />
                         )}
                       />
