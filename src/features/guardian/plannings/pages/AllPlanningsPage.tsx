@@ -14,7 +14,7 @@ const AllPlanningsPage = () => {
 
     const { getStudentsByGuardian } = useStudents()
     const { getByStudentForList } = useSubjects()
-    // const { loading, getAllPlannings } = usePlannings()
+    const { loading, getPlanningsByStudentAndSubject } = usePlannings()
 
     useEffect(() => {
         loadInitialData()
@@ -32,9 +32,9 @@ const AllPlanningsPage = () => {
         setSubjectList(_subjects)
     }
 
-    const loadHomeworks = async (studentId: string, subjectId: string) => {
-        // const data = await getAllPlannings(studentId, subjectId)
-        // setPlannings(data)
+    const loadPlannings = async (studentId: string, subjectId: string) => {
+        const data = await getPlanningsByStudentAndSubject(studentId, subjectId)
+        setPlannings(data)
     }
 
     return (
@@ -58,7 +58,7 @@ const AllPlanningsPage = () => {
                     <Combobox
                         label='Subject'
                         options={subjectList ?? []}
-                        onChange={async (value: string | number) => await loadHomeworks(currentStudentId, value as string)}
+                        onChange={async (value: string | number) => await loadPlannings(currentStudentId, value as string)}
                     />
                 </div>
             </div>

@@ -7,15 +7,15 @@ export const usePlannings = () => {
 
     // const { t } = useTranslation();
 
-    const getAllPlannings = async (): Promise<IPlanningTableRowDTO[]> => {
+    const getPlanningsByStudentAndSubject = async (studentId: string, subjectId: string): Promise<IPlanningTableRowDTO[]> => {
         setLoading(true)
-        const { data } = await axios.get<IPlanningTableRowDTO[]>('api/planning')
+        const { data } = await axios.get<IPlanningTableRowDTO[]>(`api/guardian/planning/${encodeURIComponent(studentId)}/${encodeURIComponent(subjectId)}`)
         setLoading(false)
         return data
     }
 
     return {
         loading,
-        getAllPlannings
+        getPlanningsByStudentAndSubject
     }
 }
