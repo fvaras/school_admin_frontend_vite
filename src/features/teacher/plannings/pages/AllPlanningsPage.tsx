@@ -10,7 +10,7 @@ const AllPlanningsPage = () => {
     const [subjectsGradesList, setSubjectsGradesList] = useState<LabelValueDTO<string>[]>([])
     const [plannings, setPlannings] = useState<IPlanningTableRowDTO[]>([])
 
-    const { getWithGradeByTeacherForList } = useSubjects()
+    const { getWithGradeByTeacherForList, mapSubjectGradesPkFkToLabelValueWithData } = useSubjects()
     const { loading, loadingModification, getAllTeacherPlannings, deletePlanning } = usePlannings()
 
     const { toast } = useToast()
@@ -21,13 +21,7 @@ const AllPlanningsPage = () => {
 
     const loadData = async () => {
         const _listSubjectsGrades = await getWithGradeByTeacherForList()
-        const _list = _listSubjectsGrades.map<LabelValueDTO<string>>((subjectPKGradeFK: PKFKPair<string, string>) => (
-            {
-                label: `${subjectPKGradeFK.labelValuePK.label} / ${subjectPKGradeFK.labelValueFK.label}`,
-                value: subjectPKGradeFK.labelValuePK.value,
-                data: subjectPKGradeFK
-            }
-        ));
+        const _list = mapSubjectGradesPkFkToLabelValueWithData(_listSubjectsGrades)
         setSubjectsGradesList(_list)
     }
 

@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { IHomeworkTableRowDTO, IHomeworkDTO, IHomeworkForCreationDTO, IHomeworkForUpdateDTO } from "../models/IHomework";
 import { axiosAuthInstance as axios } from "@/lib/axios";
-import { LabelValueDTO } from "@/models/TLabelValueDTO";
 
 export const useHomeworks = () => {
     const [loading, setLoading] = useState(false);
@@ -10,27 +9,27 @@ export const useHomeworks = () => {
 
     // const { t } = useTranslation();
 
-    const getAllHomeworks = async (): Promise<IHomeworkTableRowDTO[]> => {
+    const getAllHomeworksByTeacher = async (subjectId: string): Promise<IHomeworkTableRowDTO[]> => {
         setLoading(true)
-        const { data } = await axios.get<IHomeworkTableRowDTO[]>('api/homework')
+        const { data } = await axios.get<IHomeworkTableRowDTO[]>(`api/teacher/homework/bySubject/${subjectId}`)
         setLoading(false)
         return data
     }
 
-    const getHomework = async (userId: string): Promise<IHomeworkDTO> => {
+    const getHomework = async (homeworkId: string): Promise<IHomeworkDTO> => {
         setLoading(true)
-        const { data } = await axios.get<IHomeworkDTO>(`api/homework/${userId}`)
+        const { data } = await axios.get<IHomeworkDTO>(`api/teacher/homework/${homeworkId}`)
         setLoading(false)
         return data
     }
 
-    const createHomework = async (user: IHomeworkForCreationDTO): Promise<IHomeworkDTO> => {
+    const createHomework = async (user: IHomeworkForCreationDTO): Promise<string> => {
         try {
             setLoadingModification(true)
-            const { data } = await axios.post<IHomeworkDTO>(`api/homework/`, user)
+            const { data } = await axios.post<string>(`api/teacher/homework/`, user)
             return data
         } catch (err) {
-            return {} as IHomeworkDTO
+            return {} as string
         }
         finally {
             setLoadingModification(false)
@@ -40,7 +39,7 @@ export const useHomeworks = () => {
     const updateHomework = async (id: string, user: IHomeworkForUpdateDTO): Promise<void> => {
         try {
             setLoadingModification(true)
-            await axios.put<IHomeworkForUpdateDTO>(`api/homework/${id}`, user)
+            await axios.put<IHomeworkForUpdateDTO>(`api/teacher/homework/${id}`, user)
         } catch (err) {
         }
         finally {
@@ -51,7 +50,7 @@ export const useHomeworks = () => {
     const deleteHomework = async (id: string): Promise<void> => {
         try {
             setLoadingModification(true)
-            await axios.delete(`api/homework/${id}`)
+            await axios.delete(`api/teacher/homework/${id}`)
         } catch (err) {
         }
         finally {
@@ -63,7 +62,7 @@ export const useHomeworks = () => {
         loading,
         loadingModification,
         error,
-        getAllHomeworks,
+        getAllHomeworksByTeacher,
         getHomework,
         createHomework,
         updateHomework,

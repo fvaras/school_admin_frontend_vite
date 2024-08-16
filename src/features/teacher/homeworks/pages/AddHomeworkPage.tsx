@@ -13,11 +13,11 @@ const AddHomeworkPage = () => {
     const navigate = useNavigate()
 
     const handleSubmit = async (homeworkForCreation: IHomeworkForCreationDTO) => {
-        const newUser = await createHomework(homeworkForCreation)
+        const newHomeworkId = await createHomework(homeworkForCreation)
         toast({
             description: "Homework created successfully",
         })
-        navigate(`/teacher/homeworks/${newUser.id}`)
+        navigate(`/teacher/homeworks/${newHomeworkId}`)
     }
 
     return (

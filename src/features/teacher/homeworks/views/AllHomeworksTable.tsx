@@ -5,19 +5,19 @@ import { IHomeworkTableRowDTO } from "../../models/IHomework"
 import { useHomeworks } from "../../hooks"
 import { useNavigate } from "react-router-dom"
 import { useToast } from "@/components/ui/use-toast"
-import { Badge } from "@/components/ui/badge"
 
-const AllHomeworksTable = () => {
+interface IProps {
+    homeworks: IHomeworkTableRowDTO[]
+    loadingModification: boolean
+    onDelete: (row: IHomeworkTableRowDTO) => Promise<void>
+}
 
-    const [data, setData] = useState<IHomeworkTableRowDTO[]>([])
+const AllHomeworksTable = ({ homeworks, loadingModification, onDelete }: IProps) => {
+
     const [showDeleteConfirmDialog, setShowDeleteConfirmDialog] = useState<boolean>(false)
     const [currentData, setCurrentData] = useState<IHomeworkTableRowDTO | null>(null)
 
-    const { loading, loadingModification, getAllHomeworks, deleteHomework } = useHomeworks()
-
     const navigate = useNavigate()
-
-    const { toast } = useToast()
 
     const columns: ColumnDef<IHomeworkTableRowDTO>[] = [
         // {
@@ -59,40 +59,26 @@ const AllHomeworksTable = () => {
         },
     ]
 
-    useEffect(() => {
-        loadData()
-    }, [])
-
-    const loadData = async () => {
-        const data = await getAllHomeworks()
-        setData(data)
-    }
-
-    const handleDelete = async (id: string) => {
-        await deleteHomework(id)
-        toast({
-            variant: "destructive",
-            description: "Homework deleted successfully",
-        })
-        await loadData()
+    const handleDelete = async (row: IHomeworkTableRowDTO) => {
+        await onDelete(row)
         setShowDeleteConfirmDialog(false)
     }
 
     return (
-        <div className="container mx-auto py-10">
+        <div className="mx-auto">
             <ConfirmDialog
                 isOpen={showDeleteConfirmDialog}
                 triggerComponent={null}
                 title="Are you sure?"
                 content="Only homeworks without activity can be deleted; however, you can also change its status."
                 loading={loadingModification}
-                onConfirm={() => handleDelete(currentData!.id)}
+                onConfirm={() => handleDelete(currentData!)}
                 onCancel={() => setShowDeleteConfirmDialog(false)}
             />
 
             <DataTable
                 columns={columns}
-                data={data}
+                data={homeworks}
                 enableFilter
                 filterBy={'title'}
                 filterPlaceholder="Filter title..."

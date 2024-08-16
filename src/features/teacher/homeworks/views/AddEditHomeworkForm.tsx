@@ -33,11 +33,9 @@ interface IProps {
 
 const AddEditHomeworkForm = ({ homework, mode, loading, submit }: IProps) => {
 
-    const [subjectList, setSubjectsList] = useState<LabelValueDTO<string>[] | null>([])
-    const [gradesList, setGradesList] = useState<LabelValueDTO<string>[] | null>([])
+    const [subjectsGradesList, setSubjectsGradesList] = useState<LabelValueDTO<string>[] | null>([])
 
-    const { getByGradeAndTeacherForList } = useSubjects()
-    const { getGradesForListByTeacher } = useGrades()
+    const { getWithGradeByTeacherForList, mapSubjectGradesPkFkToLabelValueWithData } = useSubjects()
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -57,13 +55,9 @@ const AddEditHomeworkForm = ({ homework, mode, loading, submit }: IProps) => {
     }, [mode])
 
     const loadData = async () => {
-        const _gradeList = await getGradesForListByTeacher()
-        setGradesList(_gradeList)
-    }
-
-    const handleGradeChange = async (gradeId: string) => {
-        const _subjectList = await getByGradeAndTeacherForList(gradeId)
-        setSubjectsList(_subjectList)
+        const _listSubjectsGrades = await getWithGradeByTeacherForList()
+        const _list = mapSubjectGradesPkFkToLabelValueWithData(_listSubjectsGrades)
+        setSubjectsGradesList(_list)
     }
 
     function onSubmit(values: z.infer<typeof formSchema>) {
@@ -98,32 +92,16 @@ const AddEditHomeworkForm = ({ homework, mode, loading, submit }: IProps) => {
                     <Heading variant="subtitle2">User Info</Heading>
                     <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 mb-4 -mx-2">
 
-                        {gradesList &&
-                            <FormField
-                                control={form.control}
-                                name="gradeId"
-                                render={({ field }) => (
-                                    <FormComboboxField
-                                        field={field}
-                                        label="Grade"
-                                        placeholder="Grade"
-                                        options={gradesList}
-                                        onChange={async (value) => await handleGradeChange(value as string)}
-                                    />
-                                )}
-                            />
-                        }
-
-                        {subjectList &&
+                        {subjectsGradesList &&
                             <FormField
                                 control={form.control}
                                 name="subjectId"
                                 render={({ field }) => (
                                     <FormComboboxField
                                         field={field}
-                                        label="Subject"
-                                        placeholder="Subject"
-                                        options={subjectList}
+                                        label="Subject / Grade"
+                                        placeholder="Subject / Grade"
+                                        options={subjectsGradesList}
                                     />
                                 )}
                             />

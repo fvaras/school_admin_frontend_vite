@@ -38,7 +38,7 @@ const AddEditPlanningForm = ({ planning, mode, loading, submit }: IProps) => {
 
     const [subjectsGradesList, setSubjectsGradesList] = useState<LabelValueDTO<string>[] | null>([])
 
-    const { getWithGradeByTeacherForList } = useSubjects()
+    const { getWithGradeByTeacherForList, mapSubjectGradesPkFkToLabelValueWithData } = useSubjects()
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -63,13 +63,7 @@ const AddEditPlanningForm = ({ planning, mode, loading, submit }: IProps) => {
 
     const loadData = async () => {
         const _listSubjectsGrades = await getWithGradeByTeacherForList()
-        const _list = _listSubjectsGrades.map<LabelValueDTO<string>>((subjectPKGradeFK: PKFKPair<string, string>) => (
-            {
-                label: `${subjectPKGradeFK.labelValuePK.label} / ${subjectPKGradeFK.labelValueFK.label}`,
-                value: subjectPKGradeFK.labelValuePK.value,
-                data: subjectPKGradeFK
-            }
-        ));
+        const _list = mapSubjectGradesPkFkToLabelValueWithData(_listSubjectsGrades)
         setSubjectsGradesList(_list)
     }
 
