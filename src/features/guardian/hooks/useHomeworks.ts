@@ -9,7 +9,7 @@ export const useHomeworks = () => {
 
     const getAllHomeworks = async (studentId: string, subjectId: string): Promise<IHomeworkTableRowDTO[]> => {
         setLoading(true)
-        const { data } = await axios.get<IHomeworkTableRowDTO[]>(`api/homework/guardian/${encodeURIComponent(studentId)}/${encodeURIComponent(subjectId)}`)
+        const { data } = await axios.get<IHomeworkTableRowDTO[]>(`api/guardian/homework/byStudentSubject/${encodeURIComponent(studentId)}/${encodeURIComponent(subjectId)}`)
         setLoading(false)
         return data
     }

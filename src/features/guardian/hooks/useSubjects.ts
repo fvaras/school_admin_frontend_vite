@@ -7,7 +7,7 @@ export const useSubjects = () => {
 
     const getByStudentForList = async (studentId: string): Promise<LabelValueDTO<string>[]> => {
         setLoading(true)
-        const { data } = await axios.get<LabelValueDTO<string>[]>(`api/subject/guardian/${studentId}/list`)
+        const { data } = await axios.get<LabelValueDTO<string>[]>(`api/guardian/subject/${studentId}/list`)
         setLoading(false)
         return data
     }
