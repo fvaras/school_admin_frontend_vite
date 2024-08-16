@@ -13,7 +13,7 @@ const TimeTablePage = () => {
   const [currentEvent, setCurrentEvent] = useState<ICalendarEventDTO | null>(null)
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
 
-  const { getGradesForListByTeacher } = useGrades()
+  const { getGradesByTeacherForList } = useGrades()
   const { getAllTimeBlocks } = useTimeBlock()
 
   useEffect(() => {
@@ -21,7 +21,7 @@ const TimeTablePage = () => {
   }, [])
 
   const loadData = async () => {
-    const _grades = await getGradesForListByTeacher()
+    const _grades = await getGradesByTeacherForList()
     setGradesList(_grades)
   }
 
@@ -139,7 +139,7 @@ const TimeTablePage = () => {
             work_week: false,
           }}
           defaultView='week'
-          events={timeBlocksEvents}
+          events={timeBlocksEvents} // TODO: Isn't painting the blocks
           onSelectEvent={handleSelectEvent}
           onSelectSlot={handleSelectSlot}
           // selectable
@@ -149,9 +149,6 @@ const TimeTablePage = () => {
       }
 
       <Dialog open={isModalOpen} onOpenChange={(open: boolean) => setIsModalOpen(open)}>
-        {/* <DialogTrigger asChild>
-                    <Button variant="outline">Edit Profile</Button>
-                </DialogTrigger> */}
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
             <DialogTitle>{currentEvent?.id ? 'Edit event' : 'Add event'}</DialogTitle>

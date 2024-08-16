@@ -6,16 +6,16 @@ export const useGrades = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
 
-    const getGradesForListByTeacher = async (): Promise<LabelValueDTO<string>[]> => {
-        // setLoading(true)
+    const getGradesByTeacherForList = async (): Promise<LabelValueDTO<string>[]> => {
+        setLoading(true)
         const { data } = await axios.get<LabelValueDTO<string>[]>('api/teacher/grade/forList')
-        // setLoading(false)
+        setLoading(false)
         return data
     }
 
     return {
         loading,
         error,
-        getGradesForListByTeacher // TODO: Maybe wil be necessary to remove this function
+        getGradesByTeacherForList // TODO: Maybe wil be necessary to remove this function
     }
 }
