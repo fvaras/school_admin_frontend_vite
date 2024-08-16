@@ -23,7 +23,6 @@ const AllPlanningsPage = () => {
     const loadInitialData = async () => {
         const _studentList = await getStudentsByGuardian()
         setStudentList(_studentList)
-
     }
 
     const loadSubjects = async (studentId: string) => {

@@ -5,15 +5,15 @@ import { ITimeBlockTableRowDTO } from "../models/ITimeBlock";
 export const useTimeBlock = () => {
     const [loading, setLoading] = useState(false);
 
-    const getAllTimeBlocks = async (gradeId: string): Promise<ITimeBlockTableRowDTO[]> => {
+    const getAllTimeBlocksByStudent = async (studentId: string): Promise<ITimeBlockTableRowDTO[]> => {
         setLoading(true)
-        const { data } = await axios.get<ITimeBlockTableRowDTO[]>(`api/timeBlock/byGrade/${gradeId}`)
+        const { data } = await axios.get<ITimeBlockTableRowDTO[]>(`api/guardian/timeBlock/byStudent/${studentId}`)
         setLoading(false)
         return data
     }
 
     return {
         loading,
-        getAllTimeBlocks,
+        getAllTimeBlocksByStudent,
     }
 }

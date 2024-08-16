@@ -1,29 +1,31 @@
 import { Breadcrumbs, Combobox, CustomCalendar, Heading } from '@/components/ui/custom'
 import { useState, useEffect } from 'react'
-import { useGrades, useTimeBlock } from '../../hooks'
+import { useTimeBlock } from '../../hooks'
 import { LabelValueDTO } from '@/models/TLabelValueDTO'
+import { useStudents } from '../../hooks/useStudents'
 
 const TimeTablePage = () => {
-
-  const [gradesList, setGradesList] = useState<LabelValueDTO<string>[] | null>([])
+  const [studentList, setStudentList] = useState<LabelValueDTO<string>[]>([])
+  const [currentStudentId, setCurrentStudentId] = useState<string>('')
   const [timeBlocksEvents, setTimeBlocks] = useState<any[]>([])
   const [minmaxDayTime, setMinMaxDayTime] = useState<{ min: Date, max: Date }>({ min: new Date(), max: new Date() })
 
-  const { getGradesForListByTeacher } = useGrades()
-  const { getAllTimeBlocks } = useTimeBlock()
+  const { getStudentsByGuardian } = useStudents()
+  const { getAllTimeBlocksByStudent } = useTimeBlock()
 
   useEffect(() => {
-    loadData()
+    loadInitialData()
   }, [])
 
-  const loadData = async () => {
-    const _grades = await getGradesForListByTeacher()
-    setGradesList(_grades)
+  const loadInitialData = async () => {
+    const _studentList = await getStudentsByGuardian()
+    setStudentList(_studentList)
+
   }
 
-  const loadTimeTableByGrade = async (gradeId: string) => {
+  const loadTimeTableByStudent = async (studentId: string) => {
     try {
-      const list = await getAllTimeBlocks(gradeId);
+      const list = await getAllTimeBlocksByStudent(studentId);
 
       // Get the current year and month
       const currentDate = new Date();
@@ -83,13 +85,13 @@ const TimeTablePage = () => {
         { text: 'Dashboard', link: '/teacher/dashboard' },
       ]} />
 
-      <Heading variant="title2">TimeTablePage</Heading>
+      <Heading variant="title2">Time Tables</Heading>
 
       <div className='mb-4'>
         <Combobox
-          label='Grade'
-          options={gradesList ?? []}
-          onChange={async (value: string | number) => await loadTimeTableByGrade(value as string)}
+          label='Student'
+          options={studentList ?? []}
+          onChange={async (value: string | number) => await loadTimeTableByStudent(value as string)}
         />
       </div>
 

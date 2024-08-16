@@ -118,7 +118,7 @@ const TimeTablePage = () => {
         { text: 'Dashboard', link: '/teacher/dashboard' },
       ]} />
 
-      <Heading variant="title2">TimeTablePage</Heading>
+      <Heading variant="title2">Time Tables</Heading>
 
       <div className='mb-4'>
         <Combobox
