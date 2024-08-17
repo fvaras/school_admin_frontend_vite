@@ -17,10 +17,24 @@ export const axiosAuthInstance = axios.create({
     headers: {
         // 'Access-Control-Allow-Origin': '*',
         'Content-Type': 'application/json',
-        "custom": "agh",
-        'Authorization': sessionStorage.getItem('tkn') as string
+        // "custom": "agh",
+        'Authorization': sessionStorage.getItem('tkn2') as string
     },
 });
+
+// Use an interceptor to always attach the latest token
+axiosAuthInstance.interceptors.request.use(
+    (config) => {
+        const token = sessionStorage.getItem('tkn');
+        if (token) {
+            config.headers['Authorization'] = `Bearer ${token}`;
+        }
+        return config;
+    },
+    (error) => {
+        return Promise.reject(error);
+    }
+);
 
 export const createAuthHeaders = (): { Authorization: string } => {
     const token = sessionStorage.getItem('tkn')

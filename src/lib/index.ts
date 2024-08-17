@@ -1,5 +1,6 @@
-import axios from "./axios";
+import axios, { axiosAuthInstance } from "./axios";
 
 export default {
-    axios
+    axios,
+    axiosAuthInstance
 }
