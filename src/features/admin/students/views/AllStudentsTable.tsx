@@ -107,7 +107,7 @@ const AllStudentsTable = () => {
                 columns={columns}
                 data={data}
                 enableFilter
-                filterBy={'userId'}
+                filterBy={'firstName'}
                 filterPlaceholder="Filter username..."
                 enableViewOptions
             />

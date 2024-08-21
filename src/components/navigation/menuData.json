@@ -3,7 +3,7 @@
         "id": "home",
         "name": "Home",
         "link": "/auth/signin",
-        "icon": "fa-home",
+        "icon": "home",
         "profiles": [
             "ccd8f71e-b6a6-4b04-84cf-ee3bcea3999c"
         ]
@@ -11,7 +11,7 @@
     {
         "id": "admin_users",
         "name": "Users",
-        "icon": "fa-user",
+        "icon": "user",
         "profiles": [
             "ccd8f71e-b6a6-4b04-84cf-ee3bcea3999c"
         ],
@@ -31,7 +31,7 @@
     {
         "id": "admin_teachers",
         "name": "Teachers",
-        "icon": "fa-chalkboard-teacher",
+        "icon": "graduation-cap",
         "profiles": [
             "ccd8f71e-b6a6-4b04-84cf-ee3bcea3999c"
         ],
@@ -51,7 +51,7 @@
     {
         "id": "admin_students",
         "name": "Students",
-        "icon": "fa-user-graduate",
+        "icon": "square-user-round",
         "profiles": [
             "ccd8f71e-b6a6-4b04-84cf-ee3bcea3999c"
         ],
@@ -71,7 +71,7 @@
     {
         "id": "admin_guardians",
         "name": "Guardians",
-        "icon": "fa-users",
+        "icon": "square-user",
         "profiles": [
             "ccd8f71e-b6a6-4b04-84cf-ee3bcea3999c"
         ],
@@ -91,7 +91,7 @@
     {
         "id": "admin_grades",
         "name": "Grades",
-        "icon": "fa-clipboard-list",
+        "icon": "library-big",
         "profiles": [
             "ccd8f71e-b6a6-4b04-84cf-ee3bcea3999c"
         ],
@@ -111,7 +111,7 @@
     {
         "id": "admin_subjects",
         "name": "Subjects",
-        "icon": "fa-book",
+        "icon": "book-open-check",
         "profiles": [
             "ccd8f71e-b6a6-4b04-84cf-ee3bcea3999c"
         ],
@@ -131,7 +131,7 @@
     {
         "id": "admin_events",
         "name": "Events",
-        "icon": "fa-calendar-alt",
+        "icon": "calendar-check",
         "profiles": [
             "ccd8f71e-b6a6-4b04-84cf-ee3bcea3999c"
         ],
@@ -160,12 +160,12 @@
         "profiles": [
             "398d52f1-0d94-40f9-8ef2-bc801c714490"
         ],
-        "icon": "fa-home"
+        "icon": "calendar-clock"
     },
     {
         "id": "teacher_plannings",
         "name": "Plannings",
-        "icon": "fa-calendar-check",
+        "icon": "folder-kanban",
         "profiles": [
             "398d52f1-0d94-40f9-8ef2-bc801c714490"
         ],
@@ -185,7 +185,7 @@
     {
         "id": "teacher_homeworks",
         "name": "Homeworks",
-        "icon": "fa-book-open",
+        "icon": "notebook-pen",
         "profiles": [
             "398d52f1-0d94-40f9-8ef2-bc801c714490"
         ],
@@ -206,7 +206,7 @@
         "id": "student_timetable",
         "name": "Time Table",
         "link": "/student/plannings/timetable",
-        "icon": "fa-calendar-check",
+        "icon": "calendar-clock",
         "profiles": [
             "521c2799-f386-4ea2-ba2f-64a81f86fd9d"
         ]
@@ -214,16 +214,16 @@
     {
         "id": "student_homeworks",
         "name": "Homeworks",
-        "icon": "fa-book-open",
+        "icon": "notebook-pen",
         "link": "/student/homeworks/all-homeworks",
         "profiles": [
             "521c2799-f386-4ea2-ba2f-64a81f86fd9d"
         ]
     },
     {
-        "id": "guardian_plannings",
+        "id": "student_plannings",
         "name": "Plannings",
-        "icon": "fa-book-open",
+        "icon": "folder-kanban",
         "link": "/student/plannings/all-plannings",
         "profiles": [
             "521c2799-f386-4ea2-ba2f-64a81f86fd9d"
@@ -233,7 +233,7 @@
         "id": "guardian_timetable",
         "name": "Time Table",
         "link": "/guardian/plannings/timetable",
-        "icon": "fa-calendar-alt",
+        "icon": "calendar-clock",
         "profiles": [
             "9282b9d9-4c59-41c9-859a-58d37551fcae"
         ]
@@ -241,7 +241,7 @@
     {
         "id": "guardian_homeworks",
         "name": "Homeworks",
-        "icon": "fa-book-open",
+        "icon": "notebook-pen",
         "link": "/guardian/homeworks/all-homeworks",
         "profiles": [
             "9282b9d9-4c59-41c9-859a-58d37551fcae"
@@ -250,7 +250,7 @@
     {
         "id": "guardian_plannings",
         "name": "Plannings",
-        "icon": "fa-book-open",
+        "icon": "folder-kanban",
         "link": "/guardian/plannings/all-plannings",
         "profiles": [
             "9282b9d9-4c59-41c9-859a-58d37551fcae"
@@ -260,7 +260,7 @@
         "id": "logout",
         "name": "Logout",
         "link": "/auth/signin",
-        "icon": "fa-sign-out-alt",
+        "icon": "log-out",
         "profiles": []
     }
 ]

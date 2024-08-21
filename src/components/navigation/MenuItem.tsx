@@ -1,22 +1,38 @@
-import { Home, User, Settings, LogOut, Icon, ChevronDown, ChevronRight, Calendar, CalendarCheck, CalendarCheck2, CalendarClock, LucideCalendarClock } from 'lucide-react';
+import {
+    Home,
+    User,
+    GraduationCap,
+    SquareUser,
+    SquareUserRound,
+    LibraryBig,
+    BookOpenCheck,
+    CalendarCheck,
+    CalendarClock,
+    FolderKanban,
+    NotebookPen,
+    LogOut,
+    Icon,
+    ChevronDown,
+    ChevronRight,
+} from 'lucide-react';
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { MenuItemType, SubItem } from './types';
 
 // Mapping of icon strings to Lucide icons
 const iconMap: Record<string, typeof Icon> = {
-    'fa-home': Home,
-    'fa-user': User,
-    'fa-chalkboard-teacher': User, // Change this to the correct icon if available
-    'fa-user-graduate': User, // Change this to the correct icon if available
-    'fa-users': User,
-    'fa-clipboard-list': User, // Change this to the correct icon if available
-    'fa-book': User, // Change this to the correct icon if available
-    'fa-calendar-alt': CalendarClock, // Change this to the correct icon if available
-    'fa-calendar-check': CalendarCheck, // Change this to the correct icon if available
-    'fa-book-open': User, // Change this to the correct icon if available
-    'fa-cog': Settings,
-    'fa-sign-out-alt': LogOut,
+    'home': Home,
+    'user': User, // users
+    'graduation-cap': GraduationCap, // teachers
+    'square-user': SquareUser, // students
+    'square-user-round': SquareUserRound, // guardians
+    'library-big': LibraryBig, // grades
+    'book-open-check': BookOpenCheck, // subjects
+    'calendar-check': CalendarCheck, // events
+    'calendar-clock': CalendarClock, // timetable
+    'folder-kanban': FolderKanban, // plannings
+    'notebook-pen': NotebookPen, // homeworks
+    'log-out': LogOut, // Logoout
 };
 
 interface IProps {
