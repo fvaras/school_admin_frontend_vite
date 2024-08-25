@@ -1,29 +1,20 @@
-import { Breadcrumbs, Combobox, CustomCalendar, Heading } from '@/components/ui/custom'
+import { Breadcrumbs, CustomCalendar, Heading } from '@/components/ui/custom'
 import { useState, useEffect } from 'react'
-import { useGrades, useTimeBlock } from '../../hooks'
-import { LabelValueDTO } from '@/models/TLabelValueDTO'
+import { useTimeBlock } from '../../hooks'
 
 const TimeTablePage = () => {
-
-  const [gradesList, setGradesList] = useState<LabelValueDTO<string>[] | null>([])
   const [timeBlocksEvents, setTimeBlocks] = useState<any[]>([])
   const [minmaxDayTime, setMinMaxDayTime] = useState<{ min: Date, max: Date }>({ min: new Date(), max: new Date() })
 
-  const { getGradesForListByTeacher } = useGrades()
   const { getAllTimeBlocks } = useTimeBlock()
 
   useEffect(() => {
-    loadData()
+    loadTimeTableByStudent()
   }, [])
 
-  const loadData = async () => {
-    const _grades = await getGradesForListByTeacher()
-    setGradesList(_grades)
-  }
-
-  const loadTimeTableByGrade = async (gradeId: string) => {
+  const loadTimeTableByStudent = async () => {
     try {
-      const list = await getAllTimeBlocks(gradeId);
+      const list = await getAllTimeBlocks();
 
       // Get the current year and month
       const currentDate = new Date();
@@ -83,15 +74,7 @@ const TimeTablePage = () => {
         { text: 'Dashboard', link: '/teacher/dashboard' },
       ]} />
 
-      <Heading variant="title2">TimeTablePage</Heading>
-
-      <div className='mb-4'>
-        <Combobox
-          label='Grade'
-          options={gradesList ?? []}
-          onChange={async (value: string | number) => await loadTimeTableByGrade(value as string)}
-        />
-      </div>
+      <Heading variant="title2">Time Tables</Heading>
 
       {(timeBlocksEvents && timeBlocksEvents.length > 0) &&
         <CustomCalendar

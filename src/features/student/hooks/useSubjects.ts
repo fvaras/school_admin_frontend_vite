@@ -4,18 +4,16 @@ import { LabelValueDTO } from "@/models/TLabelValueDTO";
 
 export const useSubjects = () => {
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState('');
 
-    const getByGradeAndTeacherForList = async (gradeId: string): Promise<LabelValueDTO<string>[]> => {
+    const getForList = async (): Promise<LabelValueDTO<string>[]> => {
         setLoading(true)
-        const { data } = await axios.get<LabelValueDTO<string>[]>(`api/subject/byGradeAndTeacherForList/${gradeId}`)
+        const { data } = await axios.get<LabelValueDTO<string>[]>(`api/student/subject/list`)
         setLoading(false)
         return data
     }
 
     return {
         loading,
-        error,
-        getByGradeAndTeacherForList
+        getForList
     }
 }

@@ -1,20 +1,29 @@
 import { useEffect, useState } from 'react'
-import { Breadcrumbs, Heading } from '@/components/ui/custom'
+import { Breadcrumbs, Combobox, Heading } from '@/components/ui/custom'
 import AllPlanningsTable from '../views/AllPlanningsTable'
 import { IPlanningTableRowDTO } from '../../models/IPlanning'
-import { usePlannings } from '../../hooks'
+import { usePlannings, useSubjects } from '../../hooks'
+import { LabelValueDTO } from '@/models/TLabelValueDTO'
 
 const AllPlanningsPage = () => {
+    const [subjectList, setSubjectList] = useState<LabelValueDTO<string>[]>([])
+    const [currentStudentId, setCurrentStudentId] = useState<string>('')
     const [plannings, setPlannings] = useState<IPlanningTableRowDTO[]>([])
 
+    const { getForList: getSubjects } = useSubjects()
     const { loading, getAllPlannings } = usePlannings()
 
     useEffect(() => {
-        loadData()
+        loadInitialData()
     }, [])
 
-    const loadData = async () => {
-        const data = await getAllPlannings()
+    const loadInitialData = async () => {
+        const _subjectList = await getSubjects()
+        setSubjectList(_subjectList)
+    }
+
+    const loadPlannings = async (subjectId: string) => {
+        const data = await getAllPlannings(subjectId)
         setPlannings(data)
     }
 
@@ -26,6 +35,16 @@ const AllPlanningsPage = () => {
             ]} />
 
             <Heading variant="title2">Plannings</Heading>
+
+            <div className="flex flex-col md:flex-row gap-4 mb-4">
+                <div className="flex-1">
+                    <Combobox
+                        label='Subject'
+                        options={subjectList ?? []}
+                        onChange={async (value: string | number) => await loadPlannings(value as string)}
+                    />
+                </div>
+            </div>
 
             <AllPlanningsTable
                 plannings={plannings}

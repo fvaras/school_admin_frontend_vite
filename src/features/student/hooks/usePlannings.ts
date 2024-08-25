@@ -7,9 +7,9 @@ export const usePlannings = () => {
 
     // const { t } = useTranslation();
 
-    const getAllPlannings = async (): Promise<IPlanningTableRowDTO[]> => {
+    const getAllPlannings = async (subjectId: string): Promise<IPlanningTableRowDTO[]> => {
         setLoading(true)
-        const { data } = await axios.get<IPlanningTableRowDTO[]>('api/planning')
+        const { data } = await axios.get<IPlanningTableRowDTO[]>(`api/student/planning/${encodeURIComponent(subjectId)}`)
         setLoading(false)
         return data
     }

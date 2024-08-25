@@ -31,7 +31,7 @@ const AllHomeworksTable = ({ homeworks }: IProps) => {
     ]
 
     return (
-        <div className="container mx-auto py-10">
+        <div className="mx-auto py-5">
             <DataTable
                 columns={columns}
                 data={homeworks}

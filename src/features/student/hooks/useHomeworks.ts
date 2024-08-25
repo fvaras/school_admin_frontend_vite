@@ -7,9 +7,9 @@ export const useHomeworks = () => {
 
     // const { t } = useTranslation();
 
-    const getAllHomeworks = async (): Promise<IHomeworkTableRowDTO[]> => {
+    const getAllHomeworks = async (subjectId: string): Promise<IHomeworkTableRowDTO[]> => {
         setLoading(true)
-        const { data } = await axios.get<IHomeworkTableRowDTO[]>('api/homework')
+        const { data } = await axios.get<IHomeworkTableRowDTO[]>(`api/student/homework/bySubject/${encodeURIComponent(subjectId)}`)
         setLoading(false)
         return data
     }
