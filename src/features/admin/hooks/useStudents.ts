@@ -16,6 +16,13 @@ export const useStudents = () => {
         return data
     }
 
+    const getAllStudentsByGrade = async (gradeId: string): Promise<IStudentTableRowDTO[]> => {
+        setLoading(true)
+        const { data } = await axios.get<IStudentTableRowDTO[]>(`api/student/byGrade/${encodeURIComponent(gradeId)}`)
+        setLoading(false)
+        return data
+    }
+
     const getStudent = async (userId: string): Promise<IStudentDTO> => {
         setLoading(true)
         const { data } = await axios.get<IStudentDTO>(`api/student/${userId}`)
@@ -63,6 +70,7 @@ export const useStudents = () => {
         loadingModification,
         error,
         getAllStudents,
+        getAllStudentsByGrade,
         getStudent,
         createStudent,
         updateStudent,

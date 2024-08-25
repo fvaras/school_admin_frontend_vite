@@ -1,24 +1,27 @@
 import { Breadcrumbs, Heading } from '@/components/ui/custom'
-import AllStudentsTable from '../views/AllStudentsTable'
+import AllStudentsByGradeTable from '../views/AllStudentsByGradeTable'
 import { useEffect, useState } from 'react'
-import { IStudentTableRowDTO } from '../../models/IStudent'
 import { useStudents } from '../../hooks'
+import { IStudentTableRowDTO } from '../../models/IStudent'
 import { useToast } from '@/components/ui/use-toast'
+import { useParams } from 'react-router-dom'
 
-const AllStudentsPage = () => {
-
+const AllStudentsByGradePage = () => {
     const [students, setStudents] = useState<IStudentTableRowDTO[]>([])
 
-    const { getAllStudents, loading, deleteStudent, loadingModification } = useStudents()
+    let { gradeId } = useParams();
+
+    const { getAllStudentsByGrade, loading, deleteStudent, loadingModification } = useStudents()
 
     const { toast } = useToast()
 
     useEffect(() => {
-        loadTableData()
-    }, [])
+        if (gradeId)
+            loadTableData()
+    }, [gradeId])
 
     const loadTableData = async () => {
-        const _studentList = await getAllStudents()
+        const _studentList = await getAllStudentsByGrade(gradeId as string)
         setStudents(_studentList)
     }
 
@@ -35,18 +38,18 @@ const AllStudentsPage = () => {
         <>
             <Breadcrumbs items={[
                 { text: 'Admin', link: '/admin/dashboard' },
-                { text: 'Students' },
+                { text: 'Students by Grade' },
             ]} />
 
             <Heading variant="title2">Students</Heading>
 
-            <AllStudentsTable
+            <AllStudentsByGradeTable
                 students={students}
                 loadingModification={loadingModification}
                 onDelete={onDelete}
-            ></AllStudentsTable>
+            ></AllStudentsByGradeTable>
         </>
     )
 }
 
-export default AllStudentsPage
+export default AllStudentsByGradePage

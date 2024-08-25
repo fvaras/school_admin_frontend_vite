@@ -1,23 +1,22 @@
 import { ConfirmDialog, DataTable, DataTableRowActions } from "@/components/ui/custom"
 import { ColumnDef } from "@tanstack/react-table"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { IStudentTableRowDTO } from "../../models/IStudent"
-import { useStudents } from "../../hooks"
 import { useNavigate } from "react-router-dom"
-import { useToast } from "@/components/ui/use-toast"
 import { Badge } from "@/components/ui/badge"
 
-const AllStudentsTable = () => {
+interface IProps {
+    students: IStudentTableRowDTO[]
+    loadingModification: boolean
+    onDelete: (row: IStudentTableRowDTO) => Promise<void>
+}
 
-    const [data, setData] = useState<IStudentTableRowDTO[]>([])
+const AllStudentsTable = ({ students, loadingModification, onDelete }: IProps) => {
+    
     const [showDeleteConfirmDialog, setShowDeleteConfirmDialog] = useState<boolean>(false)
     const [currentData, setCurrentData] = useState<IStudentTableRowDTO | null>(null)
 
-    const { loading, loadingModification, getAllStudents, deleteStudent } = useStudents()
-
     const navigate = useNavigate()
-
-    const { toast } = useToast()
 
     const columns: ColumnDef<IStudentTableRowDTO>[] = [
         // {
@@ -72,40 +71,26 @@ const AllStudentsTable = () => {
         },
     ]
 
-    useEffect(() => {
-        loadData()
-    }, [])
-
-    const loadData = async () => {
-        const data = await getAllStudents()
-        setData(data)
-    }
-
-    const handleDelete = async (id: string) => {
-        await deleteStudent(id)
-        toast({
-            variant: "destructive",
-            description: "Student deleted successfully",
-        })
-        await loadData()
+    const handleDelete = async (row: IStudentTableRowDTO) => {
+        await onDelete(row)
         setShowDeleteConfirmDialog(false)
     }
 
     return (
-        <div className="container mx-auto py-10">
+        <div className="mx-auto">
             <ConfirmDialog
                 isOpen={showDeleteConfirmDialog}
                 triggerComponent={null}
                 title="Are you sure?"
                 content="Only students without activity can be deleted; however, you can also change its status."
                 loading={loadingModification}
-                onConfirm={() => handleDelete(currentData!.id)}
+                onConfirm={() => handleDelete(currentData!)}
                 onCancel={() => setShowDeleteConfirmDialog(false)}
             />
 
             <DataTable
                 columns={columns}
-                data={data}
+                data={students}
                 enableFilter
                 filterBy={'firstName'}
                 filterPlaceholder="Filter username..."

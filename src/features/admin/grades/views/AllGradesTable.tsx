@@ -58,8 +58,10 @@ const AllGradesTable = () => {
                 data={row.original}
                 items={[
                     {
-                        // title: 'Edit', onClick: (data) => { navigate(`/admin/users/${data.id}`) }
                         title: 'Edit', onClick: (data) => { navigate(`../${data.id}`, { relative: 'path' }) }
+                    },
+                    {
+                        title: 'View students', onClick: (data) => { navigate(`../${data.id}/students`, { relative: 'path' }) }
                     },
                     {
                         title: 'Delete', onClick: (data) => {

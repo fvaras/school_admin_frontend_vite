@@ -1,25 +1,24 @@
 import { ConfirmDialog, DataTable, DataTableRowActions } from "@/components/ui/custom"
 import { ColumnDef } from "@tanstack/react-table"
-import { useEffect, useState } from "react"
-import { IGuardianTableRowDTO } from "../../models/IGuardian"
-import { useGuardians } from "../../hooks"
+import { useState } from "react"
+import { IStudentTableRowDTO } from "../../models/IStudent"
 import { useNavigate } from "react-router-dom"
-import { useToast } from "@/components/ui/use-toast"
 import { Badge } from "@/components/ui/badge"
 
-const AllGuardiansTable = () => {
+interface IProps {
+    students: IStudentTableRowDTO[]
+    loadingModification: boolean
+    onDelete: (row: IStudentTableRowDTO) => Promise<void>
+}
 
-    const [data, setData] = useState<IGuardianTableRowDTO[]>([])
+const AllStudentsByGradeTable = ({ students, loadingModification, onDelete }: IProps) => {
+    
     const [showDeleteConfirmDialog, setShowDeleteConfirmDialog] = useState<boolean>(false)
-    const [currentData, setCurrentData] = useState<IGuardianTableRowDTO | null>(null)
-
-    const { loading, loadingModification, getAllGuardians, deleteGuardian } = useGuardians()
+    const [currentData, setCurrentData] = useState<IStudentTableRowDTO | null>(null)
 
     const navigate = useNavigate()
 
-    const { toast } = useToast()
-
-    const columns: ColumnDef<IGuardianTableRowDTO>[] = [
+    const columns: ColumnDef<IStudentTableRowDTO>[] = [
         // {
         //     id: "select",
         //     header: ({ table }) => <DataTableHeaderSelection table={table} />,
@@ -40,12 +39,8 @@ const AllGuardiansTable = () => {
             header: "Last Name"
         },
         {
-            accessorKey: "phone",
-            header: "Phone"
-        },
-        {
-            accessorKey: "email",
-            header: "Email"
+            accessorKey: "gradeName",
+            header: "Grade"
         },
         {
             accessorKey: "stateId",
@@ -63,7 +58,7 @@ const AllGuardiansTable = () => {
                 items={[
                     {
                         // title: 'Edit', onClick: (data) => { navigate(`/admin/users/${data.id}`) }
-                        title: 'Edit', onClick: (data) => { navigate(`../${data.id}`, { relative: 'path' }) }
+                        title: 'Edit', onClick: (data) => { navigate(`/admin/students/${data.id}`, { relative: 'path' }) }
                     },
                     {
                         title: 'Delete', onClick: (data) => {
@@ -76,42 +71,28 @@ const AllGuardiansTable = () => {
         },
     ]
 
-    useEffect(() => {
-        loadData()
-    }, [])
-
-    const loadData = async () => {
-        const data = await getAllGuardians()
-        setData(data)
-    }
-
-    const handleDelete = async (id: string) => {
-        await deleteGuardian(id)
-        toast({
-            variant: "destructive",
-            description: "Guardian deleted successfully",
-        })
-        await loadData()
+    const handleDelete = async (row: IStudentTableRowDTO) => {
+        await onDelete(row)
         setShowDeleteConfirmDialog(false)
     }
 
     return (
-        <div className="container mx-auto py-10">
+        <div className="mx-auto">
             <ConfirmDialog
                 isOpen={showDeleteConfirmDialog}
                 triggerComponent={null}
                 title="Are you sure?"
-                content="Only guardians without activity can be deleted; however, you can also change its status."
+                content="Only students without activity can be deleted; however, you can also change its status."
                 loading={loadingModification}
-                onConfirm={() => handleDelete(currentData!.id)}
+                onConfirm={() => handleDelete(currentData!)}
                 onCancel={() => setShowDeleteConfirmDialog(false)}
             />
 
             <DataTable
                 columns={columns}
-                data={data}
+                data={students}
                 enableFilter
-                filterBy={'lastName'}
+                filterBy={'firstName'}
                 filterPlaceholder="Filter username..."
                 enableViewOptions
             />
@@ -119,4 +100,4 @@ const AllGuardiansTable = () => {
     )
 }
 
-export default AllGuardiansTable
+export default AllStudentsByGradeTable
