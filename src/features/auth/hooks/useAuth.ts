@@ -45,10 +45,10 @@ export const useAuth = () => {
 
     const getProfilesArray = (): { value: string; label: string }[] =>
         [
-            { value: ADMINISTRATOR_PROFILE_ID, label: "Administrator" },
-            { value: TEACHER_PROFILE_ID, label: "Teacher" },
-            { value: STUDENT_PROFILE_ID, label: "Student" },
-            { value: GUARDIAN_PROFILE_ID, label: "Guardian" },
+            { value: ADMINISTRATOR_PROFILE_ID, label: t('MENUITEMS.MAIN.PROFILES.ADMIN') },
+            { value: TEACHER_PROFILE_ID, label: t('MENUITEMS.MAIN.PROFILES.TEACHER') },
+            { value: STUDENT_PROFILE_ID, label: t('MENUITEMS.MAIN.PROFILES.STUDENT') },
+            { value: GUARDIAN_PROFILE_ID, label: t('MENUITEMS.MAIN.PROFILES.GUARDIAN') },
         ]
 
     return {
