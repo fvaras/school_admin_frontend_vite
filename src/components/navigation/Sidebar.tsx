@@ -8,11 +8,14 @@ import { MenuItemType } from './types'
 import menuData from './menuData.json'
 import MenuItem from './MenuItem';
 import { ADMINISTRATOR_PROFILE_ID, GUARDIAN_PROFILE_ID, STUDENT_PROFILE_ID, TEACHER_PROFILE_ID } from '@/constants/profile';
+import { useTranslation } from 'react-i18next';
 
 const Sidebar = () => {
   const [openedMenu, setOpenedMenu] = useState<string>('');
   const [openedMenuItem, setOpenedMenuItem] = useState<string>('');
   // const navigate = useNavigate();
+
+  const { t } = useTranslation();
 
   const [menuItems, setMenuItems] = useState<MenuItemType[]>([]);
 
@@ -38,10 +41,10 @@ const Sidebar = () => {
 
   const getProfileNameById = (profileId: string): string => {
     switch (profileId) {
-      case ADMINISTRATOR_PROFILE_ID: return 'Administrator';
-      case TEACHER_PROFILE_ID: return 'Teacher';
-      case STUDENT_PROFILE_ID: return 'Student';
-      case GUARDIAN_PROFILE_ID: return 'Guardian';
+      case ADMINISTRATOR_PROFILE_ID: return t('MENUITEMS.MAIN.PROFILES.ADMIN');
+      case TEACHER_PROFILE_ID: return t('MENUITEMS.MAIN.PROFILES.TEACHER');
+      case STUDENT_PROFILE_ID: return t('MENUITEMS.MAIN.PROFILES.STUDENT');
+      case GUARDIAN_PROFILE_ID: return t('MENUITEMS.MAIN.PROFILES.GUARDIAN');
       default: return '';
     }
   }

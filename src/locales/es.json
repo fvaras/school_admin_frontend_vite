@@ -17,123 +17,117 @@
   },
   "MENUITEMS": {
     "MAIN": {
-      "TEXT": "Principal"
-    },
-    "DASHBOARD": {
-      "TEXT": "Tablero",
-      "LIST": {
-        "DASHBOARD1": "Tablero 1",
-        "DASHBOARD2": "Tablero 2",
-        "TEACHER-DASHBOARD": "Panel del profesor",
-        "STUDENT-DASHBOARD": "Tablero del estudiante"
+      "TEXT": "Principal",
+      "PROFILES": {
+        "ADMIN": "Administrador",
+        "TEACHER": "Guía",
+        "STUDENT": "Alumno",
+        "GUARDIAN": "Apoderado"
       }
     },
-    "TEACHERS": {
-      "TEXT": "Guías",
-      "LIST": {
-        "ALL-TEACHERS": "Todas las guías",
-        "ADD-TEACHER": "Agregar guía",
-        "EDIT-TEACHER": "Editar guía",
-        "ABOUT-TEACHER": "Sobre la guía"
-      }
-    },
-    "STUDENTS": {
-      "TEXT": "Alumnos",
-      "LIST": {
-        "ALL-STUDENTS": "Todos los alumnos",
-        "ADD-STUDENT": "Agregar estudiante",
-        "EDIT-STUDENT": "Editar alumno",
-        "ABOUT-STUDENT": "Sobre la estudiante",
-        "STUDENT-ATTENDANCE": "Student Attendance"
-      }
-    },
-    "GUARDIANS": {
-      "TEXT": "Apoderados",
-      "LIST": {
-        "ALL-GUARDIANS": "Todos los apoderados",
-        "ADD-GUARDIAN": "Agregar apoderado"
-      }
-    },
-    "USERS": {
-      "TEXT": "Usuarios",
-      "LIST": {
-        "ALL-USERS": "Todos",
-        "ADD-STUDENT": "Agregar usuario"
-      }
-    },
-    "COURSES": {
-      "TEXT": "Cursos",
-      "LIST": {
-        "ALL-COURSES": "Todos los cursos",
-        "ADD-COURSE": "Agregar curso",
-        "EDIT-COURSE": "Editar curso",
-        "ABOUT-COURSE": "Acerca del curso"
-      }
-    },
-    "LIBRARY": {
-      "TEXT": "Biblioteca",
-      "LIST": {
-        "ALL-LIBRARY": "Toda la biblioteca",
-        "ADD-LIBRARY": "Agregar biblioteca",
-        "EDIT-LIBRARY": "Editar biblioteca"
-      }
-    },
-    "DEPARTMENTS": {
-      "TEXT": "Departamentos",
-      "LIST": {
-        "ALL-DEPARTMENT": "Todos los departamentos",
-        "ADD-DEPARTMENT": "Agregar departamento",
-        "EDIT-DEPARTMENT": "Editar departamento"
-      }
-    },
-    "GRADES": {
-      "TEXT": "Niveles",
-      "LIST": {
-        "ALL-GRADE": "Todos los niveles",
-        "ADD-GRADE": "Agregar nivel",
-        "EDIT-GRADE": "Editar nivel"
-      }
-    },
-    "SUBJECTS": {
-      "TEXT": "Asignaturas",
-      "LIST": {
-        "ALL-SUBJECTS": "Todas las asignaturas",
-        "ADD-SUBJECT": "Agregar"
-      }
-    },
-    "STAFF": {
-      "TEXT": "Personal",
-      "LIST": {
-        "ALL-STAFF": "Todo el personal",
-        "ADD-STAFF": "Agregar personal",
-        "EDIT-STAFF": "Editar personal",
-        "ABOUT-STAFF": "Sobre el personal"
-      }
-    },
-    "EVENT": {
-      "TEXT": "Calendario",
-      "LIST": {
-        "ALL-EVENT": "Todas las actividades",
-        "ADD-EVENT": "Agregar actividad",
-        "EDIT-EVENT": "Editar actividad",
-        "CALENDAR": "Calendario"
-      }
-    },
-    "FEES": {
-      "TEXT": "Tarifa",
-      "LIST": {
-        "ALL-FEES": "Todas las tarifas",
-        "ADD-FEES": "Agregar tarifas",
-        "EDIT-FEES": "Editar tarifas",
-        "FEE-RECEIPT": "Recibo de tarifa"
-      }
-    },
-    "ATTENDANCE": {
-      "TEXT": "Asistencia",
-      "LIST": {
-        "STAFF": "Staff Attendance",
-        "DETAILS": "Attendance Details",
-        "SHEET": "Hoja de asistencia"
+    "ADMIN": {
+      "DASHBOARD": {
+        "TEXT": "Tablero",
+        "LIST": {
+          "DASHBOARD1": "Tablero 1",
+          "DASHBOARD2": "Tablero 2",
+          "TEACHER-DASHBOARD": "Panel del profesor",
+          "STUDENT-DASHBOARD": "Tablero del estudiante"
+        }
+      },
+      "USERS": {
+        "TEXT": "Usuarios",
+        "LIST": {
+          "ALL": "Todos",
+          "ADD": "Agregar usuario"
+        }
+      },
+      "TEACHERS": {
+        "TEXT": "Guías",
+        "LIST": {
+          "ALL": "Todas las guías",
+          "ADD": "Agregar guía"
+        }
+      },
+      "STUDENTS": {
+        "TEXT": "Alumnos",
+        "LIST": {
+          "ALL": "Todos los alumnos",
+          "ADD": "Agregar estudiante",
+          "STUDENT-ATTENDANCE": "Student Attendance"
+        }
+      },
+      "GUARDIANS": {
+        "TEXT": "Apoderados",
+        "LIST": {
+          "ALL": "Todos los apoderados",
+          "ADD": "Agregar apoderado"
+        }
+      },
+      "GRADES": {
+        "TEXT": "Niveles",
+        "LIST": {
+          "ALL": "Todos los niveles",
+          "ADD": "Agregar nivel",
+          "EDIT-GRADE": "Editar nivel"
+        }
+      },
+      "SUBJECTS": {
+        "TEXT": "Asignaturas",
+        "LIST": {
+          "ALL": "Todas las asignaturas",
+          "ADD": "Agregar asignatura"
+        }
+      },
+      "EVENTS": {
+        "TEXT": "Calendario",
+        "LIST": {
+          "ALL": "Todas las actividades",
+          "ADD": "Agregar actividad",
+          "CALENDAR": "Calendario general"
+        }
+      },
+      "LIBRARY": {
+        "TEXT": "Biblioteca",
+        "LIST": {
+          "ALL": "Toda la biblioteca",
+          "ADD": "Agregar biblioteca",
+          "EDIT-LIBRARY": "Editar biblioteca"
+        }
+      },
+      "DEPARTMENTS": {
+        "TEXT": "Departamentos",
+        "LIST": {
+          "ALL": "Todos los departamentos",
+          "ADD": "Agregar departamento",
+          "EDIT-DEPARTMENT": "Editar departamento"
+        }
+      },
+      "STAFF": {
+        "TEXT": "Personal",
+        "LIST": {
+          "ALL": "Todo el personal",
+          "ADD": "Agregar personal",
+          "EDIT-STAFF": "Editar personal",
+          "ABOUT-STAFF": "Sobre el personal"
+        }
+      },
+      "FEES": {
+        "TEXT": "Tarifa",
+        "LIST": {
+          "ALL": "Todas las tarifas",
+          "ADD": "Agregar tarifas",
+          "EDIT-FEES": "Editar tarifas",
+          "FEE-RECEIPT": "Recibo de tarifa"
+        }
+      },
+      "ATTENDANCE": {
+        "TEXT": "Asistencia",
+        "LIST": {
+          "STAFF": "Staff Attendance",
+          "DETAILS": "Attendance Details",
+          "SHEET": "Hoja de asistencia"
+        }
       }
     },
     "TEACHER": {
@@ -146,19 +140,22 @@
         "SETTINGS": "Configuraciones",
         "TIME-TABLE": "Horario"
       },
+      "TIMETABLE": {
+        "TEXT": "Horario"
+      },
       "PLANNINGS": {
         "TEXT": "Planificaciones",
         "LIST": {
-          "ALL-PLANNINGS": "Todas",
-          "ADD-PLANNING": "Agregar planificación",
+          "ALL": "Todas",
+          "ADD": "Agregar planificación",
           "PLANNINGS-CALENDAR": "Calendario"
         }
       },
       "HOMEWORKS": {
         "TEXT": "Tareas",
         "LIST": {
-          "ALL-HOMEWORKS": "Todas",
-          "ADD-HOMEWORK": "Agregar tarea"
+          "ALL": "Todas",
+          "ADD": "Agregar tarea"
         }
       }
     },
@@ -170,6 +167,15 @@
         "LEAVE-REQUEST": "Dejar petición",
         "TIME-TABLE": "Horario",
         "SETTINGS": "Configuraciones"
+      },
+      "TIMETABLE": {
+        "TEXT": "Horario"
+      },
+      "PLANNINGS": {
+        "TEXT": "Planificaciones"
+      },
+      "HOMEWORKS": {
+        "TEXT": "Tareas"
       }
     },
     "GUARDIAN": {
@@ -180,6 +186,15 @@
         "LEAVE-REQUEST": "Dejar petición",
         "TIME-TABLE": "Horario",
         "SETTINGS": "Configuraciones"
+      },
+      "TIMETABLE": {
+        "TEXT": "Horario"
+      },
+      "PLANNINGS": {
+        "TEXT": "Planificaciones"
+      },
+      "HOMEWORKS": {
+        "TEXT": "Tareas"
       }
     },
     "APPS": {
@@ -193,6 +208,9 @@
     },
     "CONTACTS": {
       "TEXT": "Contactos"
+    },
+    "LOGOUT": {
+      "TEXT": "Cerrar sesión"
     }
   },
   "ADMINMODULE": {

@@ -17,123 +17,117 @@
   },
   "MENUITEMS": {
     "MAIN": {
-      "TEXT": "Main"
-    },
-    "DASHBOARD": {
-      "TEXT": "Dashboard",
-      "LIST": {
-        "DASHBOARD1": "Dashboard 1",
-        "DASHBOARD2": "Dashboard 2",
-        "TEACHER-DASHBOARD": "Teacher Dashboard",
-        "STUDENT-DASHBOARD": "Student Dashboard"
+      "TEXT": "Main",
+      "PROFILES": {
+        "ADMIN": "Administrator",
+        "TEACHER": "Teacher",
+        "STUDENT": "Student",
+        "GUARDIAN": "Guardian"
       }
     },
-    "TEACHERS": {
-      "TEXT": "Teachers",
-      "LIST": {
-        "ALL-TEACHERS": "All Teachers",
-        "ADD-TEACHER": "Add Teacher",
-        "EDIT-TEACHER": "Edit Teacher",
-        "ABOUT-TEACHER": "About Teacher"
-      }
-    },
-    "STUDENTS": {
-      "TEXT": "Students",
-      "LIST": {
-        "ALL-STUDENTS": "All Students",
-        "ADD-STUDENT": "Add Student",
-        "EDIT-STUDENT": "Edit Student",
-        "ABOUT-STUDENT": "About Student",
-        "STUDENT-ATTENDANCE": "Student Attendance"
-      }
-    },
-    "GUARDIANS": {
-      "TEXT": "Guardians",
-      "LIST": {
-        "ALL-GUARDIANS": "All Guardians",
-        "ADD-GUARDIAN": "Add Guardians"
-      }
-    },
-    "USERS": {
-      "TEXT": "Users",
-      "LIST": {
-        "ALL-USERS": "All Users",
-        "ADD-USER": "Add User"
-      }
-    },
-    "COURSES": {
-      "TEXT": "Courses",
-      "LIST": {
-        "ALL-COURSES": "All Courses",
-        "ADD-COURSE": "Add Course",
-        "EDIT-COURSE": "Edit Course",
-        "ABOUT-COURSE": "About Course"
-      }
-    },
-    "LIBRARY": {
-      "TEXT": "Library",
-      "LIST": {
-        "ALL-LIBRARY": "All Library Assets",
-        "ADD-LIBRARY": "Add Library Asset",
-        "EDIT-LIBRARY": "Edit Library Asset"
-      }
-    },
-    "DEPARTMENTS": {
-      "TEXT": "Departments",
-      "LIST": {
-        "ALL-DEPARTMENT": "All Departments",
-        "ADD-DEPARTMENT": "Add Department",
-        "EDIT-DEPARTMENT": "Edit Department"
-      }
-    },
-    "GRADES": {
-      "TEXT": "Grades",
-      "LIST": {
-        "ALL-GRADE": "All Grades",
-        "ADD-GRADE": "Add Grade",
-        "EDIT-GRADE": "Edit Grade"
-      }
-    },
-    "SUBJECTS": {
-      "TEXT": "Subject",
-      "LIST": {
-        "ALL-SUBJECTS": "All Subject",
-        "ADD-SUBJECT": "Add Subject"
-      }
-    },
-    "STAFF": {
-      "TEXT": "Staff",
-      "LIST": {
-        "ALL-STAFF": "All Staff",
-        "ADD-STAFF": "Add Staff",
-        "EDIT-STAFF": "Edit Staff",
-        "ABOUT-STAFF": "About Staff"
-      }
-    },
-    "EVENT": {
-      "TEXT": "Events",
-      "LIST": {
-        "ALL-EVENT": "All events",
-        "ADD-EVENT": "Add event",
-        "EDIT-EVENT": "Edit event",
-        "CALENDAR": "Calendar"
-      }
-    },
-    "FEES": {
-      "TEXT": "Fees",
-      "LIST": {
-        "ALL-FEES": "All Fees",
-        "ADD-FEES": "Add fees",
-        "EDIT-FEES": "Edit fees",
-        "FEE-RECEIPT": "Fee Receipt"
-      }
-    },
-    "ATTENDANCE": {
-      "TEXT": "Attendance",
-      "LIST": {
-        "STAFF": "Staff Attendance",
-        "DETAILS": "Attendance Details",
-        "SHEET": "Attendance Sheet"
+    "ADMIN": {
+      "DASHBOARD": {
+        "TEXT": "Dashboard",
+        "LIST": {
+          "DASHBOARD1": "Dashboard 1",
+          "DASHBOARD2": "Dashboard 2",
+          "TEACHER-DASHBOARD": "Teacher Dashboard",
+          "STUDENT-DASHBOARD": "Student Dashboard"
+        }
+      },
+      "USERS": {
+        "TEXT": "Users",
+        "LIST": {
+          "ALL": "All Users",
+          "ADD": "Add User"
+        }
+      },
+      "TEACHERS": {
+        "TEXT": "Teachers",
+        "LIST": {
+          "ALL": "All Teachers",
+          "ADD": "Add Teacher"
+        }
+      },
+      "STUDENTS": {
+        "TEXT": "Students",
+        "LIST": {
+          "ALL": "All Students",
+          "ADD": "Add Student",
+          "STUDENT-ATTENDANCE": "Student Attendance"
+        }
+      },
+      "GUARDIANS": {
+        "TEXT": "Guardians",
+        "LIST": {
+          "ALL": "All Guardians",
+          "ADD": "Add Guardians"
+        }
+      },
+      "GRADES": {
+        "TEXT": "Grades",
+        "LIST": {
+          "ALL": "All Grades",
+          "ADD": "Add Grade",
+          "EDIT-GRADE": "Edit Grade"
+        }
+      },
+      "SUBJECTS": {
+        "TEXT": "Subject",
+        "LIST": {
+          "ALL": "All Subject",
+          "ADD": "Add Subject"
+        }
+      },
+      "EVENTS": {
+        "TEXT": "Events",
+        "LIST": {
+          "ALL": "All events",
+          "ADD": "Add event",
+          "CALENDAR": "General calendar"
+        }
+      },
+      "LIBRARY": {
+        "TEXT": "Library",
+        "LIST": {
+          "ALL": "All Library Assets",
+          "ADD": "Add Library Asset",
+          "EDIT-LIBRARY": "Edit Library Asset"
+        }
+      },
+      "DEPARTMENTS": {
+        "TEXT": "Departments",
+        "LIST": {
+          "ALL": "All Departments",
+          "ADD": "Add Department",
+          "EDIT-DEPARTMENT": "Edit Department"
+        }
+      },
+      "STAFF": {
+        "TEXT": "Staff",
+        "LIST": {
+          "ALL": "All Staff",
+          "ADD": "Add Staff",
+          "EDIT-STAFF": "Edit Staff",
+          "ABOUT-STAFF": "About Staff"
+        }
+      },
+      "FEES": {
+        "TEXT": "Fees",
+        "LIST": {
+          "ALL": "All Fees",
+          "ADD": "Add fees",
+          "EDIT-FEES": "Edit fees",
+          "FEE-RECEIPT": "Fee Receipt"
+        }
+      },
+      "ATTENDANCE": {
+        "TEXT": "Attendance",
+        "LIST": {
+          "STAFF": "Staff Attendance",
+          "DETAILS": "Attendance Details",
+          "SHEET": "Attendance Sheet"
+        }
       }
     },
     "TEACHER": {
@@ -145,6 +139,9 @@
         "EXAM-SCHEDULE": "Exam Schedule",
         "SETTINGS": "Settings",
         "TIME-TABLE": "Time Table"
+      },
+      "TIMETABLE": {
+        "TEXT": "Daily Schedule"
       },
       "PLANNINGS": {
         "TEXT": "Plannings",
@@ -170,6 +167,15 @@
         "LEAVE-REQUEST": "Leave Request",
         "TIME-TABLE": "Time Table",
         "SETTINGS": "Settings"
+      },
+      "TIMETABLE": {
+        "TEXT": "Daily Schedule"
+      },
+      "PLANNINGS": {
+        "TEXT": "Plannings"
+      },
+      "HOMEWORKS": {
+        "TEXT": "Homeworks"
       }
     },
     "GUARDIAN": {
@@ -180,6 +186,15 @@
         "LEAVE-REQUEST": "Leave Request",
         "TIME-TABLE": "Time Table",
         "SETTINGS": "Settings"
+      },
+      "TIMETABLE": {
+        "TEXT": "Daily Schedule"
+      },
+      "PLANNINGS": {
+        "TEXT": "Plannings"
+      },
+      "HOMEWORKS": {
+        "TEXT": "Homeworks"
       }
     },
     "APPS": {
@@ -193,6 +208,9 @@
     },
     "CONTACTS": {
       "TEXT": "Contacts"
+    },
+    "LOGOUT": {
+      "TEXT": "Logout"
     }
   },
   "ADMINMODULE": {

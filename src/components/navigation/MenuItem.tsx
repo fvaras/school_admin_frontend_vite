@@ -18,6 +18,7 @@ import {
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { MenuItemType, SubItem } from './types';
+import { useTranslation } from 'react-i18next';
 
 // Mapping of icon strings to Lucide icons
 const iconMap: Record<string, typeof Icon> = {
@@ -49,6 +50,8 @@ const MenuItem = ({ item, openedMenu, openedMenuItem, handleMenuClick, handleMen
     // const IconComponent = iconMap[menuItem.icon] || User; // Default to User if icon not found
     const IconComponent = iconMap[icon] || User; // Default to User if icon not found
 
+    const { t } = useTranslation();
+
     if (link)
         return (
             <Link
@@ -57,7 +60,7 @@ const MenuItem = ({ item, openedMenu, openedMenuItem, handleMenuClick, handleMen
                 onClick={() => handleMenuItemClick(item.id)}>
                 {/* @ts-ignore */}
                 <IconComponent className='w-5 h-5 inline-block mr-3' />
-                <span className="ml-2 text-sm">{name}</span>
+                <span className="ml-2 text-sm">{t(name)}</span>
             </Link>
         )
 
@@ -70,7 +73,7 @@ const MenuItem = ({ item, openedMenu, openedMenuItem, handleMenuClick, handleMen
                 >
                     {/* @ts-ignore */}
                     <IconComponent className='w-5 h-5 inline-block mr-3' />
-                    <span className="ml-2 text-sm">{name}</span>
+                    <span className="ml-2 text-sm">{t(name)}</span>
                     <span className="ml-auto">
                         {openedMenu === id ? <ChevronDown className="w-5 h-5 inline-block ml-3" /> : <ChevronRight className="w-5 h-5 inline-block ml-3" />}
                     </span>
@@ -87,7 +90,8 @@ const MenuItem = ({ item, openedMenu, openedMenuItem, handleMenuClick, handleMen
                                     ${openedMenuItem === item.id ? 'text-gray-700 dark:text-light' : ''}
                                 `}
                             >
-                                {item.name}
+                                {/* {item.name} */}
+                                {t(item.name)}
                             </Link>
                         ))}
                     </div>

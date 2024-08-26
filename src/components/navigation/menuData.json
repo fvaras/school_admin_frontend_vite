@@ -10,7 +10,7 @@
     },
     {
         "id": "admin_users",
-        "name": "Users",
+        "name": "MENUITEMS.ADMIN.USERS.TEXT",
         "icon": "user",
         "profiles": [
             "ccd8f71e-b6a6-4b04-84cf-ee3bcea3999c"
@@ -18,19 +18,19 @@
         "subItems": [
             {
                 "id": "admin_users_all",
-                "name": "All Users",
+                "name": "MENUITEMS.ADMIN.USERS.LIST.ALL",
                 "link": "/admin/users/all-users"
             },
             {
                 "id": "admin_users_add",
-                "name": "Add User",
+                "name": "MENUITEMS.ADMIN.USERS.LIST.ADD",
                 "link": "/admin/users/add-user"
             }
         ]
     },
     {
         "id": "admin_teachers",
-        "name": "Teachers",
+        "name": "MENUITEMS.ADMIN.TEACHERS.TEXT",
         "icon": "graduation-cap",
         "profiles": [
             "ccd8f71e-b6a6-4b04-84cf-ee3bcea3999c"
@@ -38,19 +38,19 @@
         "subItems": [
             {
                 "id": "admin_teachers_all",
-                "name": "All Teachers",
+                "name": "MENUITEMS.ADMIN.TEACHERS.LIST.ALL",
                 "link": "/admin/teachers/all-teachers"
             },
             {
                 "id": "admin_teachers_add",
-                "name": "Add Teacher",
+                "name": "MENUITEMS.ADMIN.TEACHERS.LIST.ADD",
                 "link": "/admin/teachers/add-teacher"
             }
         ]
     },
     {
         "id": "admin_students",
-        "name": "Students",
+        "name": "MENUITEMS.ADMIN.STUDENTS.TEXT",
         "icon": "square-user-round",
         "profiles": [
             "ccd8f71e-b6a6-4b04-84cf-ee3bcea3999c"
@@ -58,19 +58,19 @@
         "subItems": [
             {
                 "id": "admin_students_all",
-                "name": "All Students",
+                "name": "MENUITEMS.ADMIN.STUDENTS.LIST.ALL",
                 "link": "/admin/students/all-students"
             },
             {
                 "id": "admin_students_add",
-                "name": "Add Student",
+                "name": "MENUITEMS.ADMIN.STUDENTS.LIST.ADD",
                 "link": "/admin/students/add-student"
             }
         ]
     },
     {
         "id": "admin_guardians",
-        "name": "Guardians",
+        "name": "MENUITEMS.ADMIN.GUARDIANS.TEXT",
         "icon": "square-user",
         "profiles": [
             "ccd8f71e-b6a6-4b04-84cf-ee3bcea3999c"
@@ -78,19 +78,19 @@
         "subItems": [
             {
                 "id": "admin_guardians_all",
-                "name": "All Guardians",
+                "name": "MENUITEMS.ADMIN.GUARDIANS.LIST.ALL",
                 "link": "/admin/guardians/all-guardians"
             },
             {
                 "id": "admin_guardians_add",
-                "name": "Add Guardian",
+                "name": "MENUITEMS.ADMIN.GUARDIANS.LIST.ADD",
                 "link": "/admin/guardians/add-guardian"
             }
         ]
     },
     {
         "id": "admin_grades",
-        "name": "Grades",
+        "name": "MENUITEMS.ADMIN.GRADES.TEXT",
         "icon": "library-big",
         "profiles": [
             "ccd8f71e-b6a6-4b04-84cf-ee3bcea3999c"
@@ -98,19 +98,19 @@
         "subItems": [
             {
                 "id": "admin_grades_all",
-                "name": "All Grades",
+                "name": "MENUITEMS.ADMIN.GRADES.LIST.ALL",
                 "link": "/admin/grades/all-grades"
             },
             {
                 "id": "admin_grades_add",
-                "name": "Add Grade",
+                "name": "MENUITEMS.ADMIN.GRADES.LIST.ADD",
                 "link": "/admin/grades/add-grade"
             }
         ]
     },
     {
         "id": "admin_subjects",
-        "name": "Subjects",
+        "name": "MENUITEMS.ADMIN.SUBJECTS.TEXT",
         "icon": "book-open-check",
         "profiles": [
             "ccd8f71e-b6a6-4b04-84cf-ee3bcea3999c"
@@ -118,19 +118,19 @@
         "subItems": [
             {
                 "id": "admin_subjects_all",
-                "name": "All Subjects",
+                "name": "MENUITEMS.ADMIN.SUBJECTS.LIST.ALL",
                 "link": "/admin/subjects/all-subjects"
             },
             {
                 "id": "admin_subjects_add",
-                "name": "Add Subject",
+                "name": "MENUITEMS.ADMIN.SUBJECTS.LIST.ADD",
                 "link": "/admin/subjects/add-subject"
             }
         ]
     },
     {
         "id": "admin_events",
-        "name": "Events",
+        "name": "MENUITEMS.ADMIN.EVENTS.TEXT",
         "icon": "calendar-check",
         "profiles": [
             "ccd8f71e-b6a6-4b04-84cf-ee3bcea3999c"
@@ -138,24 +138,24 @@
         "subItems": [
             {
                 "id": "admin_events_all",
-                "name": "All Events",
+                "name": "MENUITEMS.ADMIN.EVENTS.LIST.ALL",
                 "link": "/admin/events/all-events"
             },
             {
                 "id": "admin_events_add",
-                "name": "Add Event",
+                "name": "MENUITEMS.ADMIN.EVENTS.LIST.ADD",
                 "link": "/admin/events/add-event"
             },
             {
                 "id": "General Calendar",
-                "name": "General Calendar",
+                "name": "MENUITEMS.ADMIN.EVENTS.LIST.CALENDAR",
                 "link": "/admin/events/calendar"
             }
         ]
     },
     {
         "id": "teacher_timetable",
-        "name": "Time Table",
+        "name": "MENUITEMS.TEACHER.TIMETABLE.TEXT",
         "link": "/teacher/plannings/timetable",
         "profiles": [
             "398d52f1-0d94-40f9-8ef2-bc801c714490"
@@ -164,7 +164,7 @@
     },
     {
         "id": "teacher_plannings",
-        "name": "Plannings",
+        "name": "MENUITEMS.TEACHER.PLANNINGS.TEXT",
         "icon": "folder-kanban",
         "profiles": [
             "398d52f1-0d94-40f9-8ef2-bc801c714490"
@@ -172,19 +172,19 @@
         "subItems": [
             {
                 "id": "teacher_plannings_all",
-                "name": "All Plannings",
+                "name": "MENUITEMS.TEACHER.PLANNINGS.LIST.ALL",
                 "link": "/teacher/plannings/all-plannings"
             },
             {
                 "id": "teacher_plannings_add",
-                "name": "Add Planning",
+                "name": "MENUITEMS.TEACHER.PLANNINGS.LIST.ADD",
                 "link": "/teacher/plannings/add-planning"
             }
         ]
     },
     {
         "id": "teacher_homeworks",
-        "name": "Homeworks",
+        "name": "MENUITEMS.TEACHER.HOMEWORKS.TEXT",
         "icon": "notebook-pen",
         "profiles": [
             "398d52f1-0d94-40f9-8ef2-bc801c714490"
@@ -192,19 +192,19 @@
         "subItems": [
             {
                 "id": "teacher_homeworks_all",
-                "name": "All Homeworks",
+                "name": "MENUITEMS.TEACHER.HOMEWORKS.LIST.ALL",
                 "link": "/teacher/homeworks/all-homeworks"
             },
             {
                 "id": "teacher_homeworks_add",
-                "name": "Add Homework",
+                "name": "MENUITEMS.TEACHER.HOMEWORKS.LIST.ADD",
                 "link": "/teacher/homeworks/add-homework"
             }
         ]
     },
     {
         "id": "student_timetable",
-        "name": "Time Table",
+        "name": "MENUITEMS.STUDENT.TIMETABLE.TEXT",
         "link": "/student/plannings/timetable",
         "icon": "calendar-clock",
         "profiles": [
@@ -213,7 +213,7 @@
     },
     {
         "id": "student_homeworks",
-        "name": "Homeworks",
+        "name": "MENUITEMS.STUDENT.HOMEWORKS.TEXT",
         "icon": "notebook-pen",
         "link": "/student/homeworks/all-homeworks",
         "profiles": [
@@ -222,7 +222,7 @@
     },
     {
         "id": "student_plannings",
-        "name": "Plannings",
+        "name": "MENUITEMS.STUDENT.PLANNINGS.TEXT",
         "icon": "folder-kanban",
         "link": "/student/plannings/all-plannings",
         "profiles": [
@@ -231,7 +231,7 @@
     },
     {
         "id": "guardian_timetable",
-        "name": "Time Table",
+        "name": "MENUITEMS.GUARDIAN.TIMETABLE.TEXT",
         "link": "/guardian/plannings/timetable",
         "icon": "calendar-clock",
         "profiles": [
@@ -240,7 +240,7 @@
     },
     {
         "id": "guardian_homeworks",
-        "name": "Homeworks",
+        "name": "MENUITEMS.GUARDIAN.HOMEWORKS.TEXT",
         "icon": "notebook-pen",
         "link": "/guardian/homeworks/all-homeworks",
         "profiles": [
@@ -249,7 +249,7 @@
     },
     {
         "id": "guardian_plannings",
-        "name": "Plannings",
+        "name": "MENUITEMS.GUARDIAN.PLANNINGS.TEXT",
         "icon": "folder-kanban",
         "link": "/guardian/plannings/all-plannings",
         "profiles": [
@@ -258,7 +258,7 @@
     },
     {
         "id": "logout",
-        "name": "Logout",
+        "name": "MENUITEMS.LOGOUT.TEXT",
         "link": "/auth/signin",
         "icon": "log-out",
         "profiles": []
