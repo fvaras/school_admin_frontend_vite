@@ -6,8 +6,11 @@ import { useGuardians } from "../../hooks"
 import { useNavigate } from "react-router-dom"
 import { useToast } from "@/components/ui/use-toast"
 import { Badge } from "@/components/ui/badge"
+import { useTranslation } from "react-i18next"
 
 const AllGuardiansTable = () => {
+
+    const { t } = useTranslation()
 
     const [data, setData] = useState<IGuardianTableRowDTO[]>([])
     const [showDeleteConfirmDialog, setShowDeleteConfirmDialog] = useState<boolean>(false)
@@ -29,44 +32,43 @@ const AllGuardiansTable = () => {
         // },
         {
             accessorKey: "rut",
-            header: "UUID"
+            header: t('ADMINMODULE.FIELDNAMES.UUIDRUT'), // "UUID"
         },
         {
             accessorKey: "firstName",
-            header: "First Name"
+            header: t('ADMINMODULE.FIELDNAMES.NAME'), // "First Name"
         },
         {
             accessorKey: "lastName",
-            header: "Last Name"
+            header: t('ADMINMODULE.FIELDNAMES.LASTNAME'), // "Last Name"
         },
         {
             accessorKey: "phone",
-            header: "Phone"
+            header: t('ADMINMODULE.FIELDNAMES.PHONE'), // "Phone"
         },
         {
             accessorKey: "email",
-            header: "Email"
+            header: t('ADMINMODULE.FIELDNAMES.EMAIL'), // "Email"
         },
         {
             accessorKey: "stateId",
-            header: "State",
+            header: t('ADMINMODULE.FIELDNAMES.STATE'), // "State",
             cell: ({ row }) => <>
-                {row.original.stateId === 1 && <Badge variant='outline' className="bg-green-800 text-green-100">Active</Badge>}
-                {row.original.stateId !== 1 && <Badge variant='destructive'>Inactive</Badge>}
+                {row.original.stateId === 1 && <Badge variant='outline' className="bg-green-800 text-green-100">{t('ADMINMODULE.STATES.ACTIVE')}</Badge>}
+                {row.original.stateId !== 1 && <Badge variant='destructive'>{t('ADMINMODULE.STATES.INACTIVE')}</Badge>}
             </>
         },
         {
             id: "actions",
             cell: ({ row }) => <DataTableRowActions
-                title="Actions"
+                title={t('ADMINMODULE.FIELDNAMES.ACTIONS')}
                 data={row.original}
                 items={[
                     {
-                        // title: 'Edit', onClick: (data) => { navigate(`/admin/users/${data.id}`) }
-                        title: 'Edit', onClick: (data) => { navigate(`../${data.id}`, { relative: 'path' }) }
+                        title: t('ADMINMODULE.FIELDNAMES.EDIT_ACTION'), onClick: (data) => { navigate(`../${data.id}`, { relative: 'path' }) }
                     },
                     {
-                        title: 'Delete', onClick: (data) => {
+                        title: t('ADMINMODULE.FIELDNAMES.DELETE_ACTION'), onClick: (data) => {
                             setCurrentData(data);
                             setShowDeleteConfirmDialog(true)
                         }

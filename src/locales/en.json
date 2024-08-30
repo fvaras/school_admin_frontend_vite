@@ -264,8 +264,8 @@
         "TITLE": "Edit student"
       },
       "TEXTS": {
-        "USERINFO": "User Data",
-        "STUDENTINFO": "Student Data"
+        "USERINFO": "User Info",
+        "STUDENTINFO": "Student Info"
       }
     },
     "GUARDIAN": {
@@ -280,6 +280,10 @@
       "EDIT": {
         "BREADCRUMBS": "Add guardian|Guardian|Add",
         "TITLE": "Edit guardian"
+      },
+      "TEXTS": {
+        "USERINFO": "User Info",
+        "GUARDIANINFO": "Guardian Info"
       }
     },    
     "GRADE": {

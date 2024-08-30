@@ -5,10 +5,13 @@ import { useGuardians } from "../../hooks";
 import { useEffect, useState } from "react";
 import { IGuardianDTO, IGuardianForUpdateDTO } from "../../models/IGuardian";
 import { useToast } from "@/components/ui/use-toast";
+import { useTranslation } from "react-i18next";
 
 
 const EditGuardianPage = () => {
     const [currentGuardian, setCurrentGuardian] = useState<IGuardianDTO | null>(null)
+
+    const { t } = useTranslation()
 
     let { guardianId } = useParams();
 
@@ -41,7 +44,7 @@ const EditGuardianPage = () => {
                 { text: 'Edit' },
             ]} />
 
-            <Heading variant="title2">Edit guardian</Heading>
+            <Heading variant="title2">{t('ADMINMODULE.GUARDIAN.EDIT.TITLE')}</Heading>
 
             {(!loading && currentGuardian) &&
                 <AddEditGuardianForm

@@ -1,7 +1,11 @@
 import { Breadcrumbs, Heading } from '@/components/ui/custom'
 import AllGuardiansTable from '../views/AllGuardiansTable'
+import { useTranslation } from 'react-i18next'
 
 const AllGuardiansPage = () => {
+    
+    const { t } = useTranslation()
+    
     return (
         <>
             <Breadcrumbs items={[
@@ -9,7 +13,7 @@ const AllGuardiansPage = () => {
                 { text: 'Guardians' },
             ]} />
 
-            <Heading variant="title2">Guardians</Heading>
+            <Heading variant="title2">{t('ADMINMODULE.GUARDIAN.ALL.TITLE')}</Heading>
 
             <AllGuardiansTable></AllGuardiansTable>
         </>

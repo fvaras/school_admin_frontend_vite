@@ -264,8 +264,8 @@
         "TITLE": "Editar alumno/a"
       },
       "TEXTS": {
-        "USERINFO": "Datos del usuario",
-        "STUDENTINFO": "Datos del estudiante"
+        "USERINFO": "Información del Usuario",
+        "STUDENTINFO": "Información del Estudiante"
       }
     },
     "GUARDIAN": {
@@ -280,6 +280,10 @@
       "EDIT": {
         "BREADCRUMBS": "Agregar apoderado|Apoderado|Agregar",
         "TITLE": "Editar apoderado/a"
+      },
+      "TEXTS": {
+        "USERINFO": "Información del Usuario",
+        "GUARDIANINFO": "Información del Apoderado"
       }
     },
     "GRADE": {

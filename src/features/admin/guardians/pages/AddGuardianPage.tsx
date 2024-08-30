@@ -4,10 +4,13 @@ import { useNavigate } from 'react-router-dom'
 import { IGuardianForCreationDTO } from '../../models/IGuardian'
 import { Breadcrumbs, Heading } from '@/components/ui/custom'
 import AddEditGuardianForm from '../views/AddEditGuardianForm'
+import { useTranslation } from 'react-i18next'
 
 const AddGuardianPage = () => {
     const { createGuardian, loadingModification } = useGuardians()
 
+    const { t } = useTranslation()
+    
     const { toast } = useToast()
 
     const navigate = useNavigate()
@@ -28,7 +31,7 @@ const AddGuardianPage = () => {
                 { text: 'New' },
             ]} />
 
-            <Heading variant="title2">New guardian</Heading>
+            <Heading variant="title2">{t('ADMINMODULE.GUARDIAN.ADD.TITLE')}</Heading>
 
             {/* <Heading variant="subtitle2">Optional subtitle can go here</Heading> */}
 
