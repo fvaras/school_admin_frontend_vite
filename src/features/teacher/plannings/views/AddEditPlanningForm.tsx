@@ -13,6 +13,7 @@ import { IPlanningDTO, IPlanningForCreationDTO, IPlanningForUpdateDTO } from "..
 import { useGrades, useSubjects } from "../../hooks"
 import { useEffect, useState } from "react"
 import { LabelValueDTO, PKFKPair } from "@/models/TLabelValueDTO"
+import { useTranslation } from "react-i18next"
 
 const formSchema = z.object({
     gradeId: z.string(),
@@ -36,6 +37,8 @@ interface IProps {
 
 const AddEditPlanningForm = ({ planning, mode, loading, submit }: IProps) => {
 
+    const { t } = useTranslation()
+    
     const [subjectsGradesList, setSubjectsGradesList] = useState<LabelValueDTO<string>[] | null>([])
 
     const { getWithGradeByTeacherForList, mapSubjectGradesPkFkToLabelValueWithData } = useSubjects()
@@ -106,7 +109,6 @@ const AddEditPlanningForm = ({ planning, mode, loading, submit }: IProps) => {
 
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)}>
-                    <Heading variant="subtitle2">User Info</Heading>
                     <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 mb-4 -mx-2">
 
                         {subjectsGradesList &&
@@ -117,7 +119,7 @@ const AddEditPlanningForm = ({ planning, mode, loading, submit }: IProps) => {
                                     render={({ field }) => (
                                         <FormComboboxField
                                             field={field}
-                                            label="Subject / Grade"
+                                            label={t('TEACHERMODULE.FIELDNAMES.SUBJECTGRADE')} // "Subject / Grade"
                                             placeholder="Subject / Grade"
                                             options={subjectsGradesList}
                                         />
@@ -133,7 +135,7 @@ const AddEditPlanningForm = ({ planning, mode, loading, submit }: IProps) => {
                                 render={({ field }) => (
                                     <FormInputField
                                         field={field}
-                                        label="Title"
+                                        label={t('TEACHERMODULE.FIELDNAMES.TITLE')} // "Title"
                                         placeholder="Title"
                                     />
                                 )}
@@ -147,7 +149,7 @@ const AddEditPlanningForm = ({ planning, mode, loading, submit }: IProps) => {
                                 render={({ field }) => (
                                     <FormTextAreaField
                                         field={field}
-                                        label="Description"
+                                        label={t('TEACHERMODULE.FIELDNAMES.DESCRIPTION')} // "Description"
                                         placeholder="Description"
                                     />
                                 )}
@@ -161,7 +163,7 @@ const AddEditPlanningForm = ({ planning, mode, loading, submit }: IProps) => {
                                 render={({ field }) => (
                                     <FormTextAreaField
                                         field={field}
-                                        label="Expected learning"
+                                        label={t('TEACHERMODULE.FIELDNAMES.EXPECTEDLEARNING')} // "Expected learning"
                                         placeholder=""
                                     />
                                 )}
@@ -174,7 +176,7 @@ const AddEditPlanningForm = ({ planning, mode, loading, submit }: IProps) => {
                                 render={({ field }) => (
                                     <FormTextAreaField
                                         field={field}
-                                        label="Contents"
+                                        label={t('TEACHERMODULE.FIELDNAMES.CONTENT')} // "Contents"
                                         placeholder=""
                                     />
                                 )}
@@ -187,7 +189,7 @@ const AddEditPlanningForm = ({ planning, mode, loading, submit }: IProps) => {
                                 render={({ field }) => (
                                     <FormTextAreaField
                                         field={field}
-                                        label="Activities"
+                                        label={t('TEACHERMODULE.FIELDNAMES.ACTIVITIES')} // "Activities"
                                         placeholder=""
                                     />
                                 )}
@@ -200,7 +202,7 @@ const AddEditPlanningForm = ({ planning, mode, loading, submit }: IProps) => {
                                 render={({ field }) => (
                                     <FormTextAreaField
                                         field={field}
-                                        label="Resources"
+                                        label={t('TEACHERMODULE.FIELDNAMES.RESOURCES')} // "Resources"
                                         placeholder=""
                                     />
                                 )}
@@ -213,7 +215,7 @@ const AddEditPlanningForm = ({ planning, mode, loading, submit }: IProps) => {
                                 render={({ field }) => (
                                     <FormTextAreaField
                                         field={field}
-                                        label="Evaluation plan"
+                                        label={t('TEACHERMODULE.FIELDNAMES.EVALUATIONPLAN')} // "Evaluation plan"
                                         placeholder=""
                                     />
                                 )}
@@ -226,7 +228,7 @@ const AddEditPlanningForm = ({ planning, mode, loading, submit }: IProps) => {
                             render={({ field }) => (
                                 <FormInputField
                                     field={field}
-                                    label="Estimated duration"
+                                    label={t('TEACHERMODULE.FIELDNAMES.DURATION')} // "Estimated duration"
                                     placeholder="10"
                                 />
                             )}
@@ -235,7 +237,7 @@ const AddEditPlanningForm = ({ planning, mode, loading, submit }: IProps) => {
 
                     </div>
                     <div className="col-start-1 col-end-3">
-                        <ButtonLoading loading={loading} type="submit">Submit</ButtonLoading>
+                        <ButtonLoading loading={loading} type="submit">{t('TEACHERMODULE.FIELDNAMES.SAVEBUTTON')}</ButtonLoading>
                     </div>
                 </form>
             </Form>

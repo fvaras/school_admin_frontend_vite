@@ -5,6 +5,7 @@ import { LabelValueDTO, PKFKPair } from '@/models/TLabelValueDTO'
 import { usePlannings, useSubjects } from '../../hooks'
 import { IPlanningTableRowDTO } from '../../models/IPlanning'
 import { useToast } from '@/components/ui/use-toast'
+import { useTranslation } from 'react-i18next'
 
 const AllPlanningsPage = () => {
     const [subjectsGradesList, setSubjectsGradesList] = useState<LabelValueDTO<string>[]>([])
@@ -13,6 +14,8 @@ const AllPlanningsPage = () => {
     const { getWithGradeByTeacherForList, mapSubjectGradesPkFkToLabelValueWithData } = useSubjects()
     const { loading, loadingModification, getAllTeacherPlannings, deletePlanning } = usePlannings()
 
+    const { t } = useTranslation()
+    
     const { toast } = useToast()
 
     useEffect(() => {
@@ -46,7 +49,7 @@ const AllPlanningsPage = () => {
                 { text: 'Plannings' },
             ]} />
 
-            <Heading variant="title2">Plannings</Heading>
+            <Heading variant="title2">{t('TEACHERMODULE.PLANNING.ALL.TITLE')}</Heading>
 
             <Combobox
                 label="Subject / Grade"

@@ -4,9 +4,12 @@ import { useNavigate } from 'react-router-dom'
 import { IPlanningForCreationDTO } from '../../models/IPlanning'
 import { Breadcrumbs, Heading } from '@/components/ui/custom'
 import AddEditPlanningForm from '../views/AddEditPlanningForm'
+import { useTranslation } from 'react-i18next'
 
 const AddPlanningPage = () => {
     const { createPlanning, loadingModification } = usePlannings()
+
+    const { t } = useTranslation()
 
     const { toast } = useToast()
 
@@ -28,7 +31,7 @@ const AddPlanningPage = () => {
                 { text: 'New' },
             ]} />
 
-            <Heading variant="title2">New planning</Heading>
+            <Heading variant="title2">{t('TEACHERMODULE.PLANNING.ADD.TITLE')}</Heading>
 
             {/* <Heading variant="subtitle2">Optional subtitle can go here</Heading> */}
 

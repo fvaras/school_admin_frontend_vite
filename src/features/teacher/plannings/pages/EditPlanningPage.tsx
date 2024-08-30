@@ -5,6 +5,7 @@ import { usePlannings } from "../../hooks";
 import { useEffect, useState } from "react";
 import { IPlanningDTO, IPlanningForUpdateDTO } from "../../models/IPlanning";
 import { useToast } from "@/components/ui/use-toast";
+import { useTranslation } from "react-i18next";
 
 
 const EditPlanningPage = () => {
@@ -12,6 +13,8 @@ const EditPlanningPage = () => {
 
     let { planningId } = useParams();
 
+    const { t } = useTranslation()
+    
     const { toast } = useToast()
 
     const { getPlanning, updatePlanning, loading, loadingModification } = usePlannings()
@@ -41,7 +44,7 @@ const EditPlanningPage = () => {
                 { text: 'Edit' },
             ]} />
 
-            <Heading variant="title2">Edit planning</Heading>
+            <Heading variant="title2">{t('TEACHERMODULE.PLANNING.EDIT.TITLE')}</Heading>
 
             {(!loading && currentPlanning) &&
                 <AddEditPlanningForm

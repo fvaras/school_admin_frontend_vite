@@ -6,6 +6,7 @@ import { usePlannings } from "../../hooks"
 import { useNavigate } from "react-router-dom"
 import { useToast } from "@/components/ui/use-toast"
 import { Badge } from "@/components/ui/badge"
+import { useTranslation } from "react-i18next"
 
 interface IProps {
     plannings: IPlanningTableRowDTO[]
@@ -15,6 +16,8 @@ interface IProps {
 
 const AllPlanningsTable = ({ plannings, loadingModification, onDelete }: IProps) => {
 
+    const { t } = useTranslation()
+    
     const [showDeleteConfirmDialog, setShowDeleteConfirmDialog] = useState<boolean>(false)
     const [currentData, setCurrentData] = useState<IPlanningTableRowDTO | null>(null)
 
@@ -30,28 +33,27 @@ const AllPlanningsTable = ({ plannings, loadingModification, onDelete }: IProps)
         // },
         {
             accessorKey: "subjectName",
-            header: "Subject"
+            header: t('TEACHERMODULE.FIELDNAMES.SUBJECTNAME'), // "Subject"
         },
         {
             accessorKey: "gradeName",
-            header: "Grade"
+            header: t('TEACHERMODULE.FIELDNAMES.GRADENAME'), // "Grade"
         },
         {
             accessorKey: "title",
-            header: "Title"
+            header: t('TEACHERMODULE.FIELDNAMES.TITLE'), // "Title"
         },
         {
             id: "actions",
             cell: ({ row }) => <DataTableRowActions
-                title="Actions"
+                title={t('TEACHERMODULE.FIELDNAMES.ACTIONS')}
                 data={row.original}
                 items={[
                     {
-                        // title: 'Edit', onClick: (data) => { navigate(`/teacher/users/${data.id}`) }
-                        title: 'Edit', onClick: (data) => { navigate(`../${data.id}`, { relative: 'path' }) }
+                        title: t('TEACHERMODULE.FIELDNAMES.EDIT_ACTION'), onClick: (data) => { navigate(`../${data.id}`, { relative: 'path' }) }
                     },
                     {
-                        title: 'Delete', onClick: (data) => {
+                        title: t('TEACHERMODULE.FIELDNAMES.DELETE_ACTION'), onClick: (data) => {
                             setCurrentData(data);
                             setShowDeleteConfirmDialog(true)
                         }

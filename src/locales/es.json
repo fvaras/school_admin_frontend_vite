@@ -398,6 +398,10 @@
         "BREADCRUMBS": "Planificaciones|Planificaciones|Agregar",
         "TITLE": "Agregar planificación"
       },
+      "EDIT": {
+        "BREADCRUMBS": "Planificaciones|Planificaciones|Editar",
+        "TITLE": "Editar planificación"
+      },
       "CALENDAR": {
         "BREADCRUMBS": "Planificaciones|Calendario|Planificaciones"
       }
@@ -415,6 +419,7 @@
     "FIELDNAMES": {
       "SUBJECTNAME": "Asignatura",
       "PLANNING": "Planificación",
+      "SUBJECTGRADE": "Asignatura / Nivel",
       "TITLE": "Título",
       "DESCRIPTION": "Descripción",
       "EXPECTEDLEARNING": "Aprendizaje esperado",
@@ -432,6 +437,8 @@
       "GRADENAME": "Nivel",
       "HOMEWORKTITLE": "Título",
       "ACTIONS": "Acciones",
+      "EDIT_ACTION": "Editar",
+      "DELETE_ACTION": "Eliminar",
       "SAVEBUTTON": "Guardar",
       "CANCELBUTTON": "Cancelar",
       "DELETEBUTTON": "Eliminar"

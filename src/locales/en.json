@@ -398,6 +398,10 @@
         "BREADCRUMBS": "Plannings|Planning|Add",
         "TITLE": "Add planning"
       },
+      "EDIT": {
+        "BREADCRUMBS": "Plannings|Planning|Edit",
+        "TITLE": "Edit planning"
+      },
       "CALENDAR": {
         "BREADCRUMBS": "Plannings|Calendar|Plannings"
       }
@@ -415,6 +419,7 @@
     "FIELDNAMES": {
       "SUBJECTNAME": "Subject",
       "PLANNING": "Planning",
+      "SUBJECTGRADE": "Subject / Grade",
       "TITLE": "Title",
       "DESCRIPTION": "Description",
       "EXPECTEDLEARNING": "Expected learning",
@@ -432,6 +437,8 @@
       "GRADENAME": "Grade",
       "HOMEWORKTITLE": "Title",
       "ACTIONS": "Actions",
+      "EDIT_ACTION": "Edit",
+      "DELETE_ACTION": "Delete",
       "SAVEBUTTON": "Save",
       "CANCELBUTTON": "Cancel",
       "DELETEBUTTON": "Delete"
