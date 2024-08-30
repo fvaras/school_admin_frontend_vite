@@ -102,7 +102,7 @@ const AllUsersTable = () => {
   }
 
   return (
-    <div className="container mx-auto py-10">
+    <div className="mx-auto">
       <ConfirmDialog
         isOpen={showDeleteConfirmDialog}
         triggerComponent={null}
@@ -119,7 +119,6 @@ const AllUsersTable = () => {
         enableFilter
         filterBy={'userName'}
         filterPlaceholder="Filter username..."
-        enableViewOptions
       />
     </div>
   )

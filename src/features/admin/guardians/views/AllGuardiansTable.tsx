@@ -98,7 +98,7 @@ const AllGuardiansTable = () => {
     }
 
     return (
-        <div className="container mx-auto py-10">
+        <div className="mx-auto">
             <ConfirmDialog
                 isOpen={showDeleteConfirmDialog}
                 triggerComponent={null}
@@ -115,7 +115,6 @@ const AllGuardiansTable = () => {
                 enableFilter
                 filterBy={'lastName'}
                 filterPlaceholder="Filter username..."
-                enableViewOptions
             />
         </div>
     )

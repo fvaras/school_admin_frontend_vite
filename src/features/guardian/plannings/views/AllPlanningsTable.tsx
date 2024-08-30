@@ -41,7 +41,6 @@ const AllPlanningsTable = ({ plannings }: IProps) => {
                 enableFilter
                 filterBy={'title'}
                 filterPlaceholder="Filter title..."
-                enableViewOptions
             />
         </div>
     )

@@ -41,7 +41,6 @@ const AllHomeworksTable = ({ homeworks }: IProps) => {
                 enableFilter
                 filterBy={'title'}
                 filterPlaceholder="Filter title..."
-                enableViewOptions
             />
         </div>
     )

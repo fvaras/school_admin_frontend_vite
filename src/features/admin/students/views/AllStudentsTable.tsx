@@ -96,7 +96,6 @@ const AllStudentsTable = ({ students, loadingModification, onDelete }: IProps) =
                 enableFilter
                 filterBy={'firstName'}
                 filterPlaceholder="Filter username..."
-                enableViewOptions
             />
         </div>
     )

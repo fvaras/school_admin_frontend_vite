@@ -96,7 +96,6 @@ const AllStudentsByGradeTable = ({ students, loadingModification, onDelete }: IP
                 enableFilter
                 filterBy={'firstName'}
                 filterPlaceholder="Filter username..."
-                enableViewOptions
             />
         </div>
     )

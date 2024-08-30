@@ -90,7 +90,7 @@ const AllSubjectsTable = () => {
     }
 
     return (
-        <div className="container mx-auto py-10">
+        <div className="mx-auto">
             <ConfirmDialog
                 isOpen={showDeleteConfirmDialog}
                 triggerComponent={null}
@@ -107,7 +107,6 @@ const AllSubjectsTable = () => {
                 enableFilter
                 filterBy={'name'}
                 filterPlaceholder="Filter name..."
-                enableViewOptions
             />
         </div>
     )

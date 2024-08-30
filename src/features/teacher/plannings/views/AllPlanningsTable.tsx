@@ -86,7 +86,6 @@ const AllPlanningsTable = ({ plannings, loadingModification, onDelete }: IProps)
                 enableFilter
                 filterBy={'title'}
                 filterPlaceholder="Filter title..."
-                enableViewOptions
             />
         </div>
     )

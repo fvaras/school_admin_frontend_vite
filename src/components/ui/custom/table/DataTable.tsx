@@ -27,6 +27,7 @@ import {
 import { DataTablePagination } from "./DataTablePagination"
 import { DataTableViewOptions } from "./DataTableViewOptions"
 import { ChevronDownIcon, ChevronUpIcon, CaretSortIcon } from "@radix-ui/react-icons"
+import { useTranslation } from "react-i18next"
 
 interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[]
@@ -49,6 +50,8 @@ export function DataTable<TData, TValue>({
     const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
     const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({})
     const [rowSelection, setRowSelection] = React.useState({})
+
+    const { t } = useTranslation()
 
     const table = useReactTable({
         data,
@@ -185,7 +188,7 @@ export function DataTable<TData, TValue>({
                         ) : (
                             <TableRow>
                                 <TableCell colSpan={columns.length} className="h-24 text-center">
-                                    No results.
+                                    {t('UI.TABLE.NO_DATA')}
                                 </TableCell>
                             </TableRow>
                         )}

@@ -537,5 +537,15 @@
       "ACTIVE": "Activo",
       "INACTIVE": "Inactivo"
     }
+  },
+  "UI": {
+    "TABLE": {
+      "ROWS_PER_PAGE": "Filas por página",
+      "PAGE": "Página",
+      "PAGE_OF": "de",
+      "VIEW_OPTIONS_TITLE": "Vista",
+      "TOGGLE_COLUMNS": "Alternar columnas",
+      "NO_DATA": "Sin datos"
+    }
   }
 }

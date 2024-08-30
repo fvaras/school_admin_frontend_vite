@@ -105,7 +105,7 @@ const AllEventsTable = () => {
     }
 
     return (
-        <div className="container mx-auto py-10">
+        <div className="mx-auto">
             <ConfirmDialog
                 isOpen={showDeleteConfirmDialog}
                 triggerComponent={null}
@@ -122,7 +122,6 @@ const AllEventsTable = () => {
                 enableFilter
                 filterBy={'title'}
                 filterPlaceholder="Filter by title..."
-                enableViewOptions
             />
         </div>
     )

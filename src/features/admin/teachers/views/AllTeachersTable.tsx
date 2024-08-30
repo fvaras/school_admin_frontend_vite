@@ -98,7 +98,7 @@ const AllTeachersTable = () => {
     }
 
     return (
-        <div className="container mx-auto py-10">
+        <div className="mx-auto">
             <ConfirmDialog
                 isOpen={showDeleteConfirmDialog}
                 triggerComponent={null}
@@ -115,7 +115,6 @@ const AllTeachersTable = () => {
                 enableFilter
                 filterBy={'contactEmail'}
                 filterPlaceholder="Filter username..."
-                enableViewOptions
             />
         </div>
     )
