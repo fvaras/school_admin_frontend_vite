@@ -1,11 +1,14 @@
 import { Breadcrumbs, CustomCalendar, Heading } from '@/components/ui/custom'
 import { useState, useEffect } from 'react'
 import { useTimeBlock } from '../../hooks'
+import { useTranslation } from 'react-i18next'
 
 const TimeTablePage = () => {
   const [timeBlocksEvents, setTimeBlocks] = useState<any[]>([])
   const [minmaxDayTime, setMinMaxDayTime] = useState<{ min: Date, max: Date }>({ min: new Date(), max: new Date() })
 
+  const { t } = useTranslation()
+  
   const { getAllTimeBlocks } = useTimeBlock()
 
   useEffect(() => {
@@ -74,7 +77,7 @@ const TimeTablePage = () => {
         { text: 'Dashboard', link: '/teacher/dashboard' },
       ]} />
 
-      <Heading variant="title2">Time Tables</Heading>
+      <Heading variant="title2">{t('STUDENTMODULE.TIMETABLE.ALL.TITLE')}</Heading>
 
       {(timeBlocksEvents && timeBlocksEvents.length > 0) &&
         <CustomCalendar

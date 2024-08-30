@@ -4,11 +4,14 @@ import AllPlanningsTable from '../views/AllPlanningsTable'
 import { IPlanningTableRowDTO } from '../../models/IPlanning'
 import { usePlannings, useSubjects } from '../../hooks'
 import { LabelValueDTO } from '@/models/TLabelValueDTO'
+import { useTranslation } from 'react-i18next'
 
 const AllPlanningsPage = () => {
     const [subjectList, setSubjectList] = useState<LabelValueDTO<string>[]>([])
     const [currentStudentId, setCurrentStudentId] = useState<string>('')
     const [plannings, setPlannings] = useState<IPlanningTableRowDTO[]>([])
+
+    const { t } = useTranslation()
 
     const { getForList: getSubjects } = useSubjects()
     const { loading, getAllPlannings } = usePlannings()
@@ -34,12 +37,12 @@ const AllPlanningsPage = () => {
                 { text: 'Plannings' },
             ]} />
 
-            <Heading variant="title2">Plannings</Heading>
+            <Heading variant="title2">{t('STUDENTMODULE.PLANNING.ALL.TITLE')}</Heading>
 
             <div className="flex flex-col md:flex-row gap-4 mb-4">
                 <div className="flex-1">
                     <Combobox
-                        label='Subject'
+                        label={t('STUDENTMODULE.FIELDNAMES.SUBJECTNAME')}
                         options={subjectList ?? []}
                         onChange={async (value: string | number) => await loadPlannings(value as string)}
                     />

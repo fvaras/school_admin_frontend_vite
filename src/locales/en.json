@@ -456,5 +456,45 @@
       "ACTIVE": "Active",
       "INACTIVE": "Inactive"
     }
+  },
+  "STUDENTMODULE": {
+    "PLANNING": {
+      "ALL": {
+        "BREADCRUMBS": "Plannings|Planning|All",
+        "TITLE": "Plannings"
+      }
+    },
+    "HOMEWORK": {
+      "ALL": {
+        "BREADCRUMBS": "Homework|Homework|All",
+        "TITLE": "Homework"
+      }
+    },
+    "TIMETABLE": {
+      "ALL": {
+        "TITLE": "Time Tables"
+      }
+    },
+    "FIELDNAMES": {
+      "SUBJECTNAME": "Subject",
+      "GRADENAME": "Grade",
+      "PLANNING": "Planning",
+      "TITLE": "Title",
+      "STARTDATE": "Start date",
+      "ENDDATE": "End date",
+      "STATE": "State",
+      "TYPE": "Type",
+      "HOMEWORKTITLE": "Title",
+      "ACTIONS": "Actions",
+      "EDIT_ACTION": "Edit",
+      "DELETE_ACTION": "Delete",
+      "SAVEBUTTON": "Save",
+      "CANCELBUTTON": "Cancel",
+      "DELETEBUTTON": "Delete"
+    },
+    "STATES": {
+      "ACTIVE": "Active",
+      "INACTIVE": "Inactive"
+    }
   }
 }

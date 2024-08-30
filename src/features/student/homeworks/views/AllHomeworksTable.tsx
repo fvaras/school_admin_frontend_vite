@@ -1,12 +1,15 @@
 import { DataTable } from "@/components/ui/custom"
 import { ColumnDef } from "@tanstack/react-table"
 import { IHomeworkTableRowDTO } from "../../models/IHomework"
+import { useTranslation } from "react-i18next"
 
 interface IProps {
     homeworks: IHomeworkTableRowDTO[]
 }
 
 const AllHomeworksTable = ({ homeworks }: IProps) => {
+
+    const { t } = useTranslation()
 
     const columns: ColumnDef<IHomeworkTableRowDTO>[] = [
         // {
@@ -18,15 +21,15 @@ const AllHomeworksTable = ({ homeworks }: IProps) => {
         // },
         {
             accessorKey: "gradeName",
-            header: "Grade"
+            header: t('STUDENTMODULE.FIELDNAMES.GRADENAME'), // "Grade"
         },
         {
             accessorKey: "subjectName",
-            header: "Subject"
+            header: t('STUDENTMODULE.FIELDNAMES.SUBJECTNAME'), // "Subject"
         },
         {
             accessorKey: "title",
-            header: "Title"
+            header: t('STUDENTMODULE.FIELDNAMES.TITLE'), // "Title"
         },
     ]
 

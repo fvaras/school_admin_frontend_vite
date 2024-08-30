@@ -4,10 +4,13 @@ import AllHomeworksTable from '../views/AllHomeworksTable'
 import { useHomeworks, useSubjects } from '../../hooks'
 import { IHomeworkTableRowDTO } from '../../models/IHomework'
 import { LabelValueDTO } from '@/models/TLabelValueDTO'
+import { useTranslation } from 'react-i18next'
 
 const AllHomeworksPage = () => {
     const [subjectList, setSubjectList] = useState<LabelValueDTO<string>[]>([])
     const [homeworks, setHomeworks] = useState<IHomeworkTableRowDTO[]>([])
+
+    const { t } = useTranslation()
 
     const { getForList: getSubjects } = useSubjects()
     const { loading, getAllHomeworks } = useHomeworks()
@@ -33,12 +36,12 @@ const AllHomeworksPage = () => {
                 { text: 'Homeworks' },
             ]} />
 
-            <Heading variant="title2">Homeworks</Heading>
+            <Heading variant="title2">{t('STUDENTMODULE.HOMEWORK.ALL.TITLE')}</Heading>
 
             <div className="flex flex-col md:flex-row gap-4 mb-4">
                 <div className="flex-1">
                     <Combobox
-                        label='Subject'
+                        label={t('STUDENTMODULE.FIELDNAMES.SUBJECTNAME')}
                         options={subjectList ?? []}
                         onChange={async (value: string | number) => await loadHomeworks(value as string)}
                     />
