@@ -63,9 +63,9 @@ const Signin = () => {
       handleLoggedUser(user)
   }, [user, isSubmitted])
 
-  useEffect(() => {
-    console.log('profile change', form.getValues("profile"))
-  }, [form.getValues("profile")])
+  // useEffect(() => {
+  //   console.log('profile change', form.getValues("profile"))
+  // }, [form.getValues("profile")])
 
   const handleLoggedUser = (user: UserInfoDTO) => {
     switch (user.profileId) {

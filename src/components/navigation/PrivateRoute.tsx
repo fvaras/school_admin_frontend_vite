@@ -10,9 +10,11 @@ interface PrivateRouteProps {
 }
 
 const PrivateRoute: React.FC<PrivateRouteProps> = ({ children, allowedProfiles }) => {
-    const { user } = useAppSelector((state) => state.auth);
+    const { user, authStarted, loading } = useAppSelector((state) => state.auth);
 
-    if (!allowedProfiles.includes(user?.profileId!)) {
+    console.log(authStarted, user, loading)
+
+    if (authStarted && !loading && !allowedProfiles.includes(user?.profileId!)) {
         return <Navigate to="/auth/signin" replace />
     }
 

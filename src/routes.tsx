@@ -1,7 +1,9 @@
-import { Suspense, lazy } from "react"
+import { Suspense, lazy, useEffect } from "react"
 import { Navigate, Route, Routes } from "react-router-dom"
 import PrivateRoute from "./components/navigation/PrivateRoute";
 import { ADMINISTRATOR_PROFILE_ID, GUARDIAN_PROFILE_ID, STUDENT_PROFILE_ID, TEACHER_PROFILE_ID } from "./constants/profile";
+import { useAppDispatch, useAppSelector } from "./store/hooks";
+import { relogIn } from "./store/slices/authSlice";
 
 const AuthRoutes = lazy(() => import("./features/auth/routes"));
 const AdminRoutes = lazy(() => import("./features/admin/routes"));
@@ -10,6 +12,20 @@ const StudentRoutes = lazy(() => import("./features/student/routes"));
 const GuardianRoutes = lazy(() => import("./features/guardian/routes"));
 
 const MainRoutes = () => {
+
+  const dispatch = useAppDispatch()
+
+  const { authStarted } = useAppSelector((state) => state.auth)
+
+  useEffect(() => {
+    dispatch((relogIn()))
+  }, [])
+
+  if (!authStarted) {
+    // TODO: Stylize
+    return <div>Loading...</div>
+  }
+
   return (
     <Routes>
       <Route path="/" element={<Navigate to="/auth/signin" replace />} />

@@ -9,6 +9,7 @@ export interface AuthState {
     token: string | null;
     loading: boolean;
     error: string | null;
+    authStarted: boolean
 }
 
 const initialState: AuthState = {
@@ -16,12 +17,16 @@ const initialState: AuthState = {
     token: null,
     loading: false,
     error: null,
+    authStarted: false
 };
 
 const authSlice = createSlice({
     name: 'authSlice',
     initialState,
     reducers: {
+        setStartAuth: (state) => {
+            state.authStarted = true
+        },
         setLoading: (state, { payload }: PayloadAction<boolean>) => {
             state.loading = payload
         },
@@ -47,15 +52,37 @@ const authSlice = createSlice({
     }
 })
 
-export const { setLoading, setAuthSuccess, setLogOut, setAuthFailed } = authSlice.actions
+export const { setLoading, setStartAuth, setAuthSuccess, setLogOut, setAuthFailed } = authSlice.actions
 
 export const logIn = (username: string, password: string, profileId: string): AppThunk => async (dispatch) => {
     try {
         dispatch(setLoading(true))
+        dispatch(setStartAuth())
         const { data } = await axios.post<AuthInfoDTO>('api/auth/tkn', { username, password, profileId })
         sessionStorage.clear()
         sessionStorage.setItem('tkn', data.token)
         dispatch(setAuthSuccess({ user: data.user, token: data.token }))
+    } catch (error) {
+        const axiosError = error as AxiosError
+        const errorData: string = axiosError.response?.status === 401 ? 'Forbidden' : 'Not Allowed'
+        dispatch(setAuthFailed(errorData))
+    } finally {
+        dispatch(setLoading(false))
+    }
+}
+
+export const relogIn = (): AppThunk => async (dispatch) => {
+    try {
+        dispatch(setLoading(true))
+        dispatch(setStartAuth())
+        const { data } = await axios.post<AuthInfoDTO>('api/auth/revalidatetkn', { token: sessionStorage.getItem('tkn') })
+        if (data) {
+            dispatch(setAuthSuccess({ user: data.user, token: data.token }))
+        }
+        else {
+            sessionStorage.clear()
+            dispatch(setLogOut())
+        }
     } catch (error) {
         const axiosError = error as AxiosError
         const errorData: string = axiosError.response?.status === 401 ? 'Forbidden' : 'Not Allowed'
