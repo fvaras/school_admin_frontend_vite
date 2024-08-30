@@ -496,5 +496,46 @@
       "ACTIVE": "Activo",
       "INACTIVE": "Inactivo"
     }
+  },
+  "GUARDIANMODULE": {
+    "PLANNING": {
+      "ALL": {
+        "BREADCRUMBS": "Planificaciones|Planificaciones|Todas",
+        "TITLE": "Planificaciones"
+      }
+    },
+    "HOMEWORK": {
+      "ALL": {
+        "BREADCRUMBS": "Tareas|Tareas|Todas",
+        "TITLE": "Tareas"
+      }
+    },
+    "TIMETABLE": {
+      "ALL": {
+        "TITLE": "Horarios"
+      }
+    },
+    "FIELDNAMES": {
+      "SUBJECTNAME": "Asignatura",
+      "GRADENAME": "Nivel",
+      "PLANNING": "Planificación",
+      "TITLE": "Título",
+      "STARTDATE": "Fecha de inicio",
+      "ENDDATE": "Fecha de término",
+      "STATE": "Estado",
+      "TYPE": "Tipo",
+      "HOMEWORKTITLE": "Título",
+      "STUDENT_LIST": "Alumno",
+      "ACTIONS": "Acciones",
+      "EDIT_ACTION": "Editar",
+      "DELETE_ACTION": "Eliminar",
+      "SAVEBUTTON": "Guardar",
+      "CANCELBUTTON": "Cancelar",
+      "DELETEBUTTON": "Eliminar"
+    },
+    "STATES": {
+      "ACTIVE": "Activo",
+      "INACTIVE": "Inactivo"
+    }
   }
 }

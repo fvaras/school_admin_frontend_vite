@@ -5,12 +5,15 @@ import { IPlanningTableRowDTO } from '../../models/IPlanning'
 import { usePlannings, useSubjects } from '../../hooks'
 import { useStudents } from '../../hooks/useStudents'
 import { LabelValueDTO } from '@/models/TLabelValueDTO'
+import { useTranslation } from 'react-i18next'
 
 const AllPlanningsPage = () => {
     const [studentList, setStudentList] = useState<LabelValueDTO<string>[]>([])
     const [subjectList, setSubjectList] = useState<LabelValueDTO<string>[]>([])
     const [currentStudentId, setCurrentStudentId] = useState<string>('')
     const [plannings, setPlannings] = useState<IPlanningTableRowDTO[]>([])
+
+    const { t } = useTranslation()
 
     const { getStudentsByGuardian } = useStudents()
     const { getByStudentForList } = useSubjects()
@@ -43,19 +46,19 @@ const AllPlanningsPage = () => {
                 { text: 'Plannings' },
             ]} />
 
-            <Heading variant="title2">Plannings</Heading>
+            <Heading variant="title2">{t('GUARDIANMODULE.PLANNING.ALL.TITLE')}</Heading>
 
             <div className="flex flex-col md:flex-row gap-4 mb-4">
                 <div className="flex-1">
                     <Combobox
-                        label='Student'
+                        label={t('GUARDIANMODULE.FIELDNAMES.STUDENT_LIST')}
                         options={studentList ?? []}
                         onChange={async (value: string | number) => await loadSubjects(value as string)}
                     />
                 </div>
                 <div className="flex-1">
                     <Combobox
-                        label='Subject'
+                        label={t('GUARDIANMODULE.FIELDNAMES.SUBJECTNAME')}
                         options={subjectList ?? []}
                         onChange={async (value: string | number) => await loadPlannings(currentStudentId, value as string)}
                     />

@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import { useTimeBlock } from '../../hooks'
 import { LabelValueDTO } from '@/models/TLabelValueDTO'
 import { useStudents } from '../../hooks/useStudents'
+import { useTranslation } from 'react-i18next'
 
 const TimeTablePage = () => {
   const [studentList, setStudentList] = useState<LabelValueDTO<string>[]>([])
@@ -12,6 +13,8 @@ const TimeTablePage = () => {
 
   const { getStudentsByGuardian } = useStudents()
   const { getAllTimeBlocksByStudent } = useTimeBlock()
+
+  const { t } = useTranslation()
 
   useEffect(() => {
     loadInitialData()
@@ -85,11 +88,11 @@ const TimeTablePage = () => {
         { text: 'Dashboard', link: '/teacher/dashboard' },
       ]} />
 
-      <Heading variant="title2">Time Tables</Heading>
+      <Heading variant="title2">{t('GUARDIANMODULE.TIMETABLE.ALL.TITLE')}</Heading>
 
       <div className='mb-4'>
         <Combobox
-          label='Student'
+          label={t('GUARDIANMODULE.FIELDNAMES.STUDENT_LIST')}
           options={studentList ?? []}
           onChange={async (value: string | number) => await loadTimeTableByStudent(value as string)}
         />

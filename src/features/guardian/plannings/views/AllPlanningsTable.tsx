@@ -1,12 +1,15 @@
 import { DataTable } from "@/components/ui/custom"
 import { ColumnDef } from "@tanstack/react-table"
 import { IPlanningTableRowDTO } from "../../models/IPlanning"
+import { useTranslation } from "react-i18next"
 
 interface IProps {
     plannings: IPlanningTableRowDTO[]
 }
 
 const AllPlanningsTable = ({ plannings }: IProps) => {
+
+    const { t } = useTranslation()
 
     const columns: ColumnDef<IPlanningTableRowDTO>[] = [
         // {
@@ -18,15 +21,15 @@ const AllPlanningsTable = ({ plannings }: IProps) => {
         // },
         {
             accessorKey: "gradeName",
-            header: "Grade"
+            header: t('GUARDIANMODULE.FIELDNAMES.GRADENAME'), // "Grade"
         },
         {
             accessorKey: "subjectName",
-            header: "Subject"
+            header: t('GUARDIANMODULE.FIELDNAMES.SUBJECTNAME'), // "Subject"
         },
         {
             accessorKey: "title",
-            header: "Title"
+            header: t('GUARDIANMODULE.FIELDNAMES.TITLE'), // "Title"
         }
     ]
 
