@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Button } from "@/components/ui/button"
 import { MoreHorizontal } from "lucide-react"
+import { useTranslation } from "react-i18next"
 
 interface IItemOption<T> {
   title: React.ReactNode
@@ -25,6 +26,8 @@ export const DataTableRowActions = <T,>({
   data,
   items
 }: IProps<T>) => {
+  const { t } = useTranslation()
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -34,7 +37,7 @@ export const DataTableRowActions = <T,>({
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        {title && <DropdownMenuLabel>Actions</DropdownMenuLabel>}
+        {title && <DropdownMenuLabel>{t('ADMINMODULE.FIELDNAMES.ACTIONS')}</DropdownMenuLabel>}
         {items.map((item, key) => (
           item.title ? (
             <DropdownMenuItem

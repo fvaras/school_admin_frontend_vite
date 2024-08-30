@@ -15,7 +15,7 @@ const Sidebar = () => {
   const [openedMenuItem, setOpenedMenuItem] = useState<string>('');
   // const navigate = useNavigate();
 
-  const { t } = useTranslation();
+  const { t } = useTranslation()
 
   const [menuItems, setMenuItems] = useState<MenuItemType[]>([]);
 

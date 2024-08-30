@@ -6,6 +6,7 @@ import { useUsers } from "../../hooks"
 import { useNavigate } from "react-router-dom"
 import { useToast } from "@/components/ui/use-toast"
 import { Badge } from "@/components/ui/badge"
+import { useTranslation } from "react-i18next"
 
 const AllUsersTable = () => {
 
@@ -16,6 +17,8 @@ const AllUsersTable = () => {
   const { loading, loadingModification, getAllUsers, deleteUser } = useUsers()
 
   const navigate = useNavigate()
+
+  const { t } = useTranslation()
 
   const { toast } = useToast()
 
@@ -29,31 +32,31 @@ const AllUsersTable = () => {
     // },
     {
       accessorKey: "userName",
-      header: "Username"
+      header: t('ADMINMODULE.FIELDNAMES.USERNAME')//"Username"
     },
     {
       accessorKey: "firstName",
-      header: "Name"
+      header: t('ADMINMODULE.FIELDNAMES.NAME'), //"Name"
     },
     {
       accessorKey: "lastName",
-      header: "Last Name"
+      header: t('ADMINMODULE.FIELDNAMES.LASTNAME'), //"Last Name"
     },
     {
       accessorKey: "rut",
-      header: "UUID"
+      header: t('ADMINMODULE.FIELDNAMES.UUIDRUT'), //"UUID"
     },
     {
       accessorKey: "phone",
-      header: "Phone"
+      header: t('ADMINMODULE.FIELDNAMES.PHONE'), //"Phone"
     },
     {
       accessorKey: "email",
-      header: "Email"
+      header: t('ADMINMODULE.FIELDNAMES.EMAIL'), //"Email"
     },
     {
       accessorKey: "stateId",
-      header: "State",
+      header: t('ADMINMODULE.FIELDNAMES.STATE'), //"State",
       cell: ({ row }) => <>
         {row.original.stateId === 1 && <Badge variant='outline'>Active</Badge>}
         {row.original.stateId !== 1 && <Badge variant='destructive'>Inactive</Badge>}
@@ -62,15 +65,14 @@ const AllUsersTable = () => {
     {
       id: "actions",
       cell: ({ row }) => <DataTableRowActions
-        title="Actions"
+        title={t('ADMINMODULE.FIELDNAMES.ACTIONS')}
         data={row.original}
         items={[
           {
-            // title: 'Edit', onClick: (data) => { navigate(`/admin/users/${data.id}`) }
-            title: 'Edit', onClick: (data) => { navigate(`../${data.id}`, { relative: 'path' }) }
+            title: t('ADMINMODULE.FIELDNAMES.EDIT_ACTION'), onClick: (data) => { navigate(`../${data.id}`, { relative: 'path' }) }
           },
           {
-            title: 'Delete', onClick: (data) => {
+            title: t('ADMINMODULE.FIELDNAMES.DELETE_ACTION'), onClick: (data) => {
               setCurrentData(data);
               setShowDeleteConfirmDialog(true)
             }

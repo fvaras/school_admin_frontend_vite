@@ -11,6 +11,7 @@ import { FormDatePickerField, FormInputField, FormToogleButtonField } from "@/co
 import { ButtonLoading } from "@/components/ui/custom"
 import { IUser, IUserForCreationDTO, IUserForUpdateDTO } from "../../models/IUser"
 import { format } from "date-fns"
+import { useTranslation } from "react-i18next"
 
 const newRecordformSchema = z.object({
     userName: z.string().min(2, { message: "Username must be at least 2 characters." }),
@@ -54,6 +55,9 @@ interface IProps {
 }
 
 const AddEditUserForm = ({ user, mode, loading, submit }: IProps) => {
+
+    const { t } = useTranslation()
+    
     const formSchema: any = mode === 'ADD' ? newRecordformSchema : existingRecordformSchema
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -116,7 +120,7 @@ const AddEditUserForm = ({ user, mode, loading, submit }: IProps) => {
                         render={({ field }) => (
                             <FormInputField
                                 field={field}
-                                label="Username"
+                                label={t('ADMINMODULE.FIELDNAMES.USERNAME')} //"Username"
                                 placeholder="userName"
                             // description="This is your public display name."
                             />
@@ -128,7 +132,7 @@ const AddEditUserForm = ({ user, mode, loading, submit }: IProps) => {
                         render={({ field }) => (
                             <FormInputField
                                 field={field}
-                                label="UUID"
+                                label={t('ADMINMODULE.FIELDNAMES.UUIDRUT')} //"UUID"
                                 placeholder="rut"
                                 description="Your unique identifier as a citizen in your country"
                             />
@@ -142,7 +146,7 @@ const AddEditUserForm = ({ user, mode, loading, submit }: IProps) => {
                                 render={({ field }) => (
                                     <FormInputField
                                         field={field}
-                                        label="Password"
+                                        label={t('ADMINMODULE.FIELDNAMES.PASSWORD')} //"Password"
                                         // @ts-ignore
                                         type="password"
                                         placeholder="password"
@@ -155,7 +159,7 @@ const AddEditUserForm = ({ user, mode, loading, submit }: IProps) => {
                                 render={({ field }) => (
                                     <FormInputField
                                         field={field}
-                                        label="Re password"
+                                        label={t('ADMINMODULE.FIELDNAMES.REPASSWORD')} //"Re password"
                                         // @ts-ignore
                                         type="password"
                                         placeholder="confirmPassword"
@@ -170,7 +174,7 @@ const AddEditUserForm = ({ user, mode, loading, submit }: IProps) => {
                         render={({ field }) => (
                             <FormInputField
                                 field={field}
-                                label="First name"
+                                label={t('ADMINMODULE.FIELDNAMES.NAME')} //"First name"
                                 placeholder="firstName"
                             />
                         )}
@@ -181,7 +185,7 @@ const AddEditUserForm = ({ user, mode, loading, submit }: IProps) => {
                         render={({ field }) => (
                             <FormInputField
                                 field={field}
-                                label="Last name"
+                                label={t('ADMINMODULE.FIELDNAMES.LASTNAME')} //"Last name"
                                 placeholder="lastName"
                             />
                         )}
@@ -192,7 +196,7 @@ const AddEditUserForm = ({ user, mode, loading, submit }: IProps) => {
                         render={({ field }) => (
                             <FormInputField
                                 field={field}
-                                label="Email"
+                                label={t('ADMINMODULE.FIELDNAMES.EMAIL')} //"Email"
                                 placeholder="email"
                             />
                         )}
@@ -203,7 +207,7 @@ const AddEditUserForm = ({ user, mode, loading, submit }: IProps) => {
                         render={({ field }) => (
                             <FormInputField
                                 field={field}
-                                label="Phone"
+                                label={t('ADMINMODULE.FIELDNAMES.PHONE')} //"Phone"
                                 placeholder="phone"
                             />
                         )}
@@ -214,7 +218,7 @@ const AddEditUserForm = ({ user, mode, loading, submit }: IProps) => {
                         render={({ field }) => (
                             <FormInputField
                                 field={field}
-                                label="Address"
+                                label={t('ADMINMODULE.FIELDNAMES.ADDRESS')} //"Address"
                                 placeholder="address"
                             />
                         )}
@@ -225,7 +229,7 @@ const AddEditUserForm = ({ user, mode, loading, submit }: IProps) => {
                         render={({ field }) => (
                             <FormDatePickerField
                                 field={field}
-                                label="Date of birth"
+                                label={t('ADMINMODULE.FIELDNAMES.BIRTHDATE')} //"Date of birth"
                                 placeholder="Pick a date"
                             // description="Your date of birth is used to calculate your age."
                             />
@@ -237,14 +241,14 @@ const AddEditUserForm = ({ user, mode, loading, submit }: IProps) => {
                         render={({ field }) => (
                             <FormToogleButtonField
                                 field={field}
-                                label="State"
-                                description="Active"
+                                label={t('ADMINMODULE.FIELDNAMES.STATE')} //"State"
+                                description={t('ADMINMODULE.STATES.ACTIVE')}
                             />
                         )}
                     />
                 </div>
                 <div className="col-start-1 col-end-3">
-                    <ButtonLoading loading={loading} type="submit">Submit</ButtonLoading>
+                    <ButtonLoading loading={loading} type="submit">{t('ADMINMODULE.FIELDNAMES.SAVEBUTTON')}</ButtonLoading>
                 </div>
             </form>
         </Form>

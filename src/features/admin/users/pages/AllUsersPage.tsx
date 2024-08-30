@@ -1,7 +1,10 @@
 import { Breadcrumbs, Heading } from '@/components/ui/custom'
 import AllUsersTable from '../views/AllUsersTable'
+import { useTranslation } from 'react-i18next';
 
 const AllUsersPage = () => {
+    const { t } = useTranslation();
+    
     return (
         <>
             <Breadcrumbs items={[
@@ -9,7 +12,7 @@ const AllUsersPage = () => {
                 { text: 'Users' },
             ]} />
 
-            <Heading variant="title2">Users</Heading>
+            <Heading variant="title2">{t('ADMINMODULE.USER.ALL.TITLE')}</Heading>
 
             <AllUsersTable></AllUsersTable>
         </>

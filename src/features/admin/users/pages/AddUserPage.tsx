@@ -4,11 +4,14 @@ import { useUsers } from "../../hooks"
 import { IUserForCreationDTO } from "../../models/IUser"
 import { useToast } from "@/components/ui/use-toast"
 import { useNavigate } from "react-router-dom"
+import { useTranslation } from "react-i18next"
 
 const AddUserPage = () => {
     const { createUser, loadingModification } = useUsers()
 
     const { toast } = useToast()
+
+    const { t } = useTranslation()
 
     const navigate = useNavigate()
 
@@ -34,7 +37,7 @@ const AddUserPage = () => {
                 { text: 'New' },
             ]} />
 
-            <Heading variant="title2">New user</Heading>
+            <Heading variant="title2">{t('ADMINMODULE.USER.ADD.TITLE')}</Heading>
 
             {/* <Heading variant="subtitle2">Optional subtitle can go here</Heading> */}
 

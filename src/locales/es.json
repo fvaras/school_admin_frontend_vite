@@ -219,6 +219,16 @@
       "ADD": "Add",
       "REFRESH": "Refresh"
     },
+    "USER": {
+      "ALL": {
+        "BREADCRUMBS": "Usuarios|Usuario|Usuarios",
+        "TITLE": "Usuarios"
+      },
+      "ADD": {
+        "BREADCRUMBS": "Agregar usuario|Usuario|Agregar",
+        "TITLE": "Nuevo usuario"
+      }
+    },
     "TEACHER": {
       "ALL": {
         "BREADCRUMBS": "Guías|Guía|Guías",
@@ -247,16 +257,6 @@
       "ADD": {
         "BREADCRUMBS": "Agregar apoderado|Apoderado|Agregar",
         "TITLE": "Nuevo/a apoderado/a"
-      }
-    },
-    "USER": {
-      "ALL": {
-        "BREADCRUMBS": "Usuarios|Usuario|Usuarios",
-        "TITLE": "Usuarios"
-      },
-      "ADD": {
-        "BREADCRUMBS": "Agregar usuario|Usuario|Agregar",
-        "TITLE": "Nuevo usuario"
       }
     },
     "GRADE": {
@@ -298,6 +298,8 @@
       "USERNAME": "Username",
       "LASTNAME": "Apellidos",
       "UUIDRUT": "Rut",
+      "PASSWORD": "Password",
+      "REPASSWORD": "Re Password",
       "PHONE": "Teléfono",
       "EMAIL": "Email",
       "PERSONALPHONE": "Teléfono personal",
@@ -325,7 +327,9 @@
       "TYPE": "Tipo",
       "SAVEBUTTON": "Guardar",
       "CANCELBUTTON": "Cancelar",
-      "DELETEBUTTON": "Eliminar"
+      "DELETEBUTTON": "Eliminar",
+      "EDIT_ACTION": "Editar",
+      "DELETE_ACTION": "Eliminar"
     },
     "STATES": {
       "ACTIVE": "Activo",
