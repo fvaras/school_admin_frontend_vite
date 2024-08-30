@@ -414,6 +414,15 @@
       "ADD": {
         "BREADCRUMBS": "Tareas|Tareas|Agregar",
         "TITLE": "Agregar tarea"
+      },
+      "EDIT": {
+        "BREADCRUMBS": "Tareas|Tareas|Editar",
+        "TITLE": "Editar tarea"
+      }
+    },
+    "TIMETABLE": {
+      "ALL": {
+        "TITLE": "Horarios"
       }
     },
     "FIELDNAMES": {

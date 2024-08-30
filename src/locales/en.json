@@ -414,6 +414,15 @@
       "ADD": {
         "BREADCRUMBS": "Homework|Homework|Add",
         "TITLE": "Add homework"
+      },
+      "EDIT": {
+        "BREADCRUMBS": "Homework|Homework|Edit",
+        "TITLE": "Edit homework"
+      }
+    },
+    "TIMETABLE": {
+      "ALL": {
+        "TITLE": "Time Tables"
       }
     },
     "FIELDNAMES": {

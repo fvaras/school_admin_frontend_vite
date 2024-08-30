@@ -5,6 +5,7 @@ import { useHomeworks, useSubjects } from '../../hooks'
 import { useEffect, useState } from 'react'
 import { LabelValueDTO } from '@/models/TLabelValueDTO'
 import { IHomeworkTableRowDTO } from '../../models/IHomework'
+import { useTranslation } from 'react-i18next'
 
 const AllHomeworksPage = () => {
     const [subjectsGradesList, setSubjectsGradesList] = useState<LabelValueDTO<string>[]>([])
@@ -12,6 +13,9 @@ const AllHomeworksPage = () => {
 
     const { getWithGradeByTeacherForList, mapSubjectGradesPkFkToLabelValueWithData } = useSubjects()
     const { loading, loadingModification, getAllHomeworksByTeacher, deleteHomework } = useHomeworks()
+
+    const { t } = useTranslation()
+    
     const { toast } = useToast()
 
     useEffect(() => {
@@ -45,7 +49,7 @@ const AllHomeworksPage = () => {
                 { text: 'Homeworks' },
             ]} />
 
-            <Heading variant="title2">Homeworks</Heading>
+            <Heading variant="title2">{t('TEACHERMODULE.HOMEWORK.ALL.TITLE')}</Heading>
 
             <Combobox
                 label="Subject / Grade"

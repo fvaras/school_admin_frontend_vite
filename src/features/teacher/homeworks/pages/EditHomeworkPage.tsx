@@ -5,12 +5,15 @@ import { useHomeworks } from "../../hooks";
 import { useEffect, useState } from "react";
 import { IHomeworkDTO, IHomeworkForUpdateDTO } from "../../models/IHomework";
 import { useToast } from "@/components/ui/use-toast";
+import { useTranslation } from "react-i18next";
 
 
 const EditHomeworkPage = () => {
     const [currentHomework, setCurrentHomework] = useState<IHomeworkDTO | null>(null)
 
     let { homeworkId } = useParams();
+
+    const { t } = useTranslation()
 
     const { toast } = useToast()
 
@@ -41,7 +44,7 @@ const EditHomeworkPage = () => {
                 { text: 'Edit' },
             ]} />
 
-            <Heading variant="title2">Edit homework</Heading>
+            <Heading variant="title2">{t('TEACHERMODULE.HOMEWORK.EDIT.TITLE')}</Heading>
 
             {(!loading && currentHomework) &&
                 <AddEditHomeworkForm

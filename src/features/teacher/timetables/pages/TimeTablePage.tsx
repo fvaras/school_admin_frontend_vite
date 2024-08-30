@@ -4,6 +4,7 @@ import { ICalendarEventDTO } from '@/features/admin/models/IEvent'
 import { useState, useCallback, useEffect } from 'react'
 import { useGrades, useTimeBlock } from '../../hooks'
 import { LabelValueDTO } from '@/models/TLabelValueDTO'
+import { useTranslation } from 'react-i18next'
 
 const TimeTablePage = () => {
 
@@ -12,6 +13,8 @@ const TimeTablePage = () => {
   const [minmaxDayTime, setMinMaxDayTime] = useState<{ min: Date, max: Date }>({ min: new Date(), max: new Date() })
   const [currentEvent, setCurrentEvent] = useState<ICalendarEventDTO | null>(null)
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
+
+  const { t } = useTranslation()
 
   const { getGradesByTeacherForList } = useGrades()
   const { getAllTimeBlocks } = useTimeBlock()
@@ -118,11 +121,11 @@ const TimeTablePage = () => {
         { text: 'Dashboard', link: '/teacher/dashboard' },
       ]} />
 
-      <Heading variant="title2">Time Tables</Heading>
+      <Heading variant="title2">{t('TEACHERMODULE.TIMETABLE.ALL.TITLE')}</Heading>
 
       <div className='mb-4'>
         <Combobox
-          label='Grade'
+          label={t('TEACHERMODULE.FIELDNAMES.GRADENAME')}
           options={gradesList ?? []}
           onChange={async (value: string | number) => await loadTimeTableByGrade(value as string)}
         />

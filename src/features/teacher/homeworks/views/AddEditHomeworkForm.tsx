@@ -13,6 +13,7 @@ import { IHomeworkDTO, IHomeworkForCreationDTO, IHomeworkForUpdateDTO } from "..
 import { useGrades, useSubjects } from "../../hooks"
 import { useEffect, useState } from "react"
 import { LabelValueDTO } from "@/models/TLabelValueDTO"
+import { useTranslation } from "react-i18next"
 
 const formSchema = z.object({
     gradeId: z.string(),
@@ -33,6 +34,8 @@ interface IProps {
 
 const AddEditHomeworkForm = ({ homework, mode, loading, submit }: IProps) => {
 
+    const { t } = useTranslation()
+    
     const [subjectsGradesList, setSubjectsGradesList] = useState<LabelValueDTO<string>[] | null>([])
 
     const { getWithGradeByTeacherForList, mapSubjectGradesPkFkToLabelValueWithData } = useSubjects()
@@ -89,7 +92,6 @@ const AddEditHomeworkForm = ({ homework, mode, loading, submit }: IProps) => {
 
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)}>
-                    <Heading variant="subtitle2">User Info</Heading>
                     <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 mb-4 -mx-2">
 
                         {subjectsGradesList &&
@@ -99,7 +101,7 @@ const AddEditHomeworkForm = ({ homework, mode, loading, submit }: IProps) => {
                                 render={({ field }) => (
                                     <FormComboboxField
                                         field={field}
-                                        label="Subject / Grade"
+                                        label={t('TEACHERMODULE.FIELDNAMES.SUBJECTGRADE')} // "Subject / Grade"
                                         placeholder="Subject / Grade"
                                         options={subjectsGradesList}
                                     />
@@ -114,7 +116,7 @@ const AddEditHomeworkForm = ({ homework, mode, loading, submit }: IProps) => {
                                 render={({ field }) => (
                                     <FormInputField
                                         field={field}
-                                        label="Title"
+                                        label={t('TEACHERMODULE.FIELDNAMES.TITLE')} // "Title"
                                         placeholder="Title"
                                     />
                                 )}
@@ -128,7 +130,7 @@ const AddEditHomeworkForm = ({ homework, mode, loading, submit }: IProps) => {
                                 render={({ field }) => (
                                     <FormTextAreaField
                                         field={field}
-                                        label="Description"
+                                        label={t('TEACHERMODULE.FIELDNAMES.DESCRIPTION')} // "Description"
                                         placeholder="Description"
                                     />
                                 )}
@@ -142,7 +144,7 @@ const AddEditHomeworkForm = ({ homework, mode, loading, submit }: IProps) => {
                             render={({ field }) => (
                                 <FormDatePickerField
                                     field={field}
-                                    label="Ends at"
+                                    label={t('TEACHERMODULE.FIELDNAMES.ENDDATE')} // "Ends at"
                                     placeholder="Pick a date"
                                 />
                             )}
@@ -154,15 +156,15 @@ const AddEditHomeworkForm = ({ homework, mode, loading, submit }: IProps) => {
                             render={({ field }) => (
                                 <FormToogleButtonField
                                     field={field}
-                                    label="State"
-                                    description="Active"
+                                    label={t('TEACHERMODULE.FIELDNAMES.STATE')} // "State"
+                                    description={t('TEACHERMODULE.STATES.ACTIVE')}
                                 />
                             )}
                         />
 
                     </div>
                     <div className="col-start-1 col-end-3">
-                        <ButtonLoading loading={loading} type="submit">Submit</ButtonLoading>
+                        <ButtonLoading loading={loading} type="submit">{t('TEACHERMODULE.FIELDNAMES.SAVEBUTTON')}</ButtonLoading>
                     </div>
                 </form>
             </Form>

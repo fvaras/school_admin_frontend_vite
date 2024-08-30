@@ -5,6 +5,7 @@ import { IHomeworkTableRowDTO } from "../../models/IHomework"
 import { useHomeworks } from "../../hooks"
 import { useNavigate } from "react-router-dom"
 import { useToast } from "@/components/ui/use-toast"
+import { useTranslation } from "react-i18next"
 
 interface IProps {
     homeworks: IHomeworkTableRowDTO[]
@@ -14,6 +15,8 @@ interface IProps {
 
 const AllHomeworksTable = ({ homeworks, loadingModification, onDelete }: IProps) => {
 
+    const { t } = useTranslation()
+    
     const [showDeleteConfirmDialog, setShowDeleteConfirmDialog] = useState<boolean>(false)
     const [currentData, setCurrentData] = useState<IHomeworkTableRowDTO | null>(null)
 
@@ -29,27 +32,27 @@ const AllHomeworksTable = ({ homeworks, loadingModification, onDelete }: IProps)
         // },
         {
             accessorKey: "gradeName",
-            header: "Grade"
+            header: t('TEACHERMODULE.FIELDNAMES.GRADENAME'), // "Grade"
         },
         {
             accessorKey: "subjectName",
-            header: "Subject"
+            header: t('TEACHERMODULE.FIELDNAMES.SUBJECTNAME'), // "Subject"
         },
         {
             accessorKey: "title",
-            header: "Title"
+            header: t('TEACHERMODULE.FIELDNAMES.TITLE'), // "Title"
         },
         {
             id: "actions",
             cell: ({ row }) => <DataTableRowActions
-                title="Actions"
+                title={t('TEACHERMODULE.FIELDNAMES.ACTIONS')}
                 data={row.original}
                 items={[
                     {
-                        title: 'Edit', onClick: (data) => { navigate(`../${data.id}`, { relative: 'path' }) }
+                        title: t('TEACHERMODULE.FIELDNAMES.EDIT_ACTION'), onClick: (data) => { navigate(`../${data.id}`, { relative: 'path' }) }
                     },
                     {
-                        title: 'Delete', onClick: (data) => {
+                        title: t('TEACHERMODULE.FIELDNAMES.DELETE_ACTION'), onClick: (data) => {
                             setCurrentData(data);
                             setShowDeleteConfirmDialog(true)
                         }
