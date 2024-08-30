@@ -4,9 +4,12 @@ import { useNavigate } from 'react-router-dom'
 import { ISubjectForCreationDTO } from '../../models/ISubject'
 import { Breadcrumbs, Heading } from '@/components/ui/custom'
 import AddEditSubjectForm from '../views/AddEditSubjectForm'
+import { useTranslation } from 'react-i18next'
 
 const AddSubjectPage = () => {
     const { createSubject, loadingModification } = useSubjects()
+
+    const { t } = useTranslation()
 
     const { toast } = useToast()
 
@@ -28,7 +31,7 @@ const AddSubjectPage = () => {
                 { text: 'New' },
             ]} />
 
-            <Heading variant="title2">New subject</Heading>
+            <Heading variant="title2">{t('ADMINMODULE.SUBJECT.ADD.TITLE')}</Heading>
 
             {/* <Heading variant="subtitle2">Optional subtitle can go here</Heading> */}
 

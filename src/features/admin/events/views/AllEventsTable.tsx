@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom"
 import { useToast } from "@/components/ui/use-toast"
 import { Badge } from "@/components/ui/badge"
 import { formatDateType } from "@/lib/formatters"
+import { useTranslation } from "react-i18next"
 
 const AllEventsTable = () => {
 
@@ -16,6 +17,8 @@ const AllEventsTable = () => {
 
     const { loading, loadingModification, getAllEvents, deleteEvent } = useEvents()
 
+    const { t } = useTranslation()
+    
     const navigate = useNavigate()
 
     const { toast } = useToast()
@@ -30,22 +33,23 @@ const AllEventsTable = () => {
         // },
         {
             accessorKey: "title",
-            header: "Title"
+            header: t('ADMINMODULE.FIELDNAMES.TITLE'), // "Title"
         },
         {
             accessorKey: "startDate",
-            header: "Start",
+            header: t('ADMINMODULE.FIELDNAMES.STARTDATE'), // "Start",
             cell: ({ row }) => (<span>{formatDateType(row.original.startDate, 'yyyy-MM-dd HH:mm')}</span>)
         },
         {
             accessorKey: "endDate",
-            header: "End",
+            header: t('ADMINMODULE.FIELDNAMES.ENDDATE'), // "End",
             cell: ({ row }) => (<span>{formatDateType(row.original.endDate, 'yyyy-MM-dd HH:mm')}</span>)
         },
         {
             accessorKey: "active",
-            header: "State",
+            header: t('ADMINMODULE.FIELDNAMES.STATE'), // "State",
             cell: ({ row }) => <>
+                {/* TODO: Set all these values from i18n */}
                 {row.original.type === 1 && <Badge variant='outline' className="bg-green-800 text-green-100">Vacaciones</Badge>}
                 {row.original.type === 2 && <Badge variant='outline' className="bg-green-800 text-green-100">Administrativo</Badge>}
                 {row.original.type === 3 && <Badge variant='outline' className="bg-green-800 text-green-100">Reunión</Badge>}
@@ -64,15 +68,14 @@ const AllEventsTable = () => {
         {
             id: "actions",
             cell: ({ row }) => <DataTableRowActions
-                title="Actions"
+                title={t('ADMINMODULE.FIELDNAMES.ACTIONS')}
                 data={row.original}
                 items={[
                     {
-                        // title: 'Edit', onClick: (data) => { navigate(`/admin/users/${data.id}`) }
-                        title: 'Edit', onClick: (data) => { navigate(`../${data.id}`, { relative: 'path' }) }
+                        title: t('ADMINMODULE.FIELDNAMES.EDIT_ACTION'), onClick: (data) => { navigate(`../${data.id}`, { relative: 'path' }) }
                     },
                     {
-                        title: 'Delete', onClick: (data) => {
+                        title: t('ADMINMODULE.FIELDNAMES.DELETE_ACTION'), onClick: (data) => {
                             setCurrentData(data);
                             setShowDeleteConfirmDialog(true)
                         }

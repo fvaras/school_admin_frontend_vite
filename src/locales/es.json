@@ -313,6 +313,10 @@
         "BREADCRUMBS": "Agregar evento|Evento|Agregar",
         "TITLE": "Nuevo evento"
       },
+      "EDIT": {
+        "BREADCRUMBS": "Editar evento|Evento|Editar",
+        "TITLE": "Editar evento"
+      },
       "CALENDAR": {
         "BREADCRUMBS": "Calendario|Eventos|Todos",
         "TITLE": "Eventos"
@@ -326,6 +330,10 @@
       "ADD": {
         "BREADCRUMBS": "Agregar asignatura|Asignatura|Agregar",
         "TITLE": "Nueva asignatura"
+      },
+      "EDIT": {
+        "BREADCRUMBS": "Agregar asignatura|Asignatura|Agregar",
+        "TITLE": "Editar asignatura"
       }
     },
     "FIELDNAMES": {
@@ -360,10 +368,14 @@
       "STUDENTGUARDIANRELATION": "Relación",
       "TEACHERNAME": "Guía",
       "SUBJECTNAME": "Asignatura",
+      "MAINTEACHER": "Guía",
       "TITLE": "Título",
       "STARTDATE": "Fecha inicio",
+      "STARTTIME": "Hora inicio",
       "ENDDATE": "Fecha fin",
+      "ENDTIME": "Hora fin",
       "TYPE": "Tipo",
+      "COLOR": "Color",
       "SAVEBUTTON": "Guardar",
       "CANCELBUTTON": "Cancelar",
       "DELETEBUTTON": "Eliminar",

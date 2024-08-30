@@ -5,12 +5,15 @@ import { useSubjects } from "../../hooks";
 import { useEffect, useState } from "react";
 import { ISubjectDTO, ISubjectForUpdateDTO } from "../../models/ISubject";
 import { useToast } from "@/components/ui/use-toast";
+import { useTranslation } from "react-i18next";
 
 
 const EditSubjectPage = () => {
     const [currentSubject, setCurrentSubject] = useState<ISubjectDTO | null>(null)
 
     let { subjectId } = useParams();
+
+    const { t } = useTranslation()
 
     const { toast } = useToast()
 
@@ -41,7 +44,7 @@ const EditSubjectPage = () => {
                 { text: 'Edit' },
             ]} />
 
-            <Heading variant="title2">Edit subject</Heading>
+            <Heading variant="title2">{t('ADMINMODULE.SUBJECT.EDIT.TITLE')}</Heading>
 
             {(!loading && currentSubject) &&
                 <AddEditSubjectForm

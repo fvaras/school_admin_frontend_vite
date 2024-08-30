@@ -13,6 +13,7 @@ import { ISubjectDTO, ISubjectForCreationDTO, ISubjectForUpdateDTO } from "../..
 import { useGrades, useSubjects, useTeachers } from "../../hooks"
 import { useEffect, useState } from "react"
 import { LabelValueDTO } from "@/models/TLabelValueDTO"
+import { useTranslation } from "react-i18next"
 
 const formSchema = z.object({
     name: z.string().min(2, { message: "Required" }),
@@ -34,6 +35,8 @@ const AddEditSubjectForm = ({ subject, mode, loading, submit }: IProps) => {
     const [teachersList, setTeachersList] = useState<LabelValueDTO<string>[] | null>(null)
     const [gradesList, setGradesList] = useState<LabelValueDTO<string>[] | null>(null)
 
+    const { t } = useTranslation()
+    
     const { getTeachersId } = useSubjects()
     const { getTeachersForList } = useTeachers()
     const { getGradesForList } = useGrades()
@@ -87,7 +90,6 @@ const AddEditSubjectForm = ({ subject, mode, loading, submit }: IProps) => {
 
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)}>
-                    <Heading variant="subtitle2">User Info</Heading>
                     <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 mb-4 -mx-2">
                         <FormField
                             control={form.control}
@@ -95,7 +97,7 @@ const AddEditSubjectForm = ({ subject, mode, loading, submit }: IProps) => {
                             render={({ field }) => (
                                 <FormInputField
                                     field={field}
-                                    label="Name"
+                                    label={t('ADMINMODULE.FIELDNAMES.NAME')} // "Name"
                                     placeholder="name"
                                 />
                             )}
@@ -106,7 +108,7 @@ const AddEditSubjectForm = ({ subject, mode, loading, submit }: IProps) => {
                             render={({ field }) => (
                                 <FormInputField
                                     field={field}
-                                    label="Color"
+                                    label={t('ADMINMODULE.FIELDNAMES.COLOR')} // "Color"
                                     placeholder="color"
                                     type='color'
                                 />
@@ -119,7 +121,7 @@ const AddEditSubjectForm = ({ subject, mode, loading, submit }: IProps) => {
                                 render={({ field }) => (
                                     <FormComboboxField
                                         field={field}
-                                        label="Grade"
+                                        label={t('ADMINMODULE.FIELDNAMES.GRADE')} // "Grade"
                                         placeholder="Grade"
                                         options={gradesList}
                                     />
@@ -134,7 +136,7 @@ const AddEditSubjectForm = ({ subject, mode, loading, submit }: IProps) => {
                                 render={({ field }) => (
                                     <FormComboboxField
                                         field={field}
-                                        label="Main Teacher"
+                                        label={t('ADMINMODULE.FIELDNAMES.MAINTEACHER')} // "Main Teacher"
                                         placeholder="Main teacher"
                                         options={teachersList}
                                     />
@@ -148,14 +150,14 @@ const AddEditSubjectForm = ({ subject, mode, loading, submit }: IProps) => {
                             render={({ field }) => (
                                 <FormToogleButtonField
                                     field={field}
-                                    label="State"
-                                    description="Active"
+                                    label={t('ADMINMODULE.FIELDNAMES.STATE')} // "State"
+                                    description={t('ADMINMODULE.STATES.ACTIVE')}
                                 />
                             )}
                         />
                     </div>
                     <div className="col-start-1 col-end-3">
-                        <ButtonLoading loading={loading} type="submit">Submit</ButtonLoading>
+                        <ButtonLoading loading={loading} type="submit">{t('ADMINMODULE.FIELDNAMES.SAVEBUTTON')}</ButtonLoading>
                     </div>
                 </form>
             </Form>

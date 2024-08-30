@@ -313,6 +313,10 @@
         "BREADCRUMBS": "Add event|Event|Add",
         "TITLE": "Add event"
       },
+      "EDIT": {
+        "BREADCRUMBS": "Edit event|Event|Edit",
+        "TITLE": "Edit event"
+      },
       "CALENDAR": {
         "BREADCRUMBS": "Calendar|Events|All",
         "TITLE": "Events"
@@ -326,6 +330,10 @@
       "ADD": {
         "BREADCRUMBS": "Add subject|Subject|Add",
         "TITLE": "Add subject"
+      },
+      "EDIT": {
+        "BREADCRUMBS": "Add subject|Subject|Add",
+        "TITLE": "Edit subject"
       }
     },
     "FIELDNAMES": {
@@ -360,10 +368,14 @@
       "STUDENTGUARDIANRELATION": "Relation",
       "TEACHERNAME": "Teacher",
       "SUBJECTNAME": "Subject",
+      "MAINTEACHER": "Teacher",
       "TITLE": "Title",
       "STARTDATE": "Start date",
+      "STARTTIME": "Start time",
       "ENDDATE": "End date",
+      "ENDTIME": "End time",
       "TYPE": "Type",
+      "COLOR": "Color",
       "SAVEBUTTON": "Save",
       "CANCELBUTTON": "Cancel",
       "DELETEBUTTON": "Delete",

@@ -4,9 +4,12 @@ import { useNavigate } from 'react-router-dom'
 import { ICalendarEventForCreationDTO } from '../../models/IEvent'
 import { Breadcrumbs, Heading } from '@/components/ui/custom'
 import AddEditEventForm from '../views/AddEditEventForm'
+import { useTranslation } from 'react-i18next'
 
 const AddEventPage = () => {
     const { createEvent, loadingModification } = useEvents()
+
+    const { t } = useTranslation()
 
     const { toast } = useToast()
 
@@ -28,7 +31,7 @@ const AddEventPage = () => {
                 { text: 'New' },
             ]} />
 
-            <Heading variant="title2">New event</Heading>
+            <Heading variant="title2">{t('ADMINMODULE.EVENTS.ADD.TITLE')}</Heading>
 
             {/* <Heading variant="subtitle2">Optional subtitle can go here</Heading> */}
 

@@ -12,6 +12,7 @@ import {
 import AddEditEventForm from '../views/AddEditEventForm'
 import { useToast } from '@/components/ui/use-toast'
 import { Views } from 'react-big-calendar'
+import { useTranslation } from 'react-i18next'
 
 const CalendarPage = () => {
     const [events, setEvents] = useState<any[]>([])
@@ -19,6 +20,8 @@ const CalendarPage = () => {
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
 
     const { getAllEvents, getEvent, createEvent, updateEvent, loading, loadingModification } = useEvents()
+
+    const { t } = useTranslation()
 
     const { toast } = useToast()
 
@@ -41,7 +44,7 @@ const CalendarPage = () => {
             )
         })
         console.log('events')
-        console.log(JSON.stringify(_events[events.length-1]))
+        console.log(JSON.stringify(_events[events.length - 1]))
         setEvents(_events)
     }
 
@@ -119,13 +122,13 @@ const CalendarPage = () => {
                 { text: 'Calendar' },
             ]} />
 
-            <Heading variant="title2">Calendar</Heading>
-            
+            <Heading variant="title2">{t('ADMINMODULE.EVENTS.CALENDAR.TITLE')}</Heading>
+
             <CustomCalendar
                 events={events}
                 onSelectEvent={handleSelectEvent}
                 onSelectSlot={handleSelectSlot}
-                // selectable
+            // selectable
             />
 
             <Dialog open={isModalOpen} onOpenChange={(open: boolean) => setIsModalOpen(open)}>

@@ -15,6 +15,7 @@ import { useEffect, useState } from "react"
 import { LabelValueDTO } from "@/models/TLabelValueDTO"
 import { format } from "date-fns"
 import { combineDateAndTime } from "@/lib/formatters"
+import { useTranslation } from "react-i18next"
 
 const formSchema = z.object({
     title: z.string().min(2, { message: "Required" }),
@@ -36,6 +37,8 @@ interface IProps {
 const AddEditEventForm = ({ event, mode, loading, submit }: IProps) => {
 
     const [eventTypesList, setEventTypesList] = useState<LabelValueDTO<number>[] | null>(null)
+
+    const { t } = useTranslation()
 
     const { getEventTypes } = useEvents()
 
@@ -110,7 +113,6 @@ const AddEditEventForm = ({ event, mode, loading, submit }: IProps) => {
             {/* <button onClick={() => { console.log(form.getValues()) }}>values</button> */}
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)}>
-                    <Heading variant="subtitle2">User Info</Heading>
                     <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 mb-4 -mx-2">
 
                         <FormField
@@ -119,7 +121,7 @@ const AddEditEventForm = ({ event, mode, loading, submit }: IProps) => {
                             render={({ field }) => (
                                 <FormInputField
                                     field={field}
-                                    label="Title"
+                                    label={t('ADMINMODULE.FIELDNAMES.TITLE')} //"Title"
                                     placeholder="A new funny activity"
                                 />
                             )}
@@ -132,7 +134,7 @@ const AddEditEventForm = ({ event, mode, loading, submit }: IProps) => {
                                 render={({ field }) => (
                                     <FormComboboxField
                                         field={field}
-                                        label="Type"
+                                        label={t('ADMINMODULE.FIELDNAMES.TYPE')} //"Type"
                                         placeholder="Event type"
                                         options={eventTypesList}
                                     />
@@ -147,7 +149,7 @@ const AddEditEventForm = ({ event, mode, loading, submit }: IProps) => {
                                 render={({ field }) => (
                                     <FormDatePickerField
                                         field={field}
-                                        label="Start date"
+                                        label={t('ADMINMODULE.FIELDNAMES.STARTDATE')} //"Start date"
                                         placeholder="Pick a date"
                                     />
                                 )}
@@ -158,7 +160,7 @@ const AddEditEventForm = ({ event, mode, loading, submit }: IProps) => {
                                 render={({ field }) => (
                                     <FormInputField
                                         field={field}
-                                        label="Start time"
+                                        label={t('ADMINMODULE.FIELDNAMES.STARTTIME')} //"Start time"
                                         placeholder="Pick a time"
                                         type="time"
                                     />
@@ -173,7 +175,7 @@ const AddEditEventForm = ({ event, mode, loading, submit }: IProps) => {
                                 render={({ field }) => (
                                     <FormDatePickerField
                                         field={field}
-                                        label="End date"
+                                        label={t('ADMINMODULE.FIELDNAMES.ENDDATE')} //"End date"
                                         placeholder="Pick a date"
                                     />
                                 )}
@@ -184,7 +186,7 @@ const AddEditEventForm = ({ event, mode, loading, submit }: IProps) => {
                                 render={({ field }) => (
                                     <FormInputField
                                         field={field}
-                                        label="End time"
+                                        label={t('ADMINMODULE.FIELDNAMES.ENDTIME')} //"End time"
                                         placeholder="Pick a time"
                                         type="time"
                                     />
@@ -199,7 +201,7 @@ const AddEditEventForm = ({ event, mode, loading, submit }: IProps) => {
                                 render={({ field }) => (
                                     <FormTextAreaField
                                         field={field}
-                                        label="Details"
+                                        label={t('ADMINMODULE.FIELDNAMES.DESCRIPTION')} //"Details"
                                         placeholder="More information about the event"
                                     />
                                 )}
@@ -207,7 +209,7 @@ const AddEditEventForm = ({ event, mode, loading, submit }: IProps) => {
                         </div>
                     </div>
                     <div className="col-start-1 col-end-3">
-                        <ButtonLoading loading={loading} type="submit">Submit</ButtonLoading>
+                        <ButtonLoading loading={loading} type="submit">{t('ADMINMODULE.FIELDNAMES.SAVEBUTTON')}</ButtonLoading>
                     </div>
                 </form>
             </Form>
