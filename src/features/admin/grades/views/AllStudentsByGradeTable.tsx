@@ -4,6 +4,7 @@ import { useState } from "react"
 import { IStudentTableRowDTO } from "../../models/IStudent"
 import { useNavigate } from "react-router-dom"
 import { Badge } from "@/components/ui/badge"
+import { useTranslation } from "react-i18next"
 
 interface IProps {
     students: IStudentTableRowDTO[]
@@ -16,6 +17,8 @@ const AllStudentsByGradeTable = ({ students, loadingModification, onDelete }: IP
     const [showDeleteConfirmDialog, setShowDeleteConfirmDialog] = useState<boolean>(false)
     const [currentData, setCurrentData] = useState<IStudentTableRowDTO | null>(null)
 
+    const { t } = useTranslation()
+    
     const navigate = useNavigate()
 
     const columns: ColumnDef<IStudentTableRowDTO>[] = [
@@ -28,40 +31,39 @@ const AllStudentsByGradeTable = ({ students, loadingModification, onDelete }: IP
         // },
         {
             accessorKey: "rut",
-            header: "UUID"
+            header: t('ADMINMODULE.FIELDNAMES.UUIDRUT'), // "UUID"
         },
         {
             accessorKey: "firstName",
-            header: "First Name"
+            header: t('ADMINMODULE.FIELDNAMES.NAME'), // "First Name"
         },
         {
             accessorKey: "lastName",
-            header: "Last Name"
+            header: t('ADMINMODULE.FIELDNAMES.LASTNAME'), // "Last Name"
         },
         {
             accessorKey: "gradeName",
-            header: "Grade"
+            header: t('ADMINMODULE.FIELDNAMES.GRADE'), // "Grade"
         },
         {
             accessorKey: "stateId",
-            header: "State",
+            header: t('ADMINMODULE.FIELDNAMES.STATE'), // "State",
             cell: ({ row }) => <>
-                {row.original.stateId === 1 && <Badge variant='outline' className="bg-green-800 text-green-100">Active</Badge>}
-                {row.original.stateId !== 1 && <Badge variant='destructive'>Inactive</Badge>}
+                {row.original.stateId === 1 && <Badge variant='outline' className="bg-green-800 text-green-100">{t('ADMINMODULE.STATES.ACTIVE')}</Badge>}
+                {row.original.stateId !== 1 && <Badge variant='destructive'>{t('ADMINMODULE.STATES.INACTIVE')}</Badge>}
             </>
         },
         {
             id: "actions",
             cell: ({ row }) => <DataTableRowActions
-                title="Actions"
+                title={t('ADMINMODULE.FIELDNAMES.ACTIONS')}
                 data={row.original}
                 items={[
                     {
-                        // title: 'Edit', onClick: (data) => { navigate(`/admin/users/${data.id}`) }
-                        title: 'Edit', onClick: (data) => { navigate(`/admin/students/${data.id}`, { relative: 'path' }) }
+                        title: t('ADMINMODULE.FIELDNAMES.EDIT_ACTION'), onClick: (data) => { navigate(`/admin/students/${data.id}`, { relative: 'path' }) }
                     },
                     {
-                        title: 'Delete', onClick: (data) => {
+                        title: t('ADMINMODULE.FIELDNAMES.DELETE_ACTION'), onClick: (data) => {
                             setCurrentData(data);
                             setShowDeleteConfirmDialog(true)
                         }

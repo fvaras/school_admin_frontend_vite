@@ -5,10 +5,13 @@ import { useStudents } from '../../hooks'
 import { IStudentTableRowDTO } from '../../models/IStudent'
 import { useToast } from '@/components/ui/use-toast'
 import { useParams } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 const AllStudentsByGradePage = () => {
     const [students, setStudents] = useState<IStudentTableRowDTO[]>([])
 
+    const { t } = useTranslation()
+    
     let { gradeId } = useParams();
 
     const { getAllStudentsByGrade, loading, deleteStudent, loadingModification } = useStudents()
@@ -41,7 +44,7 @@ const AllStudentsByGradePage = () => {
                 { text: 'Students by Grade' },
             ]} />
 
-            <Heading variant="title2">Students</Heading>
+            <Heading variant="title2">{t('ADMINMODULE.GRADE.STUDENTS.TITLE')}</Heading>
 
             <AllStudentsByGradeTable
                 students={students}

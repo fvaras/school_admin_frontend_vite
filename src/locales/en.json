@@ -285,11 +285,15 @@
         "USERINFO": "User Info",
         "GUARDIANINFO": "Guardian Info"
       }
-    },    
+    },
     "GRADE": {
       "ALL": {
         "BREADCRUMBS": "Grades|Grades|Grades",
         "TITLE": "Grades"
+      },
+      "STUDENTS": {
+        "BREADCRUMBS": "Grades|Grades|Students",
+        "TITLE": "Students"
       },
       "ADD": {
         "BREADCRUMBS": "Add grade|Grade|Add",
@@ -351,6 +355,8 @@
       "GRADENAME": "Name",
       "TEACHERLIST": "Teachers",
       "DESCRIPTION": "Description",
+      "FIRSTTEACHER": "Teacher 1",
+      "SECONDTEACHER": "Teacher 2",
       "STUDENTGUARDIANRELATION": "Relation",
       "TEACHERNAME": "Teacher",
       "SUBJECTNAME": "Subject",
@@ -362,7 +368,8 @@
       "CANCELBUTTON": "Cancel",
       "DELETEBUTTON": "Delete",
       "EDIT_ACTION": "Edit",
-      "DELETE_ACTION": "Delete"
+      "DELETE_ACTION": "Delete",
+      "VIEWSTUDENTS_ACTION": "Ver Alumnos"
     },
     "STATES": {
       "ACTIVE": "Active",

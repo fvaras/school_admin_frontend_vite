@@ -5,11 +5,14 @@ import { useGrades } from "../../hooks";
 import { useEffect, useState } from "react";
 import { IGradeDTO, IGradeForUpdateDTO } from "../../models/IGrade";
 import { useToast } from "@/components/ui/use-toast";
+import { useTranslation } from "react-i18next";
 
 
 const EditGradePage = () => {
     const [currentGrade, setCurrentGrade] = useState<IGradeDTO | null>(null)
 
+    const { t } = useTranslation()
+    
     let { gradeId } = useParams();
 
     const { toast } = useToast()
@@ -41,7 +44,7 @@ const EditGradePage = () => {
                 { text: 'Edit' },
             ]} />
 
-            <Heading variant="title2">Edit grade</Heading>
+            <Heading variant="title2">{t('ADMINMODULE.GRADE.EDIT.TITLE')}</Heading>
 
             {(!loading && currentGrade) &&
                 <AddEditGradeForm

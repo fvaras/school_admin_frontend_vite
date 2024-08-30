@@ -291,6 +291,10 @@
         "BREADCRUMBS": "Niveles|Nivel|Niveles",
         "TITLE": "Niveles"
       },
+      "STUDENTS": {
+        "BREADCRUMBS": "Niveles|Nivel|Alumnos",
+        "TITLE": "Alumnos"
+      },
       "ADD": {
         "BREADCRUMBS": "Agregar nivel|Nivel|Agregar",
         "TITLE": "Agregar nivel"
@@ -351,6 +355,8 @@
       "GRADENAME": "Nombre",
       "TEACHERLIST": "Guías",
       "DESCRIPTION": "Descripción",
+      "FIRSTTEACHER": "Guía 1",
+      "SECONDTEACHER": "Guía 2",
       "STUDENTGUARDIANRELATION": "Relación",
       "TEACHERNAME": "Guía",
       "SUBJECTNAME": "Asignatura",
@@ -362,7 +368,8 @@
       "CANCELBUTTON": "Cancelar",
       "DELETEBUTTON": "Eliminar",
       "EDIT_ACTION": "Editar",
-      "DELETE_ACTION": "Eliminar"
+      "DELETE_ACTION": "Eliminar",
+      "VIEWSTUDENTS_ACTION": "Ver Alumnos"
     },
     "STATES": {
       "ACTIVE": "Activo",

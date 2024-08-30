@@ -4,9 +4,12 @@ import { useNavigate } from 'react-router-dom'
 import { IGradeForCreationDTO } from '../../models/IGrade'
 import { Breadcrumbs, Heading } from '@/components/ui/custom'
 import AddEditGradeForm from '../views/AddEditGradeForm'
+import { useTranslation } from 'react-i18next'
 
 const AddGradePage = () => {
     const { createGrade, loadingModification } = useGrades()
+
+    const { t } = useTranslation()
 
     const { toast } = useToast()
 
@@ -28,7 +31,7 @@ const AddGradePage = () => {
                 { text: 'New' },
             ]} />
 
-            <Heading variant="title2">New grade</Heading>
+            <Heading variant="title2">{t('ADMINMODULE.GRADE.ADD.TITLE')}</Heading>
 
             {/* <Heading variant="subtitle2">Optional subtitle can go here</Heading> */}
 
