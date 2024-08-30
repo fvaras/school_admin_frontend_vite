@@ -5,12 +5,15 @@ import { useTeachers } from "../../hooks";
 import { useEffect, useState } from "react";
 import { ITeacherDTO, ITeacherForUpdateDTO } from "../../models/ITeacher";
 import { useToast } from "@/components/ui/use-toast";
+import { useTranslation } from "react-i18next";
 
 
 const EditTeacherPage = () => {
     const [currentTeacher, setCurrentTeacher] = useState<ITeacherDTO | null>(null)
 
     let { teacherId } = useParams();
+
+    const { t } = useTranslation()
 
     const { toast } = useToast()
 
@@ -41,7 +44,7 @@ const EditTeacherPage = () => {
                 { text: 'Edit' },
             ]} />
 
-            <Heading variant="title2">Edit teacher</Heading>
+            <Heading variant="title2">{t('ADMINMODULE.TEACHER.EDIT.TITLE')}</Heading>
 
             {(!loading && currentTeacher) &&
                 <AddEditTeacherForm

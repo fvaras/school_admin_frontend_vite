@@ -5,9 +5,12 @@ import { useNavigate } from 'react-router-dom'
 import { ITeacherForCreationDTO } from '../../models/ITeacher'
 import { Breadcrumbs, Heading } from '@/components/ui/custom'
 import AddEditTeacherForm from '../views/AddEditTeacherForm'
+import { useTranslation } from 'react-i18next'
 
 const AddTeacherPage = () => {
     const { createTeacher, loadingModification } = useTeachers()
+
+    const { t } = useTranslation()
 
     const { toast } = useToast()
 
@@ -29,7 +32,7 @@ const AddTeacherPage = () => {
                 { text: 'New' },
             ]} />
 
-            <Heading variant="title2">New teacher</Heading>
+            <Heading variant="title2">{t('ADMINMODULE.TEACHER.ADD.TITLE')}</Heading>
 
             {/* <Heading variant="subtitle2">Optional subtitle can go here</Heading> */}
 

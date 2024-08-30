@@ -5,6 +5,7 @@ import { useUsers } from "../../hooks";
 import { useEffect, useState } from "react";
 import { IUser, IUserForUpdateDTO } from "../../models/IUser";
 import { useToast } from "@/components/ui/use-toast";
+import { useTranslation } from "react-i18next";
 
 
 const EditUserPage = () => {
@@ -13,6 +14,8 @@ const EditUserPage = () => {
     let { userId } = useParams();
 
     const { toast } = useToast()
+
+    const { t } = useTranslation()
 
     const { getUser, updateUser, loading, loadingModification } = useUsers()
 
@@ -23,7 +26,7 @@ const EditUserPage = () => {
 
     const loadData = async (userId: string) => {
         const user = await getUser(userId)
-        setCurrentUser(user)
+        setCurrentUser(user) // TODO: Set proper type
     }
 
     const handleSubmit = async (id: string, userForUpdate: IUserForUpdateDTO) => {
@@ -41,7 +44,7 @@ const EditUserPage = () => {
                 { text: 'Edit' },
             ]} />
 
-            <Heading variant="title2">Edit user</Heading>
+            <Heading variant="title2">{t('ADMINMODULE.USER.EDIT.TITLE')}</Heading>
 
             {(!loading && currentUser) &&
                 <AddEditUserForm

@@ -227,6 +227,10 @@
       "ADD": {
         "BREADCRUMBS": "Add user|Users|Add",
         "TITLE": "Add user"
+      },
+      "EDIT": {
+        "BREADCRUMBS": "Add user|Users|Add",
+        "TITLE": "Edit user"
       }
     },
     "TEACHER": {
@@ -237,6 +241,10 @@
       "ADD": {
         "BREADCRUMBS": "Add teacher|Teacher|Add teacher",
         "TITLE": "Add teacher"
+      },
+      "EDIT": {
+        "BREADCRUMBS": "Add teacher|Teacher|Add teacher",
+        "TITLE": "Edit teacher"
       },
       "TEXTS": {
         "TEACHER_INFO": "Teacher Info"

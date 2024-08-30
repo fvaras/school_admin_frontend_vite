@@ -227,6 +227,10 @@
       "ADD": {
         "BREADCRUMBS": "Agregar usuario|Usuario|Agregar",
         "TITLE": "Nuevo usuario"
+      },
+      "EDIT": {
+        "BREADCRUMBS": "Agregar usuario|Usuario|Agregar",
+        "TITLE": "Editar usuario"
       }
     },
     "TEACHER": {
@@ -237,6 +241,10 @@
       "ADD": {
         "BREADCRUMBS": "Agregar Guía|Guía|Agregar",
         "TITLE": "Nuevo/a Guía"
+      },
+      "EDIT": {
+        "BREADCRUMBS": "Agregar Guía|Guía|Agregar",
+        "TITLE": "Editar Guía"
       },
       "TEXTS": {
         "TEACHER_INFO": "Información de la Guía"
