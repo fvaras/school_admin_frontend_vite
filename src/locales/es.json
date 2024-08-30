@@ -258,6 +258,14 @@
       "ADD": {
         "BREADCRUMBS": "Agregar alumno|Alumno|Agregar",
         "TITLE": "Nuevo/a alumno/a"
+      },
+      "EDIT": {
+        "BREADCRUMBS": "Agregar alumno|Alumno|Agregar",
+        "TITLE": "Editar alumno/a"
+      },
+      "TEXTS": {
+        "USERINFO": "Datos del usuario",
+        "STUDENTINFO": "Datos del estudiante"
       }
     },
     "GUARDIAN": {
@@ -268,6 +276,10 @@
       "ADD": {
         "BREADCRUMBS": "Agregar apoderado|Apoderado|Agregar",
         "TITLE": "Nuevo/a apoderado/a"
+      },
+      "EDIT": {
+        "BREADCRUMBS": "Agregar apoderado|Apoderado|Agregar",
+        "TITLE": "Editar apoderado/a"
       }
     },
     "GRADE": {
@@ -278,6 +290,10 @@
       "ADD": {
         "BREADCRUMBS": "Agregar nivel|Nivel|Agregar",
         "TITLE": "Agregar nivel"
+      },
+      "EDIT": {
+        "BREADCRUMBS": "Agregar nivel|Nivel|Agregar",
+        "TITLE": "Editar nivel"
       }
     },
     "EVENTS": {
@@ -323,8 +339,10 @@
       "ADDRESS": "Dirección",
       "EDUCATION": "Educación",
       "GUARDIAN": "Apoderado",
+      "FIRSTGUARDIAN": "Primer Apoderado",
+      "SECONDGUARDIAN": "Segundo Apoderado",
       "ADMISSIONDATE": "Fecha de admisión",
-      "ALLERGIES": "Alergías",
+      "ALLERGIES": "Alergias",
       "BLOODGROUP": "Grupo sanguíneo",
       "GRADENAME": "Nombre",
       "TEACHERLIST": "Guías",

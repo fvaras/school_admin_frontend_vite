@@ -4,10 +4,13 @@ import { useEffect, useState } from 'react'
 import { IStudentTableRowDTO } from '../../models/IStudent'
 import { useStudents } from '../../hooks'
 import { useToast } from '@/components/ui/use-toast'
+import { useTranslation } from 'react-i18next'
 
 const AllStudentsPage = () => {
 
     const [students, setStudents] = useState<IStudentTableRowDTO[]>([])
+
+    const { t } = useTranslation()
 
     const { getAllStudents, loading, deleteStudent, loadingModification } = useStudents()
 
@@ -38,7 +41,7 @@ const AllStudentsPage = () => {
                 { text: 'Students' },
             ]} />
 
-            <Heading variant="title2">Students</Heading>
+            <Heading variant="title2">{t('ADMINMODULE.STUDENT.ALL.TITLE')}</Heading>
 
             <AllStudentsTable
                 students={students}

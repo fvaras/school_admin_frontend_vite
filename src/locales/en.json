@@ -258,6 +258,14 @@
       "ADD": {
         "BREADCRUMBS": "Add student|Student|Add",
         "TITLE": "Add student"
+      },
+      "EDIT": {
+        "BREADCRUMBS": "Add student|Student|Add",
+        "TITLE": "Edit student"
+      },
+      "TEXTS": {
+        "USERINFO": "User Data",
+        "STUDENTINFO": "Student Data"
       }
     },
     "GUARDIAN": {
@@ -268,6 +276,10 @@
       "ADD": {
         "BREADCRUMBS": "Add guardian|Guardian|Add",
         "TITLE": "Add guardian"
+      },
+      "EDIT": {
+        "BREADCRUMBS": "Add guardian|Guardian|Add",
+        "TITLE": "Edit guardian"
       }
     },    
     "GRADE": {
@@ -278,6 +290,10 @@
       "ADD": {
         "BREADCRUMBS": "Add grade|Grade|Add",
         "TITLE": "Add grade"
+      },
+      "EDIT": {
+        "BREADCRUMBS": "Add grade|Grade|Add",
+        "TITLE": "Edit grade"
       }
     },
     "EVENTS": {
@@ -323,6 +339,8 @@
       "ADDRESS": "Address",
       "EDUCATION": "Education",
       "GUARDIAN": "Guardian",
+      "FIRSTGUARDIAN": "First Guardian",
+      "SECONDGUARDIAN": "Second Guardian",
       "ADMISSIONDATE": "Admission date",
       "ALLERGIES": "Allergies",
       "BLOODGROUP": "Bloodgroup",

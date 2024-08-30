@@ -18,6 +18,7 @@ import { useGrades, useGuardians, useUsers } from "../../hooks"
 import { IUserDTO } from "../../models/IUser"
 import { useToast } from "@/components/ui/use-toast"
 import { LabelValueDTO } from "@/models/TLabelValueDTO"
+import { useTranslation } from "react-i18next"
 
 const newRecordformSchema = z.object({
     userName: z.string().min(2, { message: "Username must be at least 2 characters." }),
@@ -73,6 +74,8 @@ interface IProps {
 }
 
 const AddEditStudentForm = ({ student, mode, loading, submit }: IProps) => {
+
+    const { t } = useTranslation()
 
     const [user, setUser] = useState<IUserDTO | null>(null)
     const [gradeList, setGradeList] = useState<LabelValueDTO<string>[] | null>(null)
@@ -225,7 +228,7 @@ const AddEditStudentForm = ({ student, mode, loading, submit }: IProps) => {
     return (
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)}>
-                <Heading variant="subtitle2">User Info</Heading>
+                <Heading variant="subtitle2">{t('ADMINMODULE.STUDENT.TEXTS.USERINFO')}</Heading>
                 <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 mb-4 -mx-2">
                     <FormField
                         control={form.control}
@@ -233,7 +236,7 @@ const AddEditStudentForm = ({ student, mode, loading, submit }: IProps) => {
                         render={({ field }) => (
                             <FormInputField
                                 field={field}
-                                label="Username"
+                                label={t('ADMINMODULE.FIELDNAMES.USERNAME')} //"Username"
                                 placeholder="userName"
                                 disabled={user !== null}
                             />
@@ -251,7 +254,7 @@ const AddEditStudentForm = ({ student, mode, loading, submit }: IProps) => {
                                         setRut(e.target.value)
                                     }
                                 }}
-                                label="UUID"
+                                label={t('ADMINMODULE.FIELDNAMES.UUIDRUT')} //"UUID"
                                 placeholder="rut"
                                 description="Your unique identifier as a citizen in your country"
                                 disabled={mode === 'EDIT' && user != null}
@@ -266,7 +269,7 @@ const AddEditStudentForm = ({ student, mode, loading, submit }: IProps) => {
                                 render={({ field }) => (
                                     <FormInputField
                                         field={field}
-                                        label="Password"
+                                        label={t('ADMINMODULE.FIELDNAMES.PASSWORD')} //"Password"
                                         type="password"
                                         placeholder="password"
                                         disabled={user !== null}
@@ -279,7 +282,7 @@ const AddEditStudentForm = ({ student, mode, loading, submit }: IProps) => {
                                 render={({ field }) => (
                                     <FormInputField
                                         field={field}
-                                        label="Re password"
+                                        label={t('ADMINMODULE.FIELDNAMES.REPASSWORD')} //"Re password"
                                         type="password"
                                         placeholder="confirmPassword"
                                         disabled={user !== null}
@@ -294,7 +297,7 @@ const AddEditStudentForm = ({ student, mode, loading, submit }: IProps) => {
                         render={({ field }) => (
                             <FormInputField
                                 field={field}
-                                label="First name"
+                                label={t('ADMINMODULE.FIELDNAMES.NAME')} //"First name"
                                 placeholder="firstName"
                                 disabled={user !== null}
                             />
@@ -306,7 +309,7 @@ const AddEditStudentForm = ({ student, mode, loading, submit }: IProps) => {
                         render={({ field }) => (
                             <FormInputField
                                 field={field}
-                                label="Last name"
+                                label={t('ADMINMODULE.FIELDNAMES.LASTNAME')} //"Last name"
                                 placeholder="lastName"
                                 disabled={user !== null}
                             />
@@ -318,7 +321,7 @@ const AddEditStudentForm = ({ student, mode, loading, submit }: IProps) => {
                         render={({ field }) => (
                             <FormInputField
                                 field={field}
-                                label="Email"
+                                label={t('ADMINMODULE.FIELDNAMES.EMAIL')} //"Email"
                                 placeholder="email"
                                 disabled={user !== null}
                             />
@@ -330,7 +333,7 @@ const AddEditStudentForm = ({ student, mode, loading, submit }: IProps) => {
                         render={({ field }) => (
                             <FormInputField
                                 field={field}
-                                label="Phone"
+                                label={t('ADMINMODULE.FIELDNAMES.PHONE')} //"Phone"
                                 placeholder="phone"
                                 disabled={user !== null}
                             />
@@ -342,7 +345,7 @@ const AddEditStudentForm = ({ student, mode, loading, submit }: IProps) => {
                         render={({ field }) => (
                             <FormInputField
                                 field={field}
-                                label="Address"
+                                label={t('ADMINMODULE.FIELDNAMES.ADDRESS')} //"Address"
                                 placeholder="address"
                                 disabled={user !== null}
                             />
@@ -354,7 +357,7 @@ const AddEditStudentForm = ({ student, mode, loading, submit }: IProps) => {
                         render={({ field }) => (
                             <FormDatePickerField
                                 field={field}
-                                label="Date of birth"
+                                label={t('ADMINMODULE.FIELDNAMES.BIRTHDATE')} //"Date of birth"
                                 placeholder="Pick a date"
                                 disabled={user !== null}
                             />
@@ -362,7 +365,7 @@ const AddEditStudentForm = ({ student, mode, loading, submit }: IProps) => {
                     />
                 </div>
                 <Separator />
-                <Heading variant="subtitle2" className="mt-4">Student Info</Heading>
+                <Heading variant="subtitle2" className="mt-4">{t('ADMINMODULE.STUDENT.TEXTS.STUDENTINFO')}</Heading>
                 <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 mb-4 -mx-2">
                     <FormField
                         control={form.control}
@@ -370,7 +373,7 @@ const AddEditStudentForm = ({ student, mode, loading, submit }: IProps) => {
                         render={({ field }) => (
                             <FormDatePickerField
                                 field={field}
-                                label="Joining Date"
+                                label={t('ADMINMODULE.FIELDNAMES.ADMISSIONDATE')} //"Joining Date"
                                 placeholder="Pick a date"
                             />
                         )}
@@ -383,7 +386,7 @@ const AddEditStudentForm = ({ student, mode, loading, submit }: IProps) => {
                             render={({ field }) => (
                                 <FormComboboxField
                                     field={field}
-                                    label="Grade"
+                                    label={t('ADMINMODULE.FIELDNAMES.GRADE')} //"Grade"
                                     placeholder="Current grade"
                                     options={gradeList}
                                 />
@@ -399,7 +402,7 @@ const AddEditStudentForm = ({ student, mode, loading, submit }: IProps) => {
                                 render={({ field }) => (
                                     <FormComboboxField
                                         field={field}
-                                        label="First Guardian"
+                                        label={t('ADMINMODULE.FIELDNAMES.FIRSTGUARDIAN')} //"First Guardian"
                                         placeholder="One of the student guardians"
                                         options={guardianList}
                                     />
@@ -412,7 +415,7 @@ const AddEditStudentForm = ({ student, mode, loading, submit }: IProps) => {
                                 render={({ field }) => (
                                     <FormComboboxField
                                         field={field}
-                                        label="Second Guardian"
+                                        label={t('ADMINMODULE.FIELDNAMES.SECONDGUARDIAN')} //"Second Guardian"
                                         placeholder="One of the student guardians"
                                         options={guardianList}
                                     />
@@ -427,7 +430,7 @@ const AddEditStudentForm = ({ student, mode, loading, submit }: IProps) => {
                         render={({ field }) => (
                             <FormInputField
                                 field={field}
-                                label="Allergies"
+                                label={t('ADMINMODULE.FIELDNAMES.ALLERGIES')} //"Allergies"
                                 placeholder="Allergies"
                             />
                         )}
@@ -438,7 +441,7 @@ const AddEditStudentForm = ({ student, mode, loading, submit }: IProps) => {
                         render={({ field }) => (
                             <FormInputField
                                 field={field}
-                                label="Blood Group"
+                                label={t('ADMINMODULE.FIELDNAMES.BLOODGROUP')} //"Blood Group"
                                 placeholder="Blood group"
                             />
                         )}
@@ -449,14 +452,14 @@ const AddEditStudentForm = ({ student, mode, loading, submit }: IProps) => {
                         render={({ field }) => (
                             <FormToogleButtonField
                                 field={field}
-                                label="State"
-                                description="Active"
+                                label={t('ADMINMODULE.FIELDNAMES.STATE')} //"State"
+                                description={t('ADMINMODULE.STATES.ACTIVE')}
                             />
                         )}
                     />
                 </div>
                 <div className="col-start-1 col-end-3">
-                    <ButtonLoading loading={loading} type="submit">Submit</ButtonLoading>
+                    <ButtonLoading loading={loading} type="submit">{t('ADMINMODULE.FIELDNAMES.SAVEBUTTON')}</ButtonLoading>
                 </div>
             </form>
         </Form>

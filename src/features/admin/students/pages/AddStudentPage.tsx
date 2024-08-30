@@ -4,9 +4,12 @@ import { useNavigate } from 'react-router-dom'
 import { IStudentForCreationDTO } from '../../models/IStudent'
 import { Breadcrumbs, Heading } from '@/components/ui/custom'
 import AddEditStudentForm from '../views/AddEditStudentForm'
+import { useTranslation } from 'react-i18next'
 
 const AddStudentPage = () => {
     const { createStudent, loadingModification } = useStudents()
+
+    const { t } = useTranslation()
 
     const { toast } = useToast()
 
@@ -28,7 +31,7 @@ const AddStudentPage = () => {
                 { text: 'New' },
             ]} />
 
-            <Heading variant="title2">New student</Heading>
+            <Heading variant="title2">{t('ADMINMODULE.STUDENT.ADD.TITLE')}</Heading>
 
             {/* <Heading variant="subtitle2">Optional subtitle can go here</Heading> */}
 
