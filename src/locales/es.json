@@ -232,11 +232,14 @@
     "TEACHER": {
       "ALL": {
         "BREADCRUMBS": "Guías|Guía|Guías",
-        "TITLE": "Teachers"
+        "TITLE": "Guías"
       },
       "ADD": {
         "BREADCRUMBS": "Agregar Guía|Guía|Agregar",
         "TITLE": "Nuevo/a Guía"
+      },
+      "TEXTS": {
+        "TEACHER_INFO": "Información de la Guía"
       }
     },
     "STUDENT": {

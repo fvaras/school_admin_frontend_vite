@@ -58,8 +58,8 @@ const AllUsersTable = () => {
       accessorKey: "stateId",
       header: t('ADMINMODULE.FIELDNAMES.STATE'), //"State",
       cell: ({ row }) => <>
-        {row.original.stateId === 1 && <Badge variant='outline'>Active</Badge>}
-        {row.original.stateId !== 1 && <Badge variant='destructive'>Inactive</Badge>}
+        {row.original.stateId === 1 && <Badge variant='outline'>{t('ADMINMODULE.STATES.ACTIVE')}</Badge>}
+        {row.original.stateId !== 1 && <Badge variant='destructive'>{t('ADMINMODULE.STATES.INACTIVE')}</Badge>}
       </>
     },
     {
