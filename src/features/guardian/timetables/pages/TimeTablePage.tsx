@@ -4,6 +4,7 @@ import { useTimeBlock } from '../../hooks'
 import { LabelValueDTO } from '@/models/TLabelValueDTO'
 import { useStudents } from '../../hooks/useStudents'
 import { useTranslation } from 'react-i18next'
+import { startOfWeek } from 'date-fns'
 
 const TimeTablePage = () => {
   const [studentList, setStudentList] = useState<LabelValueDTO<string>[]>([])
@@ -38,29 +39,31 @@ const TimeTablePage = () => {
       const timeBlocks = list.map((timeBlock) => {
         const { day, start, end, id, blockName } = timeBlock;
 
-        // Calculate the first day of the current month and find the first occurrence of the given weekday
-        const firstDayOfMonth = new Date(currentYear, currentMonth, 1);
-        const firstWeekdayOffset = (firstDayOfMonth.getDay() + 6) % 7; // Adjust for Sunday = 0, Monday = 1
-        const daysOffset = (day - 1) - firstWeekdayOffset;
+        // Get the first day of the current week (Monday as the first day of the week)
+        const currentDate = new Date();
+        const firstDayOfWeek = startOfWeek(currentDate, { weekStartsOn: 1 }); // 1 means Monday
 
-        // Calculate the specific date for the given weekday in the current month
-        const weekStartDate = new Date(firstDayOfMonth);
-        weekStartDate.setDate(weekStartDate.getDate() + ((daysOffset + 7) % 7));
+        // Calculate the days offset for the given weekday
+        const daysOffset = (day - firstDayOfWeek.getDay() + 7) % 7;
+
+        // Calculate the specific date for the given weekday in the current week
+        const weekStartDate = new Date(firstDayOfWeek);
+        weekStartDate.setDate(weekStartDate.getDate() + daysOffset);
 
         // Create start date for the time block
         const startDate = new Date(weekStartDate);
         const [startHour, startMinute, startSecond] = start.split(':').map(Number);
-        startDate.setHours(startHour, startMinute, startSecond);
+        startDate.setHours(startHour, startMinute, startSecond || 0);
 
         // Create end date for the time block
         const endDate = new Date(startDate);
         const [endHour, endMinute, endSecond] = end.split(':').map(Number);
-        endDate.setHours(endHour, endMinute, endSecond);
+        endDate.setHours(endHour, endMinute, endSecond || 0);
 
         return {
           id,
           allDay: false,
-          title: blockName || 'New Event',
+          title: blockName || '-',
           start: startDate,
           end: endDate,
           resource: timeBlock,

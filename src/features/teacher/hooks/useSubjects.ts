@@ -13,6 +13,13 @@ export const useSubjects = () => {
         return data
     }
 
+    const getByMainTeacherForList = async (gradeId: string): Promise<LabelValueDTO<string>[]> => {
+        setLoading(true)
+        const { data } = await axios.get<LabelValueDTO<string>[]>(`api/teacher/subject/grade/${gradeId}/list`)
+        setLoading(false)
+        return data
+    }
+
     const mapSubjectGradesPkFkToLabelValueWithData = (listSubjectsGrades: PKFKPair<string, string>[]): LabelValueDTO<string>[] => {
         return listSubjectsGrades.map<LabelValueDTO<string>>((subjectPKGradeFK: PKFKPair<string, string>) => (
             {
@@ -27,6 +34,7 @@ export const useSubjects = () => {
         loading,
         error,
         getWithGradeByTeacherForList,
-        mapSubjectGradesPkFkToLabelValueWithData
+        mapSubjectGradesPkFkToLabelValueWithData,
+        getByMainTeacherForList
     }
 }

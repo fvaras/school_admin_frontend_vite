@@ -10,17 +10,18 @@ interface IProps {
     field: any;
     label: string;
     options: IRadioGroupOption[];
+    direction?: 'row' | 'col'
     onOptionClick?: (option: IRadioGroupOption) => void
 }
 
-const FormRadioGroupField: React.FC<IProps> = ({ field, label, options, onOptionClick }) => (
+const FormRadioGroupField: React.FC<IProps> = ({ field, label, options, direction = 'row', onOptionClick }) => (
     <FormItem className="space-y-3">
         <FormLabel>{label}</FormLabel>
         <FormControl>
             <RadioGroup
                 onValueChange={field.onChange}
                 defaultValue={field.value}
-                className="flex flex-col space-y-1"
+                className={`flex ${direction === 'row' ? 'flex-row' : 'flex-col'} space-y-1`}
             >
                 {options.map((option, key) => (
                     <FormItem

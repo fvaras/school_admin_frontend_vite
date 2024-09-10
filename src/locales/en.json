@@ -423,6 +423,30 @@
     "TIMETABLE": {
       "ALL": {
         "TITLE": "Time Tables"
+      },
+      "ADD": {
+        "TITLE": "Add time block"
+      },
+      "EDIT": {
+        "TITLE": "Edit time block"
+      }
+    },
+    "EVENTS": {
+      "ALL": {
+        "BREADCRUMBS": "Events|Event|Events",
+        "TITLE": "Events"
+      },
+      "ADD": {
+        "BREADCRUMBS": "Add event|Event|Add",
+        "TITLE": "Add event"
+      },
+      "EDIT": {
+        "BREADCRUMBS": "Edit event|Event|Edit",
+        "TITLE": "Edit event"
+      },
+      "CALENDAR": {
+        "BREADCRUMBS": "Calendar|Events|All",
+        "TITLE": "Events"
       }
     },
     "FIELDNAMES": {
@@ -439,12 +463,17 @@
       "COLOR": "Color",
       "DURATION": "Estimated duration",
       "STARTDATE": "Start date",
+      "STARTTIME": "Start time",
       "UPDATEDAT": "Updated at",
       "ENDDATE": "End date",
+      "ENDTIME": "End time",
       "STATE": "State",
       "TYPE": "Type",
       "GRADENAME": "Grade",
       "HOMEWORKTITLE": "Title",
+      "DAY": "Day",
+      "ISRECESS": "Is recess",
+      "BLOCKNAME": "Block name",
       "ACTIONS": "Actions",
       "EDIT_ACTION": "Edit",
       "DELETE_ACTION": "Delete",
@@ -546,6 +575,17 @@
       "VIEW_OPTIONS_TITLE": "View",
       "TOGGLE_COLUMNS": "Toggle columns",
       "NO_DATA": "No results."
+    }
+  },
+  "GENERAL": {
+    "DAYS": {
+      "MO": "Monday",
+      "TU": "Tuesday",
+      "WE": "Wednesday",
+      "TH": "Thursday",
+      "FR": "Friday",
+      "SA": "Saturday",
+      "SU": "Sunday"
     }
   }
 }

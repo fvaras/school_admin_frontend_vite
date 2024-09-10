@@ -423,6 +423,30 @@
     "TIMETABLE": {
       "ALL": {
         "TITLE": "Horarios"
+      },
+      "ADD": {
+        "TITLE": "Agregar bloque horario"
+      },
+      "EDIT": {
+        "TITLE": "Editar bloque horario"
+      }
+    },
+    "EVENTS": {
+      "ALL": {
+        "BREADCRUMBS": "Eventos|Evento|Eventos",
+        "TITLE": "Eventos"
+      },
+      "ADD": {
+        "BREADCRUMBS": "Agregar evento|Evento|Agregar",
+        "TITLE": "Nuevo evento"
+      },
+      "EDIT": {
+        "BREADCRUMBS": "Editar evento|Evento|Editar",
+        "TITLE": "Editar evento"
+      },
+      "CALENDAR": {
+        "BREADCRUMBS": "Calendario|Eventos|Todos",
+        "TITLE": "Eventos"
       }
     },
     "FIELDNAMES": {
@@ -439,12 +463,17 @@
       "COLOR": "Color",
       "DURATION": "Duración estimada",
       "STARTDATE": "Fecha de inicio",
+      "STARTTIME": "Hora de inicio",
       "UPDATEDAT": "Fecha actualización",
       "ENDDATE": "Fecha de término",
+      "ENDTIME": "Hora de término",
       "STATE": "Estado",
       "TYPE": "Tipo",
       "GRADENAME": "Nivel",
       "HOMEWORKTITLE": "Título",
+      "DAY": "Día",
+      "ISRECESS": "Es recreo",
+      "BLOCKNAME": "Nombre del bloque",
       "ACTIONS": "Acciones",
       "EDIT_ACTION": "Editar",
       "DELETE_ACTION": "Eliminar",
@@ -546,6 +575,17 @@
       "VIEW_OPTIONS_TITLE": "Vista",
       "TOGGLE_COLUMNS": "Alternar columnas",
       "NO_DATA": "Sin datos"
+    }
+  },
+  "GENERAL": {
+    "DAYS": {
+      "MO": "Lunes",
+      "TU": "Martes",
+      "WE": "Miércoles",
+      "TH": "Jueves",
+      "FR": "Viernes",
+      "SA": "Sábado",
+      "SU": "Domingo"
     }
   }
 }

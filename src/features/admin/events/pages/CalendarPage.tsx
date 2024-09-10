@@ -35,7 +35,7 @@ const CalendarPage = () => {
             return (
                 {
                     id: ev.id,
-                    allDay: ev.id === '66939eab-0037-439d-aead-14ffe161cc44',
+                    allDay: false, // ev.id === '66939eab-0037-439d-aead-14ffe161cc44',
                     title: ev.title,
                     start: new Date(ev.startDate),
                     end: new Date(ev.endDate),
@@ -43,8 +43,11 @@ const CalendarPage = () => {
                 }
             )
         })
+        console.log('data')
+        console.log(data)
         console.log('events')
-        console.log(JSON.stringify(_events[events.length - 1]))
+        console.log(_events)
+        // console.log(JSON.stringify(_events[events.length - 1]))
         setEvents(_events)
     }
 
@@ -137,10 +140,10 @@ const CalendarPage = () => {
                 </DialogTrigger> */}
                 <DialogContent className="sm:max-w-[425px]">
                     <DialogHeader>
-                        <DialogTitle>{currentEvent?.id ? 'Edit event' : 'Add event'}</DialogTitle>
-                        <DialogDescription>
+                        <DialogTitle>{currentEvent?.id ? t('ADMINMODULE.EVENTS.EDIT.TITLE') : t('ADMINMODULE.EVENTS.ADD.TITLE')}</DialogTitle>
+                        {/* <DialogDescription>
                             Make changes to your profile here. Click save when you're done.
-                        </DialogDescription>
+                        </DialogDescription> */}
                     </DialogHeader>
                     <AddEditEventForm
                         mode={currentEvent?.id ? 'EDIT' : 'ADD'}
