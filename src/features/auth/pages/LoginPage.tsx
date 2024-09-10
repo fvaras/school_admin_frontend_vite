@@ -29,8 +29,9 @@ const formSchema = z.object({
 const Signin = () => {
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false)
   const [profiles, setProfiles] = useState<{ value: string; label: string }[]>([])
+
   const { t } = useTranslation();
-  const { register, handleSubmit, formState: { errors } } = useForm();
+
   const { loading, error, user } = useAppSelector(store => store.auth)
 
   const { getProfilesArray } = useAuth()
@@ -112,18 +113,17 @@ const Signin = () => {
 
   return (
     <div className="auth-container">
-      <div className="row">
-
-        {/* <JsonDataView data={profiles} /> */}
-
-        <div className="col-sm-6 px-0 d-none d-sm-block">
-          <div className="left-img" style={{ backgroundImage: 'url(assets/images/pages/logo 2.webp)' }}></div>
+      <div
+        className="container relative hidden h-[800px] flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
+        <div className="relative hidden h-full flex-col bg-muted p-10 text-white dark:border-r lg:flex" style={{ backgroundImage: 'url(assets/images/pages/logo 2.webp)' }}>
         </div>
-        <div className="col-sm-6">
-          <div className="form-section">
-            <div className="auth-wrapper">
-              <h2 className="welcome-msg">{t('LOGIN.TITLE')}</h2>
-              <h2 className="login-title">{t('LOGIN.SIGNIN')}</h2>
+        <div className="lg:p-8">
+          <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
+            <div className="flex flex-col space-y-2 text-center">
+              <h1 className="text-2xl font-semibold tracking-tight">{t('LOGIN.TITLE')}</h1>
+              <p className="text-xl text-muted-foreground">{t('LOGIN.SIGNIN')}</p>
+            </div>
+            <div className="grid gap-6">
               <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)}>
                   <div className="row">
@@ -168,10 +168,10 @@ const Signin = () => {
                       />
                     </div>
                   </div>
-                  <div className="d-flex justify-content-between align-items-center mb-5">
+                  {/* <div className="d-flex justify-content-between align-items-center mb-5">
                     <div className="form-check"></div>
                     <a className="txt1" href="/authentication/forgot-password">{t('LOGIN.FORGOT_PASSWORD')}</a>
-                  </div>
+                  </div> */}
                   {error && <Alert variant="destructive" className="mt-3 mb-0">{error}</Alert>}
                   <div className="container-auth-form-btn">
                     <div style={{ textAlign: 'center' }}>
@@ -182,12 +182,104 @@ const Signin = () => {
                   </div>
                 </form>
               </Form>
+              {/* <div className="relative">
+                <div className="absolute inset-0 flex items-center">
+                  <span className="w-full border-t"></span>
+                </div>
+                <div className="relative flex justify-center text-xs uppercase">
+                  <span className="bg-background px-2 text-muted-foreground">Or continue with</span>
+                </div>
+              </div> */}
             </div>
+            {/* <p className="px-8 text-center text-sm text-muted-foreground">By clicking continue, you
+              agree to our <a className="underline underline-offset-4 hover:text-primary"
+                href="/terms">Terms of Service</a> and <a
+                  className="underline underline-offset-4 hover:text-primary" href="/privacy">Privacy
+                Policy</a>.</p> */}
           </div>
         </div>
       </div>
     </div>
-  );
+  )
+
+  // return (
+  //   <div className="auth-container">
+  //     <div className="row">
+
+  //       {/* <JsonDataView data={profiles} /> */}
+
+  //       <div className="col-sm-6 px-0 d-none d-sm-block">
+  //         <div className="left-img" style={{ backgroundImage: 'url(assets/images/pages/logo 2.webp)' }}></div>
+  //       </div>
+  //       <div className="col-sm-6">
+  //         <div className="form-section">
+  //           <div className="auth-wrapper">
+  //             <h2 className="welcome-msg">{t('LOGIN.TITLE')}</h2>
+  //             <h2 className="login-title">{t('LOGIN.SIGNIN')}</h2>
+  //             <Form {...form}>
+  //               <form onSubmit={form.handleSubmit(onSubmit)}>
+  //                 <div className="row">
+  //                   <div className="col-12 mb-4">
+  //                     <FormField
+  //                       control={form.control}
+  //                       name="profile"
+  //                       render={({ field }) => (
+  //                         <FormRadioGroupField
+  //                           field={field}
+  //                           label={t('LOGIN.FORM.PROFILE')}
+  //                           options={profiles}
+  //                           onOptionClick={handleProfileChange}
+  //                         />
+  //                       )}
+  //                     />
+  //                   </div>
+  //                   <div className="col-12 mb-2">
+  //                     <FormField
+  //                       control={form.control}
+  //                       name="username"
+  //                       render={({ field }) => (
+  //                         <FormInputField
+  //                           field={field}
+  //                           label={t('LOGIN.FORM.USERNAME')}
+  //                           placeholder=""
+  //                         />
+  //                       )}
+  //                     />
+  //                   </div>
+  //                   <div className="col-12 mb-2">
+  //                     <FormField
+  //                       control={form.control}
+  //                       name="password"
+  //                       render={({ field }) => (
+  //                         <FormInputField
+  //                           field={field}
+  //                           label={t('LOGIN.FORM.PASSWORD')}
+  //                           type="password"
+  //                         />
+  //                       )}
+  //                     />
+  //                   </div>
+  //                 </div>
+  //                 <div className="d-flex justify-content-between align-items-center mb-5">
+  //                   <div className="form-check"></div>
+  //                   <a className="txt1" href="/authentication/forgot-password">{t('LOGIN.FORGOT_PASSWORD')}</a>
+  //                 </div>
+  //                 {error && <Alert variant="destructive" className="mt-3 mb-0">{error}</Alert>}
+  //                 <div className="container-auth-form-btn">
+  //                   <div style={{ textAlign: 'center' }}>
+  //                     <Button type="submit" disabled={loading}>
+  //                       {loading ? 'Loading...' : 'Login'}
+  //                     </Button>
+  //                   </div>
+  //                 </div>
+  //               </form>
+  //             </Form>
+  //           </div>
+  //         </div>
+  //       </div>
+  //     </div>
+  //   </div>
+  // );
 };
 
 export default Signin;
