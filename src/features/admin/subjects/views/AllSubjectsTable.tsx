@@ -16,7 +16,7 @@ const AllSubjectsTable = () => {
 
     const { t } = useTranslation()
 
-    const { loading, loadingModification, getAllSubjects, deleteSubject } = useSubjects()
+    const { loadingModification, getAllSubjects, deleteSubject } = useSubjects()
 
     const navigate = useNavigate()
 

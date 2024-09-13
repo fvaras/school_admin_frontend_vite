@@ -51,11 +51,6 @@ const TimeTablePage = () => {
       setCurrentGradeId(gradeId)
       const list = await getAllTimeBlocks(gradeId);
 
-      // Get the current year and month
-      const currentDate = new Date();
-      const currentYear = currentDate.getFullYear();
-      const currentMonth = currentDate.getMonth(); // 0-based index for months
-
       const timeBlocks = list.map((timeBlock) => {
         const { day, start, end, id, blockName } = timeBlock;
 
@@ -166,8 +161,6 @@ const TimeTablePage = () => {
       description: "Time block deleted successfully",
     })
   }
-
-  const today = new Date();
 
   return (
     <>

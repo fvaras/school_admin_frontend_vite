@@ -1,11 +1,8 @@
 import { ConfirmDialog, DataTable, DataTableRowActions } from "@/components/ui/custom"
 import { ColumnDef } from "@tanstack/react-table"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { IPlanningTableRowDTO } from "../../models/IPlanning"
-import { usePlannings } from "../../hooks"
 import { useNavigate } from "react-router-dom"
-import { useToast } from "@/components/ui/use-toast"
-import { Badge } from "@/components/ui/badge"
 import { useTranslation } from "react-i18next"
 
 interface IProps {

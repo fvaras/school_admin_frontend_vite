@@ -1,7 +1,6 @@
 // PrivateRoute.tsx
 import { useAppSelector } from '@/store/hooks'
 import React from 'react'
-import { useSelector } from 'react-redux'
 import { Navigate } from 'react-router-dom'
 
 interface PrivateRouteProps {

@@ -16,7 +16,7 @@ const AllGuardiansTable = () => {
     const [showDeleteConfirmDialog, setShowDeleteConfirmDialog] = useState<boolean>(false)
     const [currentData, setCurrentData] = useState<IGuardianTableRowDTO | null>(null)
 
-    const { loading, loadingModification, getAllGuardians, deleteGuardian } = useGuardians()
+    const { loadingModification, getAllGuardians, deleteGuardian } = useGuardians()
 
     const navigate = useNavigate()
 

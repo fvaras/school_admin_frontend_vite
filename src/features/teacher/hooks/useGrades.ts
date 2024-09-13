@@ -4,7 +4,7 @@ import { LabelValueDTO } from "@/models/TLabelValueDTO";
 
 export const useGrades = () => {
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState('');
+    // const [error, setError] = useState('');
 
     const getGradesByTeacherForList = async (): Promise<LabelValueDTO<string>[]> => {
         setLoading(true)
@@ -22,7 +22,7 @@ export const useGrades = () => {
 
     return {
         loading,
-        error,
+        // error,
         getGradesByTeacherForList // TODO: Maybe wil be necessary to remove this function
     }
 }

@@ -14,7 +14,7 @@ const AllStudentsByGradePage = () => {
     
     let { gradeId } = useParams();
 
-    const { getAllStudentsByGrade, loading, deleteStudent, loadingModification } = useStudents()
+    const { getAllStudentsByGrade, deleteStudent, loadingModification } = useStudents()
 
     const { toast } = useToast()
 

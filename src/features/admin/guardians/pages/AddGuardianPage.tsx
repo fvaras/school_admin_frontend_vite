@@ -38,7 +38,7 @@ const AddGuardianPage = () => {
             <AddEditGuardianForm
                 mode="ADD"
                 loading={loadingModification}
-                submit={(id, guardian) => handleSubmit(guardian as IGuardianForCreationDTO)}
+                submit={(_id, guardian) => handleSubmit(guardian as IGuardianForCreationDTO)}
             />
         </>
     )

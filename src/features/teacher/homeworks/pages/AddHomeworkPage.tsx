@@ -38,7 +38,7 @@ const AddHomeworkPage = () => {
             <AddEditHomeworkForm
                 mode="ADD"
                 loading={loadingModification}
-                submit={(id, homework) => handleSubmit(homework as IHomeworkForCreationDTO)}
+                submit={(_id, homework) => handleSubmit(homework as IHomeworkForCreationDTO)}
             />
         </>
     )

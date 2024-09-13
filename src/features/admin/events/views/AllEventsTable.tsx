@@ -15,7 +15,7 @@ const AllEventsTable = () => {
     const [showDeleteConfirmDialog, setShowDeleteConfirmDialog] = useState<boolean>(false)
     const [currentData, setCurrentData] = useState<ICalendarEventDTO | null>(null)
 
-    const { loading, loadingModification, getAllEvents, deleteEvent } = useEvents()
+    const { loadingModification, getAllEvents, deleteEvent } = useEvents()
 
     const { t } = useTranslation()
     

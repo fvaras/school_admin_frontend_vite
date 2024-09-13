@@ -8,7 +8,6 @@ import { startOfWeek } from 'date-fns'
 
 const TimeTablePage = () => {
   const [studentList, setStudentList] = useState<LabelValueDTO<string>[]>([])
-  const [currentStudentId, setCurrentStudentId] = useState<string>('')
   const [timeBlocksEvents, setTimeBlocks] = useState<any[]>([])
   const [minmaxDayTime, setMinMaxDayTime] = useState<{ min: Date, max: Date }>({ min: new Date(), max: new Date() })
 
@@ -30,11 +29,6 @@ const TimeTablePage = () => {
   const loadTimeTableByStudent = async (studentId: string) => {
     try {
       const list = await getAllTimeBlocksByStudent(studentId);
-
-      // Get the current year and month
-      const currentDate = new Date();
-      const currentYear = currentDate.getFullYear();
-      const currentMonth = currentDate.getMonth(); // 0-based index for months
 
       const timeBlocks = list.map((timeBlock) => {
         const { day, start, end, id, blockName } = timeBlock;

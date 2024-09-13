@@ -38,7 +38,7 @@ const AddEventPage = () => {
             <AddEditEventForm
                 mode="ADD"
                 loading={loadingModification}
-                submit={(id, event) => handleSubmit(event as ICalendarEventForCreationDTO)}
+                submit={(_id, event) => handleSubmit(event as ICalendarEventForCreationDTO)}
             />
         </>
     )

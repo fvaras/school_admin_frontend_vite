@@ -8,9 +8,9 @@ import {
     FormField,
 } from "@/components/ui/form"
 import { FormInputField, FormToogleButtonField, FormComboboxField } from "@/components/ui/custom/forms"
-import { ButtonLoading, Heading } from "@/components/ui/custom"
+import { ButtonLoading } from "@/components/ui/custom"
 import { ISubjectDTO, ISubjectForCreationDTO, ISubjectForUpdateDTO } from "../../models/ISubject"
-import { useGrades, useSubjects, useTeachers } from "../../hooks"
+import { useGrades, useTeachers } from "../../hooks"
 import { useEffect, useState } from "react"
 import { LabelValueDTO } from "@/models/TLabelValueDTO"
 import { useTranslation } from "react-i18next"
@@ -37,7 +37,6 @@ const AddEditSubjectForm = ({ subject, mode, loading, submit }: IProps) => {
 
     const { t } = useTranslation()
     
-    const { getTeachersId } = useSubjects()
     const { getTeachersForList } = useTeachers()
     const { getGradesForList } = useGrades()
 

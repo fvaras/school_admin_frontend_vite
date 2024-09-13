@@ -5,7 +5,7 @@ import { axiosAuthInstance as axios } from "@/lib/axios";
 export const useHomeworks = () => {
     const [loading, setLoading] = useState(false);
     const [loadingModification, setLoadingModification] = useState(false);
-    const [error, setError] = useState('');
+    // const [error, setError] = useState('');
 
     // const { t } = useTranslation();
 
@@ -61,7 +61,7 @@ export const useHomeworks = () => {
     return {
         loading,
         loadingModification,
-        error,
+        // error,
         getAllHomeworksByTeacher,
         getHomework,
         createHomework,

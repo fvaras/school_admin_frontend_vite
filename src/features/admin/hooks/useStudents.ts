@@ -5,7 +5,7 @@ import { axiosAuthInstance as axios } from "@/lib/axios";
 export const useStudents = () => {
     const [loading, setLoading] = useState(false);
     const [loadingModification, setLoadingModification] = useState(false);
-    const [error, setError] = useState('');
+    // const [error, setError] = useState('');
 
     // const { t } = useTranslation();
 
@@ -68,7 +68,7 @@ export const useStudents = () => {
     return {
         loading,
         loadingModification,
-        error,
+        // error,
         getAllStudents,
         getAllStudentsByGrade,
         getStudent,

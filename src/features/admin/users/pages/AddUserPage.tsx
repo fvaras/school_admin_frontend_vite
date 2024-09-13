@@ -44,7 +44,7 @@ const AddUserPage = () => {
             <AddEditUserForm
                 mode="ADD"
                 loading={loadingModification}
-                submit={(id, user) => handleSubmit(user as IUserForCreationDTO)}
+                submit={(_id, user) => handleSubmit(user as IUserForCreationDTO)}
             />
         </>
     )

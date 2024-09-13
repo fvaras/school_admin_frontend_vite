@@ -6,7 +6,7 @@ import { LabelValueDTO } from "@/models/TLabelValueDTO";
 export const usePlannings = () => {
     const [loading, setLoading] = useState(false);
     const [loadingModification, setLoadingModification] = useState(false);
-    const [error, setError] = useState('');
+    // const [error, setError] = useState('');
 
     // const { t } = useTranslation();
 
@@ -76,7 +76,7 @@ export const usePlannings = () => {
     return {
         loading,
         loadingModification,
-        error,
+        // error,
         getAllTeacherPlannings,
         getPlanning,
         createPlanning,

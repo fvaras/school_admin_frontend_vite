@@ -38,7 +38,7 @@ const AddPlanningPage = () => {
             <AddEditPlanningForm
                 mode="ADD"
                 loading={loadingModification}
-                submit={(id, planning) => handleSubmit(planning as IPlanningForCreationDTO)}
+                submit={(_id, planning) => handleSubmit(planning as IPlanningForCreationDTO)}
             />
         </>
     )

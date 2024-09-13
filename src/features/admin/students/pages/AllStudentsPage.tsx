@@ -12,7 +12,7 @@ const AllStudentsPage = () => {
 
     const { t } = useTranslation()
 
-    const { getAllStudents, loading, deleteStudent, loadingModification } = useStudents()
+    const { getAllStudents, deleteStudent, loadingModification } = useStudents()
 
     const { toast } = useToast()
 

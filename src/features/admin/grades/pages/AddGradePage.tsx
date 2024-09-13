@@ -38,7 +38,7 @@ const AddGradePage = () => {
             <AddEditGradeForm
                 mode="ADD"
                 loading={loadingModification}
-                submit={(id, grade) => handleSubmit(grade as IGradeForCreationDTO)}
+                submit={(_id, grade) => handleSubmit(grade as IGradeForCreationDTO)}
             />
         </>
     )

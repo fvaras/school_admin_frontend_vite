@@ -11,7 +11,6 @@ import {
 } from "@/components/ui/dialog"
 import AddEditEventForm from '../views/AddEditEventForm'
 import { useToast } from '@/components/ui/use-toast'
-import { Views } from 'react-big-calendar'
 import { useTranslation } from 'react-i18next'
 
 const CalendarPage = () => {
@@ -19,7 +18,7 @@ const CalendarPage = () => {
     const [currentEvent, setCurrentEvent] = useState<ICalendarEventDTO | null>(null)
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
 
-    const { getAllEvents, getEvent, createEvent, updateEvent, loading, loadingModification } = useEvents()
+    const { getAllEvents, getEvent, createEvent, updateEvent, loadingModification } = useEvents()
 
     const { t } = useTranslation()
 
@@ -141,9 +140,8 @@ const CalendarPage = () => {
                 <DialogContent className="sm:max-w-[425px]">
                     <DialogHeader>
                         <DialogTitle>{currentEvent?.id ? t('ADMINMODULE.EVENTS.EDIT.TITLE') : t('ADMINMODULE.EVENTS.ADD.TITLE')}</DialogTitle>
-                        {/* <DialogDescription>
-                            Make changes to your profile here. Click save when you're done.
-                        </DialogDescription> */}
+                        <DialogDescription>
+                        </DialogDescription>
                     </DialogHeader>
                     <AddEditEventForm
                         mode={currentEvent?.id ? 'EDIT' : 'ADD'}

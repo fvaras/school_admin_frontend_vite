@@ -1,4 +1,4 @@
-import { ConfirmDialog, DataTable, DataTableHeaderSelection, DataTableRowActions, DataTableRowSelection } from "@/components/ui/custom"
+import { ConfirmDialog, DataTable, DataTableRowActions } from "@/components/ui/custom"
 import { ColumnDef } from "@tanstack/react-table"
 import { useEffect, useState } from "react"
 import { IUser } from "../../models/IUser"
@@ -14,7 +14,7 @@ const AllUsersTable = () => {
   const [showDeleteConfirmDialog, setShowDeleteConfirmDialog] = useState<boolean>(false)
   const [currentData, setCurrentData] = useState<IUser | null>(null)
 
-  const { loading, loadingModification, getAllUsers, deleteUser } = useUsers()
+  const { loadingModification, getAllUsers, deleteUser } = useUsers()
 
   const navigate = useNavigate()
 

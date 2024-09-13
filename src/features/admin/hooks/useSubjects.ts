@@ -6,7 +6,7 @@ import { LabelValueDTO } from "@/models/TLabelValueDTO";
 export const useSubjects = () => {
     const [loading, setLoading] = useState(false);
     const [loadingModification, setLoadingModification] = useState(false);
-    const [error, setError] = useState('');
+    // const [error, setError] = useState('');
 
     // const { t } = useTranslation();
 
@@ -76,7 +76,7 @@ export const useSubjects = () => {
     return {
         loading,
         loadingModification,
-        error,
+        // error,
         getAllSubjects,
         getSubject,
         createSubject,

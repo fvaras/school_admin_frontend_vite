@@ -1,4 +1,3 @@
-import React from 'react'
 import { useTeachers } from '../../hooks/useTeachers'
 import { useToast } from '@/components/ui/use-toast'
 import { useNavigate } from 'react-router-dom'
@@ -39,7 +38,7 @@ const AddTeacherPage = () => {
             <AddEditTeacherForm
                 mode="ADD"
                 loading={loadingModification}
-                submit={(id, teacher) => handleSubmit(teacher as ITeacherForCreationDTO)}
+                submit={(_id, teacher) => handleSubmit(teacher as ITeacherForCreationDTO)}
             />
         </>
     )

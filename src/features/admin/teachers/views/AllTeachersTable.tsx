@@ -1,4 +1,4 @@
-import { ConfirmDialog, DataTable, DataTableHeaderSelection, DataTableRowActions, DataTableRowSelection } from "@/components/ui/custom"
+import { ConfirmDialog, DataTable, DataTableRowActions } from "@/components/ui/custom"
 import { ColumnDef } from "@tanstack/react-table"
 import { useEffect, useState } from "react"
 import { ITeacherDTO } from "../../models/ITeacher"
@@ -14,7 +14,7 @@ const AllTeachersTable = () => {
     const [showDeleteConfirmDialog, setShowDeleteConfirmDialog] = useState<boolean>(false)
     const [currentData, setCurrentData] = useState<ITeacherDTO | null>(null)
 
-    const { loading, loadingModification, getAllTeachers, deleteTeacher } = useTeachers()
+    const { loadingModification, getAllTeachers, deleteTeacher } = useTeachers()
 
     const { t } = useTranslation();
 

@@ -5,7 +5,7 @@ import { ITimeBlockDTO, ITimeBlockForCreationDTO, ITimeBlockForUpdateDTO, ITimeB
 export const useTimeBlock = () => {
     const [loading, setLoading] = useState(false);
     const [loadingModification, setLoadingModification] = useState(false);
-    const [error, setError] = useState('');
+    // const [error, setError] = useState('');
 
     const getAllTimeBlocks = async (gradeId: string): Promise<ITimeBlockTableRowDTO[]> => {
         setLoading(true)
@@ -61,7 +61,7 @@ export const useTimeBlock = () => {
     return {
         loading,
         loadingModification,
-        error,
+        // error,
         getAllTimeBlocks,
         getTimeBlock,
         createTimeBlock,

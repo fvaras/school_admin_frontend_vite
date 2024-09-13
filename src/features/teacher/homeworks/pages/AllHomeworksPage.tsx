@@ -12,7 +12,7 @@ const AllHomeworksPage = () => {
     const [homeworks, setHomeworks] = useState<IHomeworkTableRowDTO[]>([])
 
     const { getWithGradeByTeacherForList, mapSubjectGradesPkFkToLabelValueWithData } = useSubjects()
-    const { loading, loadingModification, getAllHomeworksByTeacher, deleteHomework } = useHomeworks()
+    const { loadingModification, getAllHomeworksByTeacher, deleteHomework } = useHomeworks()
 
     const { t } = useTranslation()
     

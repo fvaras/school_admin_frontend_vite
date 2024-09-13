@@ -1,7 +1,7 @@
 import { Breadcrumbs, Combobox, Heading } from '@/components/ui/custom'
 import AllPlanningsTable from '../views/AllPlanningsTable'
 import { useEffect, useState } from 'react'
-import { LabelValueDTO, PKFKPair } from '@/models/TLabelValueDTO'
+import { LabelValueDTO } from '@/models/TLabelValueDTO'
 import { usePlannings, useSubjects } from '../../hooks'
 import { IPlanningTableRowDTO } from '../../models/IPlanning'
 import { useToast } from '@/components/ui/use-toast'
@@ -12,10 +12,10 @@ const AllPlanningsPage = () => {
     const [plannings, setPlannings] = useState<IPlanningTableRowDTO[]>([])
 
     const { getWithGradeByTeacherForList, mapSubjectGradesPkFkToLabelValueWithData } = useSubjects()
-    const { loading, loadingModification, getAllTeacherPlannings, deletePlanning } = usePlannings()
+    const { loadingModification, getAllTeacherPlannings, deletePlanning } = usePlannings()
 
     const { t } = useTranslation()
-    
+
     const { toast } = useToast()
 
     useEffect(() => {

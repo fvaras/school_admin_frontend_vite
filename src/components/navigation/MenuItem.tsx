@@ -15,7 +15,6 @@ import {
     ChevronDown,
     ChevronRight,
 } from 'lucide-react';
-import React from 'react'
 import { Link } from 'react-router-dom'
 import { MenuItemType, SubItem } from './types';
 import { useTranslation } from 'react-i18next';

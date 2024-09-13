@@ -16,7 +16,7 @@ const AllGradesTable = () => {
 
     const { t } = useTranslation()
     
-    const { loading, loadingModification, getAllGrades, deleteGrade } = useGrades()
+    const { loadingModification, getAllGrades, deleteGrade } = useGrades()
 
     const navigate = useNavigate()
 

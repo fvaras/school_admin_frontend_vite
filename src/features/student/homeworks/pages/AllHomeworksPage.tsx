@@ -13,7 +13,7 @@ const AllHomeworksPage = () => {
     const { t } = useTranslation()
 
     const { getForList: getSubjects } = useSubjects()
-    const { loading, getAllHomeworks } = useHomeworks()
+    const { getAllHomeworks } = useHomeworks()
 
     useEffect(() => {
         loadInitialData()

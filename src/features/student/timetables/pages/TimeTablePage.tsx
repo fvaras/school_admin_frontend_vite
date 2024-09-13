@@ -20,11 +20,6 @@ const TimeTablePage = () => {
     try {
       const list = await getAllTimeBlocks();
 
-      // Get the current year and month
-      const currentDate = new Date();
-      const currentYear = currentDate.getFullYear();
-      const currentMonth = currentDate.getMonth(); // 0-based index for months
-
       const timeBlocks = list.map((timeBlock) => {
         const { day, start, end, id, blockName } = timeBlock;
 

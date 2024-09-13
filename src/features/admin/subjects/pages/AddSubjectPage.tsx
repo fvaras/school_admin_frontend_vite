@@ -38,7 +38,7 @@ const AddSubjectPage = () => {
             <AddEditSubjectForm
                 mode="ADD"
                 loading={loadingModification}
-                submit={(id, subject) => handleSubmit(subject as ISubjectForCreationDTO)}
+                submit={(_id, subject) => handleSubmit(subject as ISubjectForCreationDTO)}
             />
         </>
     )

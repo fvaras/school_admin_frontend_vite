@@ -26,7 +26,8 @@ const EditUserPage = () => {
 
     const loadData = async (userId: string) => {
         const user = await getUser(userId)
-        setCurrentUser(user) // TODO: Set proper type
+        // @ts-ignore
+        setCurrentUser(user as IUser) // TODO: Set proper type
     }
 
     const handleSubmit = async (id: string, userForUpdate: IUserForUpdateDTO) => {

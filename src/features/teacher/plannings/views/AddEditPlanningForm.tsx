@@ -8,11 +8,11 @@ import {
     FormField,
 } from "@/components/ui/form"
 import { FormInputField, FormComboboxField, FormTextAreaField } from "@/components/ui/custom/forms"
-import { ButtonLoading, Heading } from "@/components/ui/custom"
+import { ButtonLoading } from "@/components/ui/custom"
 import { IPlanningDTO, IPlanningForCreationDTO, IPlanningForUpdateDTO } from "../../models/IPlanning"
-import { useGrades, useSubjects } from "../../hooks"
+import { useSubjects } from "../../hooks"
 import { useEffect, useState } from "react"
-import { LabelValueDTO, PKFKPair } from "@/models/TLabelValueDTO"
+import { LabelValueDTO } from "@/models/TLabelValueDTO"
 import { useTranslation } from "react-i18next"
 
 const formSchema = z.object({

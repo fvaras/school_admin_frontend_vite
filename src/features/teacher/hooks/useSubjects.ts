@@ -4,7 +4,7 @@ import { LabelValueDTO, PKFKPair } from "@/models/TLabelValueDTO";
 
 export const useSubjects = () => {
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState('');
+    // const [error, setError] = useState('');
 
     const getWithGradeByTeacherForList = async (): Promise<PKFKPair<string, string>[]> => {
         setLoading(true)
@@ -32,7 +32,7 @@ export const useSubjects = () => {
 
     return {
         loading,
-        error,
+        // error,
         getWithGradeByTeacherForList,
         mapSubjectGradesPkFkToLabelValueWithData,
         getByMainTeacherForList

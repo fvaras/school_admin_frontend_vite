@@ -1,12 +1,10 @@
-import React from 'react'
-
 interface IProps {
     event: any
 }
 
 const CalendarMonthEvent = ({ event }: IProps) => {
     // const { event } = props;
-    const { start, end, title, resource } = event;
+    const { title, resource } = event;
     const { type } = resource;
 
     const typeToClassName: any = {

@@ -38,7 +38,7 @@ const AddStudentPage = () => {
             <AddEditStudentForm
                 mode="ADD"
                 loading={loadingModification}
-                submit={(id, student) => handleSubmit(student as IStudentForCreationDTO)}
+                submit={(_id, student) => handleSubmit(student as IStudentForCreationDTO)}
             />
         </>
     )

@@ -8,13 +8,12 @@ import { useTranslation } from 'react-i18next'
 
 const AllPlanningsPage = () => {
     const [subjectList, setSubjectList] = useState<LabelValueDTO<string>[]>([])
-    const [currentStudentId, setCurrentStudentId] = useState<string>('')
     const [plannings, setPlannings] = useState<IPlanningTableRowDTO[]>([])
 
     const { t } = useTranslation()
 
     const { getForList: getSubjects } = useSubjects()
-    const { loading, getAllPlannings } = usePlannings()
+    const { getAllPlannings } = usePlannings()
 
     useEffect(() => {
         loadInitialData()

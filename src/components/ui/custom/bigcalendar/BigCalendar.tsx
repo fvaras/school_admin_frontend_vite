@@ -1,5 +1,5 @@
 import React from 'react'
-import { format, startOfMonth, endOfMonth, startOfWeek, endOfWeek, addDays, isSameMonth, isWithinInterval, parseISO } from 'date-fns'
+import { format, startOfMonth, endOfMonth, startOfWeek, endOfWeek, addDays, isSameMonth, isWithinInterval } from 'date-fns'
 
 export interface IEvent {
     allDay: boolean
