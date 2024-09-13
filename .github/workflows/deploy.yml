@@ -1,0 +1,45 @@
+name: Deploy to AWS S3
+
+on:
+  push:
+    branches:
+      - main  # Adjust this if you want to trigger from another branch
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      # Step 2: Set up Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20'  # Use Node.js 16 or higher
+
+      # Step 3: Install dependencies
+      - name: Install dependencies
+        run: yarn install
+
+      # Step 4: Build the project
+      - name: Build project
+        run: yarn build --mode production
+
+      # Step 5: Configure AWS credentials using OIDC
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-session-name: awssyncsession
+          role-to-assume: ${{ secrets.AWS_IAM_ROLE }}  # Replace with your role ARN
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      # Step 6: Deploy to S3
+      - name: Deploy to S3
+        run: aws s3 sync dist/ s3://${{ secrets.AWS_BUCKET_NAME }} --delete
