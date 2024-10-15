@@ -8,11 +8,12 @@ import { useTranslation } from "react-i18next"
 
 interface IProps {
     students: IStudentTableRowDTO[]
+    loadingData: boolean
     loadingModification: boolean
     onDelete: (row: IStudentTableRowDTO) => Promise<void>
 }
 
-const AllStudentsTable = ({ students, loadingModification, onDelete }: IProps) => {
+const AllStudentsTable = ({ students, loadingData, loadingModification, onDelete }: IProps) => {
 
     const { t } = useTranslation()
 
@@ -93,6 +94,7 @@ const AllStudentsTable = ({ students, loadingModification, onDelete }: IProps) =
             <DataTable
                 columns={columns}
                 data={students}
+                loading={loadingData}
                 enableFilter
                 filterBy={'firstName'}
                 filterPlaceholder="Filter username..."

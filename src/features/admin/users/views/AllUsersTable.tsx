@@ -14,7 +14,7 @@ const AllUsersTable = () => {
   const [showDeleteConfirmDialog, setShowDeleteConfirmDialog] = useState<boolean>(false)
   const [currentData, setCurrentData] = useState<IUser | null>(null)
 
-  const { loadingModification, getAllUsers, deleteUser } = useUsers()
+  const { loading, loadingModification, getAllUsers, deleteUser } = useUsers()
 
   const navigate = useNavigate()
 
@@ -116,6 +116,7 @@ const AllUsersTable = () => {
       <DataTable
         columns={columns}
         data={data}
+        loading={loading}
         enableFilter
         filterBy={'userName'}
         filterPlaceholder="Filter username..."

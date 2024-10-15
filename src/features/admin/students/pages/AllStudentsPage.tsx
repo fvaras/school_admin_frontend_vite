@@ -12,7 +12,7 @@ const AllStudentsPage = () => {
 
     const { t } = useTranslation()
 
-    const { getAllStudents, deleteStudent, loadingModification } = useStudents()
+    const { getAllStudents, deleteStudent, loading, loadingModification } = useStudents()
 
     const { toast } = useToast()
 
@@ -45,6 +45,7 @@ const AllStudentsPage = () => {
 
             <AllStudentsTable
                 students={students}
+                loadingData={loading}
                 loadingModification={loadingModification}
                 onDelete={onDelete}
             ></AllStudentsTable>

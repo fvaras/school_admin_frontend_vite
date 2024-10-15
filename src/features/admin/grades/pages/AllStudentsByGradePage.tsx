@@ -14,7 +14,7 @@ const AllStudentsByGradePage = () => {
     
     let { gradeId } = useParams();
 
-    const { getAllStudentsByGrade, deleteStudent, loadingModification } = useStudents()
+    const { loading, getAllStudentsByGrade, deleteStudent, loadingModification } = useStudents()
 
     const { toast } = useToast()
 
@@ -48,6 +48,7 @@ const AllStudentsByGradePage = () => {
 
             <AllStudentsByGradeTable
                 students={students}
+                loadingData={loading}
                 loadingModification={loadingModification}
                 onDelete={onDelete}
             ></AllStudentsByGradeTable>

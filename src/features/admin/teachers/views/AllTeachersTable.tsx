@@ -14,7 +14,7 @@ const AllTeachersTable = () => {
     const [showDeleteConfirmDialog, setShowDeleteConfirmDialog] = useState<boolean>(false)
     const [currentData, setCurrentData] = useState<ITeacherDTO | null>(null)
 
-    const { loadingModification, getAllTeachers, deleteTeacher } = useTeachers()
+    const { loading, loadingModification, getAllTeachers, deleteTeacher } = useTeachers()
 
     const { t } = useTranslation();
 
@@ -112,6 +112,7 @@ const AllTeachersTable = () => {
             <DataTable
                 columns={columns}
                 data={data}
+                loading={loading}
                 enableFilter
                 filterBy={'contactEmail'}
                 filterPlaceholder="Filter username..."

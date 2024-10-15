@@ -17,7 +17,7 @@ const AllPlanningsPage = () => {
 
     const { getStudentsByGuardian } = useStudents()
     const { getByStudentForList } = useSubjects()
-    const { getPlanningsByStudentAndSubject } = usePlannings()
+    const { getPlanningsByStudentAndSubject, loading } = usePlannings()
 
     useEffect(() => {
         loadInitialData()
@@ -66,6 +66,7 @@ const AllPlanningsPage = () => {
             </div>
 
             <AllPlanningsTable
+                loadingData={loading}
                 plannings={plannings}
             />
         </>

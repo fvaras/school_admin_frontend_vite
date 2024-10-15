@@ -26,12 +26,13 @@ import {
 } from "../../table"
 import { DataTablePagination } from "./DataTablePagination"
 import { DataTableViewOptions } from "./DataTableViewOptions"
-import { ChevronDownIcon, ChevronUpIcon, CaretSortIcon } from "@radix-ui/react-icons"
+import { ChevronDownIcon, ChevronUpIcon, CaretSortIcon, ReloadIcon } from "@radix-ui/react-icons"
 import { useTranslation } from "react-i18next"
 
 interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[]
     data: TData[]
+    loading: boolean
     enableFilter?: boolean
     filterBy?: keyof TData | null
     filterPlaceholder?: string
@@ -41,6 +42,7 @@ interface DataTableProps<TData, TValue> {
 export function DataTable<TData, TValue>({
     columns,
     data,
+    loading,
     enableFilter = false,
     filterBy = null,
     filterPlaceholder = '',
@@ -130,6 +132,7 @@ export function DataTable<TData, TValue>({
                     )}
                 </div>
             )}
+
             <div className="rounded-md border">
                 <Table>
                     <TableHeader>
@@ -172,26 +175,35 @@ export function DataTable<TData, TValue>({
                         ))}
                     </TableHeader>
                     <TableBody>
-                        {table.getRowModel().rows?.length ? (
-                            table.getRowModel().rows.map((row) => (
-                                <TableRow
-                                    key={row.id}
-                                    data-state={row.getIsSelected() && "selected"}
-                                >
-                                    {row.getVisibleCells().map((cell) => (
-                                        <TableCell key={cell.id}>
-                                            {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                                        </TableCell>
-                                    ))}
-                                </TableRow>
-                            ))
-                        ) : (
+                        {loading ? (
                             <TableRow>
                                 <TableCell colSpan={columns.length} className="h-24 text-center">
-                                    {t('UI.TABLE.NO_DATA')}
+                                    <span className="flex justify-center content-center">
+                                        <ReloadIcon className="mr-2 h-4 w-4 animate-spin" /> loading...
+                                    </span>
                                 </TableCell>
                             </TableRow>
-                        )}
+                        ) :
+                            table.getRowModel().rows?.length ? (
+                                table.getRowModel().rows.map((row) => (
+                                    <TableRow
+                                        key={row.id}
+                                        data-state={row.getIsSelected() && "selected"}
+                                    >
+                                        {row.getVisibleCells().map((cell) => (
+                                            <TableCell key={cell.id}>
+                                                {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                                            </TableCell>
+                                        ))}
+                                    </TableRow>
+                                ))
+                            ) : (
+                                <TableRow>
+                                    <TableCell colSpan={columns.length} className="h-24 text-center">
+                                        {t('UI.TABLE.NO_DATA')}
+                                    </TableCell>
+                                </TableRow>
+                            )}
                     </TableBody>
                 </Table>
             </div>

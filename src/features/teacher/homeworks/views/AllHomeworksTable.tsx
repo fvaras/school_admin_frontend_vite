@@ -7,11 +7,12 @@ import { useTranslation } from "react-i18next"
 
 interface IProps {
     homeworks: IHomeworkTableRowDTO[]
+    loadingData: boolean
     loadingModification: boolean
     onDelete: (row: IHomeworkTableRowDTO) => Promise<void>
 }
 
-const AllHomeworksTable = ({ homeworks, loadingModification, onDelete }: IProps) => {
+const AllHomeworksTable = ({ homeworks, loadingData, loadingModification, onDelete }: IProps) => {
 
     const { t } = useTranslation()
     
@@ -80,6 +81,7 @@ const AllHomeworksTable = ({ homeworks, loadingModification, onDelete }: IProps)
             <DataTable
                 columns={columns}
                 data={homeworks}
+                loading={loadingData}
                 enableFilter
                 filterBy={'title'}
                 filterPlaceholder="Filter title..."

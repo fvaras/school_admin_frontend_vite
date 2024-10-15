@@ -12,7 +12,7 @@ const AllPlanningsPage = () => {
     const [plannings, setPlannings] = useState<IPlanningTableRowDTO[]>([])
 
     const { getWithGradeByTeacherForList, mapSubjectGradesPkFkToLabelValueWithData } = useSubjects()
-    const { loadingModification, getAllTeacherPlannings, deletePlanning } = usePlannings()
+    const { loading, loadingModification, getAllTeacherPlannings, deletePlanning } = usePlannings()
 
     const { t } = useTranslation()
 
@@ -60,6 +60,7 @@ const AllPlanningsPage = () => {
 
             <AllPlanningsTable
                 plannings={plannings}
+                loadingData={loading}
                 loadingModification={loadingModification}
                 onDelete={onDelete}
             />

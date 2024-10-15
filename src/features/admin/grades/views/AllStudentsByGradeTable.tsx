@@ -8,11 +8,12 @@ import { useTranslation } from "react-i18next"
 
 interface IProps {
     students: IStudentTableRowDTO[]
+    loadingData: boolean
     loadingModification: boolean
     onDelete: (row: IStudentTableRowDTO) => Promise<void>
 }
 
-const AllStudentsByGradeTable = ({ students, loadingModification, onDelete }: IProps) => {
+const AllStudentsByGradeTable = ({ students, loadingData, loadingModification, onDelete }: IProps) => {
     
     const [showDeleteConfirmDialog, setShowDeleteConfirmDialog] = useState<boolean>(false)
     const [currentData, setCurrentData] = useState<IStudentTableRowDTO | null>(null)
@@ -93,6 +94,7 @@ const AllStudentsByGradeTable = ({ students, loadingModification, onDelete }: IP
             <DataTable
                 columns={columns}
                 data={students}
+                loading={loadingData}
                 enableFilter
                 filterBy={'firstName'}
                 filterPlaceholder="Filter username..."

@@ -13,7 +13,7 @@ const AllPlanningsPage = () => {
     const { t } = useTranslation()
 
     const { getForList: getSubjects } = useSubjects()
-    const { getAllPlannings } = usePlannings()
+    const { getAllPlannings, loading } = usePlannings()
 
     useEffect(() => {
         loadInitialData()
@@ -50,6 +50,7 @@ const AllPlanningsPage = () => {
 
             <AllPlanningsTable
                 plannings={plannings}
+                loadingData={loading}
             />
         </>
     )

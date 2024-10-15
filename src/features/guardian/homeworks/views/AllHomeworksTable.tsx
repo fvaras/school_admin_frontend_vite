@@ -5,9 +5,10 @@ import { useTranslation } from "react-i18next"
 
 interface IProps {
     homeworks: IHomeworkTableRowDTO[]
+    loadingData: boolean
 }
 
-const AllHomeworksTable = ({ homeworks }: IProps) => {
+const AllHomeworksTable = ({ homeworks, loadingData }: IProps) => {
 
     const { t } = useTranslation()
 
@@ -38,6 +39,7 @@ const AllHomeworksTable = ({ homeworks }: IProps) => {
             <DataTable
                 columns={columns}
                 data={homeworks}
+                loading={loadingData}
                 enableFilter
                 filterBy={'title'}
                 filterPlaceholder="Filter title..."

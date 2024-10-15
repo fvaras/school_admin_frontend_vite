@@ -17,7 +17,7 @@ const AllHomeworksPage = () => {
 
     const { getStudentsByGuardian } = useStudents()
     const { getByStudentForList } = useSubjects()
-    const { getAllHomeworks } = useHomeworks()
+    const { getAllHomeworks, loading } = useHomeworks()
 
     useEffect(() => {
         loadInitialData()
@@ -67,6 +67,7 @@ const AllHomeworksPage = () => {
             </div>
 
             <AllHomeworksTable
+                loadingData={loading}
                 homeworks={homeworks}
             />
         </>

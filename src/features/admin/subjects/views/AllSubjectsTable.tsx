@@ -16,7 +16,7 @@ const AllSubjectsTable = () => {
 
     const { t } = useTranslation()
 
-    const { loadingModification, getAllSubjects, deleteSubject } = useSubjects()
+    const { loading, loadingModification, getAllSubjects, deleteSubject } = useSubjects()
 
     const navigate = useNavigate()
 
@@ -104,6 +104,7 @@ const AllSubjectsTable = () => {
             <DataTable
                 columns={columns}
                 data={data}
+                loading={loading}
                 enableFilter
                 filterBy={'name'}
                 filterPlaceholder="Filter name..."

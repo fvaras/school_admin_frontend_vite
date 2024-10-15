@@ -12,10 +12,10 @@ const AllHomeworksPage = () => {
     const [homeworks, setHomeworks] = useState<IHomeworkTableRowDTO[]>([])
 
     const { getWithGradeByTeacherForList, mapSubjectGradesPkFkToLabelValueWithData } = useSubjects()
-    const { loadingModification, getAllHomeworksByTeacher, deleteHomework } = useHomeworks()
+    const { loading, loadingModification, getAllHomeworksByTeacher, deleteHomework } = useHomeworks()
 
     const { t } = useTranslation()
-    
+
     const { toast } = useToast()
 
     useEffect(() => {
@@ -60,6 +60,7 @@ const AllHomeworksPage = () => {
 
             <AllHomeworksTable
                 homeworks={homeworks}
+                loadingData={loading}
                 loadingModification={loadingModification}
                 onDelete={onDelete}
             />

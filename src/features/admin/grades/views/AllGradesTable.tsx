@@ -16,7 +16,7 @@ const AllGradesTable = () => {
 
     const { t } = useTranslation()
     
-    const { loadingModification, getAllGrades, deleteGrade } = useGrades()
+    const { loading, loadingModification, getAllGrades, deleteGrade } = useGrades()
 
     const navigate = useNavigate()
 
@@ -111,6 +111,7 @@ const AllGradesTable = () => {
             <DataTable
                 columns={columns}
                 data={data}
+                loading={loading}
                 enableFilter
                 filterBy={'name'}
                 filterPlaceholder="Filter name..."

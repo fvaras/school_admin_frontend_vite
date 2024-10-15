@@ -13,7 +13,7 @@ const AllHomeworksPage = () => {
     const { t } = useTranslation()
 
     const { getForList: getSubjects } = useSubjects()
-    const { getAllHomeworks } = useHomeworks()
+    const { getAllHomeworks, loading } = useHomeworks()
 
     useEffect(() => {
         loadInitialData()
@@ -50,6 +50,7 @@ const AllHomeworksPage = () => {
 
             <AllHomeworksTable
                 homeworks={homeworks}
+                loadingData={loading}
             />
         </>
     )

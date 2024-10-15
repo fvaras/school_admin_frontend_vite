@@ -5,9 +5,10 @@ import { useTranslation } from "react-i18next"
 
 interface IProps {
     plannings: IPlanningTableRowDTO[]
+    loadingData: boolean
 }
 
-const AllPlanningsTable = ({ plannings }: IProps) => {
+const AllPlanningsTable = ({ plannings, loadingData }: IProps) => {
 
     const { t } = useTranslation()
 
@@ -38,6 +39,7 @@ const AllPlanningsTable = ({ plannings }: IProps) => {
             <DataTable
                 columns={columns}
                 data={plannings}
+                loading={loadingData}
                 enableFilter
                 filterBy={'title'}
                 filterPlaceholder="Filter title..."

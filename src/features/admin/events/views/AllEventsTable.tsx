@@ -15,7 +15,7 @@ const AllEventsTable = () => {
     const [showDeleteConfirmDialog, setShowDeleteConfirmDialog] = useState<boolean>(false)
     const [currentData, setCurrentData] = useState<ICalendarEventDTO | null>(null)
 
-    const { loadingModification, getAllEvents, deleteEvent } = useEvents()
+    const { loading, loadingModification, getAllEvents, deleteEvent } = useEvents()
 
     const { t } = useTranslation()
     
@@ -119,6 +119,7 @@ const AllEventsTable = () => {
             <DataTable
                 columns={columns}
                 data={data}
+                loading={loading}
                 enableFilter
                 filterBy={'title'}
                 filterPlaceholder="Filter by title..."

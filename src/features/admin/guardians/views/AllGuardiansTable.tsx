@@ -16,7 +16,7 @@ const AllGuardiansTable = () => {
     const [showDeleteConfirmDialog, setShowDeleteConfirmDialog] = useState<boolean>(false)
     const [currentData, setCurrentData] = useState<IGuardianTableRowDTO | null>(null)
 
-    const { loadingModification, getAllGuardians, deleteGuardian } = useGuardians()
+    const { loading, loadingModification, getAllGuardians, deleteGuardian } = useGuardians()
 
     const navigate = useNavigate()
 
@@ -112,6 +112,7 @@ const AllGuardiansTable = () => {
             <DataTable
                 columns={columns}
                 data={data}
+                loading={loading}
                 enableFilter
                 filterBy={'lastName'}
                 filterPlaceholder="Filter username..."
