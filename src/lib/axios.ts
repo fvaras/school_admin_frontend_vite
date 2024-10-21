@@ -1,6 +1,7 @@
 import axios from "axios"
 
-const baseUrl = 'http://localhost:5142/'
+// const baseUrl = 'http://localhost:5142/'
+const baseUrl = 'https://p3epxit74fbyp7e4wihwvf3xbq0xhcmc.lambda-url.us-east-1.on.aws/'
 
 const axiosInstance = axios.create({
     baseURL: baseUrl,
